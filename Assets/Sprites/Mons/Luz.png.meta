@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: c0fdc8cf5d9e9454588d41f383c44c72
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9133910998531526563
+    second: Luz_0
+  - first:
+      213: 7735548722629990460
+    second: Luz_1
+  - first:
+      213: -2293824314481384579
+    second: Luz_2
+  - first:
+      213: -3913844907721341361
+    second: Luz_3
+  - first:
+      213: -6928056090778574339
+    second: Luz_4
+  - first:
+      213: -3634397896675347290
+    second: Luz_5
+  - first:
+      213: -4023948211628961654
+    second: Luz_6
+  - first:
+      213: 1335710675547429642
+    second: Luz_7
+  - first:
+      213: -2744378420322872685
+    second: Luz_8
+  - first:
+      213: 7508999274052835952
+    second: Luz_9
+  - first:
+      213: 4318493775844364776
+    second: Luz_10
+  - first:
+      213: 1931829706576470404
+    second: Luz_11
+  - first:
+      213: -2861198760564454256
+    second: Luz_12
+  - first:
+      213: 7492080869717134099
+    second: Luz_13
+  - first:
+      213: -2895498063566809720
+    second: Luz_14
+  - first:
+      213: -4487675908320927164
+    second: Luz_15
+  - first:
+      213: -4891061657282260205
+    second: Luz_16
+  - first:
+      213: 3957624894676700039
+    second: Luz_17
+  - first:
+      213: 314539191772133495
+    second: Luz_18
+  - first:
+      213: 978199187705338096
+    second: Luz_19
+  - first:
+      213: 5743002652178858201
+    second: Luz_20
+  - first:
+      213: -1456582620912303212
+    second: Luz_21
+  - first:
+      213: -2904984745899906036
+    second: Luz_22
+  - first:
+      213: -3743669826603371479
+    second: Luz_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Luz_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 567
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d50be722754dd3180800000000000000
+      internalID: -9133910998531526563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 535
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c38561b14903a5b60800000000000000
+      internalID: 7735548722629990460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 536
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d73ee2e60f2ba20e0800000000000000
+      internalID: -2293824314481384579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_3
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 533
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f464c49faca3fa9c0800000000000000
+      internalID: -3913844907721341361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 506
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df1692d11b99adf90800000000000000
+      internalID: -6928056090778574339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_5
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 505
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a43d3c6e56009dc0800000000000000
+      internalID: -3634397896675347290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 411
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80994bdb601828c0800000000000000
+      internalID: -4023948211628961654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_7
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 379
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b93b258c5698210800000000000000
+      internalID: 1335710675547429642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_8
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 380
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3925867fd520ae9d0800000000000000
+      internalID: -2744378420322872685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_9
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 377
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ad59c2e03553860800000000000000
+      internalID: 7508999274052835952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 350
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e150f1753f5eeb30800000000000000
+      internalID: 4318493775844364776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 349
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 481a90302ec3fca10800000000000000
+      internalID: 1931829706576470404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 255
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09c84c4f2eafa48d0800000000000000
+      internalID: -2861198760564454256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_13
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 223
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b4df33bd739f760800000000000000
+      internalID: 7492080869717134099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_14
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 224
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885d4492adf11d7d0800000000000000
+      internalID: -2895498063566809720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_15
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 221
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 442e371c98298b1c0800000000000000
+      internalID: -4487675908320927164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_16
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 194
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 313582f26557f1cb0800000000000000
+      internalID: -4891061657282260205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_17
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 193
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b82719fde4ce630800000000000000
+      internalID: 3957624894676700039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_18
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 99
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77834897ab77d5400800000000000000
+      internalID: 314539191772133495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_19
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 67
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f890ce7af2439d00800000000000000
+      internalID: 978199187705338096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 68
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d04f330c7e33bf40800000000000000
+      internalID: 5743002652178858201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_21
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 65
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493c386d2dd29cbe0800000000000000
+      internalID: -1456582620912303212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_22
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 38
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c25bec3cb6fa7d0800000000000000
+      internalID: -2904984745899906036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luz_23
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 37
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92435f4a020db0cc0800000000000000
+      internalID: -3743669826603371479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Luz_0: -9133910998531526563
+      Luz_1: 7735548722629990460
+      Luz_10: 4318493775844364776
+      Luz_11: 1931829706576470404
+      Luz_12: -2861198760564454256
+      Luz_13: 7492080869717134099
+      Luz_14: -2895498063566809720
+      Luz_15: -4487675908320927164
+      Luz_16: -4891061657282260205
+      Luz_17: 3957624894676700039
+      Luz_18: 314539191772133495
+      Luz_19: 978199187705338096
+      Luz_2: -2293824314481384579
+      Luz_20: 5743002652178858201
+      Luz_21: -1456582620912303212
+      Luz_22: -2904984745899906036
+      Luz_23: -3743669826603371479
+      Luz_3: -3913844907721341361
+      Luz_4: -6928056090778574339
+      Luz_5: -3634397896675347290
+      Luz_6: -4023948211628961654
+      Luz_7: 1335710675547429642
+      Luz_8: -2744378420322872685
+      Luz_9: 7508999274052835952
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

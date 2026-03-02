@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad8a6f9c478164798a577300bf80b5, type: 3}
+  m_Name: Dunebit
+  m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
+  monName: Dunebit
+  type: 5
+  baseHP: 50
+  baseAttack: 40
+  baseDefense: 45
+  baseSpeed: 25
+  frontSprite: {fileID: 1324980506657168105, guid: ceea7db076e6d6b4ba33d94c7b965469, type: 3}
+  backSprite: {fileID: 9139330975122868335, guid: 852f0f50e9943b44392ef1859d506ffc, type: 3}
+  typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
+  learnableMoves:
+  - move: {fileID: 11400000, guid: dc3771ff52af3504bb189e0af0ca4e43, type: 2}
+    learnAtLevel: 1
+  - move: {fileID: 11400000, guid: e5be9570f1c43b847972b2d44df3102d, type: 2}
+    learnAtLevel: 4
+  - move: {fileID: 11400000, guid: 3208ab7700fd155448007e0d16981aea, type: 2}
+    learnAtLevel: 6
+  - move: {fileID: 11400000, guid: 1468c8a9a316d314abb93c1ef3608a01, type: 2}
+    learnAtLevel: 9
+  evolutions: []

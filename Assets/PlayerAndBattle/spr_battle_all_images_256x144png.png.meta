@@ -1,0 +1,6136 @@
+fileFormatVersion: 2
+guid: 05d4519fe25e92f4fa805e878ee4ba90
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 922339201591242854
+    second: spr_battle_all_images_256x144png_0
+  - first:
+      213: -2450674463546628453
+    second: spr_battle_all_images_256x144png_1
+  - first:
+      213: 1818276805205780342
+    second: spr_battle_all_images_256x144png_2
+  - first:
+      213: 1049348686566752070
+    second: spr_battle_all_images_256x144png_3
+  - first:
+      213: 5239020072627513701
+    second: spr_battle_all_images_256x144png_4
+  - first:
+      213: 5688941281637224393
+    second: spr_battle_all_images_256x144png_5
+  - first:
+      213: -7596570197948072675
+    second: spr_battle_all_images_256x144png_6
+  - first:
+      213: 5113224561561842204
+    second: spr_battle_all_images_256x144png_7
+  - first:
+      213: 6355693334814613806
+    second: spr_battle_all_images_256x144png_8
+  - first:
+      213: -1196293427951843619
+    second: spr_battle_all_images_256x144png_9
+  - first:
+      213: 4041036933764470693
+    second: spr_battle_all_images_256x144png_10
+  - first:
+      213: 6018212461786514293
+    second: spr_battle_all_images_256x144png_11
+  - first:
+      213: -1917175194005128209
+    second: spr_battle_all_images_256x144png_12
+  - first:
+      213: -1729688954542530557
+    second: spr_battle_all_images_256x144png_13
+  - first:
+      213: -3463798040886449919
+    second: spr_battle_all_images_256x144png_14
+  - first:
+      213: -1036402702746561259
+    second: spr_battle_all_images_256x144png_15
+  - first:
+      213: 7699868858220869926
+    second: spr_battle_all_images_256x144png_16
+  - first:
+      213: 9131473911153158457
+    second: spr_battle_all_images_256x144png_17
+  - first:
+      213: 8963463605547382386
+    second: spr_battle_all_images_256x144png_18
+  - first:
+      213: -1348281580367816390
+    second: spr_battle_all_images_256x144png_19
+  - first:
+      213: -1232530539211360361
+    second: spr_battle_all_images_256x144png_20
+  - first:
+      213: -6043064450235185419
+    second: spr_battle_all_images_256x144png_21
+  - first:
+      213: 6752113275485886443
+    second: spr_battle_all_images_256x144png_22
+  - first:
+      213: 1195591460714682133
+    second: spr_battle_all_images_256x144png_23
+  - first:
+      213: 6570148250840274687
+    second: spr_battle_all_images_256x144png_24
+  - first:
+      213: -2419413729484872079
+    second: spr_battle_all_images_256x144png_25
+  - first:
+      213: -1092257246788471090
+    second: spr_battle_all_images_256x144png_26
+  - first:
+      213: 4772881313406073831
+    second: spr_battle_all_images_256x144png_27
+  - first:
+      213: 7173482806908377044
+    second: spr_battle_all_images_256x144png_28
+  - first:
+      213: -8263867649917497275
+    second: spr_battle_all_images_256x144png_29
+  - first:
+      213: -6257726068060028267
+    second: spr_battle_all_images_256x144png_30
+  - first:
+      213: 868632905456866478
+    second: spr_battle_all_images_256x144png_31
+  - first:
+      213: -6241741458677916489
+    second: spr_battle_all_images_256x144png_32
+  - first:
+      213: -3323802612079530571
+    second: spr_battle_all_images_256x144png_33
+  - first:
+      213: -321109596536060094
+    second: spr_battle_all_images_256x144png_34
+  - first:
+      213: 7429968854645785491
+    second: spr_battle_all_images_256x144png_35
+  - first:
+      213: -5560155250109688514
+    second: spr_battle_all_images_256x144png_36
+  - first:
+      213: -3483186730731352313
+    second: spr_battle_all_images_256x144png_37
+  - first:
+      213: 7807834411042128698
+    second: spr_battle_all_images_256x144png_38
+  - first:
+      213: -3990645778629835361
+    second: spr_battle_all_images_256x144png_39
+  - first:
+      213: -2232451351350866148
+    second: spr_battle_all_images_256x144png_40
+  - first:
+      213: -3444324350128379075
+    second: spr_battle_all_images_256x144png_41
+  - first:
+      213: -3041155134587333936
+    second: spr_battle_all_images_256x144png_42
+  - first:
+      213: 7698437404796562426
+    second: spr_battle_all_images_256x144png_43
+  - first:
+      213: -1080902250026077854
+    second: spr_battle_all_images_256x144png_44
+  - first:
+      213: -3494372553056277300
+    second: spr_battle_all_images_256x144png_45
+  - first:
+      213: 5634573804531817587
+    second: spr_battle_all_images_256x144png_46
+  - first:
+      213: 5503011086618349459
+    second: spr_battle_all_images_256x144png_47
+  - first:
+      213: 7334111645363210457
+    second: spr_battle_all_images_256x144png_48
+  - first:
+      213: -7491061968491626095
+    second: spr_battle_all_images_256x144png_49
+  - first:
+      213: -684833636786385533
+    second: spr_battle_all_images_256x144png_50
+  - first:
+      213: 7754720874314856433
+    second: spr_battle_all_images_256x144png_51
+  - first:
+      213: 2235445109927552899
+    second: spr_battle_all_images_256x144png_52
+  - first:
+      213: 3891227322115467172
+    second: spr_battle_all_images_256x144png_53
+  - first:
+      213: 4706265553494726053
+    second: spr_battle_all_images_256x144png_54
+  - first:
+      213: -3503884333720976132
+    second: spr_battle_all_images_256x144png_55
+  - first:
+      213: 998768852634316196
+    second: spr_battle_all_images_256x144png_56
+  - first:
+      213: 4242613267771117548
+    second: spr_battle_all_images_256x144png_57
+  - first:
+      213: -8824625643247233708
+    second: spr_battle_all_images_256x144png_58
+  - first:
+      213: -5252425827398255544
+    second: spr_battle_all_images_256x144png_59
+  - first:
+      213: 5849139106962073486
+    second: spr_battle_all_images_256x144png_60
+  - first:
+      213: -5225714237940309636
+    second: spr_battle_all_images_256x144png_61
+  - first:
+      213: -1327178497920920210
+    second: spr_battle_all_images_256x144png_62
+  - first:
+      213: -7204531736496949617
+    second: spr_battle_all_images_256x144png_63
+  - first:
+      213: 3193725808910609045
+    second: spr_battle_all_images_256x144png_64
+  - first:
+      213: -9139919774935657451
+    second: spr_battle_all_images_256x144png_65
+  - first:
+      213: 8038342197118325488
+    second: spr_battle_all_images_256x144png_66
+  - first:
+      213: -5213094763071207653
+    second: spr_battle_all_images_256x144png_67
+  - first:
+      213: 5597611425479431649
+    second: spr_battle_all_images_256x144png_68
+  - first:
+      213: 3748700373775862537
+    second: spr_battle_all_images_256x144png_69
+  - first:
+      213: -5978732647414360362
+    second: spr_battle_all_images_256x144png_70
+  - first:
+      213: 8591708126443078440
+    second: spr_battle_all_images_256x144png_71
+  - first:
+      213: 2720440747210158821
+    second: spr_battle_all_images_256x144png_72
+  - first:
+      213: 8434971666652506122
+    second: spr_battle_all_images_256x144png_73
+  - first:
+      213: -6133164812232496203
+    second: spr_battle_all_images_256x144png_74
+  - first:
+      213: -7555668554597480398
+    second: spr_battle_all_images_256x144png_75
+  - first:
+      213: 8137612736846071566
+    second: spr_battle_all_images_256x144png_76
+  - first:
+      213: -8447306355695110142
+    second: spr_battle_all_images_256x144png_77
+  - first:
+      213: -8558709958313591334
+    second: spr_battle_all_images_256x144png_78
+  - first:
+      213: 152544195078632503
+    second: spr_battle_all_images_256x144png_79
+  - first:
+      213: 8430625157724669680
+    second: spr_battle_all_images_256x144png_80
+  - first:
+      213: 2130975336686277641
+    second: spr_battle_all_images_256x144png_81
+  - first:
+      213: -5256890141900640065
+    second: spr_battle_all_images_256x144png_82
+  - first:
+      213: 357296893895828203
+    second: spr_battle_all_images_256x144png_83
+  - first:
+      213: 4741349657616243926
+    second: spr_battle_all_images_256x144png_84
+  - first:
+      213: 8914949935588298353
+    second: spr_battle_all_images_256x144png_85
+  - first:
+      213: 4545203868274935647
+    second: spr_battle_all_images_256x144png_86
+  - first:
+      213: -7849853593714840147
+    second: spr_battle_all_images_256x144png_87
+  - first:
+      213: -4934941215230484651
+    second: spr_battle_all_images_256x144png_88
+  - first:
+      213: -7204650628634250313
+    second: spr_battle_all_images_256x144png_89
+  - first:
+      213: 4377411274661210561
+    second: spr_battle_all_images_256x144png_90
+  - first:
+      213: 6533264689491288223
+    second: spr_battle_all_images_256x144png_91
+  - first:
+      213: -7490468251856417000
+    second: spr_battle_all_images_256x144png_92
+  - first:
+      213: -8068973189367562459
+    second: spr_battle_all_images_256x144png_93
+  - first:
+      213: -1429247477528244792
+    second: spr_battle_all_images_256x144png_94
+  - first:
+      213: -4581074788196482518
+    second: spr_battle_all_images_256x144png_95
+  - first:
+      213: 4302517225816032725
+    second: spr_battle_all_images_256x144png_96
+  - first:
+      213: 8342153527530781193
+    second: spr_battle_all_images_256x144png_97
+  - first:
+      213: -4853609287447106033
+    second: spr_battle_all_images_256x144png_98
+  - first:
+      213: -4092615203383404951
+    second: spr_battle_all_images_256x144png_99
+  - first:
+      213: -4462481799258806763
+    second: spr_battle_all_images_256x144png_100
+  - first:
+      213: -8217401613388218816
+    second: spr_battle_all_images_256x144png_101
+  - first:
+      213: -84853074294951899
+    second: spr_battle_all_images_256x144png_102
+  - first:
+      213: 4882185561910415632
+    second: spr_battle_all_images_256x144png_103
+  - first:
+      213: 2250079685714510034
+    second: spr_battle_all_images_256x144png_104
+  - first:
+      213: -3146310626990375799
+    second: spr_battle_all_images_256x144png_105
+  - first:
+      213: 3103911753239709862
+    second: spr_battle_all_images_256x144png_106
+  - first:
+      213: 3634234415691580682
+    second: spr_battle_all_images_256x144png_107
+  - first:
+      213: -353152410348421588
+    second: spr_battle_all_images_256x144png_108
+  - first:
+      213: 7072471944358543317
+    second: spr_battle_all_images_256x144png_109
+  - first:
+      213: -5245622433711607612
+    second: spr_battle_all_images_256x144png_110
+  - first:
+      213: -3746713787785888088
+    second: spr_battle_all_images_256x144png_111
+  - first:
+      213: 8665091413592467875
+    second: spr_battle_all_images_256x144png_112
+  - first:
+      213: 8357362298333652570
+    second: spr_battle_all_images_256x144png_113
+  - first:
+      213: 7166037355376488593
+    second: spr_battle_all_images_256x144png_114
+  - first:
+      213: -1785159721370791901
+    second: spr_battle_all_images_256x144png_115
+  - first:
+      213: 3922979839585501227
+    second: spr_battle_all_images_256x144png_116
+  - first:
+      213: 2158312047413291330
+    second: spr_battle_all_images_256x144png_117
+  - first:
+      213: -7562291205716542750
+    second: spr_battle_all_images_256x144png_118
+  - first:
+      213: -8194594687262302834
+    second: spr_battle_all_images_256x144png_119
+  - first:
+      213: -1940056892907638574
+    second: spr_battle_all_images_256x144png_120
+  - first:
+      213: -1570899570460925892
+    second: spr_battle_all_images_256x144png_121
+  - first:
+      213: -5907180317371025852
+    second: spr_battle_all_images_256x144png_122
+  - first:
+      213: -5330069653010741283
+    second: spr_battle_all_images_256x144png_123
+  - first:
+      213: -1366176463243430652
+    second: spr_battle_all_images_256x144png_124
+  - first:
+      213: 1562202477934174102
+    second: spr_battle_all_images_256x144png_125
+  - first:
+      213: 3742333445952877372
+    second: spr_battle_all_images_256x144png_126
+  - first:
+      213: -2298779852625087686
+    second: spr_battle_all_images_256x144png_127
+  - first:
+      213: 3111040824750308790
+    second: spr_battle_all_images_256x144png_128
+  - first:
+      213: -4384763136963487399
+    second: spr_battle_all_images_256x144png_129
+  - first:
+      213: 4140532350243448798
+    second: spr_battle_all_images_256x144png_130
+  - first:
+      213: 8434483675789403656
+    second: spr_battle_all_images_256x144png_131
+  - first:
+      213: -978908663673704877
+    second: spr_battle_all_images_256x144png_132
+  - first:
+      213: 1641948056380563501
+    second: spr_battle_all_images_256x144png_133
+  - first:
+      213: -4707550769330647807
+    second: spr_battle_all_images_256x144png_134
+  - first:
+      213: -1070435651085053505
+    second: spr_battle_all_images_256x144png_135
+  - first:
+      213: 2540610992602644486
+    second: spr_battle_all_images_256x144png_136
+  - first:
+      213: -453134540289127924
+    second: spr_battle_all_images_256x144png_137
+  - first:
+      213: -4486797142814477093
+    second: spr_battle_all_images_256x144png_138
+  - first:
+      213: 5810908737938044404
+    second: spr_battle_all_images_256x144png_139
+  - first:
+      213: -5713827325140941608
+    second: spr_battle_all_images_256x144png_140
+  - first:
+      213: 5336679755455395491
+    second: spr_battle_all_images_256x144png_141
+  - first:
+      213: -4966026329934231291
+    second: spr_battle_all_images_256x144png_142
+  - first:
+      213: -5120311878714117218
+    second: spr_battle_all_images_256x144png_143
+  - first:
+      213: 807101230948745862
+    second: spr_battle_all_images_256x144png_144
+  - first:
+      213: -5429856367358212945
+    second: spr_battle_all_images_256x144png_145
+  - first:
+      213: 7964907390050272413
+    second: spr_battle_all_images_256x144png_146
+  - first:
+      213: 1976939363269730709
+    second: spr_battle_all_images_256x144png_147
+  - first:
+      213: 592396301746764309
+    second: spr_battle_all_images_256x144png_148
+  - first:
+      213: 3507362348605817771
+    second: spr_battle_all_images_256x144png_149
+  - first:
+      213: 5906606441809062376
+    second: spr_battle_all_images_256x144png_150
+  - first:
+      213: 4401077038146442491
+    second: spr_battle_all_images_256x144png_151
+  - first:
+      213: 2038966275788478142
+    second: spr_battle_all_images_256x144png_152
+  - first:
+      213: 2732766765301823992
+    second: spr_battle_all_images_256x144png_153
+  - first:
+      213: 7585686316507310317
+    second: spr_battle_all_images_256x144png_154
+  - first:
+      213: 4254204778643787990
+    second: spr_battle_all_images_256x144png_155
+  - first:
+      213: -1463401975577739379
+    second: spr_battle_all_images_256x144png_156
+  - first:
+      213: 5110738033811182391
+    second: spr_battle_all_images_256x144png_157
+  - first:
+      213: -3305667149715579479
+    second: spr_battle_all_images_256x144png_158
+  - first:
+      213: -3280105527487778937
+    second: spr_battle_all_images_256x144png_159
+  - first:
+      213: 7490754339717005330
+    second: spr_battle_all_images_256x144png_160
+  - first:
+      213: 4253122323011915655
+    second: spr_battle_all_images_256x144png_161
+  - first:
+      213: 2937666734637418215
+    second: spr_battle_all_images_256x144png_162
+  - first:
+      213: 4057785545643455852
+    second: spr_battle_all_images_256x144png_163
+  - first:
+      213: 6562340012949948227
+    second: spr_battle_all_images_256x144png_164
+  - first:
+      213: -6629872468640421
+    second: spr_battle_all_images_256x144png_165
+  - first:
+      213: -4729264279721831540
+    second: spr_battle_all_images_256x144png_166
+  - first:
+      213: -2546987991671545110
+    second: spr_battle_all_images_256x144png_167
+  - first:
+      213: 1900656289811684374
+    second: spr_battle_all_images_256x144png_168
+  - first:
+      213: -9000247147337617807
+    second: spr_battle_all_images_256x144png_169
+  - first:
+      213: -4742051226116990601
+    second: spr_battle_all_images_256x144png_170
+  - first:
+      213: 3365085763858780158
+    second: spr_battle_all_images_256x144png_171
+  - first:
+      213: -2254213814913499281
+    second: spr_battle_all_images_256x144png_172
+  - first:
+      213: -1229272925882597130
+    second: spr_battle_all_images_256x144png_173
+  - first:
+      213: -8009025370811002701
+    second: spr_battle_all_images_256x144png_174
+  - first:
+      213: -4132907910169123450
+    second: spr_battle_all_images_256x144png_175
+  - first:
+      213: 6695466236200796636
+    second: spr_battle_all_images_256x144png_176
+  - first:
+      213: -7997486538078372124
+    second: spr_battle_all_images_256x144png_177
+  - first:
+      213: 8067988382071049014
+    second: spr_battle_all_images_256x144png_178
+  - first:
+      213: 5668235581674884947
+    second: spr_battle_all_images_256x144png_179
+  - first:
+      213: -4291715990228229383
+    second: spr_battle_all_images_256x144png_180
+  - first:
+      213: 5036891433869280028
+    second: spr_battle_all_images_256x144png_181
+  - first:
+      213: 3360727390674987131
+    second: spr_battle_all_images_256x144png_182
+  - first:
+      213: -5968370407795999580
+    second: spr_battle_all_images_256x144png_183
+  - first:
+      213: 6076685868141683794
+    second: spr_battle_all_images_256x144png_184
+  - first:
+      213: 5535293706616372982
+    second: spr_battle_all_images_256x144png_185
+  - first:
+      213: -1529396335858561554
+    second: spr_battle_all_images_256x144png_186
+  - first:
+      213: 4779702430326928896
+    second: spr_battle_all_images_256x144png_187
+  - first:
+      213: 2534092510456504723
+    second: spr_battle_all_images_256x144png_188
+  - first:
+      213: 5716659824805346264
+    second: spr_battle_all_images_256x144png_189
+  - first:
+      213: 3771546887608020779
+    second: spr_battle_all_images_256x144png_190
+  - first:
+      213: -7587778465597869116
+    second: spr_battle_all_images_256x144png_191
+  - first:
+      213: 2757786890090284238
+    second: spr_battle_all_images_256x144png_192
+  - first:
+      213: 47693054852214428
+    second: spr_battle_all_images_256x144png_193
+  - first:
+      213: 4666770731346477894
+    second: spr_battle_all_images_256x144png_194
+  - first:
+      213: 6941634898683221007
+    second: spr_battle_all_images_256x144png_195
+  - first:
+      213: -7435838346475217082
+    second: spr_battle_all_images_256x144png_196
+  - first:
+      213: 6862107468870284064
+    second: spr_battle_all_images_256x144png_197
+  - first:
+      213: 5512485240290378977
+    second: spr_battle_all_images_256x144png_198
+  - first:
+      213: 1606754756227013663
+    second: spr_battle_all_images_256x144png_199
+  - first:
+      213: 3055212489919984276
+    second: spr_battle_all_images_256x144png_200
+  - first:
+      213: -8382124712206885469
+    second: spr_battle_all_images_256x144png_201
+  - first:
+      213: 3063800177460984391
+    second: spr_battle_all_images_256x144png_202
+  - first:
+      213: 137691791234603481
+    second: spr_battle_all_images_256x144png_203
+  - first:
+      213: 215495611945425952
+    second: spr_battle_all_images_256x144png_204
+  - first:
+      213: 7587660022215662459
+    second: spr_battle_all_images_256x144png_205
+  - first:
+      213: -5981923205022605117
+    second: spr_battle_all_images_256x144png_206
+  - first:
+      213: 194102110644586251
+    second: spr_battle_all_images_256x144png_207
+  - first:
+      213: -1109526494986412256
+    second: spr_battle_all_images_256x144png_208
+  - first:
+      213: -7190878903738991950
+    second: spr_battle_all_images_256x144png_209
+  - first:
+      213: 4634755284870999701
+    second: spr_battle_all_images_256x144png_210
+  - first:
+      213: 1391451466778661716
+    second: spr_battle_all_images_256x144png_211
+  - first:
+      213: 2053435873729568260
+    second: spr_battle_all_images_256x144png_212
+  - first:
+      213: -2327633721702344302
+    second: spr_battle_all_images_256x144png_213
+  - first:
+      213: 2151336767237067933
+    second: spr_battle_all_images_256x144png_214
+  - first:
+      213: 642462828303778398
+    second: spr_battle_all_images_256x144png_215
+  - first:
+      213: -9193022314162591203
+    second: spr_battle_all_images_256x144png_216
+  - first:
+      213: 2483374136295072961
+    second: spr_battle_all_images_256x144png_217
+  - first:
+      213: 7987574303307436996
+    second: spr_battle_all_images_256x144png_218
+  - first:
+      213: -3308811728331882062
+    second: spr_battle_all_images_256x144png_219
+  - first:
+      213: 315272214717491709
+    second: spr_battle_all_images_256x144png_220
+  - first:
+      213: -6238152977696934614
+    second: spr_battle_all_images_256x144png_221
+  - first:
+      213: -190283452851691406
+    second: spr_battle_all_images_256x144png_222
+  - first:
+      213: 1550626488052838771
+    second: spr_battle_all_images_256x144png_223
+  - first:
+      213: 4301190075152174184
+    second: spr_battle_all_images_256x144png_224
+  - first:
+      213: 3237154493208162398
+    second: spr_battle_all_images_256x144png_225
+  - first:
+      213: -7033709772674153449
+    second: spr_battle_all_images_256x144png_226
+  - first:
+      213: -4480913247993918949
+    second: spr_battle_all_images_256x144png_227
+  - first:
+      213: 6281281015698258659
+    second: spr_battle_all_images_256x144png_228
+  - first:
+      213: 7913701797883708292
+    second: spr_battle_all_images_256x144png_229
+  - first:
+      213: 7955355147417902517
+    second: spr_battle_all_images_256x144png_230
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1537
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6607349fd9ecccc00800000000000000
+      internalID: 922339201591242854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_1
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96ae244f847dfdd0800000000000000
+      internalID: -2450674463546628453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_2
+      rect:
+        serializedVersion: 2
+        x: 1553
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6776f95ee11db3910800000000000000
+      internalID: 1818276805205780342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_3
+      rect:
+        serializedVersion: 2
+        x: 1559
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f755c1219009e00800000000000000
+      internalID: 1049348686566752070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_4
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 125
+        width: 73
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 569aa10affcb4b840800000000000000
+      internalID: 5239020072627513701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_5
+      rect:
+        serializedVersion: 2
+        x: 1571
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cfca0054fd23fe40800000000000000
+      internalID: 5688941281637224393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_6
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d7cff37af839690800000000000000
+      internalID: -7596570197948072675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_7
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1232b0d5a2d5f640800000000000000
+      internalID: 5113224561561842204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_8
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 131
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2161f20a65f33850800000000000000
+      internalID: 6355693334814613806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_9
+      rect:
+        serializedVersion: 2
+        x: 1803
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd6cbcb2779e56fe0800000000000000
+      internalID: -1196293427951843619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_10
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7d3415ea5a41830800000000000000
+      internalID: 4041036933764470693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_11
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5734d9f195cf48350800000000000000
+      internalID: 6018212461786514293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_12
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 125
+        width: 73
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb32259153d465e0800000000000000
+      internalID: -1917175194005128209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_13
+      rect:
+        serializedVersion: 2
+        x: 1827
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30063946f09eef7e0800000000000000
+      internalID: -1729688954542530557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_14
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109e447a80e1eefc0800000000000000
+      internalID: -3463798040886449919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_15
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5155982ab35fd91f0800000000000000
+      internalID: -1036402702746561259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_16
+      rect:
+        serializedVersion: 2
+        x: 1849
+        y: 131
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 629f85f4eed6bda60800000000000000
+      internalID: 7699868858220869926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_17
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 939e70e342389be70800000000000000
+      internalID: 9131473911153158457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_18
+      rect:
+        serializedVersion: 2
+        x: 2065
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2763bc5a8ae946c70800000000000000
+      internalID: 8963463605547382386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_19
+      rect:
+        serializedVersion: 2
+        x: 2071
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3959f0db01f94de0800000000000000
+      internalID: -1348281580367816390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_20
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 125
+        width: 73
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7977c7b310c25eee0800000000000000
+      internalID: -1232530539211360361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_21
+      rect:
+        serializedVersion: 2
+        x: 2083
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6c0f866e8b22ca0800000000000000
+      internalID: -6043064450235185419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_22
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be71984ff3354bd50800000000000000
+      internalID: 6752113275485886443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_23
+      rect:
+        serializedVersion: 2
+        x: 2094
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51793685918979010800000000000000
+      internalID: 1195591460714682133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_24
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 131
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff61df4260bdd2b50800000000000000
+      internalID: 6570148250840274687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_25
+      rect:
+        serializedVersion: 2
+        x: 2199
+        y: 73
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 176e95918048c6ed0800000000000000
+      internalID: -2419413729484872079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_26
+      rect:
+        serializedVersion: 2
+        x: 2315
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6b3d132d587d0f0800000000000000
+      internalID: -1092257246788471090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_27
+      rect:
+        serializedVersion: 2
+        x: 2321
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eb3ba8444eac3240800000000000000
+      internalID: 4772881313406073831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_28
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7552c2b945d8360800000000000000
+      internalID: 7173482806908377044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_29
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 125
+        width: 73
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54053dff728d05d80800000000000000
+      internalID: -8263867649917497275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_30
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5928493cb471829a0800000000000000
+      internalID: -6257726068060028267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_31
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4d8f976010e0c00800000000000000
+      internalID: 868632905456866478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_32
+      rect:
+        serializedVersion: 2
+        x: 2350
+        y: 131
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bc9ca7a631e069a0800000000000000
+      internalID: -6241741458677916489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_33
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 131
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bdeb73722b7fd1d0800000000000000
+      internalID: -3323802612079530571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_34
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 67
+        width: 81
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 247cf74f5803b8bf0800000000000000
+      internalID: -321109596536060094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_35
+      rect:
+        serializedVersion: 2
+        x: 1930
+        y: 67
+        width: 81
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393c061ce4d8c1760800000000000000
+      internalID: 7429968854645785491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_36
+      rect:
+        serializedVersion: 2
+        x: 2102
+        y: 42
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35503d424c56d2b0800000000000000
+      internalID: -5560155250109688514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_37
+      rect:
+        serializedVersion: 2
+        x: 2338
+        y: 37
+        width: 87
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70f47648f1c39afc0800000000000000
+      internalID: -3483186730731352313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_38
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33cc3777000b5c60800000000000000
+      internalID: 7807834411042128698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_39
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 54
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f954b54cec06e98c0800000000000000
+      internalID: -3990645778629835361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_40
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f0460f25db401e0800000000000000
+      internalID: -2232451351350866148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_41
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3bae5b904d4330d0800000000000000
+      internalID: -3444324350128379075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_42
+      rect:
+        serializedVersion: 2
+        x: 1719
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d211109485abc5d0800000000000000
+      internalID: -3041155134587333936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_43
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afbaa76180856da60800000000000000
+      internalID: 7698437404796562426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_44
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2617646612ddff0f0800000000000000
+      internalID: -1080902250026077854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_45
+      rect:
+        serializedVersion: 2
+        x: 1736
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccca43e4dae718fc0800000000000000
+      internalID: -3494372553056277300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_46
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c17df9507023e40800000000000000
+      internalID: 5634573804531817587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_47
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39f4ce45d6f9e5c40800000000000000
+      internalID: 5503011086618349459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_48
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 37
+        width: 87
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d80ee40faff7c560800000000000000
+      internalID: 7334111645363210457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_49
+      rect:
+        serializedVersion: 2
+        x: 1951
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1914e9934d66a0890800000000000000
+      internalID: -7491061968491626095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_50
+      rect:
+        serializedVersion: 2
+        x: 1956
+        y: 54
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38dcb1d8f6bfe76f0800000000000000
+      internalID: -684833636786385533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_51
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7f7d58c8d4e9b60800000000000000
+      internalID: 7754720874314856433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_52
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 387ad1ccb75e50f10800000000000000
+      internalID: 2235445109927552899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_53
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a7acf202aa600630800000000000000
+      internalID: 3891227322115467172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_54
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a5d5b60693005140800000000000000
+      internalID: 4706265553494726053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_55
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4418a43c3bf5fc0800000000000000
+      internalID: -3503884333720976132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_56
+      rect:
+        serializedVersion: 2
+        x: 1992
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad2ef1daf65cdd00800000000000000
+      internalID: 998768852634316196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_57
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef4bd8e94ac0ea30800000000000000
+      internalID: 4242613267771117548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_58
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 455127a7bb1a88580800000000000000
+      internalID: -8824625643247233708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_59
+      rect:
+        serializedVersion: 2
+        x: 2207
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84cf6dcd982ab17b0800000000000000
+      internalID: -5252425827398255544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_60
+      rect:
+        serializedVersion: 2
+        x: 2212
+        y: 54
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e87e15817015c2150800000000000000
+      internalID: 5849139106962073486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_61
+      rect:
+        serializedVersion: 2
+        x: 2219
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71eddd66988a77b0800000000000000
+      internalID: -5225714237940309636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_62
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6513e5103ae49de0800000000000000
+      internalID: -1327178497920920210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_63
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8632119e8c540c90800000000000000
+      internalID: -7204531736496949617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_64
+      rect:
+        serializedVersion: 2
+        x: 2237
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a2d1eb3b4625c20800000000000000
+      internalID: 3193725808910609045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_65
+      rect:
+        serializedVersion: 2
+        x: 2243
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 514546bd36b782180800000000000000
+      internalID: -9139919774935657451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_66
+      rect:
+        serializedVersion: 2
+        x: 2248
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f2554aa3aded8f60800000000000000
+      internalID: 8038342197118325488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_67
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1701b2eeed57a7b0800000000000000
+      internalID: -5213094763071207653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_68
+      rect:
+        serializedVersion: 2
+        x: 2264
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e59e5e1fe5bead40800000000000000
+      internalID: 5597611425479431649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_69
+      rect:
+        serializedVersion: 2
+        x: 2463
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90bc844e02f060430800000000000000
+      internalID: 3748700373775862537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_70
+      rect:
+        serializedVersion: 2
+        x: 2468
+        y: 54
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d616d77556470da0800000000000000
+      internalID: -5978732647414360362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_71
+      rect:
+        serializedVersion: 2
+        x: 2475
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8230a7a2501eb3770800000000000000
+      internalID: 8591708126443078440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_72
+      rect:
+        serializedVersion: 2
+        x: 2481
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2b5f13272f0c520800000000000000
+      internalID: 2720440747210158821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_73
+      rect:
+        serializedVersion: 2
+        x: 2487
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a08ae495a0a0f0570800000000000000
+      internalID: 8434971666652506122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_74
+      rect:
+        serializedVersion: 2
+        x: 2493
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bbe4f1291f92eaa0800000000000000
+      internalID: -6133164812232496203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_75
+      rect:
+        serializedVersion: 2
+        x: 2499
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 238c0a23b7fd42790800000000000000
+      internalID: -7555668554597480398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_76
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0787635bab9ee070800000000000000
+      internalID: 8137612736846071566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_77
+      rect:
+        serializedVersion: 2
+        x: 2515
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 208b4ef00a325ca80800000000000000
+      internalID: -8447306355695110142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_78
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 54
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: addbe1f83aa593980800000000000000
+      internalID: -8558709958313591334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_79
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 41
+        width: 74
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734b5302322fd1200800000000000000
+      internalID: 152544195078632503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_80
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 41
+        width: 74
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f686a0e9e89ff470800000000000000
+      internalID: 8430625157724669680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_81
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 41
+        width: 74
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 904dd4047ceb29d10800000000000000
+      internalID: 2130975336686277641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_82
+      rect:
+        serializedVersion: 2
+        x: 2481
+        y: 41
+        width: 74
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb072c4a446cb07b0800000000000000
+      internalID: -5256890141900640065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_83
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be2e208c1af55f400800000000000000
+      internalID: 357296893895828203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_84
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dcd2229468acc140800000000000000
+      internalID: 4741349657616243926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_85
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17ec125abb348bb70800000000000000
+      internalID: 8914949935588298353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_86
+      rect:
+        serializedVersion: 2
+        x: 1569
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f57424036dec31f30800000000000000
+      internalID: 4545203868274935647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_87
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadadcf2fb7bf0390800000000000000
+      internalID: -7849853593714840147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_88
+      rect:
+        serializedVersion: 2
+        x: 1580
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f90c67c11938bb0800000000000000
+      internalID: -4934941215230484651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_89
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 19
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b3f575dc60f30c90800000000000000
+      internalID: -7204650628634250313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_90
+      rect:
+        serializedVersion: 2
+        x: 1594
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c9a8fd9c50bfbc30800000000000000
+      internalID: 4377411274661210561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_91
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f902bb0de91daaa50800000000000000
+      internalID: 6533264689491288223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_92
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 17
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fc1c6afc28c0890800000000000000
+      internalID: -7490468251856417000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_93
+      rect:
+        serializedVersion: 2
+        x: 1617
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f7891b2af350090800000000000000
+      internalID: -8068973189367562459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_94
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd4ecdddfa4a2ce0800000000000000
+      internalID: -1429247477528244792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_95
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a220d0070c0cc60c0800000000000000
+      internalID: -4581074788196482518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_96
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 17
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d583c40f9c95bb30800000000000000
+      internalID: 4302517225816032725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_97
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a7e364f6845c370800000000000000
+      internalID: 8342153527530781193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_98
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ead2f811484acb0800000000000000
+      internalID: -4853609287447106033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_99
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96618f7f72c1437c0800000000000000
+      internalID: -4092615203383404951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_100
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516688262741212c0800000000000000
+      internalID: -4462481799258806763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_101
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 18
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04ef54135cce5fd80800000000000000
+      internalID: -8217401613388218816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_102
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 19
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 520bc88149a82def0800000000000000
+      internalID: -84853074294951899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_103
+      rect:
+        serializedVersion: 2
+        x: 1753
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0111631d6e101c340800000000000000
+      internalID: 4882185561910415632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_104
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0065f7d83e93f10800000000000000
+      internalID: 2250079685714510034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_105
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98cb335972f0654d0800000000000000
+      internalID: -3146310626990375799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_106
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a8430a5b4f431b20800000000000000
+      internalID: 3103911753239709862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_107
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a05cbc132f46f6230800000000000000
+      internalID: 3634234415691580682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_108
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2efb9df0c9591bf0800000000000000
+      internalID: -353152410348421588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_109
+      rect:
+        serializedVersion: 2
+        x: 1810
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5df386703c7762260800000000000000
+      internalID: 7072471944358543317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_110
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c0bcc4603ec337b0800000000000000
+      internalID: -5245622433711607612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_111
+      rect:
+        serializedVersion: 2
+        x: 1831
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aeb6f339aff00cc0800000000000000
+      internalID: -3746713787785888088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_112
+      rect:
+        serializedVersion: 2
+        x: 1836
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a967752bb6904870800000000000000
+      internalID: 8665091413592467875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_113
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 19
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a566b6b2bb05bf370800000000000000
+      internalID: 8357362298333652570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_114
+      rect:
+        serializedVersion: 2
+        x: 1850
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1903566e101e27360800000000000000
+      internalID: 7166037355376488593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_115
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 320db5c01b6d937e0800000000000000
+      internalID: -1785159721370791901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_116
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 17
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2043871169317630800000000000000
+      internalID: 3922979839585501227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_117
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249e3843f5dd3fd10800000000000000
+      internalID: 2158312047413291330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_118
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ea743317385d0790800000000000000
+      internalID: -7562291205716542750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_119
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d5d6b7c83f64e80800000000000000
+      internalID: -8194594687262302834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_120
+      rect:
+        serializedVersion: 2
+        x: 1895
+        y: 17
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d03136e8888315e0800000000000000
+      internalID: -1940056892907638574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_121
+      rect:
+        serializedVersion: 2
+        x: 1907
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c30ecd4e92b033ae0800000000000000
+      internalID: -1570899570460925892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_122
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 446bbe68cca750ea0800000000000000
+      internalID: -5907180317371025852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_123
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd78438f3e9c706b0800000000000000
+      internalID: -5330069653010741283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_124
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40530e7bebd5a0de0800000000000000
+      internalID: -1366176463243430652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_125
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 18
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69f508470ee0ea510800000000000000
+      internalID: 1562202477934174102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_126
+      rect:
+        serializedVersion: 2
+        x: 1967
+        y: 19
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c33b51df0707fe330800000000000000
+      internalID: 3742333445952877372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_127
+      rect:
+        serializedVersion: 2
+        x: 2009
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33f47b47e71910e0800000000000000
+      internalID: -2298779852625087686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_128
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bdfaf8a523ac2b20800000000000000
+      internalID: 3111040824750308790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_129
+      rect:
+        serializedVersion: 2
+        x: 2025
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 959501d88213623c0800000000000000
+      internalID: -4384763136963487399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_130
+      rect:
+        serializedVersion: 2
+        x: 2035
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed7264d2c30267930800000000000000
+      internalID: 4140532350243448798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_131
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 806224f173e4d0570800000000000000
+      internalID: 8434483675789403656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_132
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35e2d22c1c73a62f0800000000000000
+      internalID: -978908663673704877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_133
+      rect:
+        serializedVersion: 2
+        x: 2066
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d20e430de0f59c610800000000000000
+      internalID: 1641948056380563501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_134
+      rect:
+        serializedVersion: 2
+        x: 2081
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10d0ee7548b6baeb0800000000000000
+      internalID: -4707550769330647807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_135
+      rect:
+        serializedVersion: 2
+        x: 2087
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb1592e527c0521f0800000000000000
+      internalID: -1070435651085053505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_136
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600888eac30124320800000000000000
+      internalID: 2540610992602644486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_137
+      rect:
+        serializedVersion: 2
+        x: 2098
+        y: 19
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0a4b92598426b9f0800000000000000
+      internalID: -453134540289127924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_138
+      rect:
+        serializedVersion: 2
+        x: 2106
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd43e4b45c1bbb1c0800000000000000
+      internalID: -4486797142814477093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_139
+      rect:
+        serializedVersion: 2
+        x: 2116
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5b20ba5be74a050800000000000000
+      internalID: 5810908737938044404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_140
+      rect:
+        serializedVersion: 2
+        x: 2122
+        y: 17
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d4cd09225864b0b0800000000000000
+      internalID: -5713827325140941608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_141
+      rect:
+        serializedVersion: 2
+        x: 2129
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a6ffef66f1bf0a40800000000000000
+      internalID: 5336679755455395491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_142
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50988033d51251bb0800000000000000
+      internalID: -4966026329934231291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_143
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e933802997ff0f8b0800000000000000
+      internalID: -5120311878714117218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_144
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 17
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6820b781b46633b00800000000000000
+      internalID: 807101230948745862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_145
+      rect:
+        serializedVersion: 2
+        x: 2163
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa4883a076645a4b0800000000000000
+      internalID: -5429856367358212945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_146
+      rect:
+        serializedVersion: 2
+        x: 2168
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9484d44219098e60800000000000000
+      internalID: 7964907390050272413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_147
+      rect:
+        serializedVersion: 2
+        x: 2199
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 591ed2a60ef7f6b10800000000000000
+      internalID: 1976939363269730709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_148
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51afedb3c4d983800800000000000000
+      internalID: 592396301746764309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_149
+      rect:
+        serializedVersion: 2
+        x: 2213
+        y: 18
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3ca372977aca030800000000000000
+      internalID: 3507362348605817771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_150
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 19
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e92018a34b78f150800000000000000
+      internalID: 5906606441809062376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_151
+      rect:
+        serializedVersion: 2
+        x: 2265
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4d8df8f34c31d30800000000000000
+      internalID: 4401077038146442491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_152
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb69f51660ddb4c10800000000000000
+      internalID: 2038966275788478142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_153
+      rect:
+        serializedVersion: 2
+        x: 2281
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f9fecbe4ecbce520800000000000000
+      internalID: 2732766765301823992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_154
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de8a5f0a385c54960800000000000000
+      internalID: 7585686316507310317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_155
+      rect:
+        serializedVersion: 2
+        x: 2311
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d015d8d4b8f90b30800000000000000
+      internalID: 4254204778643787990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_156
+      rect:
+        serializedVersion: 2
+        x: 2317
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8f751a18a3f0bbe0800000000000000
+      internalID: -1463401975577739379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_157
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 733d465f92dfce640800000000000000
+      internalID: 5110738033811182391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_158
+      rect:
+        serializedVersion: 2
+        x: 2337
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad5683dd39ef12d0800000000000000
+      internalID: -3305667149715579479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_159
+      rect:
+        serializedVersion: 2
+        x: 2343
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78fab48c669ba72d0800000000000000
+      internalID: -3280105527487778937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_160
+      rect:
+        serializedVersion: 2
+        x: 2348
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2104c8e526184f760800000000000000
+      internalID: 7490754339717005330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_161
+      rect:
+        serializedVersion: 2
+        x: 2354
+        y: 19
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78fc8610830260b30800000000000000
+      internalID: 4253122323011915655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_162
+      rect:
+        serializedVersion: 2
+        x: 2362
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e68b8aa450b4c820800000000000000
+      internalID: 2937666734637418215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_163
+      rect:
+        serializedVersion: 2
+        x: 2372
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c65fac66476205830800000000000000
+      internalID: 4057785545643455852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_164
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 17
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 347c637197d121b50800000000000000
+      internalID: 6562340012949948227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_165
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5db9968a2278eff0800000000000000
+      internalID: -6629872468640421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_166
+      rect:
+        serializedVersion: 2
+        x: 2395
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c839c3eb1374e5eb0800000000000000
+      internalID: -4729264279721831540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_167
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae26b358ae747acd0800000000000000
+      internalID: -2546987991671545110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_168
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 17
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c565253dc706a10800000000000000
+      internalID: 1900656289811684374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_169
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17ee734a7e2b81380800000000000000
+      internalID: -9000247147337617807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_170
+      rect:
+        serializedVersion: 2
+        x: 2424
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7795798c889d03eb0800000000000000
+      internalID: -4742051226116990601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_171
+      rect:
+        serializedVersion: 2
+        x: 2455
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: effc6895caf23be20800000000000000
+      internalID: 3365085763858780158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_172
+      rect:
+        serializedVersion: 2
+        x: 2464
+        y: 19
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6f7d4a8a7c67b0e0800000000000000
+      internalID: -2254213814913499281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_173
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 18
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f043c079ceb0fee0800000000000000
+      internalID: -1229272925882597130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_174
+      rect:
+        serializedVersion: 2
+        x: 2479
+        y: 19
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b018bfdbd93ad090800000000000000
+      internalID: -8009025370811002701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_175
+      rect:
+        serializedVersion: 2
+        x: 2521
+        y: 19
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685a7fc1726f4a6c0800000000000000
+      internalID: -4132907910169123450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_176
+      rect:
+        serializedVersion: 2
+        x: 2527
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1ce5651131bec50800000000000000
+      internalID: 6695466236200796636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_177
+      rect:
+        serializedVersion: 2
+        x: 2537
+        y: 19
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eebed9bd58330190800000000000000
+      internalID: -7997486538078372124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_178
+      rect:
+        serializedVersion: 2
+        x: 2547
+        y: 19
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63bc25dffa047ff60800000000000000
+      internalID: 8067988382071049014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_179
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f06fcda3e99ae40800000000000000
+      internalID: 5668235581674884947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_180
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f2259d9b03c074c0800000000000000
+      internalID: -4291715990228229383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_181
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c138cff8212a6e540800000000000000
+      internalID: 5036891433869280028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_182
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b78ab1481c3b3ae20800000000000000
+      internalID: 3360727390674987131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_183
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 8
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4acbd536cb61c2da0800000000000000
+      internalID: -5968370407795999580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_184
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 254a836f999b45450800000000000000
+      internalID: 6076685868141683794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_185
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 6
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fef2568c4051dc40800000000000000
+      internalID: 5535293706616372982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_186
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eedcd58b22e76cae0800000000000000
+      internalID: -1529396335858561554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_187
+      rect:
+        serializedVersion: 2
+        x: 1724
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00635b3590ae45240800000000000000
+      internalID: 4779702430326928896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_188
+      rect:
+        serializedVersion: 2
+        x: 1729
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 391ecb946b7ea2320800000000000000
+      internalID: 2534092510456504723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_189
+      rect:
+        serializedVersion: 2
+        x: 1753
+        y: 8
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dbf44f82d7a55f40800000000000000
+      internalID: 5716659824805346264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_190
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2f2b9969e9375430800000000000000
+      internalID: 3771546887608020779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_191
+      rect:
+        serializedVersion: 2
+        x: 1766
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c33ea3ffabc2b690800000000000000
+      internalID: -7587778465597869116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_192
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec48f0ea090a54620800000000000000
+      internalID: 2757786890090284238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_193
+      rect:
+        serializedVersion: 2
+        x: 1805
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e28b8a49079a000800000000000000
+      internalID: 47693054852214428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_194
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643c81a2143b3c040800000000000000
+      internalID: 4666770731346477894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_195
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04d7787924a55060800000000000000
+      internalID: 6941634898683221007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_196
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 8
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64fdd1fab689ec890800000000000000
+      internalID: -7435838346475217082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_197
+      rect:
+        serializedVersion: 2
+        x: 1958
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 023719cc26a1b3f50800000000000000
+      internalID: 6862107468870284064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_198
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 6
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e48711ae18408c40800000000000000
+      internalID: 5512485240290378977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_199
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c941610f65c4610800000000000000
+      internalID: 1606754756227013663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_200
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4927407829b466a20800000000000000
+      internalID: 3055212489919984276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_201
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad92e11cf5bcab80800000000000000
+      internalID: -8382124712206885469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_202
+      rect:
+        serializedVersion: 2
+        x: 2009
+        y: 8
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74a3758570ec48a20800000000000000
+      internalID: 3063800177460984391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_203
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9960164fd29e100800000000000000
+      internalID: 137691791234603481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_204
+      rect:
+        serializedVersion: 2
+        x: 2022
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c99a80e189df200800000000000000
+      internalID: 215495611945425952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_205
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7bd89cc698cc4960800000000000000
+      internalID: 7587660022215662459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_206
+      rect:
+        serializedVersion: 2
+        x: 2061
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c026f2e980fbfca0800000000000000
+      internalID: -5981923205022605117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_207
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b07cf1b57d691b200800000000000000
+      internalID: 194102110644586251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_208
+      rect:
+        serializedVersion: 2
+        x: 2077
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02f5375088b2a90f0800000000000000
+      internalID: -1109526494986412256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_209
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 8
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba79c76cbdd43c90800000000000000
+      internalID: -7190878903738991950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_210
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59ea9972065f15040800000000000000
+      internalID: 4634755284870999701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_211
+      rect:
+        serializedVersion: 2
+        x: 2220
+        y: 6
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453d98f9cbd6f4310800000000000000
+      internalID: 1391451466778661716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_212
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40ed1be2c054f7c10800000000000000
+      internalID: 2053435873729568260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_213
+      rect:
+        serializedVersion: 2
+        x: 2236
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29916b2667592bfd0800000000000000
+      internalID: -2327633721702344302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_214
+      rect:
+        serializedVersion: 2
+        x: 2241
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94176b34651bdd10800000000000000
+      internalID: 2151336767237067933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_215
+      rect:
+        serializedVersion: 2
+        x: 2265
+        y: 8
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e528076d98c7ae800800000000000000
+      internalID: 642462828303778398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_216
+      rect:
+        serializedVersion: 2
+        x: 2272
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1a691879e2db6080800000000000000
+      internalID: -9193022314162591203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_217
+      rect:
+        serializedVersion: 2
+        x: 2278
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c4a2469e97b67220800000000000000
+      internalID: 2483374136295072961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_218
+      rect:
+        serializedVersion: 2
+        x: 2311
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c39da5428099de60800000000000000
+      internalID: 7987574303307436996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_219
+      rect:
+        serializedVersion: 2
+        x: 2317
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1c120934db412d0800000000000000
+      internalID: -3308811728331882062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_220
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 9
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df969cda862106400800000000000000
+      internalID: 315272214717491709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_221
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 9
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2534ddfae0ad69a0800000000000000
+      internalID: -6238152977696934614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_222
+      rect:
+        serializedVersion: 2
+        x: 2464
+        y: 8
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270e322353afb5df0800000000000000
+      internalID: -190283452851691406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_223
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37173b7439ee48510800000000000000
+      internalID: 1550626488052838771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_224
+      rect:
+        serializedVersion: 2
+        x: 2476
+        y: 6
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c81eca595e0bb30800000000000000
+      internalID: 4301190075152174184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_225
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e507bb24cdeacec20800000000000000
+      internalID: 3237154493208162398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_226
+      rect:
+        serializedVersion: 2
+        x: 2492
+        y: 8
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714409a5a3e336e90800000000000000
+      internalID: -7033709772674153449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_227
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1a0bff442990d1c0800000000000000
+      internalID: -4480913247993918949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_228
+      rect:
+        serializedVersion: 2
+        x: 2521
+        y: 8
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea791bddc79b2750800000000000000
+      internalID: 6281281015698258659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_229
+      rect:
+        serializedVersion: 2
+        x: 2528
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4838a394bdd13dd60800000000000000
+      internalID: 7913701797883708292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_battle_all_images_256x144png_230
+      rect:
+        serializedVersion: 2
+        x: 2534
+        y: 8
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd5be77b59176e60800000000000000
+      internalID: 7955355147417902517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      spr_battle_all_images_256x144png_0: 922339201591242854
+      spr_battle_all_images_256x144png_1: -2450674463546628453
+      spr_battle_all_images_256x144png_10: 4041036933764470693
+      spr_battle_all_images_256x144png_100: -4462481799258806763
+      spr_battle_all_images_256x144png_101: -8217401613388218816
+      spr_battle_all_images_256x144png_102: -84853074294951899
+      spr_battle_all_images_256x144png_103: 4882185561910415632
+      spr_battle_all_images_256x144png_104: 2250079685714510034
+      spr_battle_all_images_256x144png_105: -3146310626990375799
+      spr_battle_all_images_256x144png_106: 3103911753239709862
+      spr_battle_all_images_256x144png_107: 3634234415691580682
+      spr_battle_all_images_256x144png_108: -353152410348421588
+      spr_battle_all_images_256x144png_109: 7072471944358543317
+      spr_battle_all_images_256x144png_11: 6018212461786514293
+      spr_battle_all_images_256x144png_110: -5245622433711607612
+      spr_battle_all_images_256x144png_111: -3746713787785888088
+      spr_battle_all_images_256x144png_112: 8665091413592467875
+      spr_battle_all_images_256x144png_113: 8357362298333652570
+      spr_battle_all_images_256x144png_114: 7166037355376488593
+      spr_battle_all_images_256x144png_115: -1785159721370791901
+      spr_battle_all_images_256x144png_116: 3922979839585501227
+      spr_battle_all_images_256x144png_117: 2158312047413291330
+      spr_battle_all_images_256x144png_118: -7562291205716542750
+      spr_battle_all_images_256x144png_119: -8194594687262302834
+      spr_battle_all_images_256x144png_12: -1917175194005128209
+      spr_battle_all_images_256x144png_120: -1940056892907638574
+      spr_battle_all_images_256x144png_121: -1570899570460925892
+      spr_battle_all_images_256x144png_122: -5907180317371025852
+      spr_battle_all_images_256x144png_123: -5330069653010741283
+      spr_battle_all_images_256x144png_124: -1366176463243430652
+      spr_battle_all_images_256x144png_125: 1562202477934174102
+      spr_battle_all_images_256x144png_126: 3742333445952877372
+      spr_battle_all_images_256x144png_127: -2298779852625087686
+      spr_battle_all_images_256x144png_128: 3111040824750308790
+      spr_battle_all_images_256x144png_129: -4384763136963487399
+      spr_battle_all_images_256x144png_13: -1729688954542530557
+      spr_battle_all_images_256x144png_130: 4140532350243448798
+      spr_battle_all_images_256x144png_131: 8434483675789403656
+      spr_battle_all_images_256x144png_132: -978908663673704877
+      spr_battle_all_images_256x144png_133: 1641948056380563501
+      spr_battle_all_images_256x144png_134: -4707550769330647807
+      spr_battle_all_images_256x144png_135: -1070435651085053505
+      spr_battle_all_images_256x144png_136: 2540610992602644486
+      spr_battle_all_images_256x144png_137: -453134540289127924
+      spr_battle_all_images_256x144png_138: -4486797142814477093
+      spr_battle_all_images_256x144png_139: 5810908737938044404
+      spr_battle_all_images_256x144png_14: -3463798040886449919
+      spr_battle_all_images_256x144png_140: -5713827325140941608
+      spr_battle_all_images_256x144png_141: 5336679755455395491
+      spr_battle_all_images_256x144png_142: -4966026329934231291
+      spr_battle_all_images_256x144png_143: -5120311878714117218
+      spr_battle_all_images_256x144png_144: 807101230948745862
+      spr_battle_all_images_256x144png_145: -5429856367358212945
+      spr_battle_all_images_256x144png_146: 7964907390050272413
+      spr_battle_all_images_256x144png_147: 1976939363269730709
+      spr_battle_all_images_256x144png_148: 592396301746764309
+      spr_battle_all_images_256x144png_149: 3507362348605817771
+      spr_battle_all_images_256x144png_15: -1036402702746561259
+      spr_battle_all_images_256x144png_150: 5906606441809062376
+      spr_battle_all_images_256x144png_151: 4401077038146442491
+      spr_battle_all_images_256x144png_152: 2038966275788478142
+      spr_battle_all_images_256x144png_153: 2732766765301823992
+      spr_battle_all_images_256x144png_154: 7585686316507310317
+      spr_battle_all_images_256x144png_155: 4254204778643787990
+      spr_battle_all_images_256x144png_156: -1463401975577739379
+      spr_battle_all_images_256x144png_157: 5110738033811182391
+      spr_battle_all_images_256x144png_158: -3305667149715579479
+      spr_battle_all_images_256x144png_159: -3280105527487778937
+      spr_battle_all_images_256x144png_16: 7699868858220869926
+      spr_battle_all_images_256x144png_160: 7490754339717005330
+      spr_battle_all_images_256x144png_161: 4253122323011915655
+      spr_battle_all_images_256x144png_162: 2937666734637418215
+      spr_battle_all_images_256x144png_163: 4057785545643455852
+      spr_battle_all_images_256x144png_164: 6562340012949948227
+      spr_battle_all_images_256x144png_165: -6629872468640421
+      spr_battle_all_images_256x144png_166: -4729264279721831540
+      spr_battle_all_images_256x144png_167: -2546987991671545110
+      spr_battle_all_images_256x144png_168: 1900656289811684374
+      spr_battle_all_images_256x144png_169: -9000247147337617807
+      spr_battle_all_images_256x144png_17: 9131473911153158457
+      spr_battle_all_images_256x144png_170: -4742051226116990601
+      spr_battle_all_images_256x144png_171: 3365085763858780158
+      spr_battle_all_images_256x144png_172: -2254213814913499281
+      spr_battle_all_images_256x144png_173: -1229272925882597130
+      spr_battle_all_images_256x144png_174: -8009025370811002701
+      spr_battle_all_images_256x144png_175: -4132907910169123450
+      spr_battle_all_images_256x144png_176: 6695466236200796636
+      spr_battle_all_images_256x144png_177: -7997486538078372124
+      spr_battle_all_images_256x144png_178: 8067988382071049014
+      spr_battle_all_images_256x144png_179: 5668235581674884947
+      spr_battle_all_images_256x144png_18: 8963463605547382386
+      spr_battle_all_images_256x144png_180: -4291715990228229383
+      spr_battle_all_images_256x144png_181: 5036891433869280028
+      spr_battle_all_images_256x144png_182: 3360727390674987131
+      spr_battle_all_images_256x144png_183: -5968370407795999580
+      spr_battle_all_images_256x144png_184: 6076685868141683794
+      spr_battle_all_images_256x144png_185: 5535293706616372982
+      spr_battle_all_images_256x144png_186: -1529396335858561554
+      spr_battle_all_images_256x144png_187: 4779702430326928896
+      spr_battle_all_images_256x144png_188: 2534092510456504723
+      spr_battle_all_images_256x144png_189: 5716659824805346264
+      spr_battle_all_images_256x144png_19: -1348281580367816390
+      spr_battle_all_images_256x144png_190: 3771546887608020779
+      spr_battle_all_images_256x144png_191: -7587778465597869116
+      spr_battle_all_images_256x144png_192: 2757786890090284238
+      spr_battle_all_images_256x144png_193: 47693054852214428
+      spr_battle_all_images_256x144png_194: 4666770731346477894
+      spr_battle_all_images_256x144png_195: 6941634898683221007
+      spr_battle_all_images_256x144png_196: -7435838346475217082
+      spr_battle_all_images_256x144png_197: 6862107468870284064
+      spr_battle_all_images_256x144png_198: 5512485240290378977
+      spr_battle_all_images_256x144png_199: 1606754756227013663
+      spr_battle_all_images_256x144png_2: 1818276805205780342
+      spr_battle_all_images_256x144png_20: -1232530539211360361
+      spr_battle_all_images_256x144png_200: 3055212489919984276
+      spr_battle_all_images_256x144png_201: -8382124712206885469
+      spr_battle_all_images_256x144png_202: 3063800177460984391
+      spr_battle_all_images_256x144png_203: 137691791234603481
+      spr_battle_all_images_256x144png_204: 215495611945425952
+      spr_battle_all_images_256x144png_205: 7587660022215662459
+      spr_battle_all_images_256x144png_206: -5981923205022605117
+      spr_battle_all_images_256x144png_207: 194102110644586251
+      spr_battle_all_images_256x144png_208: -1109526494986412256
+      spr_battle_all_images_256x144png_209: -7190878903738991950
+      spr_battle_all_images_256x144png_21: -6043064450235185419
+      spr_battle_all_images_256x144png_210: 4634755284870999701
+      spr_battle_all_images_256x144png_211: 1391451466778661716
+      spr_battle_all_images_256x144png_212: 2053435873729568260
+      spr_battle_all_images_256x144png_213: -2327633721702344302
+      spr_battle_all_images_256x144png_214: 2151336767237067933
+      spr_battle_all_images_256x144png_215: 642462828303778398
+      spr_battle_all_images_256x144png_216: -9193022314162591203
+      spr_battle_all_images_256x144png_217: 2483374136295072961
+      spr_battle_all_images_256x144png_218: 7987574303307436996
+      spr_battle_all_images_256x144png_219: -3308811728331882062
+      spr_battle_all_images_256x144png_22: 6752113275485886443
+      spr_battle_all_images_256x144png_220: 315272214717491709
+      spr_battle_all_images_256x144png_221: -6238152977696934614
+      spr_battle_all_images_256x144png_222: -190283452851691406
+      spr_battle_all_images_256x144png_223: 1550626488052838771
+      spr_battle_all_images_256x144png_224: 4301190075152174184
+      spr_battle_all_images_256x144png_225: 3237154493208162398
+      spr_battle_all_images_256x144png_226: -7033709772674153449
+      spr_battle_all_images_256x144png_227: -4480913247993918949
+      spr_battle_all_images_256x144png_228: 6281281015698258659
+      spr_battle_all_images_256x144png_229: 7913701797883708292
+      spr_battle_all_images_256x144png_23: 1195591460714682133
+      spr_battle_all_images_256x144png_230: 7955355147417902517
+      spr_battle_all_images_256x144png_24: 6570148250840274687
+      spr_battle_all_images_256x144png_25: -2419413729484872079
+      spr_battle_all_images_256x144png_26: -1092257246788471090
+      spr_battle_all_images_256x144png_27: 4772881313406073831
+      spr_battle_all_images_256x144png_28: 7173482806908377044
+      spr_battle_all_images_256x144png_29: -8263867649917497275
+      spr_battle_all_images_256x144png_3: 1049348686566752070
+      spr_battle_all_images_256x144png_30: -6257726068060028267
+      spr_battle_all_images_256x144png_31: 868632905456866478
+      spr_battle_all_images_256x144png_32: -6241741458677916489
+      spr_battle_all_images_256x144png_33: -3323802612079530571
+      spr_battle_all_images_256x144png_34: -321109596536060094
+      spr_battle_all_images_256x144png_35: 7429968854645785491
+      spr_battle_all_images_256x144png_36: -5560155250109688514
+      spr_battle_all_images_256x144png_37: -3483186730731352313
+      spr_battle_all_images_256x144png_38: 7807834411042128698
+      spr_battle_all_images_256x144png_39: -3990645778629835361
+      spr_battle_all_images_256x144png_4: 5239020072627513701
+      spr_battle_all_images_256x144png_40: -2232451351350866148
+      spr_battle_all_images_256x144png_41: -3444324350128379075
+      spr_battle_all_images_256x144png_42: -3041155134587333936
+      spr_battle_all_images_256x144png_43: 7698437404796562426
+      spr_battle_all_images_256x144png_44: -1080902250026077854
+      spr_battle_all_images_256x144png_45: -3494372553056277300
+      spr_battle_all_images_256x144png_46: 5634573804531817587
+      spr_battle_all_images_256x144png_47: 5503011086618349459
+      spr_battle_all_images_256x144png_48: 7334111645363210457
+      spr_battle_all_images_256x144png_49: -7491061968491626095
+      spr_battle_all_images_256x144png_5: 5688941281637224393
+      spr_battle_all_images_256x144png_50: -684833636786385533
+      spr_battle_all_images_256x144png_51: 7754720874314856433
+      spr_battle_all_images_256x144png_52: 2235445109927552899
+      spr_battle_all_images_256x144png_53: 3891227322115467172
+      spr_battle_all_images_256x144png_54: 4706265553494726053
+      spr_battle_all_images_256x144png_55: -3503884333720976132
+      spr_battle_all_images_256x144png_56: 998768852634316196
+      spr_battle_all_images_256x144png_57: 4242613267771117548
+      spr_battle_all_images_256x144png_58: -8824625643247233708
+      spr_battle_all_images_256x144png_59: -5252425827398255544
+      spr_battle_all_images_256x144png_6: -7596570197948072675
+      spr_battle_all_images_256x144png_60: 5849139106962073486
+      spr_battle_all_images_256x144png_61: -5225714237940309636
+      spr_battle_all_images_256x144png_62: -1327178497920920210
+      spr_battle_all_images_256x144png_63: -7204531736496949617
+      spr_battle_all_images_256x144png_64: 3193725808910609045
+      spr_battle_all_images_256x144png_65: -9139919774935657451
+      spr_battle_all_images_256x144png_66: 8038342197118325488
+      spr_battle_all_images_256x144png_67: -5213094763071207653
+      spr_battle_all_images_256x144png_68: 5597611425479431649
+      spr_battle_all_images_256x144png_69: 3748700373775862537
+      spr_battle_all_images_256x144png_7: 5113224561561842204
+      spr_battle_all_images_256x144png_70: -5978732647414360362
+      spr_battle_all_images_256x144png_71: 8591708126443078440
+      spr_battle_all_images_256x144png_72: 2720440747210158821
+      spr_battle_all_images_256x144png_73: 8434971666652506122
+      spr_battle_all_images_256x144png_74: -6133164812232496203
+      spr_battle_all_images_256x144png_75: -7555668554597480398
+      spr_battle_all_images_256x144png_76: 8137612736846071566
+      spr_battle_all_images_256x144png_77: -8447306355695110142
+      spr_battle_all_images_256x144png_78: -8558709958313591334
+      spr_battle_all_images_256x144png_79: 152544195078632503
+      spr_battle_all_images_256x144png_8: 6355693334814613806
+      spr_battle_all_images_256x144png_80: 8430625157724669680
+      spr_battle_all_images_256x144png_81: 2130975336686277641
+      spr_battle_all_images_256x144png_82: -5256890141900640065
+      spr_battle_all_images_256x144png_83: 357296893895828203
+      spr_battle_all_images_256x144png_84: 4741349657616243926
+      spr_battle_all_images_256x144png_85: 8914949935588298353
+      spr_battle_all_images_256x144png_86: 4545203868274935647
+      spr_battle_all_images_256x144png_87: -7849853593714840147
+      spr_battle_all_images_256x144png_88: -4934941215230484651
+      spr_battle_all_images_256x144png_89: -7204650628634250313
+      spr_battle_all_images_256x144png_9: -1196293427951843619
+      spr_battle_all_images_256x144png_90: 4377411274661210561
+      spr_battle_all_images_256x144png_91: 6533264689491288223
+      spr_battle_all_images_256x144png_92: -7490468251856417000
+      spr_battle_all_images_256x144png_93: -8068973189367562459
+      spr_battle_all_images_256x144png_94: -1429247477528244792
+      spr_battle_all_images_256x144png_95: -4581074788196482518
+      spr_battle_all_images_256x144png_96: 4302517225816032725
+      spr_battle_all_images_256x144png_97: 8342153527530781193
+      spr_battle_all_images_256x144png_98: -4853609287447106033
+      spr_battle_all_images_256x144png_99: -4092615203383404951
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

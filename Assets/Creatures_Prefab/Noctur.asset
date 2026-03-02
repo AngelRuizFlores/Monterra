@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad8a6f9c478164798a577300bf80b5, type: 3}
+  m_Name: Noctur
+  m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
+  monName: Noctur
+  type: 4
+  baseHP: 35
+  baseAttack: 50
+  baseDefense: 30
+  baseSpeed: 45
+  frontSprite: {fileID: 4620878380825614722, guid: 8607fbef8e6f97846b90a6ca4de4bce6, type: 3}
+  backSprite: {fileID: -602324347073204013, guid: b11f50cbba65fa14590ddcf87c5ac4bf, type: 3}
+  typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 9a0ff99b931c0044f853e8e4a6657648, type: 2}
+    learnAtLevel: 1
+  - move: {fileID: 11400000, guid: 96c8a0dada9952341bca07f45e40513b, type: 2}
+    learnAtLevel: 4
+  - move: {fileID: 11400000, guid: 674c88f3c84f2fa47bf53cabd5a956dd, type: 2}
+    learnAtLevel: 6
+  - move: {fileID: 11400000, guid: c7c22cdc945d0c84f9354604e383ef00, type: 2}
+    learnAtLevel: 9
+  evolutions: []

@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 8607fbef8e6f97846b90a6ca4de4bce6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -114595351847970599
+    second: Sombra_0
+  - first:
+      213: 5675701692457939369
+    second: Sombra_1
+  - first:
+      213: 1323333055030079712
+    second: Sombra_2
+  - first:
+      213: 6891057155052429253
+    second: Sombra_3
+  - first:
+      213: 3244108817434137092
+    second: Sombra_4
+  - first:
+      213: 8590687514879932802
+    second: Sombra_5
+  - first:
+      213: 7244792486934097832
+    second: Sombra_6
+  - first:
+      213: 827167517654166844
+    second: Sombra_7
+  - first:
+      213: 6934892000123776674
+    second: Sombra_8
+  - first:
+      213: 4620878380825614722
+    second: Sombra_9
+  - first:
+      213: 4972625455993400702
+    second: Sombra_10
+  - first:
+      213: -9065373805362845796
+    second: Sombra_11
+  - first:
+      213: -1518312265714582550
+    second: Sombra_12
+  - first:
+      213: 6246649414808627033
+    second: Sombra_13
+  - first:
+      213: 764919708811684961
+    second: Sombra_14
+  - first:
+      213: -4173293293363300903
+    second: Sombra_15
+  - first:
+      213: 1792753763424870367
+    second: Sombra_16
+  - first:
+      213: -670519983988846604
+    second: Sombra_17
+  - first:
+      213: 4322212342851985974
+    second: Sombra_18
+  - first:
+      213: 3709793788472082750
+    second: Sombra_19
+  - first:
+      213: 2906793003220546901
+    second: Sombra_20
+  - first:
+      213: 4385896034414911738
+    second: Sombra_21
+  - first:
+      213: -10890564581483474
+    second: Sombra_22
+  - first:
+      213: 9155808651768200359
+    second: Sombra_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sombra_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 567
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d8d0387220e86ef0800000000000000
+      internalID: -114595351847970599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 535
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1f90e3e9424ce40800000000000000
+      internalID: 5675701692457939369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_2
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 536
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e0b998f66c6d5210800000000000000
+      internalID: 1323333055030079712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_3
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 533
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf50ddd8f3f1af50800000000000000
+      internalID: 6891057155052429253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 506
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402dfdb08c3650d20800000000000000
+      internalID: 3244108817434137092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_5
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 505
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2893dc487c0483770800000000000000
+      internalID: 8590687514879932802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 411
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8af202fd16caa8460800000000000000
+      internalID: 7244792486934097832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_7
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 379
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3da48b8970ba7b00800000000000000
+      internalID: 827167517654166844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_8
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 380
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae631f088fad3060800000000000000
+      internalID: 6934892000123776674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_9
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 377
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2899467a768a02040800000000000000
+      internalID: 4620878380825614722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 350
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7d2d819180520540800000000000000
+      internalID: 4972625455993400702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 349
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c97673fed82513280800000000000000
+      internalID: -9065373805362845796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 255
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebb6f7e90fddeae0800000000000000
+      internalID: -1518312265714582550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_13
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 223
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 957e11eeb8e80b650800000000000000
+      internalID: 6246649414808627033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_14
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 224
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16c6a652c6a8d9a00800000000000000
+      internalID: 764919708811684961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_15
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 221
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d57f895cdb7516c0800000000000000
+      internalID: -4173293293363300903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_16
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 194
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf1fa6ac0421e810800000000000000
+      internalID: 1792753763424870367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_17
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 193
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff4b8b80a5d1b6f0800000000000000
+      internalID: -670519983988846604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_18
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 99
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 632608bc9359bfb30800000000000000
+      internalID: 4322212342851985974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_19
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 67
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3144d79bc5db7330800000000000000
+      internalID: 3709793788472082750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 68
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5553d88e5d0075820800000000000000
+      internalID: 2906793003220546901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_21
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 65
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af06811b435dddc30800000000000000
+      internalID: 4385896034414911738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_22
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 38
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c97b6d61f49dff0800000000000000
+      internalID: -10890564581483474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sombra_23
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 37
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ac77109577ff0f70800000000000000
+      internalID: 9155808651768200359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sombra_0: -114595351847970599
+      Sombra_1: 5675701692457939369
+      Sombra_10: 4972625455993400702
+      Sombra_11: -9065373805362845796
+      Sombra_12: -1518312265714582550
+      Sombra_13: 6246649414808627033
+      Sombra_14: 764919708811684961
+      Sombra_15: -4173293293363300903
+      Sombra_16: 1792753763424870367
+      Sombra_17: -670519983988846604
+      Sombra_18: 4322212342851985974
+      Sombra_19: 3709793788472082750
+      Sombra_2: 1323333055030079712
+      Sombra_20: 2906793003220546901
+      Sombra_21: 4385896034414911738
+      Sombra_22: -10890564581483474
+      Sombra_23: 9155808651768200359
+      Sombra_3: 6891057155052429253
+      Sombra_4: 3244108817434137092
+      Sombra_5: 8590687514879932802
+      Sombra_6: 7244792486934097832
+      Sombra_7: 827167517654166844
+      Sombra_8: 6934892000123776674
+      Sombra_9: 4620878380825614722
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

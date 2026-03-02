@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad8a6f9c478164798a577300bf80b5, type: 3}
+  m_Name: Mossy
+  m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
+  monName: Mossy
+  type: 3
+  baseHP: 45
+  baseAttack: 40
+  baseDefense: 35
+  baseSpeed: 40
+  frontSprite: {fileID: 181820997175427900, guid: c8518344dc518304a84c999bc11abb56, type: 3}
+  backSprite: {fileID: -6909766172045017399, guid: f14b94bb2dd483e40a471826a4b4d97a, type: 3}
+  typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
+  learnableMoves:
+  - move: {fileID: 11400000, guid: bca1a79c8b6534e4abfe28254f3730fc, type: 2}
+    learnAtLevel: 1
+  - move: {fileID: 11400000, guid: 395df273ad6b85b44ba8b7bc5a4656b2, type: 2}
+    learnAtLevel: 4
+  - move: {fileID: 11400000, guid: a9cf6cfa087c630468609543370032ac, type: 2}
+    learnAtLevel: 6
+  - move: {fileID: 11400000, guid: 113368cd75d302742a298114d0514ecb, type: 2}
+    learnAtLevel: 9
+  evolutions: []
