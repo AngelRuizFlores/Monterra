@@ -8,6 +8,7 @@ public class StormOverlayController : MonoBehaviour
     [SerializeField] private Camera worldCam;
     [SerializeField] private BoxCollider2D playBounds;
 
+    [SerializeField] private float initialRadiusPadding = 1f;
     [SerializeField] private float[] phaseEndRadius = { 25f, 18f, 12f, 6f };
     [SerializeField] private float[] phaseShrinkTime = { 20f, 18f, 15f, 10f };
     [SerializeField] private float[] phaseWaitTime = { 5f, 4f, 3f, 2f };
@@ -33,12 +34,12 @@ public class StormOverlayController : MonoBehaviour
         if (mat != null) mat.SetFloat(FeatherId, featherUV);
 
         CurrentPhase = 0;
-        radiusWorld = (phaseEndRadius != null && phaseEndRadius.Length > 0) ? phaseEndRadius[0] : 25f;
+        radiusWorld = GetInitialRadius();
     }
 
     void Start()
     {
-        PickRandomCenter();
+        PickInitialCenter();
         ApplyToShader();
         StartCoroutine(StormPhases());
     }
@@ -48,22 +49,20 @@ public class StormOverlayController : MonoBehaviour
         ApplyToShader();
     }
 
-   private IEnumerator StormPhases()
+    private IEnumerator StormPhases()
     {
         if (phaseEndRadius == null || phaseEndRadius.Length == 0) yield break;
 
         CurrentPhase = 0;
         ApplyToShader();
 
-        for (int i = 1; i < phaseEndRadius.Length; i++)
+        for (int i = 0; i < phaseEndRadius.Length; i++)
         {
-            // 1) Pausa: NO cambia nada
             float wait = (phaseWaitTime != null && i < phaseWaitTime.Length) ? phaseWaitTime[i] : 0f;
             if (wait > 0f) yield return new WaitForSeconds(wait);
 
-            // 2) Prepara siguiente fase
             float startRadius = radiusWorld;
-            float targetRadius = phaseEndRadius[i];
+            float targetRadius = Mathf.Min(phaseEndRadius[i], startRadius);
 
             Vector2 startCenter = centerWorld;
             Vector2 targetCenter = PickNextCenterFortnite(startCenter, startRadius, targetRadius);
@@ -71,9 +70,8 @@ public class StormOverlayController : MonoBehaviour
             float duration = (phaseShrinkTime != null && i < phaseShrinkTime.Length) ? phaseShrinkTime[i] : 1f;
             if (duration <= 0f) duration = 0.01f;
 
-            CurrentPhase = i;
+            CurrentPhase = i + 1;
 
-            // 3) Shrink + desplazamiento SUAVE del centro (sensación de continuidad)
             float t = 0f;
             while (t < duration)
             {
@@ -91,32 +89,54 @@ public class StormOverlayController : MonoBehaviour
         }
     }
 
+    private float GetInitialRadius()
+    {
+        if (playBounds == null)
+            return (phaseEndRadius != null && phaseEndRadius.Length > 0) ? phaseEndRadius[0] : 25f;
+
+        Bounds b = playBounds.bounds;
+        float maxRadiusX = b.extents.x - initialRadiusPadding;
+        float maxRadiusY = b.extents.y - initialRadiusPadding;
+        float maxRadius = Mathf.Max(0.1f, Mathf.Min(maxRadiusX, maxRadiusY));
+
+        if (phaseEndRadius != null && phaseEndRadius.Length > 0)
+            return Mathf.Max(maxRadius, phaseEndRadius[0]);
+
+        return maxRadius;
+    }
+
     private Vector2 PickNextCenterFortnite(Vector2 currentCenter, float startRadius, float targetRadius)
     {
         if (playBounds == null) return currentCenter;
 
-        // para que el círculo nuevo quepa dentro del actual
         float maxOffset = Mathf.Max(0f, startRadius - targetRadius);
-
         Bounds b = playBounds.bounds;
 
-        for (int tries = 0; tries < 30; tries++)
+        float minX = b.min.x + targetRadius;
+        float maxX = b.max.x - targetRadius;
+        float minY = b.min.y + targetRadius;
+        float maxY = b.max.y - targetRadius;
+
+        if (minX > maxX || minY > maxY)
+            return currentCenter;
+
+        for (int tries = 0; tries < 50; tries++)
         {
-            Vector2 candidate = currentCenter + (Random.insideUnitCircle * maxOffset);
+            Vector2 candidate = currentCenter + Random.insideUnitCircle * maxOffset;
+            candidate.x = Mathf.Clamp(candidate.x, minX, maxX);
+            candidate.y = Mathf.Clamp(candidate.y, minY, maxY);
 
-            // opcional: evitar que el centro se vaya fuera del área jugable
-            candidate.x = Mathf.Clamp(candidate.x, b.min.x, b.max.x);
-            candidate.y = Mathf.Clamp(candidate.y, b.min.y, b.max.y);
-
-            // sigue estando dentro del offset permitido
             if (Vector2.Distance(candidate, currentCenter) <= maxOffset + 0.001f)
                 return candidate;
         }
 
-        return currentCenter;
+        return new Vector2(
+            Mathf.Clamp(currentCenter.x, minX, maxX),
+            Mathf.Clamp(currentCenter.y, minY, maxY)
+        );
     }
 
-    private void PickRandomCenter()
+    private void PickInitialCenter()
     {
         if (playBounds == null)
         {
@@ -126,9 +146,20 @@ public class StormOverlayController : MonoBehaviour
 
         Bounds b = playBounds.bounds;
 
+        float minX = b.min.x + radiusWorld;
+        float maxX = b.max.x - radiusWorld;
+        float minY = b.min.y + radiusWorld;
+        float maxY = b.max.y - radiusWorld;
+
+        if (minX > maxX || minY > maxY)
+        {
+            centerWorld = b.center;
+            return;
+        }
+
         centerWorld = new Vector2(
-            Random.Range(b.min.x, b.max.x),
-            Random.Range(b.min.y, b.max.y)
+            Random.Range(minX, maxX),
+            Random.Range(minY, maxY)
         );
     }
 

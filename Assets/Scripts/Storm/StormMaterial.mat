@@ -43,11 +43,16 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Feather: 0.02
-    - _Radius: 1.5605774
+    - _PreviewActive: 0
+    - _PreviewRadius: 0.4
+    - _PreviewThickness: 0.006
+    - _Radius: 1.4723927
     - _ZWrite: 0
     m_Colors:
-    - _Center: {r: 1.2029294, g: 0.13234156, b: 0, a: 0}
+    - _Center: {r: 0.52038157, g: -0.6187261, b: 0, a: 0}
     - _Color: {r: 0.63640434, g: 0.17475075, b: 0.7264151, a: 0.5882353}
+    - _PreviewCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _PreviewColor: {r: 1, g: 0, b: 0, a: 0.5}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
