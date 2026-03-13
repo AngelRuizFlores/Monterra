@@ -82,13 +82,16 @@ public class MapOverlayController : MonoBehaviour
     {
         float fullWidth = mapImage.rect.width;
         float fullHeight = mapImage.rect.height;
-
+        
         float usableWidth = fullWidth - mapLeftPadding - mapRightPadding;
         float usableHeight = fullHeight - mapTopPadding - mapBottomPadding;
-
-        float x = (-fullWidth * 0.5f) + mapLeftPadding + normalized.x * usableWidth;
-        float y = (-fullHeight * 0.5f) + mapBottomPadding + normalized.y * usableHeight;
-
+        
+        // ✅ CAMBIO: Convertir UV [0,1] a anchoredPosition local
+        // El desplazamiento inicial es (-fullWidth/2, -fullHeight/2)
+        // Luego mapeamos el área usable
+        float x = mapLeftPadding + normalized.x * usableWidth - (fullWidth * 0.5f);
+        float y = mapBottomPadding + normalized.y * usableHeight - (fullHeight * 0.5f);
+        
         return new Vector2(x, y);
     }
 
@@ -96,13 +99,14 @@ public class MapOverlayController : MonoBehaviour
     {
         float fullWidth = mapImage.rect.width;
         float fullHeight = mapImage.rect.height;
-
+        
         float usableWidth = fullWidth - mapLeftPadding - mapRightPadding;
         float usableHeight = fullHeight - mapTopPadding - mapBottomPadding;
-
+        
+        // ✅ SIN CAMBIOS - Esta ya es correcta para UV
         float x = (mapLeftPadding + normalized.x * usableWidth) / fullWidth;
         float y = (mapBottomPadding + normalized.y * usableHeight) / fullHeight;
-
+        
         return new Vector2(x, y);
     }
 }
