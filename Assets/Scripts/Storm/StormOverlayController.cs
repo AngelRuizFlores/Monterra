@@ -47,6 +47,7 @@ public class StormOverlayController : MonoBehaviour
     void Update()
     {
         ApplyToShader();
+        Debug.Log($"[Storm State] Centro: {centerWorld} | Radio: {radiusWorld:F2} | Phase: {CurrentPhase}");
     }
 
     private IEnumerator StormPhases()
@@ -178,7 +179,29 @@ public class StormOverlayController : MonoBehaviour
 
     public bool IsInside(Vector3 worldPos)
     {
-        return Vector2.Distance(worldPos, centerWorld) <= radiusWorld;
+        float distance = Vector2.Distance(worldPos, centerWorld);
+        
+        // Si está DENTRO del círculo seguro → NO está en tormenta
+        if (distance <= radiusWorld)
+        {
+            Debug.Log($"[Storm] DENTRO ZONA SEGURA - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | IsInStorm: FALSE");
+            return false;
+        }
+        
+        // Si está FUERA del círculo seguro pero dentro del mapa → SÍ está en tormenta
+        if (playBounds != null)
+        {
+            Bounds b = playBounds.bounds;
+            bool inBounds = b.Contains(worldPos);
+            
+            Debug.Log($"[Storm] FUERA ZONA SEGURA - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | EnMapa: {inBounds} | IsInStorm: {inBounds}");
+            
+            return inBounds;
+        }
+        
+        // Si no hay límites definidos, cualquier punto fuera del círculo es tormenta
+        Debug.Log($"[Storm] SIN BOUNDS - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | IsInStorm: TRUE");
+        return true;
     }
 
     public Vector2 GetCenterWorld()
