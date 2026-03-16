@@ -14,6 +14,7 @@ public class StormOverlayController : MonoBehaviour
     [SerializeField] private float[] phaseWaitTime = { 5f, 4f, 3f, 2f };
 
     [SerializeField] private float featherUV = 0.02f;
+    [SerializeField] private float damageMarginViewport = 0.01f; // Pequeña zona de seguridad para rozar sin daño
 
     public int CurrentPhase { get; private set; }
 
@@ -47,7 +48,14 @@ public class StormOverlayController : MonoBehaviour
     void Update()
     {
         ApplyToShader();
-        Debug.Log($"[Storm State] Centro: {centerWorld} | Radio: {radiusWorld:F2} | Phase: {CurrentPhase}");
+        
+        // Debug mejorado cada N frames
+        if (Time.frameCount % 60 == 0)
+        {
+            float fullHeightWorld = (worldCam != null) ? worldCam.orthographicSize * 2f : 0f;
+            float radiusNormalized = (fullHeightWorld > 0f) ? (radiusWorld / fullHeightWorld) : 0f;
+            Debug.Log($"[Storm State] Centro: {centerWorld:F2} | Radio: {radiusWorld:F2}u ({radiusNormalized:F3}norm) | Fase: {CurrentPhase} | CamHeight: {fullHeightWorld:F2}u");
+        }
     }
 
     private IEnumerator StormPhases()
@@ -179,28 +187,54 @@ public class StormOverlayController : MonoBehaviour
 
     public bool IsInside(Vector3 worldPos)
     {
-        float distance = Vector2.Distance(worldPos, centerWorld);
-        
-        // Si está DENTRO del círculo seguro → NO está en tormenta
-        if (distance <= radiusWorld)
+        if (worldCam == null)
         {
-            Debug.Log($"[Storm] DENTRO ZONA SEGURA - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | IsInStorm: FALSE");
+            Debug.LogError("[StormOverlayController] worldCam no está asignada en IsInside()");
             return false;
         }
+
+        // ✅ CRUCIAL: Usar el mismo espacio coordinado que el shader (VIEWPORT SPACE)
         
+        // 1. Convertir posiciones a VIEWPORT SPACE (0-1), exactamente como ApplyToShader()
+        Vector3 playerViewport = worldCam.WorldToViewportPoint(worldPos);
+        Vector3 centerViewport = worldCam.WorldToViewportPoint(centerWorld);
+        
+        // 2. Calcular distancia EN VIEWPORT SPACE (como hace el shader)
+        float distanceViewport = Vector2.Distance(playerViewport, centerViewport);
+        
+        // 3. Obtener radio en VIEWPORT SPACE (exactamente como ApplyToShader())
+        float fullHeightWorld = worldCam.orthographicSize * 2f;
+        float radiusViewport = (fullHeightWorld > 0f) ? (radiusWorld / fullHeightWorld) : 0.1f;
+        
+        // 4. Restar margen de seguridad: permite rozar sin recibir daño
+        float radiusWithMargin = radiusViewport - damageMarginViewport;
+
+        // Si está DENTRO del círculo seguro → NO está en tormenta
+        if (distanceViewport <= radiusWithMargin)
+        {
+            Debug.Log($"[Storm] ✓ DENTRO ZONA SEGURA" +
+                $" | WorldPos: {worldPos:F2} | ViewportPos: {playerViewport:F2}" +
+                $" | Dist: {distanceViewport:F3}vp | RadioDaño: {radiusWithMargin:F3}vp (visual: {radiusViewport:F3}vp) | IsInStorm: FALSE");
+            return false;
+        }
+
         // Si está FUERA del círculo seguro pero dentro del mapa → SÍ está en tormenta
         if (playBounds != null)
         {
             Bounds b = playBounds.bounds;
             bool inBounds = b.Contains(worldPos);
-            
-            Debug.Log($"[Storm] FUERA ZONA SEGURA - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | EnMapa: {inBounds} | IsInStorm: {inBounds}");
-            
+
+            Debug.Log($"[Storm] ✗ FUERA ZONA SEGURA" +
+                $" | WorldPos: {worldPos:F2} | ViewportPos: {playerViewport:F2}" +
+                $" | Dist: {distanceViewport:F3}vp | RadioDaño: {radiusWithMargin:F3}vp (visual: {radiusViewport:F3}vp) | EnMapa: {inBounds} | IsInStorm: {inBounds}");
+
             return inBounds;
         }
-        
+
         // Si no hay límites definidos, cualquier punto fuera del círculo es tormenta
-        Debug.Log($"[Storm] SIN BOUNDS - Pos: {worldPos} | Centro: {centerWorld} | Radio: {radiusWorld:F2} | Distancia: {distance:F2} | IsInStorm: TRUE");
+        Debug.Log($"[Storm] ! SIN BOUNDS" +
+            $" | WorldPos: {worldPos:F2} | ViewportPos: {playerViewport:F2}" +
+            $" | Dist: {distanceViewport:F3}vp | RadioDaño: {radiusWithMargin:F3}vp (visual: {radiusViewport:F3}vp) | IsInStorm: TRUE");
         return true;
     }
 

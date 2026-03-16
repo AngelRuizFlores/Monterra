@@ -47,6 +47,8 @@ public class StormDamageController : MonoBehaviour
         // No aplicar daño durante el período de gracia inicial
         if (timeSinceGameStart < gracePeriodSeconds)
         {
+            if (Time.frameCount % 60 == 0)
+                Debug.Log($"[StormDamage] En período de gracia: {gracePeriodSeconds - timeSinceGameStart:F1}s restantes");
             return;
         }
 
@@ -65,6 +67,7 @@ public class StormDamageController : MonoBehaviour
             return;
 
         int aliveCount = 0;
+        int affectedCreatures = 0;
 
         for (int i = 0; i < playerTeam.team.Length; i++)
         {
@@ -80,11 +83,15 @@ public class StormDamageController : MonoBehaviour
             if (creature.currentHP < 0)
                 creature.currentHP = 0;
 
-            Debug.Log($"[Storm] {creature.species.monName} recibe {damagePerTick} daño. HP: {creature.currentHP}");
+            affectedCreatures++;
+            int maxHP = MonLevelSystem.GetMaxHP(creature);
+            Debug.Log($"[Storm Damage] {creature.species.monName} recibe {damagePerTick}❤ daño | HP: {creature.currentHP}/{maxHP} | Estado: {(creature.currentHP <= 0 ? "DERROTADO" : "Vivo")}");
 
             if (creature.currentHP > 0)
                 aliveCount++;
         }
+
+        Debug.Log($"[Storm Damage Summary] {affectedCreatures} criaturas afectadas | {aliveCount} vivas restantes");
 
         if (aliveCount == 0)
         {

@@ -214,7 +214,7 @@ public class LevelManager : MonoBehaviour
             battleUI?.SetText(effectText);
             yield return new WaitForSecondsRealtime(1f);
         }
-}
+    }
 
     private static int ComputeDamage(MonInstance attacker, MonInstance defender, MoveData move)
     {
@@ -279,7 +279,6 @@ public class LevelManager : MonoBehaviour
     {
         if (currentWild != null) currentWild.gameObject.SetActive(false);
     }
-
     private int GetCurrentPhase()
     {
         return 3;
