@@ -54,7 +54,7 @@ public class StormOverlayController : MonoBehaviour
         {
             float fullHeightWorld = (worldCam != null) ? worldCam.orthographicSize * 2f : 0f;
             float radiusNormalized = (fullHeightWorld > 0f) ? (radiusWorld / fullHeightWorld) : 0f;
-            Debug.Log($"[Storm State] Centro: {centerWorld:F2} | Radio: {radiusWorld:F2}u ({radiusNormalized:F3}norm) | Fase: {CurrentPhase} | CamHeight: {fullHeightWorld:F2}u");
+            //Debug.Log($"[Storm State] Centro: {centerWorld:F2} | Radio: {radiusWorld:F2}u ({radiusNormalized:F3}norm) | Fase: {CurrentPhase} | CamHeight: {fullHeightWorld:F2}u");
         }
     }
 
@@ -212,9 +212,9 @@ public class StormOverlayController : MonoBehaviour
         // Si está DENTRO del círculo seguro → NO está en tormenta
         if (distanceViewport <= radiusWithMargin)
         {
-            Debug.Log($"[Storm] ✓ DENTRO ZONA SEGURA" +
-                $" | WorldPos: {worldPos:F2} | ViewportPos: {playerViewport:F2}" +
-                $" | Dist: {distanceViewport:F3}vp | RadioDaño: {radiusWithMargin:F3}vp (visual: {radiusViewport:F3}vp) | IsInStorm: FALSE");
+           // Debug.Log($"[Storm] ✓ DENTRO ZONA SEGURA" +
+           //     $" | WorldPos: {worldPos:F2} | ViewportPos: {playerViewport:F2}" +
+           //     $" | Dist: {distanceViewport:F3}vp | RadioDaño: {radiusWithMargin:F3}vp (visual: {radiusViewport:F3}vp) | IsInStorm: FALSE");
             return false;
         }
 
