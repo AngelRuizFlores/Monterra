@@ -1,72 +1,109 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class BattleUI : MonoBehaviour
 {
-    public Image enemySprite;
-    public Image enemyTypeIcon;
-    public TMP_Text enemyName;
-    public TMP_Text enemyLevel;
-    public Slider enemyHP;
+    [Header("Enemy")]
+    [SerializeField] private Image enemySprite;
+    [SerializeField] private Image enemyTypeIcon;
+    [SerializeField] private TMP_Text enemyName;
+    [SerializeField] private TMP_Text enemyLevel;
+    [SerializeField] private Slider enemyHP;
 
-    public Image playerSprite;
-    public Image playerTypeIcon;
-    public TMP_Text playerName;
-    public TMP_Text playerLevel;
-    public Slider playerHP;
-
-    public TMP_Text battleText;
-
+    [Header("Player")]
+    [SerializeField] private Image playerSprite;
+    [SerializeField] private Image playerTypeIcon;
+    [SerializeField] private TMP_Text playerName;
+    [SerializeField] private TMP_Text playerLevel;
+    [SerializeField] private Slider playerHP;
     [SerializeField] private Slider playerExpSlider;
+
+    [Header("Text")]
+    [SerializeField] private TMP_Text battleText;
+
+    [Header("Actions")]
+    [SerializeField] private Button switchMonButton;
+
+    private Action onSwitchRequested;
+
+    public void BindSwitchAction(Action callback)
+    {
+        onSwitchRequested = callback;
+
+        if (switchMonButton == null)
+            return;
+
+        switchMonButton.onClick.RemoveListener(HandleSwitchButtonPressed);
+        switchMonButton.onClick.AddListener(HandleSwitchButtonPressed);
+    }
+
+    public void SetSwitchButtonInteractable(bool interactable)
+    {
+        if (switchMonButton != null)
+            switchMonButton.interactable = interactable;
+    }
 
     public void SetPlayerExp(MonInstance mon)
     {
-        if (playerExpSlider == null || mon == null) return;
+        if (playerExpSlider == null || mon == null)
+            return;
+
         float normalized = MonLevelSystem.GetExpNormalized(mon);
         playerExpSlider.value = normalized * 100f;
     }
 
     public void SetText(string msg)
     {
-        if (battleText) battleText.text = msg;
+        if (battleText != null)
+            battleText.text = msg ?? string.Empty;
     }
 
     public void ShowWildMon(WildMon wild)
     {
-        var inst = wild.instance;
-        var sp = inst.species;
+        if (wild == null || wild.instance == null || wild.instance.species == null)
+            return;
 
-        if (enemySprite) enemySprite.sprite = sp.frontSprite;
-        if (enemyName) enemyName.text = sp.monName;
-        if (enemyLevel) enemyLevel.text = "Lvl " + inst.level;
+        MonInstance inst = wild.instance;
+        MonSpecies sp = inst.species;
+
+        if (enemySprite != null) enemySprite.sprite = sp.frontSprite;
+        if (enemyName != null) enemyName.text = sp.monName;
+        if (enemyLevel != null) enemyLevel.text = $"Lvl {inst.level}";
         if (enemyTypeIcon != null) enemyTypeIcon.sprite = sp.typeSprite;
 
         int maxHP = MonLevelSystem.GetMaxHP(inst);
-        if (enemyHP)
+        if (enemyHP != null)
         {
             enemyHP.maxValue = maxHP;
-            enemyHP.value = inst.currentHP;
+            enemyHP.value = Mathf.Clamp(inst.currentHP, 0, maxHP);
         }
     }
 
     public void ShowPlayerMon(PlayerMon player)
     {
+        if (player == null)
+            return;
+
         player.InitIfNeeded();
 
-        var inst = player.instance;
-        var sp = inst.species;
+        if (player.instance == null || player.instance.species == null)
+            return;
 
-        if (playerSprite) playerSprite.sprite = sp.backSprite;
-        if (playerName) playerName.text = sp.monName;
-        if (playerLevel) playerLevel.text = "Lvl " + inst.level;
+        MonInstance inst = player.instance;
+        MonSpecies sp = inst.species;
+
+        if (playerSprite != null) playerSprite.sprite = sp.backSprite;
+        if (playerName != null) playerName.text = sp.monName;
+        if (playerLevel != null) playerLevel.text = $"Lvl {inst.level}";
         if (playerTypeIcon != null) playerTypeIcon.sprite = sp.typeSprite;
 
         int maxHP = MonLevelSystem.GetMaxHP(inst);
-        if (playerHP)
+        if (playerHP != null)
         {
             playerHP.maxValue = maxHP;
-            playerHP.value = inst.currentHP;
+            playerHP.value = Mathf.Clamp(inst.currentHP, 0, maxHP);
         }
 
         SetPlayerExp(inst);
@@ -74,15 +111,24 @@ public class BattleUI : MonoBehaviour
 
     public void UpdateEnemyHP(int current, int max)
     {
-        if (enemyHP == null) return;
-        enemyHP.maxValue = max;
-        enemyHP.value = current;
+        if (enemyHP == null)
+            return;
+
+        enemyHP.maxValue = Mathf.Max(1, max);
+        enemyHP.value = Mathf.Clamp(current, 0, (int)enemyHP.maxValue);
     }
 
     public void UpdatePlayerHP(int current, int max)
     {
-        if (playerHP == null) return;
-        playerHP.maxValue = max;
-        playerHP.value = current;
+        if (playerHP == null)
+            return;
+
+        playerHP.maxValue = Mathf.Max(1, max);
+        playerHP.value = Mathf.Clamp(current, 0, (int)playerHP.maxValue);
+    }
+
+    private void HandleSwitchButtonPressed()
+    {
+        onSwitchRequested?.Invoke();
     }
 }
