@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Dunebit
   type: 5
-  baseHP: 50
+  baseHP: 150
   baseAttack: 40
   baseDefense: 45
   baseSpeed: 25
   frontSprite: {fileID: 1324980506657168105, guid: ceea7db076e6d6b4ba33d94c7b965469, type: 3}
   backSprite: {fileID: 9139330975122868335, guid: 852f0f50e9943b44392ef1859d506ffc, type: 3}
   typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
+  battleCrySoundName: monkey-1
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: dc3771ff52af3504bb189e0af0ca4e43, type: 2}
     learnAtLevel: 1

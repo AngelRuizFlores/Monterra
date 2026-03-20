@@ -7,6 +7,9 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     private const float TurnDelay = 1f;
+    private const string MonCatchSoundName = "MonCatch";
+    private const string CatchAttemptSoundName = "CatchAttempt";
+    private const string CatchFailSoundName = "CatchFail";
 
     [Header("Battle UI")]
     [SerializeField] private GameObject battleCanvas;
@@ -24,6 +27,9 @@ public class LevelManager : MonoBehaviour
 
     [Header("Music")]
     [SerializeField] private MusicGame music;
+
+    [Header("Sound")]
+    [SerializeField] private SoundManager soundManager;
 
     [Header("Events")]
     [SerializeField] private UnityEvent onPlayerPartyDefeated;
@@ -56,6 +62,9 @@ public class LevelManager : MonoBehaviour
         if (switchPopupUI != null)
             switchPopupUI.HideImmediate();
 
+        if (soundManager == null)
+            soundManager = SoundManager.Instance;
+
         state = BattleState.Inactive;
     }
 
@@ -81,6 +90,8 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         state = BattleState.PlayerTurn;
         battleUI?.SetText($"¿Qué hará {playerMon.instance.species.monName}?");
+
+        StartCoroutine(PlayWildBattleCryDelayed(0.2f));
         SetPlayerCombatInputEnabled(true);
     }
 
@@ -111,6 +122,12 @@ public class LevelManager : MonoBehaviour
 
         currentWild = null;
         state = BattleState.Inactive;
+    }
+
+    private IEnumerator PlayWildBattleCryDelayed(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        PlayWildBattleCry();
     }
 
     public void UsePlayerMove(MoveData move)
@@ -171,29 +188,112 @@ public class LevelManager : MonoBehaviour
         if (!IsBattleActive())
             return;
 
-        if (currentWild == null || playerMon == null)
+        if (state != BattleState.PlayerTurn)
+            return;
+
+        if (currentWild == null || currentWild.instance == null || playerMon == null || playerMon.instance == null)
+            return;
+
+        if (!IsMonAlive(currentWild.instance))
             return;
 
         PlayerTeam team = GetPlayerTeam();
         if (team == null)
             return;
 
-        MonInstance newMon = MonLevelSystem.Clone(currentWild.instance);
-        if (newMon == null)
-        {
-            Debug.LogError($"{nameof(LevelManager)}: No se pudo clonar el mon salvaje.");
-            return;
-        }
-
-        if (!team.TryAddToNextFreeSlot(newMon))
+        int freeSlot = team.GetNextFreeSlotIndex();
+        if (freeSlot < 0)
         {
             battleUI?.SetText("No tienes espacio en el equipo.");
             return;
         }
 
-        battleUI?.SetText($"{newMon.species.monName} fue capturado!");
+        if (runningBattleRoutine != null)
+        {
+            StopCoroutine(runningBattleRoutine);
+            runningBattleRoutine = null;
+        }
+
+        runningBattleRoutine = StartCoroutine(TryCaptureCoroutine());
+    }
+
+    private IEnumerator TryCaptureCoroutine()
+    {
+        state = BattleState.Busy;
+        SetPlayerCombatInputEnabled(false);
+
+        battleUI?.SetText($"Intentando capturar a {currentWild.instance.species.monName}...");
+        PlaySound(CatchAttemptSoundName, false);
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        bool captured = CatchSystem.TryCatch(
+            playerMon.instance,
+            currentWild.instance,
+            out float chance,
+            out float roll
+        );
+
+        Debug.Log($"Catch roll={roll:F2} chance={chance:F2}");
+
+        if (captured)
+        {
+            PlayerTeam team = GetPlayerTeam();
+            MonInstance newMon = MonLevelSystem.Clone(currentWild.instance);
+
+            if (team == null || newMon == null)
+            {
+                EnterPlayerTurn();
+                yield break;
+            }
+
+            if (!team.TryAddToNextFreeSlot(newMon))
+            {
+                battleUI?.SetText("No tienes espacio en el equipo.");
+                EnterPlayerTurn();
+                yield break;
+            }
+
+            yield return CaptureSuccessCoroutine(newMon);
+            yield break;
+        }
+
+        yield return CaptureFailCoroutine();
+    }
+
+    private IEnumerator CaptureSuccessCoroutine(MonInstance capturedMon)
+    {
+        battleUI?.SetText($"{capturedMon.species.monName} fue capturado!");
+        PlaySound(MonCatchSoundName, false);
+
+        yield return new WaitForSecondsRealtime(1.2f);
+
         DespawnCurrentWild();
         EndBattle();
+    }
+
+    private IEnumerator CaptureFailCoroutine()
+    {
+        battleUI?.SetText($"¡{currentWild.instance.species.monName} escapó!");
+        PlaySound(CatchFailSoundName, false);
+
+        yield return new WaitForSecondsRealtime(0.8f);
+
+        if (!IsWildDead() && IsEnemyAbleToAct())
+        {
+            yield return EnemyAttack();
+            if (battleEnding)
+                yield break;
+
+            if (IsPlayerDead())
+            {
+                yield return HandlePlayerDefeatAfterEnemyAction();
+                yield break;
+            }
+        }
+
+        runningBattleRoutine = null;
+        EnterPlayerTurn();
     }
 
     private bool CanStartBattle(out WildMon wild)
@@ -317,20 +417,29 @@ public class LevelManager : MonoBehaviour
         MonInstance defender = currentWild.instance;
 
         battleUI?.SetText($"{attacker.species.monName} usó {move.moveName}!");
+        PlayMoveSound(move);
 
         float mult = TypeChart.GetMultiplier(move.type, defender.species.type);
         int dmg = ComputeDamage(attacker, defender, move);
 
-        enemyHealth?.Hurt(dmg);
+        if (enemyHealth != null)
+        {
+            yield return enemyHealth.HurtAnimated(dmg);
+        }
+        else
+        {
+            defender.currentHP = Mathf.Max(0, defender.currentHP - dmg);
+        }
+
         RefreshEnemyUI();
 
-        yield return new WaitForSecondsRealtime(TurnDelay);
+        yield return new WaitForSecondsRealtime(0.35f);
 
         string effectText = TypeChart.GetEffectText(mult);
         if (!string.IsNullOrEmpty(effectText))
         {
             battleUI?.SetText(effectText);
-            yield return new WaitForSecondsRealtime(TurnDelay);
+            yield return new WaitForSecondsRealtime(0.75f);
         }
     }
 
@@ -346,6 +455,7 @@ public class LevelManager : MonoBehaviour
         string moveName = enemyMove != null ? enemyMove.moveName : "Punch";
 
         battleUI?.SetText($"{attacker.species.monName} usó {moveName}!");
+        PlayMoveSound(enemyMove);
 
         float mult = 1f;
         int dmg;
@@ -360,16 +470,24 @@ public class LevelManager : MonoBehaviour
             dmg = 5;
         }
 
-        playerHealth?.Hurt(dmg);
+        if (playerHealth != null)
+        {
+            yield return playerHealth.HurtAnimated(dmg);
+        }
+        else
+        {
+            defender.currentHP = Mathf.Max(0, defender.currentHP - dmg);
+        }
+
         RefreshPlayerUI();
 
-        yield return new WaitForSecondsRealtime(TurnDelay);
+        yield return new WaitForSecondsRealtime(0.35f);
 
         string effectText = TypeChart.GetEffectText(mult);
         if (!string.IsNullOrEmpty(effectText))
         {
             battleUI?.SetText(effectText);
-            yield return new WaitForSecondsRealtime(TurnDelay);
+            yield return new WaitForSecondsRealtime(0.75f);
         }
     }
 
@@ -788,5 +906,36 @@ public class LevelManager : MonoBehaviour
     private int GetCurrentPhase()
     {
         return 3;
+    }
+
+    private void PlayWildBattleCry()
+    {
+        if (currentWild == null || currentWild.instance == null || currentWild.instance.species == null)
+            return;
+
+        PlaySound(currentWild.instance.species.battleCrySoundName, false);
+    }
+
+    private void PlayMoveSound(MoveData move)
+    {
+        if (move == null)
+            return;
+
+        PlaySound(move.attackSoundName, false);
+    }
+
+    private void PlaySound(string soundName, bool loop)
+    {
+        if (string.IsNullOrWhiteSpace(soundName))
+            return;
+
+        SoundManager manager = soundManager != null ? soundManager : SoundManager.Instance;
+        if (manager == null)
+        {
+            Debug.LogWarning($"{nameof(LevelManager)}: No hay {nameof(SoundManager)} disponible para reproducir '{soundName}'.", this);
+            return;
+        }
+
+        manager.Play(soundName, loop);
     }
 }

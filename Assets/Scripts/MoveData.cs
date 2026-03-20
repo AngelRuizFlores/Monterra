@@ -10,5 +10,7 @@ public class MoveData : ScriptableObject
     public MonType type;
     public int power;
     public int accuracy;
-}
 
+    [Header("Audio")]
+    public string attackSoundName;
+}

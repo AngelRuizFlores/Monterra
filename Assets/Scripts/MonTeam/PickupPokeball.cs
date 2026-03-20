@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PickupPokeball : MonoBehaviour
 {
+    private const string BallSound = "BallSound";
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         var team = col.GetComponent<PlayerTeam>();
@@ -9,6 +11,14 @@ public class PickupPokeball : MonoBehaviour
         if (team == null) return;
 
         bool ok = team.UnlockNextSlot();
-        if (ok) gameObject.SetActive(false);
+
+        if (ok)
+        {
+            // 🔊 sonido
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.Play(BallSound, false);
+
+            gameObject.SetActive(false);
+        }
     }
 }

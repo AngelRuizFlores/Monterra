@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 2
   power: 100
   accuracy: 100
+  attackSoundName: WaterAttack

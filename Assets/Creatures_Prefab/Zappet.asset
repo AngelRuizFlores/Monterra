@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Zappet
   type: 0
-  baseHP: 35
+  baseHP: 150
   baseAttack: 45
   baseDefense: 30
   baseSpeed: 50
   frontSprite: {fileID: -2293824314481384579, guid: c0fdc8cf5d9e9454588d41f383c44c72, type: 3}
   backSprite: {fileID: 1635044370023475632, guid: 3e0cc4e266702dc47b197192238f197d, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
+  battleCrySoundName: monkey-3
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 2d815c561e1587143aa6ab29f135c0e8, type: 2}
     learnAtLevel: 1

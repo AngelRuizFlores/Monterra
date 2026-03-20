@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,10 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
     public UnityEvent<int, int> OnHurt;
     public UnityEvent<int, int> OnHeal;
     public UnityEvent OnDie;
+
+    [SerializeField] private float animationDurationPerPoint = 0.03f;
+    [SerializeField] private float minAnimationDuration = 0.15f;
+    [SerializeField] private float maxAnimationDuration = 0.9f;
 
     private MonInstance instance;
 
@@ -55,6 +60,61 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
         }
     }
 
+    public IEnumerator HurtAnimated(int damage)
+    {
+        if (instance == null)
+        {
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} llamado sin inicializar.", this);
+            yield break;
+        }
+
+        if (damage <= 0)
+        {
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} recibió un daño no válido: {damage}.", this);
+            yield break;
+        }
+
+        int startHP = instance.currentHP;
+        int targetHP = Mathf.Max(0, startHP - damage);
+
+        if (targetHP == startHP)
+            yield break;
+
+        float duration = Mathf.Clamp(
+            (startHP - targetHP) * animationDurationPerPoint,
+            minAnimationDuration,
+            maxAnimationDuration
+        );
+
+        float elapsed = 0f;
+        int lastBroadcastHP = startHP;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            int visualHP = Mathf.RoundToInt(Mathf.Lerp(startHP, targetHP, t));
+            visualHP = Mathf.Clamp(visualHP, targetHP, startHP);
+
+            if (visualHP != lastBroadcastHP)
+            {
+                lastBroadcastHP = visualHP;
+                OnHurt?.Invoke(visualHP, MaxHealth);
+            }
+
+            yield return null;
+        }
+
+        instance.currentHP = targetHP;
+        OnHurt?.Invoke(instance.currentHP, MaxHealth);
+
+        if (instance.currentHP == 0)
+        {
+            OnDie?.Invoke();
+        }
+    }
+
     public void Heal(int amount)
     {
         if (instance == null)
@@ -76,6 +136,56 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
         {
             OnHeal?.Invoke(instance.currentHP, MaxHealth);
         }
+    }
+
+    public IEnumerator HealAnimated(int amount)
+    {
+        if (instance == null)
+        {
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} llamado sin inicializar.", this);
+            yield break;
+        }
+
+        if (amount <= 0)
+        {
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} recibió una curación no válida: {amount}.", this);
+            yield break;
+        }
+
+        int startHP = instance.currentHP;
+        int targetHP = Mathf.Min(MaxHealth, startHP + amount);
+
+        if (targetHP == startHP)
+            yield break;
+
+        float duration = Mathf.Clamp(
+            (targetHP - startHP) * animationDurationPerPoint,
+            minAnimationDuration,
+            maxAnimationDuration
+        );
+
+        float elapsed = 0f;
+        int lastBroadcastHP = startHP;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+
+            int visualHP = Mathf.RoundToInt(Mathf.Lerp(startHP, targetHP, t));
+            visualHP = Mathf.Clamp(visualHP, startHP, targetHP);
+
+            if (visualHP != lastBroadcastHP)
+            {
+                lastBroadcastHP = visualHP;
+                OnHeal?.Invoke(visualHP, MaxHealth);
+            }
+
+            yield return null;
+        }
+
+        instance.currentHP = targetHP;
+        OnHeal?.Invoke(instance.currentHP, MaxHealth);
     }
 
     public void HealToFull()

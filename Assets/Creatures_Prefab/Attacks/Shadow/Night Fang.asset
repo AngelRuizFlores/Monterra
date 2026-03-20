@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 4
   power: 50
   accuracy: 100
+  attackSoundName: ShadowAttack

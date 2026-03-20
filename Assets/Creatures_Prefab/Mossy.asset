@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Mossy
   type: 3
-  baseHP: 45
+  baseHP: 150
   baseAttack: 40
   baseDefense: 35
   baseSpeed: 40
   frontSprite: {fileID: 181820997175427900, guid: c8518344dc518304a84c999bc11abb56, type: 3}
   backSprite: {fileID: -6909766172045017399, guid: f14b94bb2dd483e40a471826a4b4d97a, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
+  battleCrySoundName: monkey-2
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: bca1a79c8b6534e4abfe28254f3730fc, type: 2}
     learnAtLevel: 1

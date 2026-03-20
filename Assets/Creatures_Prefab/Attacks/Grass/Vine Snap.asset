@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 3
   power: 30
   accuracy: 100
+  attackSoundName: GrassAttack

@@ -15,6 +15,13 @@ public class EvolutionRule
     public int evolveAtLevel = 10;
 }
 
+public enum EvolutionStage
+{
+    Base = 0,
+    Stage1 = 1,
+    Stage2 = 2
+}
+
 [CreateAssetMenu(fileName = "NewMon", menuName = "Monterra/Mon Species")]
 public class MonSpecies : ScriptableObject
 {
@@ -33,10 +40,18 @@ public class MonSpecies : ScriptableObject
     public Sprite backSprite;
     public Sprite typeSprite;
 
+    [Header("Audio")]
+    public string battleCrySoundName;
+
+    [Header("Capture")]
+    [Range(1, 100)]
+    public int baseCatchRate = 50;
+
+    public EvolutionStage evolutionStage = EvolutionStage.Base;
+
     [Header("Learnset")]
     public LearnableMove[] learnableMoves;
 
     [Header("Evolution")]
     public EvolutionRule[] evolutions;
-
 }

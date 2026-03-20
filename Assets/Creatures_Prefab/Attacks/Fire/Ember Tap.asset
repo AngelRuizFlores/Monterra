@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 1
   power: 20
   accuracy: 100
+  attackSoundName: FireAttack

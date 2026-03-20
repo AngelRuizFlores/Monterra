@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Noctur
   type: 4
-  baseHP: 35
+  baseHP: 150
   baseAttack: 50
   baseDefense: 30
   baseSpeed: 45
   frontSprite: {fileID: 4620878380825614722, guid: 8607fbef8e6f97846b90a6ca4de4bce6, type: 3}
   backSprite: {fileID: -602324347073204013, guid: b11f50cbba65fa14590ddcf87c5ac4bf, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
+  battleCrySoundName: monkey-2
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 9a0ff99b931c0044f853e8e4a6657648, type: 2}
     learnAtLevel: 1

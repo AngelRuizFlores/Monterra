@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 5
   power: 100
   accuracy: 100
+  attackSoundName: EarthAttack

@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Droplet
   type: 2
-  baseHP: 45
+  baseHP: 150
   baseAttack: 35
   baseDefense: 45
   baseSpeed: 35
   frontSprite: {fileID: 1278294184782214078, guid: 399ea5742efa82e4aa6751490e9791c7, type: 3}
   backSprite: {fileID: 1278294184782214078, guid: 399ea5742efa82e4aa6751490e9791c7, type: 3}
   typeSprite: {fileID: -6597409936211466667, guid: 3b1c7a7756bb92f46b6019ab2ab8f53a, type: 3}
+  battleCrySoundName: monkey-1
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 834b440a77bc8674b8f4a77e9c74be8d, type: 2}
     learnAtLevel: 1

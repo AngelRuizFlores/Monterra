@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 0
   power: 30
   accuracy: 100
+  attackSoundName: LightAttack

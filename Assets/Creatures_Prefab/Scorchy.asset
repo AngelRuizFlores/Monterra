@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Scorchy
   type: 1
-  baseHP: 35
+  baseHP: 150
   baseAttack: 55
   baseDefense: 30
   baseSpeed: 40
   frontSprite: {fileID: -8423817402011037695, guid: 0c21c5248a7d5964ba8405c048692ecd, type: 3}
   backSprite: {fileID: 2467491259192402747, guid: 44b37a0dd2221a040a4f95ba3aeabb9d, type: 3}
   typeSprite: {fileID: -4716359955362382993, guid: b153303f6eed7a043ae8ec980d1aa3b1, type: 3}
+  battleCrySoundName: monkey-3
+  baseCatchRate: 50
+  evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 1f753d35c3ebc6340a94cfb2ddea8a33, type: 2}
     learnAtLevel: 1
