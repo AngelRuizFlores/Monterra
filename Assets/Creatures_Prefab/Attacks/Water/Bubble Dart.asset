@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5424cca3fc4e94e8e540e6bc0e5749, type: 3}
   m_Name: Bubble Dart
   m_EditorClassIdentifier: Assembly-CSharp::MoveData
+  projectilePrefab: {fileID: 1615619990592520145, guid: 6fc1f5ffae94f58468c2f2f8fb940d6f, type: 3}
+  impactPrefab: {fileID: 5942500506167569231, guid: 6fc1f5ffae94f58468c2f2f8fb940d6f, type: 3}
   moveName: Bubble Dart
   type: 2
   power: 30

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5424cca3fc4e94e8e540e6bc0e5749, type: 3}
   m_Name: Blaze Claw
   m_EditorClassIdentifier: Assembly-CSharp::MoveData
+  projectilePrefab: {fileID: 1423606742578942511, guid: 68b0f8ed76713ce4db86dbc8c591780d, type: 3}
+  impactPrefab: {fileID: 6676728103777540160, guid: 68b0f8ed76713ce4db86dbc8c591780d, type: 3}
   moveName: Blaze Claw
   type: 1
   power: 50

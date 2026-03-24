@@ -26,6 +26,13 @@ public class BattleUI : MonoBehaviour
     [Header("Actions")]
     [SerializeField] private Button switchMonButton;
 
+    [Header("Battle FX Anchors")]
+    [SerializeField] private RectTransform playerAttackOrigin;
+    [SerializeField] private RectTransform enemyAttackOrigin;
+    [SerializeField] private RectTransform playerHitPoint;
+    [SerializeField] private RectTransform enemyHitPoint;
+    [SerializeField] private RectTransform effectsContainer;
+
     private Action onSwitchRequested;
 
     public void BindSwitchAction(Action callback)
@@ -131,4 +138,11 @@ public class BattleUI : MonoBehaviour
     {
         onSwitchRequested?.Invoke();
     }
+
+   public Vector2 GetPlayerAttackOrigin() => playerAttackOrigin != null ? playerAttackOrigin.anchoredPosition : Vector2.zero;
+    public Vector2 GetEnemyAttackOrigin() => enemyAttackOrigin != null ? enemyAttackOrigin.anchoredPosition : Vector2.zero;
+    public Vector2 GetPlayerHitPoint() => playerHitPoint != null ? playerHitPoint.anchoredPosition : Vector2.zero;
+    public Vector2 GetEnemyHitPoint() => enemyHitPoint != null ? enemyHitPoint.anchoredPosition : Vector2.zero;
+    public RectTransform GetEffectsContainer() => effectsContainer;
+
 }

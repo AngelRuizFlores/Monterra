@@ -417,6 +417,13 @@ public class LevelManager : MonoBehaviour
         MonInstance defender = currentWild.instance;
 
         battleUI?.SetText($"{attacker.species.monName} usó {move.moveName}!");
+
+        Vector3 startPos = battleUI != null ? battleUI.GetPlayerAttackOrigin() : Vector3.zero;
+        Vector3 targetPos = battleUI != null ? battleUI.GetEnemyHitPoint() : Vector3.zero;
+
+        if (move.projectilePrefab != null)
+            yield return PlayAttackProjectile(move, startPos, targetPos);
+
         PlayMoveSound(move);
 
         float mult = TypeChart.GetMultiplier(move.type, defender.species.type);
@@ -455,6 +462,13 @@ public class LevelManager : MonoBehaviour
         string moveName = enemyMove != null ? enemyMove.moveName : "Punch";
 
         battleUI?.SetText($"{attacker.species.monName} usó {moveName}!");
+
+        Vector3 startPos = battleUI != null ? battleUI.GetEnemyAttackOrigin() : Vector3.zero;
+        Vector3 targetPos = battleUI != null ? battleUI.GetPlayerHitPoint() : Vector3.zero;
+
+        if (enemyMove != null && enemyMove.projectilePrefab != null)
+            yield return PlayAttackProjectile(enemyMove, startPos, targetPos);
+
         PlayMoveSound(enemyMove);
 
         float mult = 1f;
@@ -937,5 +951,25 @@ public class LevelManager : MonoBehaviour
         }
 
         manager.Play(soundName, loop);
+    }
+
+    private IEnumerator PlayAttackProjectile(MoveData move, Vector2 startPos, Vector2 targetPos)
+    {
+        if (move == null || move.projectilePrefab == null || battleUI == null || battleUI.GetEffectsContainer() == null)
+            yield break;
+
+        bool arrived = false;
+
+        AttackVfxUIProjectile projectileInstance = Instantiate(
+            move.projectilePrefab,
+            battleUI.GetEffectsContainer()
+        );
+
+        projectileInstance.Play(startPos, targetPos, () => arrived = true);
+
+        while (!arrived)
+            yield return null;
+
+        Destroy(projectileInstance.gameObject);
     }
 }

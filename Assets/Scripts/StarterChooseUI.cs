@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,18 +23,26 @@ public class StarterChooseUI : MonoBehaviour
     [SerializeField] private Color earthColor  = new Color32(170, 120, 60, 255);
 
     private readonly MonSpecies[] shown = new MonSpecies[3];
+    private bool isChoosing = false;
 
-    void OnEnable()
+    private void OnEnable()
     {
         if (team == null) return;
         if (allStarters == null || allStarters.Count < 3) return;
+
+        Time.timeScale = 0f;
 
         Roll3Random();
         Paint();
         HookButtons();
     }
 
-    void Roll3Random()
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
+
+    private void Roll3Random()
     {
         var temp = new List<MonSpecies>(allStarters);
 
@@ -48,28 +57,31 @@ public class StarterChooseUI : MonoBehaviour
         shown[2] = temp[2];
     }
 
-    void Paint()
+    private void Paint()
     {
         for (int i = 0; i < 3; i++)
         {
             var sp = shown[i];
             if (sp == null) continue;
 
-            if (slotImages != null && i < slotImages.Length && slotImages[i])
+            if (slotImages != null && i < slotImages.Length && slotImages[i] != null)
                 slotImages[i].sprite = sp.frontSprite;
 
-            if (slotNames != null && i < slotNames.Length && slotNames[i])
+            if (slotNames != null && i < slotNames.Length && slotNames[i] != null)
                 slotNames[i].text = sp.monName;
 
-            if (slotButtons == null || i >= slotButtons.Length || slotButtons[i] == null) continue;
+            if (slotButtons == null || i >= slotButtons.Length || slotButtons[i] == null)
+                continue;
 
             var txt = slotButtons[i].GetComponentInChildren<TMP_Text>();
-            if (txt) txt.text = sp.type + " Type";
+            if (txt != null)
+                txt.text = sp.type + " Type";
 
             Color typeColor = GetTypeColor(sp.type);
 
             var img = slotButtons[i].GetComponent<Image>();
-            if (img) img.color = typeColor;
+            if (img != null)
+                img.color = typeColor;
 
             var colors = slotButtons[i].colors;
             colors.normalColor = typeColor;
@@ -79,11 +91,12 @@ public class StarterChooseUI : MonoBehaviour
         }
     }
 
-    void HookButtons()
+    private void HookButtons()
     {
         for (int i = 0; i < 3; i++)
         {
-            if (slotButtons == null || i >= slotButtons.Length || slotButtons[i] == null) continue;
+            if (slotButtons == null || i >= slotButtons.Length || slotButtons[i] == null)
+                continue;
 
             int idx = i;
             slotButtons[i].onClick.RemoveAllListeners();
@@ -91,12 +104,21 @@ public class StarterChooseUI : MonoBehaviour
         }
     }
 
-    void Choose(int idx)
+    private void Choose(int idx)
     {
+        if (isChoosing) return;
         if (idx < 0 || idx >= shown.Length) return;
 
         var chosen = shown[idx];
         if (chosen == null) return;
+
+        StartCoroutine(ChooseRoutine(chosen));
+    }
+
+    private IEnumerator ChooseRoutine(MonSpecies chosen)
+    {
+        isChoosing = true;
+        SetButtonsInteractable(false);
 
         var starter = new MonInstance
         {
@@ -110,11 +132,30 @@ public class StarterChooseUI : MonoBehaviour
 
         team.InitWithStarter(starter);
 
-        if (chooseCanvas)
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
+
+        Time.timeScale = 1f;
+
+        if (FadeController.Instance != null)
+            FadeController.Instance.StartFadeIn();
+
+        if (chooseCanvas != null)
             chooseCanvas.SetActive(false);
     }
 
-    Color GetTypeColor(MonType type)
+    private void SetButtonsInteractable(bool value)
+    {
+        if (slotButtons == null) return;
+
+        for (int i = 0; i < slotButtons.Length; i++)
+        {
+            if (slotButtons[i] != null)
+                slotButtons[i].interactable = value;
+        }
+    }
+
+    private Color GetTypeColor(MonType type)
     {
         switch (type)
         {

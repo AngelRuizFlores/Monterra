@@ -4,8 +4,14 @@ using UnityEngine;
     fileName = "NewMove",
     menuName = "Monterra/Move"
 )]
+
+
 public class MoveData : ScriptableObject
 {
+    [Header("VFX")]
+    public AttackVfxUIProjectile projectilePrefab;
+    public GameObject impactPrefab;
+    [Header("Move Info")]
     public string moveName;
     public MonType type;
     public int power;

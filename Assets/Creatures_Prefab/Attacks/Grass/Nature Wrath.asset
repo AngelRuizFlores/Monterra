@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5424cca3fc4e94e8e540e6bc0e5749, type: 3}
   m_Name: Nature Wrath
   m_EditorClassIdentifier: Assembly-CSharp::MoveData
+  projectilePrefab: {fileID: 650046476550300903, guid: 26bdf58232a7a764088c8352370edb3a, type: 3}
+  impactPrefab: {fileID: 4311829641257913226, guid: 26bdf58232a7a764088c8352370edb3a, type: 3}
   moveName: Nature Wrath
   type: 3
   power: 100

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd5424cca3fc4e94e8e540e6bc0e5749, type: 3}
   m_Name: Radiant Slash
   m_EditorClassIdentifier: Assembly-CSharp::MoveData
+  projectilePrefab: {fileID: 1144614839588489197, guid: 94cc6e12a48a7f54592f2a3b9ef1d93a, type: 3}
+  impactPrefab: {fileID: 8704707533654772982, guid: 94cc6e12a48a7f54592f2a3b9ef1d93a, type: 3}
   moveName: Radiant Slash
   type: 0
   power: 50
