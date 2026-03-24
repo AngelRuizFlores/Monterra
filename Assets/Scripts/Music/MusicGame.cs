@@ -27,4 +27,9 @@ public class MusicGame : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(name, false);
     }
+    public void StopMusic()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.ResetSound();
+    }
 }

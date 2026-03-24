@@ -103,8 +103,19 @@ public class LevelManager : MonoBehaviour
             runningBattleRoutine = null;
         }
 
+        StartCoroutine(EndBattleWithFade());
+    }
+
+    private IEnumerator EndBattleWithFade()
+    {
+        if (battleEnding)
+            yield break;
+
         battleEnding = true;
         switchResolutionInProgress = false;
+
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
 
         if (switchPopupUI != null)
             switchPopupUI.HideImmediate();
@@ -122,6 +133,9 @@ public class LevelManager : MonoBehaviour
 
         currentWild = null;
         state = BattleState.Inactive;
+
+        if (FadeController.Instance != null)
+            FadeController.Instance.StartFadeIn();
     }
 
     private IEnumerator PlayWildBattleCryDelayed(float delay)
@@ -767,8 +781,6 @@ public class LevelManager : MonoBehaviour
     {
         if (battleEnding)
             yield break;
-
-        battleEnding = true;
         state = BattleState.Busy;
         SetPlayerCombatInputEnabled(false);
 

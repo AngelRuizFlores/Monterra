@@ -37,8 +37,6 @@ public sealed class SoundManager : MonoBehaviour
 
         BuildClipLookup();
         CacheAudioSources();
-
-        TryPlaySound("BackgroundMusic", true);
     }
 
     public bool TryPlaySound(string name, bool loop)
@@ -86,9 +84,7 @@ public sealed class SoundManager : MonoBehaviour
         {
             AudioSource source = audioManager[i];
             if (source == null)
-            {
                 continue;
-            }
 
             source.Stop();
             source.clip = null;
@@ -109,9 +105,7 @@ public sealed class SoundManager : MonoBehaviour
         {
             AudioInfo audioInfo = Audios[i];
             if (audioInfo == null)
-            {
                 continue;
-            }
 
             if (string.IsNullOrWhiteSpace(audioInfo.AudioName))
             {

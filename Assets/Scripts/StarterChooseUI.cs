@@ -31,6 +31,7 @@ public class StarterChooseUI : MonoBehaviour
         if (allStarters == null || allStarters.Count < 3) return;
 
         Time.timeScale = 0f;
+        FindFirstObjectByType<MusicGame>()?.StopMusic();
 
         Roll3Random();
         Paint();
@@ -141,7 +142,14 @@ public class StarterChooseUI : MonoBehaviour
             FadeController.Instance.StartFadeIn();
 
         if (chooseCanvas != null)
-            chooseCanvas.SetActive(false);
+        chooseCanvas.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        FindFirstObjectByType<MusicGame>()?.StartWorldMusic();
+
+        if (FadeController.Instance != null)
+            FadeController.Instance.StartFadeIn();
     }
 
     private void SetButtonsInteractable(bool value)
