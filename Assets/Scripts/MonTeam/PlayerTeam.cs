@@ -15,19 +15,29 @@ public class PlayerTeam : MonoBehaviour
 
     public event Action OnChanged;
 
-    void Awake()
+    private void Awake()
     {
         if (team == null || team.Length != MAX_TEAM)
             team = new MonInstance[MAX_TEAM];
     }
 
+    public MonInstance GetActiveMon()
+    {
+        if (team == null) return null;
+        if (ActiveIndex < 0 || ActiveIndex >= team.Length) return null;
+        return team[ActiveIndex];
+    }
+
     public void InitWithStarter(MonInstance starter)
     {
         unlockedSlots = 1;
-        for (int i = 0; i < MAX_TEAM; i++) team[i] = null;
+
+        for (int i = 0; i < MAX_TEAM; i++)
+            team[i] = null;
 
         team[0] = starter;
         ActiveIndex = 0;
+
         ApplyActiveToPlayerMon();
         OnChanged?.Invoke();
     }
@@ -49,11 +59,13 @@ public class PlayerTeam : MonoBehaviour
     public int GetNextFreeSlotIndex()
     {
         int limit = UnlockedSlots;
+
         for (int i = 0; i < limit; i++)
         {
             if (team[i] == null) return i;
             if (team[i].species == null) return i;
         }
+
         return -1;
     }
 
@@ -85,10 +97,17 @@ public class PlayerTeam : MonoBehaviour
         return true;
     }
 
-    void ApplyActiveToPlayerMon()
+    private void ApplyActiveToPlayerMon()
     {
         if (playerMon == null) return;
-        playerMon.instance = team[ActiveIndex];
+
+        playerMon.instance = GetActiveMon();
+
+        if (playerMon.instance != null && playerMon.instance.species != null)
+        {
+            playerMon.species = playerMon.instance.species;
+            playerMon.lvl = playerMon.instance.level;
+        }
     }
 
     public bool SwapToFront(int idx)
@@ -119,9 +138,11 @@ public class PlayerTeam : MonoBehaviour
 
         team[idx] = null;
 
-        if (idx == 0)
+        if (idx == ActiveIndex)
         {
             playerMon.instance = null;
+            playerMon.species = null;
+            playerMon.lvl = 1;
         }
 
         OnChanged?.Invoke();

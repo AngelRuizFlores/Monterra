@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad8a6f9c478164798a577300bf80b5, type: 3}
+  m_Name: Lillytoad
+  m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
+  monName: Lillytoad
+  type: 2
+  baseHP: 150
+  baseAttack: 400
+  baseDefense: 45
+  baseSpeed: 35
+  frontSprite: {fileID: -3441220242641935921, guid: fc2b67d0482b455489be16455f42ebd4, type: 3}
+  backSprite: {fileID: -3441220242641935921, guid: fc2b67d0482b455489be16455f42ebd4, type: 3}
+  typeSprite: {fileID: -6597409936211466667, guid: 3b1c7a7756bb92f46b6019ab2ab8f53a, type: 3}
+  battleCrySoundName: monkey-1
+  baseCatchRate: 50
+  evolutionStage: 0
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 834b440a77bc8674b8f4a77e9c74be8d, type: 2}
+    learnAtLevel: 1
+  - move: {fileID: 11400000, guid: e4d3c37e9e5b40940b7974c182f15c17, type: 2}
+    learnAtLevel: 4
+  - move: {fileID: 11400000, guid: 85c219e6d6ae2e141a2a12482b2916bf, type: 2}
+    learnAtLevel: 6
+  - move: {fileID: 11400000, guid: 131c8754016d19844846b601840c0aef, type: 2}
+    learnAtLevel: 9
+  evolutions:
+  - evolvesTo: {fileID: 11400000, guid: 5fa7fc427d94e794f84d5b03ea86f775, type: 2}
+    evolveAtLevel: 3

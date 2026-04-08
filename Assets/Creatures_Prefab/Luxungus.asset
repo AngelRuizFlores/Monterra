@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad8a6f9c478164798a577300bf80b5, type: 3}
+  m_Name: Luxungus
+  m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
+  monName: Luxungus
+  type: 0
+  baseHP: 150
+  baseAttack: 45
+  baseDefense: 30
+  baseSpeed: 50
+  frontSprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}
+  backSprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}
+  typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
+  battleCrySoundName: monkey-3
+  baseCatchRate: 50
+  evolutionStage: 0
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 2d815c561e1587143aa6ab29f135c0e8, type: 2}
+    learnAtLevel: 1
+  - move: {fileID: 11400000, guid: c95698b361e50a84cbf41ae4c5f3342d, type: 2}
+    learnAtLevel: 4
+  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
+    learnAtLevel: 6
+  - move: {fileID: 11400000, guid: 69e68e88250cbc14d9d2e55a453b5b18, type: 2}
+    learnAtLevel: 9
+  evolutions: []
