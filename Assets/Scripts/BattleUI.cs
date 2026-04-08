@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,113 +6,140 @@ public class BattleUI : MonoBehaviour
 {
     [Header("Enemy")]
     [SerializeField] private Image enemySprite;
+    [SerializeField] private TextMeshProUGUI enemyNameText;
+    [SerializeField] private TextMeshProUGUI enemyLevelText;
     [SerializeField] private Image enemyTypeIcon;
-    [SerializeField] private TMP_Text enemyName;
-    [SerializeField] private TMP_Text enemyLevel;
     [SerializeField] private Slider enemyHP;
 
     [Header("Player")]
     [SerializeField] private Image playerSprite;
+    [SerializeField] private TextMeshProUGUI playerNameText;
+    [SerializeField] private TextMeshProUGUI playerLevelText;
     [SerializeField] private Image playerTypeIcon;
-    [SerializeField] private TMP_Text playerName;
-    [SerializeField] private TMP_Text playerLevel;
     [SerializeField] private Slider playerHP;
-    [SerializeField] private Slider playerExpSlider;
-
-    [Header("Text")]
-    [SerializeField] private TMP_Text battleText;
+    [SerializeField] private Slider playerEXP;
 
     [Header("Actions")]
-    [SerializeField] private Button switchMonButton;
+    [SerializeField] private Button switchButton;
+    [SerializeField] private TextMeshProUGUI battleText;
 
-    [Header("Battle FX Anchors")]
-    [SerializeField] private RectTransform playerAttackOrigin;
-    [SerializeField] private RectTransform enemyAttackOrigin;
-    [SerializeField] private RectTransform playerHitPoint;
-    [SerializeField] private RectTransform enemyHitPoint;
+    [Header("VFX")]
     [SerializeField] private RectTransform effectsContainer;
+    [SerializeField] private Transform playerAttackOrigin;
+    [SerializeField] private Transform enemyAttackOrigin;
+    [SerializeField] private Transform playerHitPoint;
+    [SerializeField] private Transform enemyHitPoint;
 
-    private Action onSwitchRequested;
+    private System.Action onSwitchPressed;
 
-    public void BindSwitchAction(Action callback)
+    public void BindSwitchAction(System.Action action)
     {
-        onSwitchRequested = callback;
+        onSwitchPressed = action;
 
-        if (switchMonButton == null)
+        if (switchButton == null)
             return;
 
-        switchMonButton.onClick.RemoveListener(HandleSwitchButtonPressed);
-        switchMonButton.onClick.AddListener(HandleSwitchButtonPressed);
-    }
-
-    public void SetSwitchButtonInteractable(bool interactable)
-    {
-        if (switchMonButton != null)
-            switchMonButton.interactable = interactable;
-    }
-
-    public void SetPlayerExp(MonInstance mon)
-    {
-        if (playerExpSlider == null || mon == null)
-            return;
-
-        float normalized = MonLevelSystem.GetExpNormalized(mon);
-        playerExpSlider.value = normalized * 100f;
-    }
-
-    public void SetText(string msg)
-    {
-        if (battleText != null)
-            battleText.text = msg ?? string.Empty;
+        switchButton.onClick.RemoveAllListeners();
+        switchButton.onClick.AddListener(() => onSwitchPressed?.Invoke());
     }
 
     public void ShowWildMon(WildMon wild)
     {
-        if (wild == null || wild.instance == null || wild.instance.species == null)
-            return;
-
-        MonInstance inst = wild.instance;
-        MonSpecies sp = inst.species;
-
-        if (enemySprite != null) enemySprite.sprite = sp.frontSprite;
-        if (enemyName != null) enemyName.text = sp.monName;
-        if (enemyLevel != null) enemyLevel.text = $"Lvl {inst.level}";
-        if (enemyTypeIcon != null) enemyTypeIcon.sprite = sp.typeSprite;
-
-        int maxHP = MonLevelSystem.GetMaxHP(inst);
-        if (enemyHP != null)
+        if (wild == null || wild.instance == null)
         {
-            enemyHP.maxValue = maxHP;
-            enemyHP.value = Mathf.Clamp(inst.currentHP, 0, maxHP);
+            ClearEnemyMon();
+            return;
         }
+
+        ShowEnemyMon(wild.instance);
     }
 
-    public void ShowPlayerMon(PlayerMon player)
+    public void ShowEnemyMon(MonInstance mon)
+{
+    if (mon == null || mon.species == null)
     {
-        if (player == null)
+        ClearEnemyMon();
+        return;
+    }
+
+    if (enemySprite != null)
+    {
+        enemySprite.sprite = mon.species.frontSprite;
+        enemySprite.enabled = mon.species.frontSprite != null;
+    }
+
+    if (enemyNameText != null)
+        enemyNameText.text = mon.species.monName;
+
+    if (enemyLevelText != null)
+        enemyLevelText.text = $"LVL {mon.level}";
+
+    if (enemyTypeIcon != null)
+    {
+        enemyTypeIcon.sprite = mon.species.typeSprite;
+        enemyTypeIcon.enabled = mon.species.typeSprite != null;
+    }
+
+    UpdateEnemyHP(mon.currentHP, MonLevelSystem.GetMaxHP(mon));
+}
+
+public void ClearEnemyMon()
+{
+    if (enemySprite != null)
+    {
+        enemySprite.sprite = null;
+        enemySprite.enabled = false;
+    }
+
+    if (enemyNameText != null)
+        enemyNameText.text = string.Empty;
+
+    if (enemyLevelText != null)
+        enemyLevelText.text = string.Empty;
+
+    if (enemyTypeIcon != null)
+    {
+        enemyTypeIcon.sprite = null;
+        enemyTypeIcon.enabled = false;
+    }
+
+    if (enemyHP != null)
+    {
+        enemyHP.minValue = 0;
+        enemyHP.maxValue = 1;
+        enemyHP.value = 0;
+    }
+}
+
+    public void ShowPlayerMon(PlayerMon playerMon)
+    {
+        if (playerMon == null || playerMon.instance == null || playerMon.instance.species == null)
             return;
 
-        player.InitIfNeeded();
+        MonInstance mon = playerMon.instance;
 
-        if (player.instance == null || player.instance.species == null)
-            return;
-
-        MonInstance inst = player.instance;
-        MonSpecies sp = inst.species;
-
-        if (playerSprite != null) playerSprite.sprite = sp.backSprite;
-        if (playerName != null) playerName.text = sp.monName;
-        if (playerLevel != null) playerLevel.text = $"Lvl {inst.level}";
-        if (playerTypeIcon != null) playerTypeIcon.sprite = sp.typeSprite;
-
-        int maxHP = MonLevelSystem.GetMaxHP(inst);
-        if (playerHP != null)
+        if (playerSprite != null)
         {
-            playerHP.maxValue = maxHP;
-            playerHP.value = Mathf.Clamp(inst.currentHP, 0, maxHP);
+            playerSprite.sprite = mon.species.backSprite != null ? mon.species.backSprite : mon.species.frontSprite;
+            playerSprite.enabled = playerSprite.sprite != null;
+            playerSprite.color = Color.white;
         }
 
-        SetPlayerExp(inst);
+        if (playerNameText != null)
+            playerNameText.text = mon.species.monName;
+
+        if (playerLevelText != null)
+            playerLevelText.text = $"LVL {mon.level}";
+
+        if (playerTypeIcon != null)
+        {
+            playerTypeIcon.sprite = mon.species.typeSprite;
+            playerTypeIcon.enabled = mon.species.typeSprite != null;
+            playerTypeIcon.color = Color.white;
+        }
+
+        UpdatePlayerHP(mon.currentHP, MonLevelSystem.GetMaxHP(mon));
+        SetPlayerExp(mon);
     }
 
     public void UpdateEnemyHP(int current, int max)
@@ -121,8 +147,10 @@ public class BattleUI : MonoBehaviour
         if (enemyHP == null)
             return;
 
-        enemyHP.maxValue = Mathf.Max(1, max);
-        enemyHP.value = Mathf.Clamp(current, 0, (int)enemyHP.maxValue);
+        int safeMax = Mathf.Max(1, max);
+        enemyHP.minValue = 0;
+        enemyHP.maxValue = safeMax;
+        enemyHP.value = Mathf.Clamp(current, 0, safeMax);
     }
 
     public void UpdatePlayerHP(int current, int max)
@@ -130,19 +158,38 @@ public class BattleUI : MonoBehaviour
         if (playerHP == null)
             return;
 
-        playerHP.maxValue = Mathf.Max(1, max);
-        playerHP.value = Mathf.Clamp(current, 0, (int)playerHP.maxValue);
+        int safeMax = Mathf.Max(1, max);
+        playerHP.minValue = 0;
+        playerHP.maxValue = safeMax;
+        playerHP.value = Mathf.Clamp(current, 0, safeMax);
     }
 
-    private void HandleSwitchButtonPressed()
+    public void SetPlayerExp(MonInstance mon)
     {
-        onSwitchRequested?.Invoke();
+        if (playerEXP == null || mon == null)
+            return;
+
+        int expToNext = Mathf.Max(1, MonLevelSystem.ExpToNextLevel(mon.level));
+        playerEXP.minValue = 0;
+        playerEXP.maxValue = expToNext;
+        playerEXP.value = Mathf.Clamp(mon.experience, 0, expToNext);
     }
 
-   public Vector2 GetPlayerAttackOrigin() => playerAttackOrigin != null ? playerAttackOrigin.anchoredPosition : Vector2.zero;
-    public Vector2 GetEnemyAttackOrigin() => enemyAttackOrigin != null ? enemyAttackOrigin.anchoredPosition : Vector2.zero;
-    public Vector2 GetPlayerHitPoint() => playerHitPoint != null ? playerHitPoint.anchoredPosition : Vector2.zero;
-    public Vector2 GetEnemyHitPoint() => enemyHitPoint != null ? enemyHitPoint.anchoredPosition : Vector2.zero;
-    public RectTransform GetEffectsContainer() => effectsContainer;
+    public void SetText(string text)
+    {
+        if (battleText != null)
+            battleText.text = text ?? string.Empty;
+    }
 
+    public void SetSwitchButtonInteractable(bool interactable)
+    {
+        if (switchButton != null)
+            switchButton.interactable = interactable;
+    }
+
+    public RectTransform GetEffectsContainer() => effectsContainer;
+    public Vector3 GetPlayerAttackOrigin() => playerAttackOrigin != null ? playerAttackOrigin.position : Vector3.zero;
+    public Vector3 GetEnemyAttackOrigin() => enemyAttackOrigin != null ? enemyAttackOrigin.position : Vector3.zero;
+    public Vector3 GetPlayerHitPoint() => playerHitPoint != null ? playerHitPoint.position : Vector3.zero;
+    public Vector3 GetEnemyHitPoint() => enemyHitPoint != null ? enemyHitPoint.position : Vector3.zero;
 }

@@ -8,18 +8,29 @@ public class TouchingBehaviour : MonoBehaviour
     public UnityEvent OnTouchTrainer;
 
     public WildMon lastWildMon;
+    public TrainerBattleTrigger lastTrainer;
 
-    private bool isTransitioning = false;
+    private bool isTransitioning;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (isTransitioning) return;
+        if (isTransitioning)
+            return;
 
-        if (col.TryGetComponent<WildMon>(out var wild))
+        if (col.TryGetComponent(out TrainerBattleTrigger trainer))
+        {
+            if (!trainer.IsDefeated)
+            {
+                lastTrainer = trainer;
+                StartCoroutine(HandleTrainerTouch());
+            }
+
+            return;
+        }
+
+        if (col.TryGetComponent(out WildMon wild))
         {
             lastWildMon = wild;
-            Debug.Log("Tocaste un WildMon: " + wild.species.monName);
-
             StartCoroutine(HandleWildMonTouch());
         }
     }
@@ -32,6 +43,21 @@ public class TouchingBehaviour : MonoBehaviour
             yield return FadeController.Instance.FadeOut();
 
         OnTouchMon?.Invoke();
+
+        if (FadeController.Instance != null)
+            FadeController.Instance.StartFadeIn();
+
+        isTransitioning = false;
+    }
+
+    private IEnumerator HandleTrainerTouch()
+    {
+        isTransitioning = true;
+
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
+
+        OnTouchTrainer?.Invoke();
 
         if (FadeController.Instance != null)
             FadeController.Instance.StartFadeIn();

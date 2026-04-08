@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] private TouchingBehaviour playerTouching;
     [SerializeField] private PlayerMon playerMon;
+    [SerializeField] private TrainerBattleProgress trainerBattleProgress;
 
     [Header("Health")]
     [SerializeField] private HealthBehaviour enemyHealth;
@@ -33,9 +35,20 @@ public class LevelManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private UnityEvent onPlayerPartyDefeated;
+    [SerializeField] private UnityEvent onWin;
 
     private WildMon currentWild;
+    private TrainerBattleTrigger currentTrainer;
+    private List<MonInstance> currentTrainerRoster = new List<MonInstance>();
+    private int currentTrainerEnemyIndex = -1;
+
     private Coroutine runningBattleRoutine;
+    private bool battleEnding;
+    private bool switchResolutionInProgress;
+    private PostBattleAction pendingPostBattleAction = PostBattleAction.None;
+
+    private BattleState state = BattleState.Inactive;
+    private EncounterType encounterType = EncounterType.None;
 
     private enum BattleState
     {
@@ -45,11 +58,21 @@ public class LevelManager : MonoBehaviour
         WaitingForForcedSwitch
     }
 
-    private BattleState state = BattleState.Inactive;
-    private bool battleEnding;
-    private bool switchResolutionInProgress;
+    private enum EncounterType
+    {
+        None,
+        Wild,
+        Trainer
+    }
 
-    void Awake()
+    private enum PostBattleAction
+    {
+        None,
+        GameOver,
+        Victory
+    }
+
+    private void Awake()
     {
         if (battleCanvas != null)
             battleCanvas.SetActive(false);
@@ -66,22 +89,21 @@ public class LevelManager : MonoBehaviour
             soundManager = SoundManager.Instance;
 
         state = BattleState.Inactive;
+        encounterType = EncounterType.None;
     }
 
     public void StartBattle()
     {
-        if (!CanStartBattle(out currentWild))
+        if (!CanStartWildBattle(out currentWild))
             return;
 
-        battleEnding = false;
-        switchResolutionInProgress = false;
+        ResetBattleSession();
+        encounterType = EncounterType.Wild;
 
         EnsureInstances(currentWild);
-        ShowBattleUI(currentWild);
-
-        enemyHealth?.Init(currentWild.instance);
-        playerHealth?.Init(playerMon.instance);
-
+        ShowBattleUI();
+        SetupEnemyHealth();
+        SetupPlayerHealth();
         SetupMovesUI();
 
         if (switchPopupUI != null)
@@ -95,6 +117,45 @@ public class LevelManager : MonoBehaviour
         SetPlayerCombatInputEnabled(true);
     }
 
+    public void StartTrainerBattle()
+    {
+        if (!CanStartTrainerBattle(out TrainerBattleTrigger trainer))
+            return;
+
+        ResetBattleSession();
+        encounterType = EncounterType.Trainer;
+        currentTrainer = trainer;
+        currentTrainerRoster = TrainerMonFactory.CreateRoster(trainer.TrainerDefinition);
+        currentTrainerEnemyIndex = GetNextAliveTrainerMonIndex(-1);
+
+        if (currentTrainerEnemyIndex < 0)
+        {
+            Debug.LogError($"{nameof(LevelManager)}: el trainer '{trainer.name}' no tiene mons válidos para combatir.", trainer);
+            CleanupEncounterReferences();
+            return;
+        }
+
+        playerMon?.InitIfNeeded();
+        ShowBattleUI();
+        SetupEnemyHealth();
+        SetupPlayerHealth();
+        SetupMovesUI();
+
+        if (switchPopupUI != null)
+            switchPopupUI.HideImmediate();
+
+        Time.timeScale = 0f;
+        state = BattleState.Busy;
+
+        string trainerName = currentTrainer.TrainerDefinition != null
+            ? currentTrainer.TrainerDefinition.TrainerName
+            : "Trainer";
+
+        TryShowTrainerIntro(trainerName, currentTrainer.TrainerDefinition != null ? currentTrainer.TrainerDefinition.TrainerSprite : null);
+
+        StartCoroutine(BeginTrainerBattleCoroutine(trainerName));
+    }
+
     public void EndBattle()
     {
         if (runningBattleRoutine != null)
@@ -104,44 +165,6 @@ public class LevelManager : MonoBehaviour
         }
 
         StartCoroutine(EndBattleWithFade());
-    }
-
-    private IEnumerator EndBattleWithFade()
-    {
-        if (battleEnding)
-            yield break;
-
-        battleEnding = true;
-        switchResolutionInProgress = false;
-
-        if (FadeController.Instance != null)
-            yield return FadeController.Instance.FadeOut();
-
-        if (switchPopupUI != null)
-            switchPopupUI.HideImmediate();
-
-        SetPlayerCombatInputEnabled(false);
-
-        Time.timeScale = 1f;
-        music?.StartWorldMusic();
-
-        if (battleCanvas != null)
-            battleCanvas.SetActive(false);
-
-        if (playerTouching != null)
-            playerTouching.lastWildMon = null;
-
-        currentWild = null;
-        state = BattleState.Inactive;
-
-        if (FadeController.Instance != null)
-            FadeController.Instance.StartFadeIn();
-    }
-
-    private IEnumerator PlayWildBattleCryDelayed(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        PlayWildBattleCry();
     }
 
     public void UsePlayerMove(MoveData move)
@@ -155,10 +178,16 @@ public class LevelManager : MonoBehaviour
         if (switchPopupUI != null && switchPopupUI.IsOpen)
             return;
 
-        if (move == null || currentWild == null || currentWild.instance == null || playerMon == null || playerMon.instance == null)
+        if (move == null)
             return;
 
-        if (!IsMonAlive(playerMon.instance) || !IsMonAlive(currentWild.instance))
+        MonInstance player = playerMon != null ? playerMon.instance : null;
+        MonInstance enemy = GetCurrentEnemyMon();
+
+        if (player == null || enemy == null)
+            return;
+
+        if (!IsMonAlive(player) || !IsMonAlive(enemy))
             return;
 
         if (runningBattleRoutine != null)
@@ -180,7 +209,7 @@ public class LevelManager : MonoBehaviour
 
         if (switchPopupUI == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: No hay referencia al popup de cambio de mon.");
+            Debug.LogError($"{nameof(LevelManager)}: no hay referencia al popup de cambio.");
             return;
         }
 
@@ -199,6 +228,12 @@ public class LevelManager : MonoBehaviour
 
     public void TryCapture()
     {
+        if (encounterType == EncounterType.Trainer)
+        {
+            battleUI?.SetText("No puedes capturar mons de un trainer.");
+            return;
+        }
+
         if (!IsBattleActive())
             return;
 
@@ -231,10 +266,97 @@ public class LevelManager : MonoBehaviour
         runningBattleRoutine = StartCoroutine(TryCaptureCoroutine());
     }
 
+    private IEnumerator BeginTrainerBattleCoroutine(string trainerName)
+    {
+        SetPlayerCombatInputEnabled(false);
+
+        battleUI?.SetText($"¡{trainerName} te desafía!");
+        yield return new WaitForSecondsRealtime(1f);
+
+        MonInstance enemyMon = GetCurrentEnemyMon();
+        if (enemyMon == null || enemyMon.species == null)
+        {
+            EndBattle();
+            yield break;
+        }
+
+        battleUI?.SetText($"¡{trainerName} envía a {enemyMon.species.monName}!");
+        yield return new WaitForSecondsRealtime(1f);
+
+        state = BattleState.PlayerTurn;
+        battleUI?.SetText($"¿Qué hará {playerMon.instance.species.monName}?");
+        SetPlayerCombatInputEnabled(true);
+
+        StartCoroutine(PlayTrainerBattleCryDelayed(0.2f));
+    }
+
+    private IEnumerator EndBattleWithFade()
+    {
+        if (battleEnding)
+            yield break;
+
+        battleEnding = true;
+        switchResolutionInProgress = false;
+
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
+
+        if (switchPopupUI != null)
+            switchPopupUI.HideImmediate();
+
+        SetPlayerCombatInputEnabled(false);
+
+        Time.timeScale = 1f;
+        music?.StartWorldMusic();
+
+        if (battleCanvas != null)
+            battleCanvas.SetActive(false);
+
+        CleanupEncounterReferences();
+        state = BattleState.Inactive;
+        encounterType = EncounterType.None;
+
+        if (FadeController.Instance != null)
+            FadeController.Instance.StartFadeIn();
+
+        PostBattleAction action = pendingPostBattleAction;
+        pendingPostBattleAction = PostBattleAction.None;
+
+        switch (action)
+        {
+            case PostBattleAction.GameOver:
+                onPlayerPartyDefeated?.Invoke();
+                break;
+
+            case PostBattleAction.Victory:
+                onWin?.Invoke();
+                break;
+        }
+    }
+
+    private IEnumerator PlayWildBattleCryDelayed(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        PlayWildBattleCry();
+    }
+
+    private IEnumerator PlayTrainerBattleCryDelayed(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        PlayEnemyBattleCry();
+    }
+
     private IEnumerator TryCaptureCoroutine()
     {
         state = BattleState.Busy;
         SetPlayerCombatInputEnabled(false);
+
+        if (currentWild == null || currentWild.instance == null || playerMon == null || playerMon.instance == null)
+        {
+            runningBattleRoutine = null;
+            EnterPlayerTurn();
+            yield break;
+        }
 
         battleUI?.SetText($"Intentando capturar a {currentWild.instance.species.monName}...");
         PlaySound(CatchAttemptSoundName, false);
@@ -257,6 +379,7 @@ public class LevelManager : MonoBehaviour
 
             if (team == null || newMon == null)
             {
+                runningBattleRoutine = null;
                 EnterPlayerTurn();
                 yield break;
             }
@@ -264,8 +387,26 @@ public class LevelManager : MonoBehaviour
             if (!team.TryAddToNextFreeSlot(newMon))
             {
                 battleUI?.SetText("No tienes espacio en el equipo.");
+                runningBattleRoutine = null;
                 EnterPlayerTurn();
                 yield break;
+            }
+
+            int phase = GetCurrentPhase();
+            bool leveledUp = MonLevelSystem.AddExperience(
+                playerMon.instance,
+                MonLevelSystem.ExpSource.Capture,
+                phase
+            );
+
+            battleUI?.ShowPlayerMon(playerMon);
+            battleUI?.SetPlayerExp(playerMon.instance);
+
+            if (leveledUp)
+            {
+                movesUI?.Refresh();
+                battleUI?.SetText($"¡{playerMon.instance.species.monName} subió a Nv. {playerMon.instance.level}!");
+                yield return new WaitForSecondsRealtime(TurnDelay);
             }
 
             yield return CaptureSuccessCoroutine(newMon);
@@ -277,7 +418,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator CaptureSuccessCoroutine(MonInstance capturedMon)
     {
-        battleUI?.SetText($"{capturedMon.species.monName} fue capturado!");
+        battleUI?.SetText($"{capturedMon.species.monName} fue capturado.");
         PlaySound(MonCatchSoundName, false);
 
         yield return new WaitForSecondsRealtime(1.2f);
@@ -293,7 +434,7 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.8f);
 
-        if (!IsWildDead() && IsEnemyAbleToAct())
+        if (IsEnemyAbleToAct())
         {
             yield return EnemyAttack();
             if (battleEnding)
@@ -310,9 +451,12 @@ public class LevelManager : MonoBehaviour
         EnterPlayerTurn();
     }
 
-    private bool CanStartBattle(out WildMon wild)
+    private bool CanStartWildBattle(out WildMon wild)
     {
         wild = null;
+
+        if (!ValidateBattleDependencies())
+            return false;
 
         if (playerTouching == null || playerMon == null)
             return false;
@@ -321,19 +465,66 @@ public class LevelManager : MonoBehaviour
         if (wild == null)
             return false;
 
-        if (battleCanvas == null || battleUI == null || movesUI == null)
+        return true;
+    }
+
+    private bool CanStartTrainerBattle(out TrainerBattleTrigger trainer)
+    {
+        trainer = null;
+
+        if (!ValidateBattleDependencies())
             return false;
 
-        if (enemyHealth == null || playerHealth == null)
+        if (playerTouching == null || playerMon == null)
             return false;
 
-        if (GetPlayerTeam() == null)
+        trainer = playerTouching.lastTrainer;
+        if (trainer == null)
+            return false;
+
+        if (!trainer.CanStartBattle(out string error))
         {
-            Debug.LogError($"{nameof(LevelManager)}: No se encontró {nameof(PlayerTeam)} en el player.");
+            Debug.LogWarning($"{nameof(LevelManager)}: no se puede iniciar combate contra trainer '{trainer.name}': {error}", trainer);
             return false;
         }
 
         return true;
+    }
+
+    private bool ValidateBattleDependencies()
+    {
+        if (battleCanvas == null || battleUI == null || movesUI == null)
+        {
+            Debug.LogError($"{nameof(LevelManager)}: faltan referencias de UI.");
+            return false;
+        }
+
+        if (enemyHealth == null || playerHealth == null)
+        {
+            Debug.LogError($"{nameof(LevelManager)}: faltan referencias de barras de vida.");
+            return false;
+        }
+
+        if (GetPlayerTeam() == null)
+        {
+            Debug.LogError($"{nameof(LevelManager)}: no se encontró {nameof(PlayerTeam)} en el player.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void ResetBattleSession()
+    {
+        battleEnding = false;
+        switchResolutionInProgress = false;
+        pendingPostBattleAction = PostBattleAction.None;
+
+        if (runningBattleRoutine != null)
+        {
+            StopCoroutine(runningBattleRoutine);
+            runningBattleRoutine = null;
+        }
     }
 
     private void EnsureInstances(WildMon wild)
@@ -344,18 +535,26 @@ public class LevelManager : MonoBehaviour
         playerMon?.InitIfNeeded();
     }
 
-    private void ShowBattleUI(WildMon wild)
+    private void ShowBattleUI()
+{
+    if (battleCanvas == null || battleUI == null || playerMon == null || playerMon.instance == null)
+        return;
+
+    battleCanvas.SetActive(true);
+
+    if (encounterType == EncounterType.Wild && currentWild != null && currentWild.instance != null)
     {
-        if (battleCanvas == null || battleUI == null || wild == null || wild.instance == null || playerMon == null || playerMon.instance == null)
-            return;
-
-        battleCanvas.SetActive(true);
-
-        battleUI.ShowWildMon(wild);
-        battleUI.ShowPlayerMon(playerMon);
-        battleUI.SetPlayerExp(playerMon.instance);
-        battleUI.SetText($"¡Apareció {wild.instance.species.monName}!");
+        battleUI.ShowWildMon(currentWild);
+        battleUI.SetText($"¡Apareció {currentWild.instance.species.monName}!");
     }
+    else
+    {
+        battleUI?.ShowEnemyMon(GetCurrentEnemyMon());
+    }
+
+    battleUI.ShowPlayerMon(playerMon);
+    battleUI.SetPlayerExp(playerMon.instance);
+}
 
     private void SetupMovesUI()
     {
@@ -370,26 +569,56 @@ public class LevelManager : MonoBehaviour
             battleUI.SetSwitchButtonInteractable(true);
     }
 
+    private void SetupEnemyHealth()
+    {
+        MonInstance enemyMon = GetCurrentEnemyMon();
+        if (enemyMon == null)
+            return;
+
+        enemyHealth.Init(enemyMon);
+        RefreshEnemyUI();
+    }
+
+    private void SetupPlayerHealth()
+    {
+        if (playerMon == null || playerMon.instance == null)
+            return;
+
+        playerHealth.Init(playerMon.instance);
+        RefreshPlayerUI();
+    }
+
     private IEnumerator BattleTurnCoroutine(MoveData playerMove)
     {
         state = BattleState.Busy;
         SetPlayerCombatInputEnabled(false);
 
-        bool playerFirst = MonLevelSystem.GetSpeed(playerMon.instance) >= MonLevelSystem.GetSpeed(currentWild.instance);
+        MonInstance player = playerMon != null ? playerMon.instance : null;
+        MonInstance enemy = GetCurrentEnemyMon();
+
+        if (player == null || enemy == null)
+        {
+            EndBattle();
+            yield break;
+        }
+
+        bool playerFirst = MonLevelSystem.GetSpeed(player) >= MonLevelSystem.GetSpeed(enemy);
 
         if (playerFirst)
         {
             yield return PlayerAttack(playerMove);
-            if (battleEnding) yield break;
+            if (battleEnding)
+                yield break;
 
-            if (IsWildDead())
+            if (IsEnemyDead())
             {
-                yield return WinWildAndExit();
+                yield return HandleEnemyDefeatAfterPlayerAttack();
                 yield break;
             }
 
             yield return EnemyAttack();
-            if (battleEnding) yield break;
+            if (battleEnding)
+                yield break;
 
             if (IsPlayerDead())
             {
@@ -400,7 +629,8 @@ public class LevelManager : MonoBehaviour
         else
         {
             yield return EnemyAttack();
-            if (battleEnding) yield break;
+            if (battleEnding)
+                yield break;
 
             if (IsPlayerDead())
             {
@@ -409,11 +639,12 @@ public class LevelManager : MonoBehaviour
             }
 
             yield return PlayerAttack(playerMove);
-            if (battleEnding) yield break;
+            if (battleEnding)
+                yield break;
 
-            if (IsWildDead())
+            if (IsEnemyDead())
             {
-                yield return WinWildAndExit();
+                yield return HandleEnemyDefeatAfterPlayerAttack();
                 yield break;
             }
         }
@@ -424,11 +655,11 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator PlayerAttack(MoveData move)
     {
-        if (move == null || playerMon == null || playerMon.instance == null || currentWild == null || currentWild.instance == null)
-            yield break;
+        MonInstance attacker = playerMon != null ? playerMon.instance : null;
+        MonInstance defender = GetCurrentEnemyMon();
 
-        MonInstance attacker = playerMon.instance;
-        MonInstance defender = currentWild.instance;
+        if (move == null || attacker == null || defender == null)
+            yield break;
 
         battleUI?.SetText($"{attacker.species.monName} usó {move.moveName}!");
 
@@ -444,13 +675,9 @@ public class LevelManager : MonoBehaviour
         int dmg = ComputeDamage(attacker, defender, move);
 
         if (enemyHealth != null)
-        {
             yield return enemyHealth.HurtAnimated(dmg);
-        }
         else
-        {
             defender.currentHP = Mathf.Max(0, defender.currentHP - dmg);
-        }
 
         RefreshEnemyUI();
 
@@ -466,11 +693,11 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
-        if (currentWild == null || currentWild.instance == null || playerMon == null || playerMon.instance == null)
-            yield break;
+        MonInstance attacker = GetCurrentEnemyMon();
+        MonInstance defender = playerMon != null ? playerMon.instance : null;
 
-        MonInstance attacker = currentWild.instance;
-        MonInstance defender = playerMon.instance;
+        if (attacker == null || defender == null)
+            yield break;
 
         MoveData enemyMove = GetRandomEnemyMove();
         string moveName = enemyMove != null ? enemyMove.moveName : "Punch";
@@ -486,26 +713,18 @@ public class LevelManager : MonoBehaviour
         PlayMoveSound(enemyMove);
 
         float mult = 1f;
-        int dmg;
+        int dmg = 5;
 
         if (enemyMove != null)
         {
             mult = TypeChart.GetMultiplier(enemyMove.type, defender.species.type);
             dmg = ComputeDamage(attacker, defender, enemyMove);
         }
-        else
-        {
-            dmg = 5;
-        }
 
         if (playerHealth != null)
-        {
             yield return playerHealth.HurtAnimated(dmg);
-        }
         else
-        {
             defender.currentHP = Mathf.Max(0, defender.currentHP - dmg);
-        }
 
         RefreshPlayerUI();
 
@@ -519,6 +738,56 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private IEnumerator HandleEnemyDefeatAfterPlayerAttack()
+    {
+        if (encounterType == EncounterType.Wild)
+        {
+            yield return WinWildAndExit();
+            yield break;
+        }
+
+        yield return HandleTrainerEnemyDefeat();
+    }
+
+    private IEnumerator HandleTrainerEnemyDefeat()
+    {
+        MonInstance enemyMon = GetCurrentEnemyMon();
+        if (enemyMon == null || enemyMon.species == null)
+        {
+            EndBattle();
+            yield break;
+        }
+
+        battleUI?.SetText($"¡{enemyMon.species.monName} se debilitó!");
+        yield return new WaitForSecondsRealtime(TurnDelay);
+
+        int nextIndex = GetNextAliveTrainerMonIndex(currentTrainerEnemyIndex);
+        if (nextIndex < 0)
+        {
+            yield return WinTrainerAndExit();
+            yield break;
+        }
+
+        currentTrainerEnemyIndex = nextIndex;
+        MonInstance nextEnemy = GetCurrentEnemyMon();
+
+        SetupEnemyHealth();
+        RefreshEnemyUI();
+        battleUI?.ShowEnemyMon(nextEnemy);
+
+        string trainerName = currentTrainer != null && currentTrainer.TrainerDefinition != null
+            ? currentTrainer.TrainerDefinition.TrainerName
+            : "Trainer";
+
+        battleUI?.SetText($"¡{trainerName} envía a {nextEnemy.species.monName}!");
+        PlayEnemyBattleCry();
+
+        yield return new WaitForSecondsRealtime(TurnDelay);
+
+        runningBattleRoutine = null;
+        EnterPlayerTurn();
+    }
+
     private IEnumerator HandlePlayerDefeatAfterEnemyAction()
     {
         runningBattleRoutine = null;
@@ -529,8 +798,11 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡{playerMon.instance.species.monName} se debilitó!");
-        yield return new WaitForSecondsRealtime(TurnDelay);
+        if (playerMon != null && playerMon.instance != null && playerMon.instance.species != null)
+        {
+            battleUI?.SetText($"¡{playerMon.instance.species.monName} se debilitó!");
+            yield return new WaitForSecondsRealtime(TurnDelay);
+        }
 
         List<MonInstance> replacements = GetSwitchCandidates(excludeCurrentActive: true);
         if (replacements.Count > 0)
@@ -559,7 +831,7 @@ public class LevelManager : MonoBehaviour
         battleUI?.SetText($"¡Adelante, {playerMon.instance.species.monName}!");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
-        if (!IsWildDead() && IsEnemyAbleToAct())
+        if (IsEnemyAbleToAct())
         {
             yield return EnemyAttack();
             if (battleEnding)
@@ -613,7 +885,7 @@ public class LevelManager : MonoBehaviour
     {
         if (switchPopupUI == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: No hay popup de cambio configurado.");
+            Debug.LogError($"{nameof(LevelManager)}: no hay popup de cambio configurado.");
             return;
         }
 
@@ -715,7 +987,7 @@ public class LevelManager : MonoBehaviour
         if (!team.SetActiveIndex(selectedIndex))
             return false;
 
-        playerHealth?.Init(playerMon.instance);
+        SetupPlayerHealth();
         battleUI?.ShowPlayerMon(playerMon);
         battleUI?.SetPlayerExp(playerMon.instance);
         movesUI?.Setup(playerMon, this);
@@ -777,35 +1049,81 @@ public class LevelManager : MonoBehaviour
         EndBattle();
     }
 
+    private IEnumerator WinTrainerAndExit()
+    {
+        string trainerName = currentTrainer != null && currentTrainer.TrainerDefinition != null
+            ? currentTrainer.TrainerDefinition.TrainerName
+            : "Trainer";
+
+        battleUI?.SetText($"¡Has derrotado a {trainerName}!");
+        yield return new WaitForSecondsRealtime(TurnDelay);
+
+        AwardExperienceToWholePlayerTeam();
+
+        if (currentTrainer != null)
+            currentTrainer.MarkAsDefeated();
+
+        bool reachedVictoryGoal = false;
+        if (trainerBattleProgress != null && currentTrainer != null)
+        {
+            trainerBattleProgress.TryRegisterVictory(currentTrainer);
+            reachedVictoryGoal = trainerBattleProgress.HasReachedRequiredVictories();
+        }
+
+        if (reachedVictoryGoal)
+            pendingPostBattleAction = PostBattleAction.Victory;
+
+        EndBattle();
+    }
+
+    private void AwardExperienceToWholePlayerTeam()
+    {
+        PlayerTeam team = GetPlayerTeam();
+        if (team == null)
+            return;
+
+        List<MonInstance> ownedMons = team.GetOwnedMons();
+        int phase = GetCurrentPhase();
+
+        for (int i = 0; i < ownedMons.Count; i++)
+        {
+            MonInstance mon = ownedMons[i];
+            if (mon == null || mon.species == null)
+                continue;
+
+            MonLevelSystem.AddExperience(mon, MonLevelSystem.ExpSource.PlayerKill, phase);
+        }
+
+        if (playerMon != null && playerMon.instance != null)
+        {
+            battleUI?.ShowPlayerMon(playerMon);
+            battleUI?.SetPlayerExp(playerMon.instance);
+        }
+
+        movesUI?.Refresh();
+    }
+
     private IEnumerator FinalLoseAndExit()
     {
         if (battleEnding)
             yield break;
+
         state = BattleState.Busy;
         SetPlayerCombatInputEnabled(false);
 
-        if (playerMon != null && playerMon.instance != null)
-        {
-            battleUI?.SetText($"¡{playerMon.instance.species.monName} se debilitó!");
-            yield return new WaitForSecondsRealtime(TurnDelay);
-        }
-
-        onPlayerPartyDefeated?.Invoke();
+        pendingPostBattleAction = PostBattleAction.GameOver;
         EndBattle();
     }
 
     private MoveData GetRandomEnemyMove()
     {
-        if (currentWild == null || currentWild.instance == null)
-            return null;
-
-        List<MoveData> moves = currentWild.instance.moves;
-        if (moves == null || moves.Count == 0)
+        MonInstance enemy = GetCurrentEnemyMon();
+        if (enemy == null || enemy.moves == null || enemy.moves.Count == 0)
             return null;
 
         for (int i = 0; i < 10; i++)
         {
-            MoveData candidate = moves[UnityEngine.Random.Range(0, moves.Count)];
+            MoveData candidate = enemy.moves[UnityEngine.Random.Range(0, enemy.moves.Count)];
             if (candidate != null)
                 return candidate;
         }
@@ -815,10 +1133,11 @@ public class LevelManager : MonoBehaviour
 
     private void RefreshEnemyUI()
     {
-        if (currentWild == null || currentWild.instance == null)
+        MonInstance enemy = GetCurrentEnemyMon();
+        if (enemy == null)
             return;
 
-        battleUI?.UpdateEnemyHP(currentWild.instance.currentHP, MonLevelSystem.GetMaxHP(currentWild.instance));
+        battleUI?.UpdateEnemyHP(enemy.currentHP, MonLevelSystem.GetMaxHP(enemy));
     }
 
     private void RefreshPlayerUI()
@@ -832,12 +1151,13 @@ public class LevelManager : MonoBehaviour
 
     private bool IsBattleActive()
     {
-        return !battleEnding && currentWild != null && state != BattleState.Inactive;
+        return !battleEnding && encounterType != EncounterType.None && state != BattleState.Inactive;
     }
 
-    private bool IsWildDead()
+    private bool IsEnemyDead()
     {
-        return currentWild == null || currentWild.instance == null || currentWild.instance.currentHP <= 0;
+        MonInstance enemy = GetCurrentEnemyMon();
+        return enemy == null || enemy.currentHP <= 0;
     }
 
     private bool IsPlayerDead()
@@ -847,7 +1167,43 @@ public class LevelManager : MonoBehaviour
 
     private bool IsEnemyAbleToAct()
     {
-        return currentWild != null && currentWild.instance != null && currentWild.instance.currentHP > 0;
+        MonInstance enemy = GetCurrentEnemyMon();
+        return enemy != null && enemy.currentHP > 0;
+    }
+
+    private MonInstance GetCurrentEnemyMon()
+    {
+        switch (encounterType)
+        {
+            case EncounterType.Wild:
+                return currentWild != null ? currentWild.instance : null;
+
+            case EncounterType.Trainer:
+                if (currentTrainerRoster == null)
+                    return null;
+
+                if (currentTrainerEnemyIndex < 0 || currentTrainerEnemyIndex >= currentTrainerRoster.Count)
+                    return null;
+
+                return currentTrainerRoster[currentTrainerEnemyIndex];
+        }
+
+        return null;
+    }
+
+    private int GetNextAliveTrainerMonIndex(int startAfterIndex)
+    {
+        if (currentTrainerRoster == null || currentTrainerRoster.Count == 0)
+            return -1;
+
+        int start = Mathf.Max(startAfterIndex + 1, 0);
+        for (int i = start; i < currentTrainerRoster.Count; i++)
+        {
+            if (IsMonAlive(currentTrainerRoster[i]))
+                return i;
+        }
+
+        return -1;
     }
 
     private static int ComputeDamage(MonInstance attacker, MonInstance defender, MoveData move)
@@ -898,26 +1254,6 @@ public class LevelManager : MonoBehaviour
         return result;
     }
 
-    private bool IsTeamMember(MonInstance mon)
-    {
-        if (mon == null)
-            return false;
-
-        PlayerTeam team = GetPlayerTeam();
-        if (team == null || team.team == null)
-            return false;
-
-        int limit = Mathf.Min(team.UnlockedSlots, team.team.Length);
-
-        for (int i = 0; i < limit; i++)
-        {
-            if (ReferenceEquals(team.team[i], mon))
-                return true;
-        }
-
-        return false;
-    }
-
     private static bool IsMonAlive(MonInstance mon)
     {
         return mon != null && mon.currentHP > 0;
@@ -942,6 +1278,15 @@ public class LevelManager : MonoBehaviour
         PlaySound(currentWild.instance.species.battleCrySoundName, false);
     }
 
+    private void PlayEnemyBattleCry()
+    {
+        MonInstance enemy = GetCurrentEnemyMon();
+        if (enemy == null || enemy.species == null)
+            return;
+
+        PlaySound(enemy.species.battleCrySoundName, false);
+    }
+
     private void PlayMoveSound(MoveData move)
     {
         if (move == null)
@@ -958,7 +1303,7 @@ public class LevelManager : MonoBehaviour
         SoundManager manager = soundManager != null ? soundManager : SoundManager.Instance;
         if (manager == null)
         {
-            Debug.LogWarning($"{nameof(LevelManager)}: No hay {nameof(SoundManager)} disponible para reproducir '{soundName}'.", this);
+            Debug.LogWarning($"{nameof(LevelManager)}: no hay {nameof(SoundManager)} disponible para reproducir '{soundName}'.", this);
             return;
         }
 
@@ -983,5 +1328,34 @@ public class LevelManager : MonoBehaviour
             yield return null;
 
         Destroy(projectileInstance.gameObject);
+    }
+
+   private void CleanupEncounterReferences()
+    {
+        if (playerTouching != null)
+        {
+            playerTouching.lastWildMon = null;
+            playerTouching.lastTrainer = null;
+        }
+
+        currentWild = null;
+        currentTrainer = null;
+        currentTrainerRoster.Clear();
+        currentTrainerEnemyIndex = -1;
+
+        battleUI?.ClearEnemyMon();
+    }
+    private void TryShowTrainerIntro(string trainerName, Sprite trainerSprite)
+    {
+        if (battleUI == null)
+            return;
+
+        MethodInfo method = battleUI.GetType().GetMethod(
+            "ShowTrainerIntro",
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+        );
+
+        if (method != null)
+            method.Invoke(battleUI, new object[] { trainerName, trainerSprite });
     }
 }

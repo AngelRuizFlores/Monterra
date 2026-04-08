@@ -15,7 +15,7 @@ MonoBehaviour:
   monName: Droplet
   type: 2
   baseHP: 150
-  baseAttack: 400
+  baseAttack: 10
   baseDefense: 45
   baseSpeed: 35
   frontSprite: {fileID: 1408180825, guid: 399ea5742efa82e4aa6751490e9791c7, type: 3}

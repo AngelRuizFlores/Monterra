@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTeam : MonoBehaviour
@@ -23,8 +24,12 @@ public class PlayerTeam : MonoBehaviour
 
     public MonInstance GetActiveMon()
     {
-        if (team == null) return null;
-        if (ActiveIndex < 0 || ActiveIndex >= team.Length) return null;
+        if (team == null)
+            return null;
+
+        if (ActiveIndex < 0 || ActiveIndex >= team.Length)
+            return null;
+
         return team[ActiveIndex];
     }
 
@@ -44,7 +49,8 @@ public class PlayerTeam : MonoBehaviour
 
     public bool UnlockNextSlot()
     {
-        if (unlockedSlots >= MAX_TEAM) return false;
+        if (unlockedSlots >= MAX_TEAM)
+            return false;
 
         unlockedSlots++;
 
@@ -62,8 +68,11 @@ public class PlayerTeam : MonoBehaviour
 
         for (int i = 0; i < limit; i++)
         {
-            if (team[i] == null) return i;
-            if (team[i].species == null) return i;
+            if (team[i] == null)
+                return i;
+
+            if (team[i].species == null)
+                return i;
         }
 
         return -1;
@@ -71,8 +80,12 @@ public class PlayerTeam : MonoBehaviour
 
     public bool TryAddToNextFreeSlot(MonInstance mon)
     {
+        if (mon == null)
+            return false;
+
         int idx = GetNextFreeSlotIndex();
-        if (idx < 0) return false;
+        if (idx < 0)
+            return false;
 
         team[idx] = mon;
 
@@ -88,8 +101,11 @@ public class PlayerTeam : MonoBehaviour
 
     public bool SetActiveIndex(int idx)
     {
-        if (idx < 0 || idx >= UnlockedSlots) return false;
-        if (team[idx] == null) return false;
+        if (idx < 0 || idx >= UnlockedSlots)
+            return false;
+
+        if (team[idx] == null)
+            return false;
 
         ActiveIndex = idx;
         ApplyActiveToPlayerMon();
@@ -97,23 +113,13 @@ public class PlayerTeam : MonoBehaviour
         return true;
     }
 
-    private void ApplyActiveToPlayerMon()
-    {
-        if (playerMon == null) return;
-
-        playerMon.instance = GetActiveMon();
-
-        if (playerMon.instance != null && playerMon.instance.species != null)
-        {
-            playerMon.species = playerMon.instance.species;
-            playerMon.lvl = playerMon.instance.level;
-        }
-    }
-
     public bool SwapToFront(int idx)
     {
-        if (idx < 0 || idx >= UnlockedSlots) return false;
-        if (team[idx] == null) return false;
+        if (idx < 0 || idx >= UnlockedSlots)
+            return false;
+
+        if (team[idx] == null)
+            return false;
 
         if (idx == 0)
         {
@@ -133,12 +139,15 @@ public class PlayerTeam : MonoBehaviour
 
     public bool RemoveAt(int idx)
     {
-        if (idx < 0 || idx >= UnlockedSlots) return false;
-        if (team[idx] == null) return false;
+        if (idx < 0 || idx >= UnlockedSlots)
+            return false;
+
+        if (team[idx] == null)
+            return false;
 
         team[idx] = null;
 
-        if (idx == ActiveIndex)
+        if (idx == ActiveIndex && playerMon != null)
         {
             playerMon.instance = null;
             playerMon.species = null;
@@ -147,5 +156,52 @@ public class PlayerTeam : MonoBehaviour
 
         OnChanged?.Invoke();
         return true;
+    }
+
+    public int CountAliveMons()
+    {
+        int count = 0;
+        int limit = Mathf.Min(UnlockedSlots, team.Length);
+
+        for (int i = 0; i < limit; i++)
+        {
+            if (team[i] != null && team[i].species != null && team[i].currentHP > 0)
+                count++;
+        }
+
+        return count;
+    }
+
+    public bool AreAllMonsFainted()
+    {
+        return CountAliveMons() <= 0;
+    }
+
+    public List<MonInstance> GetOwnedMons()
+    {
+        List<MonInstance> result = new List<MonInstance>();
+        int limit = Mathf.Min(UnlockedSlots, team.Length);
+
+        for (int i = 0; i < limit; i++)
+        {
+            if (team[i] != null && team[i].species != null)
+                result.Add(team[i]);
+        }
+
+        return result;
+    }
+
+    private void ApplyActiveToPlayerMon()
+    {
+        if (playerMon == null)
+            return;
+
+        playerMon.instance = GetActiveMon();
+
+        if (playerMon.instance != null && playerMon.instance.species != null)
+        {
+            playerMon.species = playerMon.instance.species;
+            playerMon.lvl = playerMon.instance.level;
+        }
     }
 }
