@@ -1066,12 +1066,27 @@ public class LevelManager : MonoBehaviour
         bool reachedVictoryGoal = false;
         if (trainerBattleProgress != null && currentTrainer != null)
         {
-            trainerBattleProgress.TryRegisterVictory(currentTrainer);
+            bool registered = trainerBattleProgress.TryRegisterVictory(currentTrainer);
             reachedVictoryGoal = trainerBattleProgress.HasReachedRequiredVictories();
+
+            Debug.Log(
+                $"{nameof(LevelManager)}: victoria contra trainer='{currentTrainer.name}', " +
+                $"registered={registered}, reachedVictoryGoal={reachedVictoryGoal}"
+            );
+        }
+        else
+        {
+            Debug.LogWarning(
+                $"{nameof(LevelManager)}: no se pudo comprobar victoria final. " +
+                $"trainerBattleProgress null={trainerBattleProgress == null}, currentTrainer null={currentTrainer == null}"
+            );
         }
 
         if (reachedVictoryGoal)
+        {
+            Debug.Log($"{nameof(LevelManager)}: se alcanzó el objetivo de victorias. Se disparará OnWin.");
             pendingPostBattleAction = PostBattleAction.Victory;
+        }
 
         EndBattle();
     }

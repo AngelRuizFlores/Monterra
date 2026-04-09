@@ -3802,7 +3802,6 @@ GameObject:
   - component: {fileID: 793040707}
   - component: {fileID: 793040706}
   - component: {fileID: 793040708}
-  - component: {fileID: 793040709}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -3853,91 +3852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuMusic
   menuMusicName: MusicaMenu
---- !u!114 &793040709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793040705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f04d5f86dd6d047aea0bce433bc5f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  Audios:
-  - clip: {fileID: 8300000, guid: 37db9b722182eec41b12e19f69322ebd, type: 3}
-    AudioName: MusicaMenu
-    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: f6573a04bbc340b49802d2661ab0a5d5, type: 3}
-    AudioName: BackgroundMusic
-    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: 8de33174fadda9a4883cfa810be2a156, type: 3}
-    AudioName: MusicaCombate
-    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: 046e7583b45f17745a650a87dca877dc, type: 3}
-    AudioName: WaterAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: f4619717dd44ee84c918af2803b7ac7e, type: 3}
-    AudioName: EarthAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: f65508dbd7cbaa5429b83b049ea5bcae, type: 3}
-    AudioName: FireAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: c592a540772888b47a36765bc917bd0b, type: 3}
-    AudioName: GrassAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: 6eaa29bae83b49a46913b4bc9b753f6f, type: 3}
-    AudioName: LightAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: e16dac980e9170c41af35401f10482da, type: 3}
-    AudioName: ShadowAttack
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: aa72d0a210ff53d4a87fc1619f4bcd41, type: 3}
-    AudioName: Bell
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: 4dfc8e0593d82bc44ae20515969f7e77, type: 3}
-    AudioName: monkey-1
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: deedaffa4b00a4642b6eeff60ff2d290, type: 3}
-    AudioName: monkey-2
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: f8cc0ce3d15c8da4aa5dad984612661d, type: 3}
-    AudioName: monkey-3
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: be586acd9788cf9429e23dad8deb250b, type: 3}
-    AudioName: MonCatch
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: 3b71a7d43c38962458b6c65764e84942, type: 3}
-    AudioName: CatchAttempt
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: f7cec70aacc104941aeb1f2ef3829e9c, type: 3}
-    AudioName: FailCatch
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: e736c70225ada634a9f51abbd6450cde, type: 3}
-    AudioName: BallSound
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
-  - clip: {fileID: 8300000, guid: fe4d5e8aa76ae8f449463e25da5a1c38, type: 3}
-    AudioName: HeartSound
-    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
-    Volume: 0.5
 --- !u!1 &823255940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4849,6 +4763,123 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962762243}
   m_CullTransparentMesh: 1
+--- !u!1 &1045629383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045629385}
+  - component: {fileID: 1045629384}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1045629384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045629383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f04d5f86dd6d047aea0bce433bc5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  Audios:
+  - clip: {fileID: 8300000, guid: 37db9b722182eec41b12e19f69322ebd, type: 3}
+    AudioName: MusicaMenu
+    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f6573a04bbc340b49802d2661ab0a5d5, type: 3}
+    AudioName: BackgroundMusic
+    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 8de33174fadda9a4883cfa810be2a156, type: 3}
+    AudioName: MusicaCombate
+    Mixer: {fileID: -321741878054053117, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 046e7583b45f17745a650a87dca877dc, type: 3}
+    AudioName: WaterAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f4619717dd44ee84c918af2803b7ac7e, type: 3}
+    AudioName: EarthAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f65508dbd7cbaa5429b83b049ea5bcae, type: 3}
+    AudioName: FireAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: c592a540772888b47a36765bc917bd0b, type: 3}
+    AudioName: GrassAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 6eaa29bae83b49a46913b4bc9b753f6f, type: 3}
+    AudioName: LightAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: e16dac980e9170c41af35401f10482da, type: 3}
+    AudioName: ShadowAttack
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: aa72d0a210ff53d4a87fc1619f4bcd41, type: 3}
+    AudioName: Bell
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 4dfc8e0593d82bc44ae20515969f7e77, type: 3}
+    AudioName: monkey-1
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: deedaffa4b00a4642b6eeff60ff2d290, type: 3}
+    AudioName: monkey-2
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f8cc0ce3d15c8da4aa5dad984612661d, type: 3}
+    AudioName: monkey-3
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: be586acd9788cf9429e23dad8deb250b, type: 3}
+    AudioName: MonCatch
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 3b71a7d43c38962458b6c65764e84942, type: 3}
+    AudioName: CatchAttempt
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f7cec70aacc104941aeb1f2ef3829e9c, type: 3}
+    AudioName: FailCatch
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: e736c70225ada634a9f51abbd6450cde, type: 3}
+    AudioName: BallSound
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: fe4d5e8aa76ae8f449463e25da5a1c38, type: 3}
+    AudioName: HeartSound
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+--- !u!4 &1045629385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045629383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.70043, y: 15.4119, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1057410809
 GameObject:
   m_ObjectHideFlags: 0
@@ -11691,3 +11722,4 @@ SceneRoots:
   - {fileID: 282086287}
   - {fileID: 1714204639}
   - {fileID: 793040707}
+  - {fileID: 1045629385}

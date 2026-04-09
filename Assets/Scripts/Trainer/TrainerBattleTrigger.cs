@@ -22,6 +22,20 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     {
         cachedCollider = GetComponent<Collider2D>();
 
+        if (TryGetComponent<WildMon>(out _))
+        {
+            Debug.LogError(
+                $"{nameof(TrainerBattleTrigger)} en '{name}' no puede coexistir con {nameof(WildMon)} en el mismo GameObject.",
+                this
+            );
+        }
+
+        if (string.IsNullOrWhiteSpace(trainerId))
+        {
+            trainerId = Guid.NewGuid().ToString("N");
+            Debug.LogWarning($"{nameof(TrainerBattleTrigger)} en '{name}' no tenía trainerId. Se ha generado uno nuevo en runtime: {trainerId}", this);
+        }
+
         if (trainerDefinition == null)
         {
             Debug.LogError($"{nameof(TrainerBattleTrigger)} en '{name}' no tiene {nameof(TrainerDefinition)} asignado.", this);
@@ -76,6 +90,13 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(trainerId))
             trainerId = Guid.NewGuid().ToString("N");
+    }
+
+    [ContextMenu("Regenerate Trainer ID")]
+    private void RegenerateTrainerId()
+    {
+        trainerId = Guid.NewGuid().ToString("N");
+        Debug.Log($"{nameof(TrainerBattleTrigger)} en '{name}' regeneró trainerId: {trainerId}", this);
     }
 #endif
 }
