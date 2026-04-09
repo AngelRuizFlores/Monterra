@@ -97,6 +97,14 @@ public class LevelManager : MonoBehaviour
         if (!CanStartWildBattle(out currentWild))
             return;
 
+        PlayerTeam team = GetPlayerTeam();
+        if (team == null || !team.EnsureValidActiveMon())
+        {
+            Debug.LogWarning($"{nameof(LevelManager)}: no hay ningún mon vivo disponible para iniciar el combate.");
+            onPlayerPartyDefeated?.Invoke();
+            return;
+        }
+
         ResetBattleSession();
         encounterType = EncounterType.Wild;
 
@@ -121,6 +129,14 @@ public class LevelManager : MonoBehaviour
     {
         if (!CanStartTrainerBattle(out TrainerBattleTrigger trainer))
             return;
+
+        PlayerTeam team = GetPlayerTeam();
+        if (team == null || !team.EnsureValidActiveMon())
+        {
+            Debug.LogWarning($"{nameof(LevelManager)}: no hay ningún mon vivo disponible para iniciar el combate contra trainer.");
+            onPlayerPartyDefeated?.Invoke();
+            return;
+        }
 
         ResetBattleSession();
         encounterType = EncounterType.Trainer;

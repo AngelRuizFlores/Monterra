@@ -191,6 +191,53 @@ public class PlayerTeam : MonoBehaviour
         return result;
     }
 
+    public int GetFirstAliveMonIndex()
+    {
+        int limit = Mathf.Min(UnlockedSlots, team.Length);
+
+        for (int i = 0; i < limit; i++)
+        {
+            MonInstance mon = team[i];
+            if (mon == null || mon.species == null)
+                continue;
+
+            if (mon.currentHP > 0)
+                return i;
+        }
+
+        return -1;
+    }
+
+    public bool EnsureValidActiveMon()
+    {
+        MonInstance active = GetActiveMon();
+
+        if (active != null && active.species != null && active.currentHP > 0)
+        {
+            ApplyActiveToPlayerMon();
+            return true;
+        }
+
+        int firstAliveIndex = GetFirstAliveMonIndex();
+        if (firstAliveIndex < 0)
+        {
+            if (playerMon != null)
+            {
+                playerMon.instance = null;
+                playerMon.species = null;
+                playerMon.lvl = 1;
+            }
+
+            OnChanged?.Invoke();
+            return false;
+        }
+
+        ActiveIndex = firstAliveIndex;
+        ApplyActiveToPlayerMon();
+        OnChanged?.Invoke();
+        return true;
+    }
+
     private void ApplyActiveToPlayerMon()
     {
         if (playerMon == null)
@@ -202,6 +249,11 @@ public class PlayerTeam : MonoBehaviour
         {
             playerMon.species = playerMon.instance.species;
             playerMon.lvl = playerMon.instance.level;
+        }
+        else
+        {
+            playerMon.species = null;
+            playerMon.lvl = 1;
         }
     }
 }
