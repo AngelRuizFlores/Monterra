@@ -9,23 +9,23 @@ public class RandomMovementBehavior : MonoBehaviour
     [SerializeField] private float changeDirectionInterval = 3f;
     [SerializeField] private float randomDirectionRange = 1f;
 
-    [Header("Limits (optional)")]
+    [Header("Bounds")]
     [SerializeField] private Collider2D homeZone;
     [SerializeField] private float insideEpsilon = 0.02f;
 
-    [Header("Player stop (optional)")]
+    [Header("Player Proximity")]
     [SerializeField] private Transform player;
     [SerializeField] private float stopRadius = 1.2f;
     [SerializeField] private float resumeRadius = 1.6f;
 
-    [Header("Separation (Mon layer)")]
+    [Header("Separation")]
     [SerializeField] private LayerMask monMask;
     [SerializeField] private float separationRadius = 0.45f;
     [SerializeField] private float separationPadding = 0.05f;
     [SerializeField] private float separationForce = 1.2f;
 
     private Rigidbody2D rb;
-    private Collider2D myCol;
+    private Collider2D myCollider;
 
     private Vector2 direction;
     private float timer;
@@ -34,16 +34,15 @@ public class RandomMovementBehavior : MonoBehaviour
     private readonly Collider2D[] hits = new Collider2D[16];
     private ContactFilter2D monFilter;
 
-    void Awake()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        myCol = GetComponent<Collider2D>();
+        myCollider = GetComponent<Collider2D>();
 
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
 
-        // Solo “cuerpos” de Mon (no triggers)
         monFilter = new ContactFilter2D
         {
             useLayerMask = true,
@@ -52,15 +51,15 @@ public class RandomMovementBehavior : MonoBehaviour
         };
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         ResetState();
     }
 
-    void Update()
+    private void Update()
     {
-        // Si está parado por player, no hace falta cambiar dirección
-        if (PlayerIsClose()) return;
+        if (IsPlayerClose())
+            return;
 
         timer -= Time.deltaTime;
         if (timer <= 0f)
@@ -70,40 +69,37 @@ public class RandomMovementBehavior : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (PlayerIsClose())
+        if (IsPlayerClose())
         {
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;
         }
 
-        Vector2 pos = rb.position;
+        Vector2 currentPosition = rb.position;
 
-        // Dirección base
-        Vector2 moveDir = direction.sqrMagnitude > 0.0001f ? direction.normalized : Vector2.right;
-        Vector2 nextPos = pos + moveDir * moveSpeed * Time.fixedDeltaTime;
+        Vector2 moveDirection = direction.sqrMagnitude > 0.0001f
+            ? direction.normalized
+            : Vector2.right;
 
-        // Mantener dentro del home (si existe)
-        if (homeZone && !homeZone.OverlapPoint(nextPos))
+        Vector2 nextPosition = currentPosition + moveDirection * moveSpeed * Time.fixedDeltaTime;
+
+        if (homeZone != null && !homeZone.OverlapPoint(nextPosition))
         {
-            nextPos = PushInsideHome(nextPos);
-            PickRandomDirection(); // para no quedarse pegado
-            moveDir = direction.normalized;
+            nextPosition = PushInsideHome(nextPosition);
+            PickRandomDirection();
+            moveDirection = direction.normalized;
         }
 
-        // Separación suave (sin empuje físico)
-        nextPos += SeparationOffset(nextPos);
+        nextPosition += GetSeparationOffset(nextPosition);
 
-        // Re-chequeo por si la separación te sacó fuera
-        if (homeZone && !homeZone.OverlapPoint(nextPos))
-            nextPos = PushInsideHome(nextPos);
+        if (homeZone != null && !homeZone.OverlapPoint(nextPosition))
+            nextPosition = PushInsideHome(nextPosition);
 
-        rb.MovePosition(nextPos);
-
-        // Mira por X (si quieres mantenerlo)
-        FaceByX(moveDir.x);
+        rb.MovePosition(nextPosition);
+        FaceByX(moveDirection.x);
     }
 
     public void ResetState()
@@ -112,26 +108,39 @@ public class RandomMovementBehavior : MonoBehaviour
         timer = changeDirectionInterval;
         PickRandomDirection();
 
-        if (rb)
+        if (rb != null)
         {
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
     }
 
-    private bool PlayerIsClose()
+    public void SetHomeZone(Collider2D zone)
     {
-        if (!player || !rb) return false;
+        homeZone = zone;
+    }
 
-        float d = Vector2.Distance(rb.position, player.position);
+    public void SetPlayer(Transform targetPlayer)
+    {
+        player = targetPlayer;
+    }
+
+    private bool IsPlayerClose()
+    {
+        if (player == null || rb == null)
+            return false;
+
+        float distance = Vector2.Distance(rb.position, player.position);
 
         if (!stopped)
         {
-            if (d <= stopRadius) stopped = true;
+            if (distance <= stopRadius)
+                stopped = true;
         }
         else
         {
-            if (d >= resumeRadius) stopped = false;
+            if (distance >= resumeRadius)
+                stopped = false;
         }
 
         return stopped;
@@ -140,69 +149,71 @@ public class RandomMovementBehavior : MonoBehaviour
     private void PickRandomDirection()
     {
         direction = Random.insideUnitCircle * randomDirectionRange;
+
         if (direction.sqrMagnitude < 0.001f)
             direction = Vector2.right;
     }
 
     private void FaceByX(float x)
     {
-        transform.rotation = (x < 0) ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        transform.rotation = x < 0f
+            ? Quaternion.Euler(0f, 180f, 0f)
+            : Quaternion.Euler(0f, 0f, 0f);
     }
 
-    private Vector2 PushInsideHome(Vector2 candidate)
+    private Vector2 PushInsideHome(Vector2 candidatePosition)
     {
-        // Empuja hacia dentro del collider de zona
-        Vector2 closest = homeZone.ClosestPoint(candidate);
-        Vector2 toCenter = (Vector2)homeZone.bounds.center - closest;
+        Vector2 closestPoint = homeZone.ClosestPoint(candidatePosition);
+        Vector2 toCenter = (Vector2)homeZone.bounds.center - closestPoint;
 
         if (toCenter.sqrMagnitude > 0.0001f)
-            closest += toCenter.normalized * insideEpsilon;
+            closestPoint += toCenter.normalized * insideEpsilon;
 
-        return closest;
+        return closestPoint;
     }
 
-    private Vector2 SeparationOffset(Vector2 pos)
+    private Vector2 GetSeparationOffset(Vector2 position)
     {
-        int count = Physics2D.OverlapCircle(pos, separationRadius + separationPadding, monFilter, hits);
-        if (count == 0) return Vector2.zero;
+        int count = Physics2D.OverlapCircle(
+            position,
+            separationRadius + separationPadding,
+            monFilter,
+            hits
+        );
+
+        if (count == 0)
+            return Vector2.zero;
 
         Vector2 push = Vector2.zero;
 
         for (int i = 0; i < count; i++)
         {
-            var h = hits[i];
-            if (!h) continue;
-            if (h == myCol) continue;
+            Collider2D hit = hits[i];
+            if (hit == null || hit == myCollider)
+                continue;
 
-            // punto real más cercano (mucho mejor que bounds.center)
-            Vector2 closest = h.ClosestPoint(pos);
-            Vector2 dir = pos - closest;
+            Vector2 closestPoint = hit.ClosestPoint(position);
+            Vector2 offsetDirection = position - closestPoint;
 
-            float dist = dir.magnitude;
-            if (dist < 0.0001f) continue;
+            float distance = offsetDirection.magnitude;
+            if (distance < 0.0001f || distance >= separationRadius)
+                continue;
 
-            float minDist = separationRadius;
-            if (dist >= minDist) continue;
-
-            float t = (minDist - dist) / minDist; // 0..1
-            push += dir.normalized * t;
+            float strength = (separationRadius - distance) / separationRadius;
+            push += offsetDirection.normalized * strength;
         }
 
-        if (push.sqrMagnitude < 0.0001f) return Vector2.zero;
+        if (push.sqrMagnitude < 0.0001f)
+            return Vector2.zero;
 
-        // empuje suave proporcional
         Vector2 offset = push * separationForce * Time.fixedDeltaTime;
-
-        // clamp para evitar saltos raros cuando hay muchos juntos
         float maxStep = separationForce * Time.fixedDeltaTime;
+
         return Vector2.ClampMagnitude(offset, maxStep);
     }
 
-    public void SetHomeZone(Collider2D zone) => homeZone = zone;
-    public void SetPlayer(Transform p) => player = p;
-
 #if UNITY_EDITOR
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, separationRadius);
     }

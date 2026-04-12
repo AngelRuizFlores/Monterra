@@ -46,10 +46,10 @@ Material:
     - _PreviewActive: 0
     - _PreviewRadius: 0.4
     - _PreviewThickness: 0.006
-    - _Radius: 1.6666666
+    - _Radius: 10
     - _ZWrite: 0
     m_Colors:
-    - _Center: {r: 0.87822574, g: 0.17448889, b: 0, a: 0}
+    - _Center: {r: 0.45834368, g: -1.8718381, b: 0, a: 0}
     - _Color: {r: 0.63640434, g: 0.17475075, b: 0.7264151, a: 0.5882353}
     - _PreviewCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _PreviewColor: {r: 1, g: 0, b: 0, a: 0.5}

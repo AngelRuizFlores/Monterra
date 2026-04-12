@@ -20,39 +20,31 @@ public class BellHealStation : MonoBehaviour
 
         if (triggerCollider == null)
         {
-            Debug.LogError("BellHealStation requiere un Collider2D.", this);
+            Debug.LogError("BellHealStation requires a Collider2D.", this);
             enabled = false;
             return;
         }
 
         if (!triggerCollider.isTrigger)
-        {
             triggerCollider.isTrigger = true;
-        }
 
         if (cooldownSeconds <= 0f)
-        {
             cooldownSeconds = 15f;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!enabled || isOnCooldown)
-        {
             return;
-        }
 
         if (!IsInLayerMask(collision.gameObject.layer, playerLayer))
-        {
             return;
-        }
 
         PlayerTeam playerTeam = collision.GetComponentInParent<PlayerTeam>();
 
         if (playerTeam == null)
         {
-            Debug.LogWarning("BellHealStation no encontró PlayerTeam en el player.", collision);
+            Debug.LogWarning("BellHealStation could not find PlayerTeam on the player.", collision);
             return;
         }
 
@@ -68,9 +60,7 @@ public class BellHealStation : MonoBehaviour
     private int HealTeam(PlayerTeam team)
     {
         if (team.team == null)
-        {
             return 0;
-        }
 
         int healedCount = 0;
         int limit = Mathf.Min(team.UnlockedSlots, team.team.Length);
@@ -80,9 +70,7 @@ public class BellHealStation : MonoBehaviour
             MonInstance mon = team.team[i];
 
             if (mon == null || mon.species == null)
-            {
                 continue;
-            }
 
             int maxHP = MonLevelSystem.GetMaxHP(mon);
 
@@ -100,7 +88,7 @@ public class BellHealStation : MonoBehaviour
     {
         if (SoundManager.Instance == null)
         {
-            Debug.LogWarning("No se encontró SoundManager.");
+            Debug.LogWarning("SoundManager not found.");
             return;
         }
 

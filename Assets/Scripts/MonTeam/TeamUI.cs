@@ -1,22 +1,22 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TeamUI : MonoBehaviour
 {
     [SerializeField] public PlayerTeam team;
     [SerializeField] private BattleUI battleUI;
 
-    [Header("Active (Big)")]
+    [Header("Active Mon")]
     [SerializeField] private Image activeIcon;
     [SerializeField] private Slider playerHP;
     [SerializeField] private Slider playerEXP;
-    [SerializeField] private TextMeshProUGUI name_Mon;
-    [SerializeField] private TextMeshProUGUI level_Mon;
+    [SerializeField] private TextMeshProUGUI monNameText;
+    [SerializeField] private TextMeshProUGUI monLevelText;
     [SerializeField] private Image typeIcon;
 
-    [Header("Small Slots (5)")]
+    [Header("Small Slots")]
     [SerializeField] private Image[] smallContentIcons;
     [SerializeField] private Image[] smallLockIcons;
     [SerializeField] private Button[] deleteButtons;
@@ -58,9 +58,9 @@ public class TeamUI : MonoBehaviour
 
         if (evolutionFlash != null)
         {
-            Color c = evolutionFlash.color;
-            c.a = 0f;
-            evolutionFlash.color = c;
+            Color color = evolutionFlash.color;
+            color.a = 0f;
+            evolutionFlash.color = color;
         }
 
         HookDeleteButtons();
@@ -82,30 +82,35 @@ public class TeamUI : MonoBehaviour
 
     private void HookDeleteButtons()
     {
-        if (deleteButtons == null) return;
+        if (deleteButtons == null)
+            return;
 
         for (int i = 0; i < deleteButtons.Length; i++)
         {
             int smallSlotIndex = i;
-            Button b = deleteButtons[i];
-            if (b == null) continue;
+            Button button = deleteButtons[i];
+            if (button == null)
+                continue;
 
-            b.onClick.RemoveAllListeners();
-            b.onClick.AddListener(() =>
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() =>
             {
-                if (team == null || confirmPopup == null) return;
+                if (team == null || confirmPopup == null)
+                    return;
 
-                int teamIndex = (smallSlotIndex >= 0 && smallSlotIndex < displayedTeamIndices.Length)
+                int teamIndex = smallSlotIndex >= 0 && smallSlotIndex < displayedTeamIndices.Length
                     ? displayedTeamIndices[smallSlotIndex]
                     : -1;
 
-                if (teamIndex < 0 || teamIndex >= team.UnlockedSlots) return;
+                if (teamIndex < 0 || teamIndex >= team.UnlockedSlots)
+                    return;
 
-                MonInstance inst = team.team[teamIndex];
-                if (inst == null || inst.species == null) return;
+                MonInstance instance = team.team[teamIndex];
+                if (instance == null || instance.species == null)
+                    return;
 
-                string monName = inst.species.monName;
-                confirmPopup.Show($"¿Eliminar a {monName}?", () =>
+                string monName = instance.species.monName;
+                confirmPopup.Show($"Remove {monName}?", () =>
                 {
                     team.RemoveAt(teamIndex);
                 });
@@ -115,7 +120,8 @@ public class TeamUI : MonoBehaviour
 
     public void RefreshAll()
     {
-        if (team == null) return;
+        if (team == null)
+            return;
 
         MonInstance active = team.GetActiveMon();
         SyncPlayerMonMeta(active);
@@ -129,7 +135,8 @@ public class TeamUI : MonoBehaviour
         for (int i = 0; i < displayedTeamIndices.Length; i++)
             displayedTeamIndices[i] = -1;
 
-        if (team == null) return;
+        if (team == null)
+            return;
 
         int writeIndex = 0;
         int limit = Mathf.Min(team.UnlockedSlots, team.team.Length);
@@ -150,21 +157,21 @@ public class TeamUI : MonoBehaviour
 
         for (int i = 0; i < displayedTeamIndices.Length; i++)
         {
-            Image content = (smallContentIcons != null && i < smallContentIcons.Length) ? smallContentIcons[i] : null;
-            Image lockImg = (smallLockIcons != null && i < smallLockIcons.Length) ? smallLockIcons[i] : null;
-            Button delBtn = (deleteButtons != null && i < deleteButtons.Length) ? deleteButtons[i] : null;
+            Image content = smallContentIcons != null && i < smallContentIcons.Length ? smallContentIcons[i] : null;
+            Image lockImage = smallLockIcons != null && i < smallLockIcons.Length ? smallLockIcons[i] : null;
+            Button deleteButton = deleteButtons != null && i < deleteButtons.Length ? deleteButtons[i] : null;
 
             bool slotUnlocked = i < unlockedSmallSlots;
             int mappedTeamIndex = displayedTeamIndices[i];
-            MonInstance inst = (slotUnlocked && mappedTeamIndex >= 0 && mappedTeamIndex < team.team.Length)
+            MonInstance instance = slotUnlocked && mappedTeamIndex >= 0 && mappedTeamIndex < team.team.Length
                 ? team.team[mappedTeamIndex]
                 : null;
 
-            if (lockImg != null)
+            if (lockImage != null)
             {
-                lockImg.sprite = lockSprite;
-                lockImg.enabled = !slotUnlocked;
-                lockImg.color = filledColor;
+                lockImage.sprite = lockSprite;
+                lockImage.enabled = !slotUnlocked;
+                lockImage.color = filledColor;
             }
 
             if (content != null)
@@ -174,30 +181,31 @@ public class TeamUI : MonoBehaviour
                     content.sprite = null;
                     content.color = filledColor;
                 }
-                else if (inst == null || inst.species == null)
+                else if (instance == null || instance.species == null)
                 {
                     content.sprite = null;
                     content.color = filledColor;
                 }
                 else
                 {
-                    content.sprite = inst.species.frontSprite;
+                    content.sprite = instance.species.frontSprite;
                     content.color = filledColor;
                 }
             }
 
-            if (delBtn != null)
+            if (deleteButton != null)
             {
-                bool showDelete = slotUnlocked && inst != null && inst.species != null;
-                delBtn.gameObject.SetActive(showDelete);
-                delBtn.interactable = showDelete;
+                bool showDelete = slotUnlocked && instance != null && instance.species != null;
+                deleteButton.gameObject.SetActive(showDelete);
+                deleteButton.interactable = showDelete;
             }
         }
     }
 
     private void RefreshActiveVisuals(MonInstance active)
     {
-        if (activeIcon == null) return;
+        if (activeIcon == null)
+            return;
 
         if (active != null && active.species != null)
         {
@@ -216,10 +224,12 @@ public class TeamUI : MonoBehaviour
 
     private void RefreshHud()
     {
-        if (team == null) return;
+        if (team == null)
+            return;
 
         MonInstance active = team.GetActiveMon();
-        if (active == null || active.species == null) return;
+        if (active == null || active.species == null)
+            return;
 
         SyncPlayerMonMeta(active);
 
@@ -245,8 +255,8 @@ public class TeamUI : MonoBehaviour
             playerEXP.value = Mathf.Clamp(active.experience, 0, expToNext);
         }
 
-        if (name_Mon != null)
-            name_Mon.text = active.species.monName;
+        if (monNameText != null)
+            monNameText.text = active.species.monName;
 
         if (typeIcon != null)
         {
@@ -254,13 +264,14 @@ public class TeamUI : MonoBehaviour
             typeIcon.color = filledColor;
         }
 
-        if (level_Mon != null)
-            level_Mon.text = "Lvl " + active.level;
+        if (monLevelText != null)
+            monLevelText.text = $"Lv. {active.level}";
     }
 
     private void DetectEvolutionOfActiveMon()
     {
-        if (team == null) return;
+        if (team == null)
+            return;
 
         MonInstance active = team.GetActiveMon();
         if (active == null || active.species == null)
@@ -296,7 +307,7 @@ public class TeamUI : MonoBehaviour
             evolutionPanel.SetActive(true);
 
         if (evolutionText != null)
-            evolutionText.text = $"{fromSpecies.monName} evolucionó a {toSpecies.monName}!";
+            evolutionText.text = $"{fromSpecies.monName} evolved into {toSpecies.monName}.";
 
         yield return FlashWhite();
         yield return PulseActiveIcon();
@@ -316,30 +327,30 @@ public class TeamUI : MonoBehaviour
         if (evolutionFlash == null)
             yield break;
 
-        Color c = evolutionFlash.color;
+        Color color = evolutionFlash.color;
 
-        float t = 0f;
-        while (t < evolutionFlashDuration)
+        float elapsed = 0f;
+        while (elapsed < evolutionFlashDuration)
         {
-            t += Time.unscaledDeltaTime;
-            float a = Mathf.Lerp(0f, 0.9f, t / evolutionFlashDuration);
-            c.a = a;
-            evolutionFlash.color = c;
+            elapsed += Time.unscaledDeltaTime;
+            float alpha = Mathf.Lerp(0f, 0.9f, elapsed / evolutionFlashDuration);
+            color.a = alpha;
+            evolutionFlash.color = color;
             yield return null;
         }
 
-        t = 0f;
-        while (t < evolutionFlashDuration)
+        elapsed = 0f;
+        while (elapsed < evolutionFlashDuration)
         {
-            t += Time.unscaledDeltaTime;
-            float a = Mathf.Lerp(0.9f, 0f, t / evolutionFlashDuration);
-            c.a = a;
-            evolutionFlash.color = c;
+            elapsed += Time.unscaledDeltaTime;
+            float alpha = Mathf.Lerp(0.9f, 0f, elapsed / evolutionFlashDuration);
+            color.a = alpha;
+            evolutionFlash.color = color;
             yield return null;
         }
 
-        c.a = 0f;
-        evolutionFlash.color = c;
+        color.a = 0f;
+        evolutionFlash.color = color;
     }
 
     private IEnumerator PulseActiveIcon()
@@ -347,33 +358,33 @@ public class TeamUI : MonoBehaviour
         if (activeIcon == null)
             yield break;
 
-        RectTransform rt = activeIcon.rectTransform;
-        if (rt == null)
+        RectTransform rectTransform = activeIcon.rectTransform;
+        if (rectTransform == null)
             yield break;
 
-        Vector3 start = activeIconBaseScale;
-        Vector3 peak = activeIconBaseScale * evolutionPulseScale;
+        Vector3 startScale = activeIconBaseScale;
+        Vector3 peakScale = activeIconBaseScale * evolutionPulseScale;
 
         for (int i = 0; i < evolutionPulseCount; i++)
         {
-            float t = 0f;
-            while (t < 0.12f)
+            float elapsed = 0f;
+            while (elapsed < 0.12f)
             {
-                t += Time.unscaledDeltaTime;
-                rt.localScale = Vector3.Lerp(start, peak, t / 0.12f);
+                elapsed += Time.unscaledDeltaTime;
+                rectTransform.localScale = Vector3.Lerp(startScale, peakScale, elapsed / 0.12f);
                 yield return null;
             }
 
-            t = 0f;
-            while (t < 0.12f)
+            elapsed = 0f;
+            while (elapsed < 0.12f)
             {
-                t += Time.unscaledDeltaTime;
-                rt.localScale = Vector3.Lerp(peak, start, t / 0.12f);
+                elapsed += Time.unscaledDeltaTime;
+                rectTransform.localScale = Vector3.Lerp(peakScale, startScale, elapsed / 0.12f);
                 yield return null;
             }
         }
 
-        rt.localScale = start;
+        rectTransform.localScale = startScale;
     }
 
     private void SyncPlayerMonMeta(MonInstance active)

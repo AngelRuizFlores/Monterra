@@ -13,7 +13,6 @@ public class HeartBehaviour : MonoBehaviour
         {
             healthBehaviour.Heal(healAmount);
 
-            // 🔊 sonido
             if (SoundManager.Instance != null)
                 SoundManager.Instance.Play(HeartSound, false);
 

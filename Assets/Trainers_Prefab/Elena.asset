@@ -15,7 +15,5 @@ MonoBehaviour:
   trainerName: Elena
   trainerSprite: {fileID: 1598726203847200779, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 2cdb803c96ce11e4db25dfd5d43a1b13, type: 2}
-    level: 1
   - species: {fileID: 11400000, guid: 20a6bcb71cece744eb981c2a54eb2cba, type: 2}
     level: 1

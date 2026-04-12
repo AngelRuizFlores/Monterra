@@ -6,45 +6,40 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject optionsPanel;
+
     [Header("Scene Names")]
     [SerializeField] private string gameplaySceneName = "SampleScene";
 
-    private bool isLoading = false;
+    private bool isLoading;
 
-    // -------------------------
-    // NEW GAME
-    // -------------------------
     public void OnNewGamePressed()
     {
-        if (isLoading) return;
+        if (isLoading)
+            return;
 
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
-    // -------------------------
-    // CONTINUE (opcional futuro)
-    // -------------------------
     public void OnContinuePressed()
     {
-        if (isLoading) return;
+        if (isLoading)
+            return;
 
         if (!HasSaveData())
         {
-            Debug.LogWarning("No hay partida guardada.");
+            Debug.LogWarning("No save data found.");
             return;
         }
 
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
-    // -------------------------
-    // EXIT GAME
-    // -------------------------
     public void OnExitPressed()
     {
-        if (isLoading) return;
+        if (isLoading)
+            return;
 
-        Debug.Log("Saliendo del juego...");
+        Debug.Log("Closing game.");
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -53,14 +48,27 @@ public class MainMenuManager : MonoBehaviour
 #endif
     }
 
-    // -------------------------
-    // LOAD SCENE WITH FADE
-    // -------------------------
+    public void OnOptionsPressed()
+    {
+        if (isLoading)
+            return;
+
+        StartCoroutine(OpenOptionsWithFade());
+    }
+
+    public void OnBackFromOptionsPressed()
+    {
+        if (isLoading)
+            return;
+
+        StartCoroutine(CloseOptionsWithFade());
+    }
+
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
         if (string.IsNullOrWhiteSpace(sceneName))
         {
-            Debug.LogError("Nombre de escena vacío.");
+            Debug.LogError("Scene name is empty.");
             yield break;
         }
 
@@ -72,32 +80,17 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No se encontró FadeController en la escena.");
+            Debug.LogWarning("FadeController was not found in the scene.");
         }
 
         SceneManager.LoadScene(sceneName);
     }
 
-    // -------------------------
-    // SAVE CHECK (placeholder)
-    // -------------------------
     private bool HasSaveData()
     {
-        // Cambia esto cuando tengas sistema de guardado real
         return PlayerPrefs.HasKey("HasSave");
     }
 
-    public void OnOptionsPressed()
-    {
-        if (isLoading) return;
-        StartCoroutine(OpenOptionsWithFade());
-    }
-
-    public void OnBackFromOptionsPressed()
-    {
-        if (isLoading) return;
-        StartCoroutine(CloseOptionsWithFade());
-    }
     private IEnumerator OpenOptionsWithFade()
     {
         if (FadeController.Instance != null)

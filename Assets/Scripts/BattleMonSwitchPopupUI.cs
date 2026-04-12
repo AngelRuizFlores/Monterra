@@ -15,11 +15,11 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
     [SerializeField] private Transform contentParent;
     [SerializeField] private BattleMonSwitchOptionUI optionPrefab;
 
-    private readonly List<BattleMonSwitchOptionUI> spawnedOptions = new List<BattleMonSwitchOptionUI>();
+    private readonly List<BattleMonSwitchOptionUI> spawnedOptions = new();
 
     private Action<MonInstance> onSelected;
     private Action onCancelled;
-    private bool mandatory;
+    private bool isMandatory;
 
     public bool IsOpen => root != null && root.activeSelf;
 
@@ -34,29 +34,29 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
     public void Show(
         string title,
         IReadOnlyList<MonInstance> options,
-        bool isMandatory,
+        bool mandatory,
         Action<MonInstance> onOptionSelected,
         Action onCancelPressed)
     {
         if (root == null)
         {
-            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: Falta asignar el root del popup.");
+            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: popup root is not assigned.");
             return;
         }
 
         if (contentParent == null)
         {
-            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: Falta asignar el contentParent.");
+            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: content parent is not assigned.");
             return;
         }
 
         if (optionPrefab == null)
         {
-            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: Falta asignar el prefab de opción.");
+            Debug.LogError($"{nameof(BattleMonSwitchPopupUI)}: option prefab is not assigned.");
             return;
         }
 
-        mandatory = isMandatory;
+        isMandatory = mandatory;
         onSelected = onOptionSelected;
         onCancelled = onCancelPressed;
 
@@ -64,10 +64,9 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
             titleText.text = title ?? string.Empty;
 
         if (cancelButton != null)
-            cancelButton.gameObject.SetActive(!mandatory);
+            cancelButton.gameObject.SetActive(!isMandatory);
 
         RebuildOptions(options);
-
         root.SetActive(true);
     }
 
@@ -77,10 +76,9 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
             root.SetActive(false);
 
         ClearOptions();
-
         onSelected = null;
         onCancelled = null;
-        mandatory = false;
+        isMandatory = false;
     }
 
     public void HideImmediate()
@@ -92,7 +90,7 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
 
         onSelected = null;
         onCancelled = null;
-        mandatory = false;
+        isMandatory = false;
     }
 
     private void RebuildOptions(IReadOnlyList<MonInstance> options)
@@ -108,9 +106,9 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
             if (mon == null)
                 continue;
 
-            BattleMonSwitchOptionUI item = Instantiate(optionPrefab, contentParent);
-            item.Bind(mon, HandleOptionSelected);
-            spawnedOptions.Add(item);
+            BattleMonSwitchOptionUI option = Instantiate(optionPrefab, contentParent);
+            option.Bind(mon, HandleOptionSelected);
+            spawnedOptions.Add(option);
         }
     }
 
@@ -132,7 +130,7 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
 
     private void HandleCancelPressed()
     {
-        if (mandatory)
+        if (isMandatory)
             return;
 
         Action cancelCallback = onCancelled;
@@ -144,7 +142,7 @@ public class BattleMonSwitchPopupUI : MonoBehaviour
 
         onSelected = null;
         onCancelled = null;
-        mandatory = false;
+        isMandatory = false;
 
         cancelCallback?.Invoke();
     }

@@ -22,13 +22,13 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
     {
         if (monInstance == null)
         {
-            Debug.LogError($"{nameof(HealthBehaviour)}.{nameof(Init)} recibió un MonInstance null.", this);
+            Debug.LogError($"{nameof(HealthBehaviour)}.{nameof(Init)} received a null MonInstance.", this);
             return;
         }
 
         if (monInstance.species == null)
         {
-            Debug.LogError($"{nameof(HealthBehaviour)}.{nameof(Init)} recibió un MonInstance con species null.", this);
+            Debug.LogError($"{nameof(HealthBehaviour)}.{nameof(Init)} received a MonInstance with a null species.", this);
             return;
         }
 
@@ -41,13 +41,13 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
     {
         if (instance == null)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Hurt)} llamado sin inicializar.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Hurt)} was called before initialization.", this);
             return;
         }
 
         if (damage <= 0)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Hurt)} recibió un daño no válido: {damage}.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Hurt)} received invalid damage: {damage}.", this);
             return;
         }
 
@@ -55,22 +55,20 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
         OnHurt?.Invoke(instance.currentHP, MaxHealth);
 
         if (instance.currentHP == 0)
-        {
             OnDie?.Invoke();
-        }
     }
 
     public IEnumerator HurtAnimated(int damage)
     {
         if (instance == null)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} llamado sin inicializar.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} was called before initialization.", this);
             yield break;
         }
 
         if (damage <= 0)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} recibió un daño no válido: {damage}.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HurtAnimated)} received invalid damage: {damage}.", this);
             yield break;
         }
 
@@ -110,45 +108,41 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
         OnHurt?.Invoke(instance.currentHP, MaxHealth);
 
         if (instance.currentHP == 0)
-        {
             OnDie?.Invoke();
-        }
     }
 
     public void Heal(int amount)
     {
         if (instance == null)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Heal)} llamado sin inicializar.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Heal)} was called before initialization.", this);
             return;
         }
 
         if (amount <= 0)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Heal)} recibió una curación no válida: {amount}.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(Heal)} received invalid healing: {amount}.", this);
             return;
         }
 
-        int previousHp = instance.currentHP;
+        int previousHP = instance.currentHP;
         instance.currentHP = Mathf.Min(MaxHealth, instance.currentHP + amount);
 
-        if (instance.currentHP != previousHp)
-        {
+        if (instance.currentHP != previousHP)
             OnHeal?.Invoke(instance.currentHP, MaxHealth);
-        }
     }
 
     public IEnumerator HealAnimated(int amount)
     {
         if (instance == null)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} llamado sin inicializar.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} was called before initialization.", this);
             yield break;
         }
 
         if (amount <= 0)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} recibió una curación no válida: {amount}.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealAnimated)} received invalid healing: {amount}.", this);
             yield break;
         }
 
@@ -192,14 +186,12 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
     {
         if (instance == null)
         {
-            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealToFull)} llamado sin inicializar.", this);
+            Debug.LogWarning($"{nameof(HealthBehaviour)}.{nameof(HealToFull)} was called before initialization.", this);
             return;
         }
 
         if (instance.currentHP == MaxHealth)
-        {
             return;
-        }
 
         instance.currentHP = MaxHealth;
         OnHeal?.Invoke(instance.currentHP, MaxHealth);

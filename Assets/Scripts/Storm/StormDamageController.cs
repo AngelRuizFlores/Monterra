@@ -6,10 +6,8 @@ public class StormDamageController : MonoBehaviour
 {
     [SerializeField] private StormOverlayController stormController;
     [SerializeField] private PlayerTeam playerTeam;
-    
-    // ✅ NUEVO: Referencia explícita a la posición del jugador
     [SerializeField] private Transform playerTransform;
-    
+
     [SerializeField] private float damageIntervalSeconds = 2f;
     [SerializeField] private int damagePerTick = 10;
     [SerializeField] private float gracePeriodSeconds = 0f;
@@ -23,8 +21,10 @@ public class StormDamageController : MonoBehaviour
     {
         if (damageIntervalSeconds <= 0f)
             damageIntervalSeconds = 2f;
+
         if (damagePerTick < 1)
             damagePerTick = 1;
+
         if (gracePeriodSeconds < 0f)
             gracePeriodSeconds = 0f;
     }
@@ -36,21 +36,16 @@ public class StormDamageController : MonoBehaviour
 
         timeSinceGameStart += Time.deltaTime;
 
-        bool isCurrentlyInStorm = stormController.IsInside(playerTransform.position);
+        bool isInStorm = stormController.IsInside(playerTransform.position);
 
-        if (!isCurrentlyInStorm)
+        if (!isInStorm)
         {
             timeSinceLastDamage = 0f;
             return;
         }
 
-        // No aplicar daño durante el período de gracia inicial
         if (timeSinceGameStart < gracePeriodSeconds)
-        {
-            if (Time.frameCount % 60 == 0)
-                Debug.Log($"[StormDamage] En período de gracia: {gracePeriodSeconds - timeSinceGameStart:F1}s restantes");
             return;
-        }
 
         timeSinceLastDamage += Time.deltaTime;
 
@@ -67,12 +62,12 @@ public class StormDamageController : MonoBehaviour
             return;
 
         int aliveCount = 0;
-        int affectedCreatures = 0;
+        int affectedCount = 0;
 
         for (int i = 0; i < playerTeam.team.Length; i++)
         {
             MonInstance creature = playerTeam.team[i];
-            
+
             if (creature == null || creature.species == null)
                 continue;
 
@@ -80,28 +75,23 @@ public class StormDamageController : MonoBehaviour
                 continue;
 
             creature.currentHP -= damagePerTick;
+
             if (creature.currentHP < 0)
                 creature.currentHP = 0;
 
-            affectedCreatures++;
-            int maxHP = MonLevelSystem.GetMaxHP(creature);
-            Debug.Log($"[Storm Damage] {creature.species.monName} recibe {damagePerTick}❤ daño | HP: {creature.currentHP}/{maxHP} | Estado: {(creature.currentHP <= 0 ? "DERROTADO" : "Vivo")}");
+            affectedCount++;
 
             if (creature.currentHP > 0)
                 aliveCount++;
         }
 
-        Debug.Log($"[Storm Damage Summary] {affectedCreatures} criaturas afectadas | {aliveCount} vivas restantes");
-
         if (aliveCount == 0)
-        {
             TriggerGameEnd();
-        }
     }
 
     private void TriggerGameEnd()
     {
-        Debug.Log("[Game Over] Todas las criaturas del jugador han sido derrotadas por la tormenta.");
+        Debug.Log("Game Over: all player creatures were defeated by the storm.");
         onGameEnd?.Invoke();
     }
 
@@ -109,20 +99,19 @@ public class StormDamageController : MonoBehaviour
     {
         if (stormController == null)
         {
-            Debug.LogError("[StormDamageController] StormOverlayController no está asignado.", gameObject);
+            Debug.LogError("StormDamageController: StormOverlayController is not assigned.", gameObject);
             return false;
         }
 
         if (playerTeam == null)
         {
-            Debug.LogError("[StormDamageController] PlayerTeam no está asignado.", gameObject);
+            Debug.LogError("StormDamageController: PlayerTeam is not assigned.", gameObject);
             return false;
         }
 
-        // ✅ NUEVO: Valida playerTransform
         if (playerTransform == null)
         {
-            Debug.LogError("[StormDamageController] Player Transform no está asignado.", gameObject);
+            Debug.LogError("StormDamageController: Player Transform is not assigned.", gameObject);
             return false;
         }
 

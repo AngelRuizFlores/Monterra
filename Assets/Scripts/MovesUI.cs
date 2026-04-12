@@ -5,8 +5,8 @@ using TMPro;
 public class MovesUI : MonoBehaviour
 {
     [Header("4 Buttons")]
-    public Button[] moveButtons;     // size 4
-    public TMP_Text[] moveTexts;     // size 4 (texto dentro del botón)
+    public Button[] moveButtons;     
+    public TMP_Text[] moveTexts;     
 
     private PlayerMon playerMon;
     private LevelManager levelManager;

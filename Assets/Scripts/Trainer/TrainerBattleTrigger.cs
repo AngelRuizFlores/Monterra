@@ -25,7 +25,7 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         if (TryGetComponent<WildMon>(out _))
         {
             Debug.LogError(
-                $"{nameof(TrainerBattleTrigger)} en '{name}' no puede coexistir con {nameof(WildMon)} en el mismo GameObject.",
+                $"{nameof(TrainerBattleTrigger)} on '{name}' cannot coexist with {nameof(WildMon)} on the same GameObject.",
                 this
             );
         }
@@ -33,17 +33,28 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         if (string.IsNullOrWhiteSpace(trainerId))
         {
             trainerId = Guid.NewGuid().ToString("N");
-            Debug.LogWarning($"{nameof(TrainerBattleTrigger)} en '{name}' no tenía trainerId. Se ha generado uno nuevo en runtime: {trainerId}", this);
+            Debug.LogWarning(
+                $"{nameof(TrainerBattleTrigger)} on '{name}' had no trainerId. A new one was generated at runtime: {trainerId}",
+                this
+            );
         }
 
         if (trainerDefinition == null)
         {
-            Debug.LogError($"{nameof(TrainerBattleTrigger)} en '{name}' no tiene {nameof(TrainerDefinition)} asignado.", this);
+            Debug.LogError(
+                $"{nameof(TrainerBattleTrigger)} on '{name}' has no {nameof(TrainerDefinition)} assigned.",
+                this
+            );
             return;
         }
 
         if (!trainerDefinition.IsValid(out string error))
-            Debug.LogError($"{nameof(TrainerBattleTrigger)} inválido en '{name}': {error}", this);
+        {
+            Debug.LogError(
+                $"{nameof(TrainerBattleTrigger)} on '{name}' is invalid: {error}",
+                this
+            );
+        }
 
         ApplyDefeatedState(defeated);
     }
@@ -52,13 +63,13 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     {
         if (defeated)
         {
-            error = "este trainer ya fue derrotado.";
+            error = "this trainer has already been defeated.";
             return false;
         }
 
         if (trainerDefinition == null)
         {
-            error = "falta el TrainerDefinition.";
+            error = "TrainerDefinition is missing.";
             return false;
         }
 
@@ -79,10 +90,10 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         onDefeated?.Invoke();
     }
 
-    private void ApplyDefeatedState(bool value)
+    private void ApplyDefeatedState(bool isDefeated)
     {
         if (disableColliderWhenDefeated && cachedCollider != null)
-            cachedCollider.enabled = !value;
+            cachedCollider.enabled = !isDefeated;
     }
 
 #if UNITY_EDITOR
@@ -96,7 +107,10 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     private void RegenerateTrainerId()
     {
         trainerId = Guid.NewGuid().ToString("N");
-        Debug.Log($"{nameof(TrainerBattleTrigger)} en '{name}' regeneró trainerId: {trainerId}", this);
+        Debug.Log(
+            $"{nameof(TrainerBattleTrigger)} on '{name}' regenerated trainerId: {trainerId}",
+            this
+        );
     }
 #endif
 }

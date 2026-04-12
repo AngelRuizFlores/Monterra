@@ -14,7 +14,6 @@ public class PickupPokeball : MonoBehaviour
 
         if (ok)
         {
-            // 🔊 sonido
             if (SoundManager.Instance != null)
                 SoundManager.Instance.Play(BallSound, false);
 

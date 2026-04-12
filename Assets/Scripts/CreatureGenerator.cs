@@ -6,71 +6,72 @@ using UnityEngine;
 public class CreatureGenerator : MonoBehaviour
 {
     [Serializable]
-    public class Creatures
+    public class CreatureEntry
     {
-        public string Name;
+        public string name;
         [Range(0, 100)] public int probability = 100;
     }
 
     [Header("Spawn")]
-    public int delayCreature = 5;
-    public int max = 2;
-    public List<Creatures> creatures = new List<Creatures>();
+    [SerializeField] private int spawnDelay = 5;
+    [SerializeField] private int maxSpawnCount = 2;
+    [SerializeField] private List<CreatureEntry> creatures = new();
 
-    [Header("Refs")]
+    [Header("References")]
     [SerializeField] private Transform player;
 
-    [Header("Safe spawn")]
-    [SerializeField] private float minDistanceToPlayer = 1.2f;  // evita spawn encima
-    [SerializeField] private int spawnTries = 12;               // intentos para encontrar punto libre
-    [SerializeField] private float checkRadius = 0.35f;         // radio para comprobar si hay algo ocupando
-    [SerializeField] private LayerMask blockMask;               // capas que bloquean spawn (Player, Walls, Mon, etc.)
+    [Header("Safe Spawn")]
+    [SerializeField] private float minDistanceToPlayer = 1.2f;
+    [SerializeField] private int spawnAttempts = 12;
+    [SerializeField] private float checkRadius = 0.35f;
+    [SerializeField] private LayerMask blockMask;
 
-    private string creaturetospawn;
+    private string creatureToSpawn;
     private Collider2D homeZone;
-    private float time;
+    private float timer;
 
-    void Awake()
+    private void Awake()
     {
         homeZone = GetComponent<Collider2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (max <= 0) return;
+        if (maxSpawnCount <= 0)
+            return;
 
-        time += Time.deltaTime;
-        if (time < delayCreature) return;
+        timer += Time.deltaTime;
+        if (timer < spawnDelay)
+            return;
 
-        PickProbability();
+        PickCreatureByProbability();
 
-        GameObject creature = PoolingManager.Instance.GetPooledObject(creaturetospawn);
+        GameObject creature = PoolingManager.Instance.GetPooledObject(creatureToSpawn);
         if (creature != null)
         {
-            Vector3 spawnPos = FindSafeSpawnPosition();
-            Quaternion spawnRot = transform.rotation;
+            Vector3 spawnPosition = FindSafeSpawnPosition();
+            Quaternion spawnRotation = transform.rotation;
 
             creature.SetActive(true);
-            StartCoroutine(SpawnSafely(creature, spawnPos, spawnRot));
+            StartCoroutine(SpawnSafely(creature, spawnPosition, spawnRotation));
 
-            max--;
+            maxSpawnCount--;
         }
 
-        time = 0f;
+        timer = 0f;
     }
 
-    private IEnumerator SpawnSafely(GameObject creature, Vector3 pos, Quaternion rot)
+    private IEnumerator SpawnSafely(GameObject creature, Vector3 position, Quaternion rotation)
     {
-        // 1) Apaga SpriteRenderers (tú usas sprites, no meshes)
-        var sprites = creature.GetComponentsInChildren<SpriteRenderer>(true);
-        for (int i = 0; i < sprites.Length; i++) sprites[i].enabled = false;
+        SpriteRenderer[] spriteRenderers = creature.GetComponentsInChildren<SpriteRenderer>(true);
+        for (int i = 0; i < spriteRenderers.Length; i++)
+            spriteRenderers[i].enabled = false;
 
-        // 2) Apaga colliders (incluye triggers)
-        var cols = creature.GetComponentsInChildren<Collider2D>(true);
-        for (int i = 0; i < cols.Length; i++) cols[i].enabled = false;
+        Collider2D[] colliders = creature.GetComponentsInChildren<Collider2D>(true);
+        for (int i = 0; i < colliders.Length; i++)
+            colliders[i].enabled = false;
 
-        // 3) Pausa física
-        var rb = creature.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = creature.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.simulated = false;
@@ -78,91 +79,94 @@ public class CreatureGenerator : MonoBehaviour
             rb.angularVelocity = 0f;
         }
 
-        // 4) Coloca ya
-        creature.transform.SetPositionAndRotation(pos, rot);
-        if (rb != null) rb.position = pos;
+        creature.transform.SetPositionAndRotation(position, rotation);
 
-        // 5) Sincroniza transforms
+        if (rb != null)
+            rb.position = position;
+
         Physics2D.SyncTransforms();
 
-        // 6) Espera al siguiente tick de física
         yield return new WaitForFixedUpdate();
 
-        // 7) Reactiva física + colliders + render
-        if (rb != null) rb.simulated = true;
+        if (rb != null)
+            rb.simulated = true;
 
-        for (int i = 0; i < cols.Length; i++)
-            if (cols[i] != null) cols[i].enabled = true;
-
-        for (int i = 0; i < sprites.Length; i++)
-            if (sprites[i] != null) sprites[i].enabled = true;
-
-        // 8) Inicializa movimiento ya “limpio”
-        var move = creature.GetComponent<RandomMovementBehavior>();
-        if (move != null)
+        for (int i = 0; i < colliders.Length; i++)
         {
-            move.SetHomeZone(homeZone);
-            move.SetPlayer(player);
-            move.ResetState();
+            if (colliders[i] != null)
+                colliders[i].enabled = true;
+        }
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            if (spriteRenderers[i] != null)
+                spriteRenderers[i].enabled = true;
+        }
+
+        RandomMovementBehavior movement = creature.GetComponent<RandomMovementBehavior>();
+        if (movement != null)
+        {
+            movement.SetHomeZone(homeZone);
+            movement.SetPlayer(player);
+            movement.ResetState();
         }
     }
 
     private Vector3 FindSafeSpawnPosition()
     {
-        Vector3 fallback = transform.position;
+        Vector3 fallbackPosition = transform.position;
 
-        for (int i = 0; i < spawnTries; i++)
+        for (int i = 0; i < spawnAttempts; i++)
         {
             Vector2 candidate = RandomPointInsideHome();
-            if (player && Vector2.Distance(candidate, player.position) < minDistanceToPlayer)
+
+            if (player != null && Vector2.Distance(candidate, player.position) < minDistanceToPlayer)
                 continue;
 
-            // comprueba si está libre (Player / paredes / otros mons)
             if (Physics2D.OverlapCircle(candidate, checkRadius, blockMask) != null)
                 continue;
 
             return candidate;
         }
 
-        return fallback;
+        return fallbackPosition;
     }
 
     private Vector2 RandomPointInsideHome()
     {
-        // sampling simple dentro de bounds + validación con OverlapPoint
-        var b = homeZone.bounds;
-        for (int k = 0; k < 20; k++)
+        Bounds bounds = homeZone.bounds;
+
+        for (int i = 0; i < 20; i++)
         {
-            Vector2 p = new Vector2(
-                UnityEngine.Random.Range(b.min.x, b.max.x),
-                UnityEngine.Random.Range(b.min.y, b.max.y)
+            Vector2 point = new Vector2(
+                UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                UnityEngine.Random.Range(bounds.min.y, bounds.max.y)
             );
 
-            if (!homeZone || homeZone.OverlapPoint(p))
-                return p;
+            if (homeZone == null || homeZone.OverlapPoint(point))
+                return point;
         }
 
         return transform.position;
     }
 
-    private void PickProbability()
+    private void PickCreatureByProbability()
     {
         for (int i = 0; i < creatures.Count; i++)
         {
-            int r = UnityEngine.Random.Range(0, 101);
-            if (r < creatures[i].probability)
+            int roll = UnityEngine.Random.Range(0, 101);
+            if (roll < creatures[i].probability)
             {
-                creaturetospawn = creatures[i].Name;
+                creatureToSpawn = creatures[i].name;
                 return;
             }
         }
 
-        // fallback por si ninguna entra
-        creaturetospawn = creatures.Count > 0 ? creatures[0].Name : "";
+        creatureToSpawn = creatures.Count > 0 ? creatures[0].name : string.Empty;
     }
 
 #if UNITY_EDITOR
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, minDistanceToPlayer);
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HeadMirrorBehaviour : MonoBehaviour
 {
-    public SpriteRenderer body; // SpriteRenderer del Player
+    public SpriteRenderer body; 
     private SpriteRenderer head;
 
     void Awake()

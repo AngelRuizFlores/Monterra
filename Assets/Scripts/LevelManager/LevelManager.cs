@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
 
     private WildMon currentWild;
     private TrainerBattleTrigger currentTrainer;
-    private List<MonInstance> currentTrainerRoster = new List<MonInstance>();
+    private readonly List<MonInstance> currentTrainerRoster = new();
     private int currentTrainerEnemyIndex = -1;
 
     private Coroutine runningBattleRoutine;
@@ -100,7 +100,7 @@ public class LevelManager : MonoBehaviour
         PlayerTeam team = GetPlayerTeam();
         if (team == null || !team.EnsureValidActiveMon())
         {
-            Debug.LogWarning($"{nameof(LevelManager)}: no hay ningún mon vivo disponible para iniciar el combate.");
+            Debug.LogWarning($"{nameof(LevelManager)}: no living mon is available to start the battle.");
             onPlayerPartyDefeated?.Invoke();
             return;
         }
@@ -119,7 +119,7 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 0f;
         state = BattleState.PlayerTurn;
-        battleUI?.SetText($"¿Qué hará {playerMon.instance.species.monName}?");
+        battleUI?.SetText($"What will {playerMon.instance.species.monName} do?");
 
         StartCoroutine(PlayWildBattleCryDelayed(0.2f));
         SetPlayerCombatInputEnabled(true);
@@ -133,7 +133,7 @@ public class LevelManager : MonoBehaviour
         PlayerTeam team = GetPlayerTeam();
         if (team == null || !team.EnsureValidActiveMon())
         {
-            Debug.LogWarning($"{nameof(LevelManager)}: no hay ningún mon vivo disponible para iniciar el combate contra trainer.");
+            Debug.LogWarning($"{nameof(LevelManager)}: no living mon is available to start the trainer battle.");
             onPlayerPartyDefeated?.Invoke();
             return;
         }
@@ -141,12 +141,13 @@ public class LevelManager : MonoBehaviour
         ResetBattleSession();
         encounterType = EncounterType.Trainer;
         currentTrainer = trainer;
-        currentTrainerRoster = TrainerMonFactory.CreateRoster(trainer.TrainerDefinition);
+        currentTrainerRoster.Clear();
+        currentTrainerRoster.AddRange(TrainerMonFactory.CreateRoster(trainer.TrainerDefinition));
         currentTrainerEnemyIndex = GetNextAliveTrainerMonIndex(-1);
 
         if (currentTrainerEnemyIndex < 0)
         {
-            Debug.LogError($"{nameof(LevelManager)}: el trainer '{trainer.name}' no tiene mons válidos para combatir.", trainer);
+            Debug.LogError($"{nameof(LevelManager)}: trainer '{trainer.name}' has no valid mons for battle.", trainer);
             CleanupEncounterReferences();
             return;
         }
@@ -225,7 +226,7 @@ public class LevelManager : MonoBehaviour
 
         if (switchPopupUI == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: no hay referencia al popup de cambio.");
+            Debug.LogError($"{nameof(LevelManager)}: switch popup reference is missing.");
             return;
         }
 
@@ -235,7 +236,7 @@ public class LevelManager : MonoBehaviour
         List<MonInstance> candidates = GetSwitchCandidates(excludeCurrentActive: true);
         if (candidates.Count <= 0)
         {
-            battleUI?.SetText("No hay otros mons vivos disponibles.");
+            battleUI?.SetText("No other living mons are available.");
             return;
         }
 
@@ -246,7 +247,7 @@ public class LevelManager : MonoBehaviour
     {
         if (encounterType == EncounterType.Trainer)
         {
-            battleUI?.SetText("No puedes capturar mons de un trainer.");
+            battleUI?.SetText("You cannot catch a trainer's mons.");
             return;
         }
 
@@ -269,7 +270,7 @@ public class LevelManager : MonoBehaviour
         int freeSlot = team.GetNextFreeSlotIndex();
         if (freeSlot < 0)
         {
-            battleUI?.SetText("No tienes espacio en el equipo.");
+            battleUI?.SetText("There is no room left in your team.");
             return;
         }
 
@@ -286,7 +287,7 @@ public class LevelManager : MonoBehaviour
     {
         SetPlayerCombatInputEnabled(false);
 
-        battleUI?.SetText($"¡{trainerName} te desafía!");
+        battleUI?.SetText($"{trainerName} challenges you.");
         yield return new WaitForSecondsRealtime(1f);
 
         MonInstance enemyMon = GetCurrentEnemyMon();
@@ -296,11 +297,11 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡{trainerName} envía a {enemyMon.species.monName}!");
+        battleUI?.SetText($"{trainerName} sends out {enemyMon.species.monName}.");
         yield return new WaitForSecondsRealtime(1f);
 
         state = BattleState.PlayerTurn;
-        battleUI?.SetText($"¿Qué hará {playerMon.instance.species.monName}?");
+        battleUI?.SetText($"What will {playerMon.instance.species.monName} do?");
         SetPlayerCombatInputEnabled(true);
 
         StartCoroutine(PlayTrainerBattleCryDelayed(0.2f));
@@ -374,7 +375,7 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"Intentando capturar a {currentWild.instance.species.monName}...");
+        battleUI?.SetText($"Trying to catch {currentWild.instance.species.monName}.");
         PlaySound(CatchAttemptSoundName, false);
 
         yield return new WaitForSecondsRealtime(1f);
@@ -402,7 +403,7 @@ public class LevelManager : MonoBehaviour
 
             if (!team.TryAddToNextFreeSlot(newMon))
             {
-                battleUI?.SetText("No tienes espacio en el equipo.");
+                battleUI?.SetText("There is no room left in your team.");
                 runningBattleRoutine = null;
                 EnterPlayerTurn();
                 yield break;
@@ -421,7 +422,7 @@ public class LevelManager : MonoBehaviour
             if (leveledUp)
             {
                 movesUI?.Refresh();
-                battleUI?.SetText($"¡{playerMon.instance.species.monName} subió a Nv. {playerMon.instance.level}!");
+                battleUI?.SetText($"{playerMon.instance.species.monName} grew to Lv. {playerMon.instance.level}.");
                 yield return new WaitForSecondsRealtime(TurnDelay);
             }
 
@@ -434,7 +435,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator CaptureSuccessCoroutine(MonInstance capturedMon)
     {
-        battleUI?.SetText($"{capturedMon.species.monName} fue capturado.");
+        battleUI?.SetText($"{capturedMon.species.monName} was caught.");
         PlaySound(MonCatchSoundName, false);
 
         yield return new WaitForSecondsRealtime(1.2f);
@@ -445,7 +446,7 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator CaptureFailCoroutine()
     {
-        battleUI?.SetText($"¡{currentWild.instance.species.monName} escapó!");
+        battleUI?.SetText($"{currentWild.instance.species.monName} broke free.");
         PlaySound(CatchFailSoundName, false);
 
         yield return new WaitForSecondsRealtime(0.8f);
@@ -500,7 +501,7 @@ public class LevelManager : MonoBehaviour
 
         if (!trainer.CanStartBattle(out string error))
         {
-            Debug.LogWarning($"{nameof(LevelManager)}: no se puede iniciar combate contra trainer '{trainer.name}': {error}", trainer);
+            Debug.LogWarning($"{nameof(LevelManager)}: trainer battle cannot start for '{trainer.name}': {error}", trainer);
             return false;
         }
 
@@ -511,19 +512,19 @@ public class LevelManager : MonoBehaviour
     {
         if (battleCanvas == null || battleUI == null || movesUI == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: faltan referencias de UI.");
+            Debug.LogError($"{nameof(LevelManager)}: missing battle UI references.");
             return false;
         }
 
         if (enemyHealth == null || playerHealth == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: faltan referencias de barras de vida.");
+            Debug.LogError($"{nameof(LevelManager)}: missing health bar references.");
             return false;
         }
 
         if (GetPlayerTeam() == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: no se encontró {nameof(PlayerTeam)} en el player.");
+            Debug.LogError($"{nameof(LevelManager)}: {nameof(PlayerTeam)} was not found on the player.");
             return false;
         }
 
@@ -552,25 +553,25 @@ public class LevelManager : MonoBehaviour
     }
 
     private void ShowBattleUI()
-{
-    if (battleCanvas == null || battleUI == null || playerMon == null || playerMon.instance == null)
-        return;
-
-    battleCanvas.SetActive(true);
-
-    if (encounterType == EncounterType.Wild && currentWild != null && currentWild.instance != null)
     {
-        battleUI.ShowWildMon(currentWild);
-        battleUI.SetText($"¡Apareció {currentWild.instance.species.monName}!");
-    }
-    else
-    {
-        battleUI?.ShowEnemyMon(GetCurrentEnemyMon());
-    }
+        if (battleCanvas == null || battleUI == null || playerMon == null || playerMon.instance == null)
+            return;
 
-    battleUI.ShowPlayerMon(playerMon);
-    battleUI.SetPlayerExp(playerMon.instance);
-}
+        battleCanvas.SetActive(true);
+
+        if (encounterType == EncounterType.Wild && currentWild != null && currentWild.instance != null)
+        {
+            battleUI.ShowWildMon(currentWild);
+            battleUI.SetText($"{currentWild.instance.species.monName} appeared.");
+        }
+        else
+        {
+            battleUI.ShowEnemyMon(GetCurrentEnemyMon());
+        }
+
+        battleUI.ShowPlayerMon(playerMon);
+        battleUI.SetPlayerExp(playerMon.instance);
+    }
 
     private void SetupMovesUI()
     {
@@ -677,7 +678,7 @@ public class LevelManager : MonoBehaviour
         if (move == null || attacker == null || defender == null)
             yield break;
 
-        battleUI?.SetText($"{attacker.species.monName} usó {move.moveName}!");
+        battleUI?.SetText($"{attacker.species.monName} used {move.moveName}.");
 
         Vector3 startPos = battleUI != null ? battleUI.GetPlayerAttackOrigin() : Vector3.zero;
         Vector3 targetPos = battleUI != null ? battleUI.GetEnemyHitPoint() : Vector3.zero;
@@ -718,7 +719,7 @@ public class LevelManager : MonoBehaviour
         MoveData enemyMove = GetRandomEnemyMove();
         string moveName = enemyMove != null ? enemyMove.moveName : "Punch";
 
-        battleUI?.SetText($"{attacker.species.monName} usó {moveName}!");
+        battleUI?.SetText($"{attacker.species.monName} used {moveName}.");
 
         Vector3 startPos = battleUI != null ? battleUI.GetEnemyAttackOrigin() : Vector3.zero;
         Vector3 targetPos = battleUI != null ? battleUI.GetPlayerHitPoint() : Vector3.zero;
@@ -774,7 +775,7 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡{enemyMon.species.monName} se debilitó!");
+        battleUI?.SetText($"{enemyMon.species.monName} fainted.");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
         int nextIndex = GetNextAliveTrainerMonIndex(currentTrainerEnemyIndex);
@@ -795,7 +796,7 @@ public class LevelManager : MonoBehaviour
             ? currentTrainer.TrainerDefinition.TrainerName
             : "Trainer";
 
-        battleUI?.SetText($"¡{trainerName} envía a {nextEnemy.species.monName}!");
+        battleUI?.SetText($"{trainerName} sends out {nextEnemy.species.monName}.");
         PlayEnemyBattleCry();
 
         yield return new WaitForSecondsRealtime(TurnDelay);
@@ -816,7 +817,7 @@ public class LevelManager : MonoBehaviour
 
         if (playerMon != null && playerMon.instance != null && playerMon.instance.species != null)
         {
-            battleUI?.SetText($"¡{playerMon.instance.species.monName} se debilitó!");
+            battleUI?.SetText($"{playerMon.instance.species.monName} fainted.");
             yield return new WaitForSecondsRealtime(TurnDelay);
         }
 
@@ -844,7 +845,7 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡Adelante, {playerMon.instance.species.monName}!");
+        battleUI?.SetText($"Go, {playerMon.instance.species.monName}.");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
         if (IsEnemyAbleToAct())
@@ -890,7 +891,7 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡{playerMon.instance.species.monName} entra al combate!");
+        battleUI?.SetText($"{playerMon.instance.species.monName} enters the battle.");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
         switchResolutionInProgress = false;
@@ -901,7 +902,7 @@ public class LevelManager : MonoBehaviour
     {
         if (switchPopupUI == null)
         {
-            Debug.LogError($"{nameof(LevelManager)}: no hay popup de cambio configurado.");
+            Debug.LogError($"{nameof(LevelManager)}: no switch popup is configured.");
             return;
         }
 
@@ -924,8 +925,8 @@ public class LevelManager : MonoBehaviour
         SetPlayerCombatInputEnabled(false);
 
         string title = forced
-            ? "Tu mon se ha debilitado. Elige el siguiente mon."
-            : "Elige el mon que quieres sacar.";
+            ? "Your mon fainted. Choose the next mon."
+            : "Choose the mon you want to send out.";
 
         switchPopupUI.Show(
             title,
@@ -1024,7 +1025,7 @@ public class LevelManager : MonoBehaviour
             return;
 
         state = BattleState.PlayerTurn;
-        battleUI?.SetText($"¿Qué hará {playerMon.instance.species.monName}?");
+        battleUI?.SetText($"What will {playerMon.instance.species.monName} do?");
         SetPlayerCombatInputEnabled(true);
     }
 
@@ -1045,7 +1046,7 @@ public class LevelManager : MonoBehaviour
             yield break;
         }
 
-        battleUI?.SetText($"¡{currentWild.instance.species.monName} se debilitó!");
+        battleUI?.SetText($"{currentWild.instance.species.monName} fainted.");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
         int phase = GetCurrentPhase();
@@ -1057,7 +1058,7 @@ public class LevelManager : MonoBehaviour
         if (leveledUp)
         {
             movesUI?.Refresh();
-            battleUI?.SetText($"¡{playerMon.instance.species.monName} subió a Nv. {playerMon.instance.level}!");
+            battleUI?.SetText($"{playerMon.instance.species.monName} grew to Lv. {playerMon.instance.level}.");
             yield return new WaitForSecondsRealtime(TurnDelay);
         }
 
@@ -1071,7 +1072,7 @@ public class LevelManager : MonoBehaviour
             ? currentTrainer.TrainerDefinition.TrainerName
             : "Trainer";
 
-        battleUI?.SetText($"¡Has derrotado a {trainerName}!");
+        battleUI?.SetText($"You defeated {trainerName}.");
         yield return new WaitForSecondsRealtime(TurnDelay);
 
         AwardExperienceToWholePlayerTeam();
@@ -1086,21 +1087,21 @@ public class LevelManager : MonoBehaviour
             reachedVictoryGoal = trainerBattleProgress.HasReachedRequiredVictories();
 
             Debug.Log(
-                $"{nameof(LevelManager)}: victoria contra trainer='{currentTrainer.name}', " +
+                $"{nameof(LevelManager)}: trainer victory against '{currentTrainer.name}', " +
                 $"registered={registered}, reachedVictoryGoal={reachedVictoryGoal}"
             );
         }
         else
         {
             Debug.LogWarning(
-                $"{nameof(LevelManager)}: no se pudo comprobar victoria final. " +
+                $"{nameof(LevelManager)}: final victory could not be checked. " +
                 $"trainerBattleProgress null={trainerBattleProgress == null}, currentTrainer null={currentTrainer == null}"
             );
         }
 
         if (reachedVictoryGoal)
         {
-            Debug.Log($"{nameof(LevelManager)}: se alcanzó el objetivo de victorias. Se disparará OnWin.");
+            Debug.Log($"{nameof(LevelManager)}: required victory count reached. OnWin will be invoked.");
             pendingPostBattleAction = PostBattleAction.Victory;
         }
 
@@ -1258,7 +1259,7 @@ public class LevelManager : MonoBehaviour
 
     private List<MonInstance> GetSwitchCandidates(bool excludeCurrentActive)
     {
-        List<MonInstance> result = new List<MonInstance>();
+        List<MonInstance> result = new();
         PlayerTeam team = GetPlayerTeam();
 
         if (team == null || team.team == null)
@@ -1334,7 +1335,7 @@ public class LevelManager : MonoBehaviour
         SoundManager manager = soundManager != null ? soundManager : SoundManager.Instance;
         if (manager == null)
         {
-            Debug.LogWarning($"{nameof(LevelManager)}: no hay {nameof(SoundManager)} disponible para reproducir '{soundName}'.", this);
+            Debug.LogWarning($"{nameof(LevelManager)}: no {nameof(SoundManager)} is available to play '{soundName}'.", this);
             return;
         }
 
@@ -1361,7 +1362,7 @@ public class LevelManager : MonoBehaviour
         Destroy(projectileInstance.gameObject);
     }
 
-   private void CleanupEncounterReferences()
+    private void CleanupEncounterReferences()
     {
         if (playerTouching != null)
         {
@@ -1376,6 +1377,7 @@ public class LevelManager : MonoBehaviour
 
         battleUI?.ClearEnemyMon();
     }
+
     private void TryShowTrainerIntro(string trainerName, Sprite trainerSprite)
     {
         if (battleUI == null)

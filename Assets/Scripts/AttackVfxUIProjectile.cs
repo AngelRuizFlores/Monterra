@@ -18,25 +18,24 @@ public class AttackVfxUIProjectile : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    public void Play(Vector2 startAnchoredPos, Vector2 endAnchoredPos, Action onArriveCallback)
+    public void Play(Vector2 startPosition, Vector2 endPosition, Action onArriveCallback)
     {
         if (rectTransform == null)
             rectTransform = GetComponent<RectTransform>();
 
         onArrive = onArriveCallback;
-        rectTransform.anchoredPosition = startAnchoredPos;
+        rectTransform.anchoredPosition = startPosition;
 
         if (flipXByDirection && image != null)
-            image.rectTransform.localScale = new Vector3(
-                endAnchoredPos.x < startAnchoredPos.x ? -1f : 1f,
-                1f,
-                1f
-            );
+        {
+            float scaleX = endPosition.x < startPosition.x ? -1f : 1f;
+            image.rectTransform.localScale = new Vector3(scaleX, 1f, 1f);
+        }
 
-        StartCoroutine(TravelCoroutine(startAnchoredPos, endAnchoredPos));
+        StartCoroutine(Travel(startPosition, endPosition));
     }
 
-    private IEnumerator TravelCoroutine(Vector2 startAnchoredPos, Vector2 endAnchoredPos)
+    private IEnumerator Travel(Vector2 startPosition, Vector2 endPosition)
     {
         float duration = Mathf.Max(0.01f, travelTime);
         float elapsed = 0f;
@@ -45,11 +44,11 @@ public class AttackVfxUIProjectile : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            rectTransform.anchoredPosition = Vector2.Lerp(startAnchoredPos, endAnchoredPos, t);
+            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, t);
             yield return null;
         }
 
-        rectTransform.anchoredPosition = endAnchoredPos;
+        rectTransform.anchoredPosition = endPosition;
         onArrive?.Invoke();
     }
 }

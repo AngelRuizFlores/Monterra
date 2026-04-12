@@ -17,19 +17,19 @@ public sealed class TrainerDefinition : ScriptableObject
     {
         if (string.IsNullOrWhiteSpace(trainerName))
         {
-            error = $"{name}: el trainer debe tener nombre.";
+            error = $"{name}: trainer must have a name.";
             return false;
         }
 
         if (team == null || team.Length <= 0)
         {
-            error = $"{name}: el trainer debe tener entre 1 y 6 mons.";
+            error = $"{name}: trainer must have between 1 and 6 mons.";
             return false;
         }
 
         if (team.Length > PlayerTeam.MAX_TEAM)
         {
-            error = $"{name}: el trainer no puede tener más de {PlayerTeam.MAX_TEAM} mons.";
+            error = $"{name}: trainer cannot have more than {PlayerTeam.MAX_TEAM} mons.";
             return false;
         }
 
@@ -60,13 +60,13 @@ public struct TrainerMonDefinition
     {
         if (species == null)
         {
-            error = "la especie no puede ser null.";
+            error = "species cannot be null.";
             return false;
         }
 
         if (level <= 0)
         {
-            error = "el nivel debe ser mayor que 0.";
+            error = "level must be greater than 0.";
             return false;
         }
 

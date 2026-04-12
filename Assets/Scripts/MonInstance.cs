@@ -12,8 +12,7 @@ public class MonInstance
     public int experience;
     public List<MoveData> moves = new List<MoveData>();
 
-    // --- Battle Royale anti-farm (diminishing returns) ---
-    public int wildStreak;          // cuántos salvajes seguidos has matado recientemente
-    public float lastWildExpTime;   // última vez que ganaste exp por salvaje
+    public int wildStreak;          
+    public float lastWildExpTime;   
 
 }
