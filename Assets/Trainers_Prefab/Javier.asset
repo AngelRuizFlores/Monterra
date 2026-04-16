@@ -17,3 +17,5 @@ MonoBehaviour:
   team:
   - species: {fileID: 11400000, guid: e6f62cf5f6ed7ac4e8a7194bd8b22054, type: 2}
     level: 1
+  - species: {fileID: 11400000, guid: 0461fbea6a9e6664cb7675e7953862b4, type: 2}
+    level: 1
