@@ -2,16 +2,16 @@ using UnityEngine;
 
 public sealed class WinGameManager : MonoBehaviour
 {
-    [SerializeField] private MainMenuLoader mainMenuLoader;
+    [SerializeField] private EndGameSequenceController endGameSequenceController;
 
     public void OnWin()
     {
-        if (mainMenuLoader == null)
+        if (endGameSequenceController == null)
         {
-            Debug.LogError($"{nameof(WinGameManager)}: falta asignar {nameof(MainMenuLoader)}.", this);
+            Debug.LogError($"{nameof(WinGameManager)}: falta asignar {nameof(EndGameSequenceController)}.", this);
             return;
         }
 
-        mainMenuLoader.LoadMainMenu();
+        endGameSequenceController.PlayVictorySequence();
     }
 }

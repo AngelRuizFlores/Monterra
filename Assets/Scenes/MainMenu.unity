@@ -4865,6 +4865,14 @@ MonoBehaviour:
     AudioName: HeartSound
     Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
     Volume: 0.5
+  - clip: {fileID: 8300000, guid: 8116e06d3a64db94e8c8e8c6f14b8085, type: 3}
+    AudioName: VictoryMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 4bc4db941bc9c244da78130fbe570215, type: 3}
+    AudioName: DefeatMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
 --- !u!4 &1045629385
 Transform:
   m_ObjectHideFlags: 0

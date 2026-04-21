@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class GameOverManager : MonoBehaviour
+public sealed class GameOverManager : MonoBehaviour
 {
-    [SerializeField] private MainMenuLoader mainMenuLoader;
+    [SerializeField] private EndGameSequenceController endGameSequenceController;
 
     public void OnGameOver()
     {
-        if (mainMenuLoader == null)
+        if (endGameSequenceController == null)
         {
-            Debug.LogError($"{nameof(GameOverManager)}: falta asignar {nameof(MainMenuLoader)}.", this);
+            Debug.LogError($"{nameof(GameOverManager)}: falta asignar {nameof(EndGameSequenceController)}.", this);
             return;
         }
 
-        mainMenuLoader.LoadMainMenu();
+        endGameSequenceController.PlayDefeatSequence();
     }
 }

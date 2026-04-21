@@ -44,6 +44,9 @@ public class LevelManager : MonoBehaviour
     [Header("Enemy AI API")]
     [SerializeField] private EnemyApiClient enemyApiClient;
 
+    [Header("Battle Background")]
+    [SerializeField] private BattleBackgroundSelector battleBackgroundSelector;
+
     private WildMon currentWild;
     private TrainerBattleTrigger currentTrainer;
     private readonly List<MonInstance> currentTrainerRoster = new();
@@ -123,6 +126,7 @@ public class LevelManager : MonoBehaviour
         encounterType = EncounterType.Wild;
 
         EnsureInstances(currentWild);
+        ApplyBattleBackground();
         ShowBattleUI();
         SetupEnemyHealth();
         SetupPlayerHealth();
@@ -167,6 +171,7 @@ public class LevelManager : MonoBehaviour
         }
 
         playerMon?.InitIfNeeded();
+        ApplyBattleBackground();
         ShowBattleUI();
         SetupEnemyHealth();
         SetupPlayerHealth();
@@ -1789,4 +1794,35 @@ public class LevelManager : MonoBehaviour
     {
         StartCoroutine(TestEnemyApiRequestCoroutine());
     }
+
+    private BattleBiome ResolveBattleBiome()
+    {
+        if (playerMon == null)
+            return BattleBiome.Default;
+
+        Vector2 position = playerMon.transform.position;
+        Collider2D[] hits = Physics2D.OverlapPointAll(position);
+
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i] == null)
+                continue;
+
+            BattleBiomeZone zone = hits[i].GetComponent<BattleBiomeZone>();
+            if (zone != null)
+                return zone.Biome;
+        }
+
+        return BattleBiome.Default;
+    }
+
+    private void ApplyBattleBackground()
+{
+    if (battleBackgroundSelector == null)
+        return;
+
+    BattleBiome biome = ResolveBattleBiome();
+    battleBackgroundSelector.ApplyBackground(biome);
+}
+    
 }

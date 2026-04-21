@@ -46,7 +46,20 @@ public class CreatureGenerator : MonoBehaviour
 
         PickCreatureByProbability();
 
+        if (PoolingManager.Instance == null)
+        {
+            Debug.LogError("PoolingManager.Instance es null en CreatureGenerator.", this);
+            return;
+        }
+
+        if (creatureToSpawn == null)
+        {
+            Debug.LogError("creatureToSpawn es null en CreatureGenerator.", this);
+            return;
+        }
+
         GameObject creature = PoolingManager.Instance.GetPooledObject(creatureToSpawn);
+
         if (creature != null)
         {
             Vector3 spawnPosition = FindSafeSpawnPosition();
