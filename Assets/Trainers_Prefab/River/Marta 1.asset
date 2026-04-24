@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ec397b275d3a94d90b624e43dd6cb3, type: 3}
+  m_Name: Marta 1
+  m_EditorClassIdentifier: Assembly-CSharp::TrainerDefinition
+  trainerName: Marta
+  trainerSprite: {fileID: 8953629741208907362, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
+  team:
+  - species: {fileID: 11400000, guid: 87d682f61d3debd4bbf54f3c41775ff6, type: 2}
+    level: 6
+  - species: {fileID: 11400000, guid: bbc8dc934c39cf845b01ff19752d26b5, type: 2}
+    level: 6
+  barkPersonality: Arrogant and mocking opponent.

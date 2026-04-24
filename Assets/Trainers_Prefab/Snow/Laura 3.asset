@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ec397b275d3a94d90b624e43dd6cb3, type: 3}
+  m_Name: Laura 3
+  m_EditorClassIdentifier: Assembly-CSharp::TrainerDefinition
+  trainerName: Laura
+  trainerSprite: {fileID: -6243967883509639895, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
+  team:
+  - species: {fileID: 11400000, guid: d501717203a8ee146b02f5e03c52d247, type: 2}
+    level: 15
+  - species: {fileID: 11400000, guid: ddac0870bca5f174c9515540046083ef, type: 2}
+    level: 15
+  - species: {fileID: 11400000, guid: 976c5d35ae6e243499ecbd7c298d7e16, type: 2}
+    level: 15
+  - species: {fileID: 11400000, guid: 725cc1793845ebf4a88eed316a48baf6, type: 2}
+    level: 15
+  barkPersonality: Cheerful and encouraging trainer.

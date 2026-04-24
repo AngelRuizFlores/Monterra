@@ -47,6 +47,10 @@ public class LevelManager : MonoBehaviour
     [Header("Battle Background")]
     [SerializeField] private BattleBackgroundSelector battleBackgroundSelector;
 
+    [Header("Enemy Bark API")]
+    [SerializeField] private EnemyBarkApiClient enemyBarkApiClient;
+    [SerializeField] private bool enableApiBarks = true;
+
     private WildMon currentWild;
     private TrainerBattleTrigger currentTrainer;
     private readonly List<MonInstance> currentTrainerRoster = new();
@@ -306,8 +310,11 @@ public class LevelManager : MonoBehaviour
     {
         SetPlayerCombatInputEnabled(false);
 
-        battleUI?.SetText($"{trainerName} challenges you.");
-        yield return new WaitForSecondsRealtime(1f);
+       yield return TryShowEnemyBark(
+        "battle_start",
+        $"{trainerName} challenges you.",
+        "The trainer is starting a battle against the player."
+       );
 
         MonInstance enemyMon = GetCurrentEnemyMon();
         if (enemyMon == null || enemyMon.species == null)
@@ -1102,7 +1109,7 @@ public class LevelManager : MonoBehaviour
         if (trainerBattleProgress != null && currentTrainer != null)
         {
             bool registered = trainerBattleProgress.TryRegisterVictory(currentTrainer);
-            reachedVictoryGoal = trainerBattleProgress.HasReachedRequiredVictories();
+            reachedVictoryGoal = trainerBattleProgress.HasNoLivingTrainers();
 
             Debug.Log(
                 $"{nameof(LevelManager)}: trainer victory against '{currentTrainer.name}', " +
@@ -1823,6 +1830,79 @@ public class LevelManager : MonoBehaviour
 
     BattleBiome biome = ResolveBattleBiome();
     battleBackgroundSelector.ApplyBackground(biome);
+}
+
+private EnemyBarkContext BuildEnemyBarkContext(string eventType, string extraInfo = "")
+{
+    MonInstance enemy = GetCurrentEnemyMon();
+    MonInstance player = playerMon != null ? playerMon.instance : null;
+
+    string trainerId = currentTrainer != null ? currentTrainer.TrainerId : "wild";
+    string trainerName = currentTrainer != null && currentTrainer.TrainerDefinition != null
+        ? currentTrainer.TrainerDefinition.TrainerName
+        : "Wild";
+
+    string personality = currentTrainer != null && currentTrainer.TrainerDefinition != null
+        ? currentTrainer.TrainerDefinition.BarkPersonality
+        : "Neutral tone.";
+
+    return new EnemyBarkContext
+    {
+        trainerId = trainerId,
+        trainerName = trainerName,
+        trainerPersonality = personality,
+        eventType = eventType,
+
+        enemyMonName = enemy != null && enemy.species != null ? enemy.species.monName : "Enemy",
+        playerMonName = player != null && player.species != null ? player.species.monName : "Player mon",
+
+        enemyCurrentHP = enemy != null ? enemy.currentHP : 0,
+        enemyMaxHP = enemy != null ? MonLevelSystem.GetMaxHP(enemy) : 0,
+        playerCurrentHP = player != null ? player.currentHP : 0,
+        playerMaxHP = player != null ? MonLevelSystem.GetMaxHP(player) : 0,
+
+        extraInfo = extraInfo
+    };
+}
+
+private IEnumerator TryShowEnemyBark(string eventType, string fallbackText = null, string extraInfo = "")
+{
+    if (!enableApiBarks || enemyBarkApiClient == null || encounterType != EncounterType.Trainer)
+    {
+        if (!string.IsNullOrWhiteSpace(fallbackText))
+            battleUI?.SetText(fallbackText);
+
+        yield break;
+    }
+
+    EnemyBarkContext context = BuildEnemyBarkContext(eventType, extraInfo);
+
+    string bark = null;
+
+    yield return enemyBarkApiClient.RequestBark(
+        context,
+        response =>
+        {
+            bark = response.bark;
+        },
+        error =>
+        {
+            Debug.LogWarning($"[Enemy Bark API] Failed: {error}", this);
+        }
+    );
+
+    if (!string.IsNullOrWhiteSpace(bark))
+    {
+        battleUI?.SetText(bark);
+        yield return new WaitForSecondsRealtime(1.5f);
+        yield break;
+    }
+
+    if (!string.IsNullOrWhiteSpace(fallbackText))
+    {
+        battleUI?.SetText(fallbackText);
+        yield return new WaitForSecondsRealtime(1f);
+    }
 }
     
 }

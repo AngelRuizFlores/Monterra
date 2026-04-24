@@ -25,12 +25,12 @@ MonoBehaviour:
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:
-  - move: {fileID: 11400000, guid: dc3771ff52af3504bb189e0af0ca4e43, type: 2}
+  - move: {fileID: 11400000, guid: 2d815c561e1587143aa6ab29f135c0e8, type: 2}
     learnAtLevel: 1
-  - move: {fileID: 11400000, guid: e5be9570f1c43b847972b2d44df3102d, type: 2}
+  - move: {fileID: 11400000, guid: c95698b361e50a84cbf41ae4c5f3342d, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 3208ab7700fd155448007e0d16981aea, type: 2}
+  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
     learnAtLevel: 6
-  - move: {fileID: 11400000, guid: 1468c8a9a316d314abb93c1ef3608a01, type: 2}
+  - move: {fileID: 11400000, guid: 69e68e88250cbc14d9d2e55a453b5b18, type: 2}
     learnAtLevel: 9
   evolutions: []

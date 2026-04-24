@@ -9,9 +9,14 @@ public sealed class TrainerDefinition : ScriptableObject
     [SerializeField] private Sprite trainerSprite;
     [SerializeField] private TrainerMonDefinition[] team = Array.Empty<TrainerMonDefinition>();
 
+    [Header("AI Bark Personality")]
+    [SerializeField, TextArea(2, 4)] private string barkPersonality =
+        "Confident and competitive trainer.";
+
     public string TrainerName => trainerName;
     public Sprite TrainerSprite => trainerSprite;
     public IReadOnlyList<TrainerMonDefinition> Team => team;
+    public string BarkPersonality => barkPersonality;
 
     public bool IsValid(out string error)
     {

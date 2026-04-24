@@ -25,10 +25,10 @@ public class BattleUI : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private RectTransform effectsContainer;
-    [SerializeField] private Transform playerAttackOrigin;
-    [SerializeField] private Transform enemyAttackOrigin;
-    [SerializeField] private Transform playerHitPoint;
-    [SerializeField] private Transform enemyHitPoint;
+    [SerializeField] private RectTransform playerAttackOrigin;
+    [SerializeField] private RectTransform enemyAttackOrigin;
+    [SerializeField] private RectTransform playerHitPoint;
+    [SerializeField] private RectTransform enemyHitPoint;
 
     private System.Action onSwitchPressed;
 
@@ -55,61 +55,61 @@ public class BattleUI : MonoBehaviour
     }
 
     public void ShowEnemyMon(MonInstance mon)
-{
-    if (mon == null || mon.species == null)
     {
-        ClearEnemyMon();
-        return;
+        if (mon == null || mon.species == null)
+        {
+            ClearEnemyMon();
+            return;
+        }
+
+        if (enemySprite != null)
+        {
+            enemySprite.sprite = mon.species.frontSprite;
+            enemySprite.enabled = mon.species.frontSprite != null;
+        }
+
+        if (enemyNameText != null)
+            enemyNameText.text = mon.species.monName;
+
+        if (enemyLevelText != null)
+            enemyLevelText.text = $"LVL {mon.level}";
+
+        if (enemyTypeIcon != null)
+        {
+            enemyTypeIcon.sprite = mon.species.typeSprite;
+            enemyTypeIcon.enabled = mon.species.typeSprite != null;
+        }
+
+        UpdateEnemyHP(mon.currentHP, MonLevelSystem.GetMaxHP(mon));
     }
 
-    if (enemySprite != null)
+    public void ClearEnemyMon()
     {
-        enemySprite.sprite = mon.species.frontSprite;
-        enemySprite.enabled = mon.species.frontSprite != null;
+        if (enemySprite != null)
+        {
+            enemySprite.sprite = null;
+            enemySprite.enabled = false;
+        }
+
+        if (enemyNameText != null)
+            enemyNameText.text = string.Empty;
+
+        if (enemyLevelText != null)
+            enemyLevelText.text = string.Empty;
+
+        if (enemyTypeIcon != null)
+        {
+            enemyTypeIcon.sprite = null;
+            enemyTypeIcon.enabled = false;
+        }
+
+        if (enemyHP != null)
+        {
+            enemyHP.minValue = 0;
+            enemyHP.maxValue = 1;
+            enemyHP.value = 0;
+        }
     }
-
-    if (enemyNameText != null)
-        enemyNameText.text = mon.species.monName;
-
-    if (enemyLevelText != null)
-        enemyLevelText.text = $"LVL {mon.level}";
-
-    if (enemyTypeIcon != null)
-    {
-        enemyTypeIcon.sprite = mon.species.typeSprite;
-        enemyTypeIcon.enabled = mon.species.typeSprite != null;
-    }
-
-    UpdateEnemyHP(mon.currentHP, MonLevelSystem.GetMaxHP(mon));
-}
-
-public void ClearEnemyMon()
-{
-    if (enemySprite != null)
-    {
-        enemySprite.sprite = null;
-        enemySprite.enabled = false;
-    }
-
-    if (enemyNameText != null)
-        enemyNameText.text = string.Empty;
-
-    if (enemyLevelText != null)
-        enemyLevelText.text = string.Empty;
-
-    if (enemyTypeIcon != null)
-    {
-        enemyTypeIcon.sprite = null;
-        enemyTypeIcon.enabled = false;
-    }
-
-    if (enemyHP != null)
-    {
-        enemyHP.minValue = 0;
-        enemyHP.maxValue = 1;
-        enemyHP.value = 0;
-    }
-}
 
     public void ShowPlayerMon(PlayerMon playerMon)
     {
@@ -120,7 +120,10 @@ public void ClearEnemyMon()
 
         if (playerSprite != null)
         {
-            playerSprite.sprite = mon.species.backSprite != null ? mon.species.backSprite : mon.species.frontSprite;
+            playerSprite.sprite = mon.species.backSprite != null
+                ? mon.species.backSprite
+                : mon.species.frontSprite;
+
             playerSprite.enabled = playerSprite.sprite != null;
             playerSprite.color = Color.white;
         }
@@ -187,9 +190,28 @@ public void ClearEnemyMon()
             switchButton.interactable = interactable;
     }
 
-    public RectTransform GetEffectsContainer() => effectsContainer;
-    public Vector3 GetPlayerAttackOrigin() => playerAttackOrigin != null ? playerAttackOrigin.position : Vector3.zero;
-    public Vector3 GetEnemyAttackOrigin() => enemyAttackOrigin != null ? enemyAttackOrigin.position : Vector3.zero;
-    public Vector3 GetPlayerHitPoint() => playerHitPoint != null ? playerHitPoint.position : Vector3.zero;
-    public Vector3 GetEnemyHitPoint() => enemyHitPoint != null ? enemyHitPoint.position : Vector3.zero;
+    public RectTransform GetEffectsContainer()
+    {
+        return effectsContainer;
+    }
+
+    public Vector2 GetPlayerAttackOrigin()
+    {
+        return playerAttackOrigin != null ? playerAttackOrigin.anchoredPosition : Vector2.zero;
+    }
+
+    public Vector2 GetEnemyAttackOrigin()
+    {
+        return enemyAttackOrigin != null ? enemyAttackOrigin.anchoredPosition : Vector2.zero;
+    }
+
+    public Vector2 GetPlayerHitPoint()
+    {
+        return playerHitPoint != null ? playerHitPoint.anchoredPosition : Vector2.zero;
+    }
+
+    public Vector2 GetEnemyHitPoint()
+    {
+        return enemyHitPoint != null ? enemyHitPoint.anchoredPosition : Vector2.zero;
+    }
 }

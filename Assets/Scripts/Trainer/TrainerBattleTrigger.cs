@@ -10,6 +10,7 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     [SerializeField] private UnityEvent onDefeated;
 
     [SerializeField, HideInInspector] private string trainerId;
+    [SerializeField] private TrainerDefinition[] phaseDefinitions;
 
     private Collider2D cachedCollider;
     private bool defeated;
@@ -94,6 +95,26 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     {
         if (disableColliderWhenDefeated && cachedCollider != null)
             cachedCollider.enabled = !isDefeated;
+    }
+
+    public void SetTrainerDefinitionForPhase(int phase)
+    {
+        if (phaseDefinitions == null || phaseDefinitions.Length == 0)
+            return;
+
+        int index = Mathf.Clamp(phase, 0, phaseDefinitions.Length - 1);
+        TrainerDefinition newDefinition = phaseDefinitions[index];
+
+        if (newDefinition == null)
+            return;
+
+        if (!newDefinition.IsValid(out string error))
+        {
+            Debug.LogWarning($"{nameof(TrainerBattleTrigger)}: phase definition invalid: {error}", this);
+            return;
+        }
+
+        trainerDefinition = newDefinition;
     }
 
 #if UNITY_EDITOR
