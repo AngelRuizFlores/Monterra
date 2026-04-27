@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Rotwing
   type: 4
-  baseHP: 150
-  baseAttack: 50
-  baseDefense: 30
-  baseSpeed: 45
+  baseHP: 175
+  baseAttack: 105
+  baseDefense: 50
+  baseSpeed: 60
   frontSprite: {fileID: -9214728311049290529, guid: 1b0eb75da7178ba4bb1f425d2151adcf, type: 3}
   backSprite: {fileID: -9214728311049290529, guid: 1b0eb75da7178ba4bb1f425d2151adcf, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Rotwing
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

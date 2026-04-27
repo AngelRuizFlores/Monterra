@@ -323,8 +323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WildMon
   species: {fileID: 11400000, guid: 693458035af2ddf45b45b269f653a9ef, type: 2}
-  minLevel: 2
-  maxLevel: 5
+  minLevel: 10
+  maxLevel: 12
 --- !u!114 &9138672435837116311
 MonoBehaviour:
   m_ObjectHideFlags: 0

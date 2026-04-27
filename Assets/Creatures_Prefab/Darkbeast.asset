@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Darkbeast
   type: 4
-  baseHP: 150
-  baseAttack: 50
-  baseDefense: 30
-  baseSpeed: 45
+  baseHP: 210
+  baseAttack: 95
+  baseDefense: 70
+  baseSpeed: 15
   frontSprite: {fileID: 588521358694924871, guid: 51318b9a457014e47ac5dfb558bfd1e0, type: 3}
   backSprite: {fileID: 588521358694924871, guid: 51318b9a457014e47ac5dfb558bfd1e0, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Darkbeast
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

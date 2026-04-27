@@ -4837,12 +4837,12 @@ MonoBehaviour:
     AudioName: monkey-1
     Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
     Volume: 0.5
-  - clip: {fileID: 8300000, guid: deedaffa4b00a4642b6eeff60ff2d290, type: 3}
-    AudioName: monkey-2
+  - clip: {fileID: 8300000, guid: 0765ed64d41050a48a2900d84f146dd7, type: 3}
+    AudioName: Droplet
     Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
     Volume: 0.5
-  - clip: {fileID: 8300000, guid: f8cc0ce3d15c8da4aa5dad984612661d, type: 3}
-    AudioName: monkey-3
+  - clip: {fileID: 8300000, guid: 708c233299419c349a02522fab5999c5, type: 3}
+    AudioName: Axolet
     Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
     Volume: 0.5
   - clip: {fileID: 8300000, guid: be586acd9788cf9429e23dad8deb250b, type: 3}
@@ -4871,6 +4871,134 @@ MonoBehaviour:
     Volume: 0.5
   - clip: {fileID: 8300000, guid: 4bc4db941bc9c244da78130fbe570215, type: 3}
     AudioName: DefeatMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 65f53bf3e5ce72a4d8ee32b7c4e1e158, type: 3}
+    AudioName: Aqualet
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 0bfdca879ccb8c343874b3c24fd5abf1, type: 3}
+    AudioName: Krokoflood
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 85381524cf3a0db43bf34ea740694063, type: 3}
+    AudioName: Lillytoad
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 6ba90c3ed850598429e0aa5b45a12784, type: 3}
+    AudioName: Cramber
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 840de728688134147b3e09f9e876280b, type: 3}
+    AudioName: Crustamber
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: b5cc8ed26b3bc3c4e866997c881cd279, type: 3}
+    AudioName: Pyromber
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 94d5bb548b467434b863b958a9b47144, type: 3}
+    AudioName: Burnape
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: fe16de79c7eef0d48b4baf79a71ed424, type: 3}
+    AudioName: Pyrogoat
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: b36def0acfec9594eab58b3300118957, type: 3}
+    AudioName: Fealow
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: cd417513b392b1f4f9327c1ac7af131c, type: 3}
+    AudioName: Winglow
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 70cf5e2941be26b468bda01edd33a76a, type: 3}
+    AudioName: Talonglow
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 3b7d60da336fff44ca5a9c78683e5ebf, type: 3}
+    AudioName: Brill
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 8c8aecbf9ea430244b525e14796653a5, type: 3}
+    AudioName: Luxungus
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: c4661c06a9570114892d60e74cec163e, type: 3}
+    AudioName: Ratfall
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 3d4bb422007668c4a91687b03aced8ac, type: 3}
+    AudioName: Ratfade
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 2f5833dda3c75d04e9272927d347adf0, type: 3}
+    AudioName: Ratpest
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 3c7c8635f3d926844ad6b7188c49f542, type: 3}
+    AudioName: Rotwing
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 4bc4db941bc9c244da78130fbe570215, type: 3}
+    AudioName: DefeatMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 4bc4db941bc9c244da78130fbe570215, type: 3}
+    AudioName: DefeatMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 4bc4db941bc9c244da78130fbe570215, type: 3}
+    AudioName: DefeatMusic
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: cd0a0e43da3d8e54c8c511de46fd7596, type: 3}
+    AudioName: Darkbeast
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 17e9f6c408009124fa90b176babcdae5, type: 3}
+    AudioName: Toxiel
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 93e53fdc70f9dbb468891a882de4821f, type: 3}
+    AudioName: Toxiwing
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: a0695b15e1a002449b74af2722445523, type: 3}
+    AudioName: Toxatrice
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 767a82f3e1e5f8b4b82b18da5554f928, type: 3}
+    AudioName: Palmturtle
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: fa04fb6b8e803fa4f811148bb6a0d439, type: 3}
+    AudioName: Dighog
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: fb21efc9c0b0a3e46a2a01c1d8165a19, type: 3}
+    AudioName: Groundhog
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 5817a7a5230acc840a96bff0e5cde6ce, type: 3}
+    AudioName: Dunehog
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: ead26dedea53d8c41bde0caf91e3ff48, type: 3}
+    AudioName: Krug
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: af792a5e0536aa1489420357809a42ab, type: 3}
+    AudioName: Wormadom
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: f386971bee709394288e1fd496fc4b5c, type: 3}
+    AudioName: Lumilliam
+    Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
+    Volume: 0.5
+  - clip: {fileID: 8300000, guid: 7a18373c36e4fe24ca79c185774eeb88, type: 3}
+    AudioName: Aprion
     Mixer: {fileID: -5836865334571078263, guid: c2a356ad085331a4ba4a75c69a0edb34, type: 2}
     Volume: 0.5
 --- !u!4 &1045629385

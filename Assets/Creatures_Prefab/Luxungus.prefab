@@ -287,7 +287,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.9166667, y: 1.0833334}
@@ -429,8 +429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WildMon
   species: {fileID: 11400000, guid: 976c5d35ae6e243499ecbd7c298d7e16, type: 2}
-  minLevel: 2
-  maxLevel: 5
+  minLevel: 5
+  maxLevel: 6
 --- !u!114 &4462672496779896014
 MonoBehaviour:
   m_ObjectHideFlags: 0

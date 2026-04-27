@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Palmturtle
   type: 3
-  baseHP: 150
-  baseAttack: 40
-  baseDefense: 35
-  baseSpeed: 40
+  baseHP: 220
+  baseAttack: 50
+  baseDefense: 100
+  baseSpeed: 20
   frontSprite: {fileID: -809357117709644409, guid: e8ac3c38b895e5441ac59fb71c5fa42d, type: 3}
   backSprite: {fileID: -809357117709644409, guid: e8ac3c38b895e5441ac59fb71c5fa42d, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Palmturtle
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

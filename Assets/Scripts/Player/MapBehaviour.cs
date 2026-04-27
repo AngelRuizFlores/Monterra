@@ -1,16 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapOverlayController : MonoBehaviour
 {
+    [Header("Map")]
     [SerializeField] private RectTransform mapImage;
-    [SerializeField] private RectTransform playerMarker;
     [SerializeField] private Image mapImageComponent;
 
+    [Header("Markers")]
+    [SerializeField] private RectTransform playerMarker;
+    [SerializeField] private RectTransform trainerMarkerPrefab;
+    [SerializeField] private RectTransform trainerMarkersContainer;
+
+    [Header("World References")]
     [SerializeField] private Transform player;
     [SerializeField] private StormOverlayController storm;
     [SerializeField] private BoxCollider2D playBounds;
 
+    [Header("Map Padding")]
     [SerializeField] private float mapLeftPadding = 0f;
     [SerializeField] private float mapRightPadding = 0f;
     [SerializeField] private float mapTopPadding = 0f;
@@ -18,35 +26,119 @@ public class MapOverlayController : MonoBehaviour
 
     private Material mapMat;
 
+    private readonly List<TrainerBattleTrigger> trainers = new();
+    private readonly Dictionary<TrainerBattleTrigger, RectTransform> trainerMarkers = new();
+
     private static readonly int CenterId = Shader.PropertyToID("_Center");
     private static readonly int RadiusId = Shader.PropertyToID("_Radius");
 
-    void Awake()
+    private void Awake()
     {
         if (mapImageComponent != null && mapImageComponent.material != null)
         {
             mapMat = new Material(mapImageComponent.material);
             mapImageComponent.material = mapMat;
         }
+
+        BuildTrainerMarkers();
     }
 
-    void Update()
+    private void Update()
     {
         UpdatePlayer();
+        UpdateTrainerMarkers();
         UpdateStorm();
+    }
+
+    private void BuildTrainerMarkers()
+    {
+        trainers.Clear();
+        trainerMarkers.Clear();
+
+        if (trainerMarkerPrefab == null || mapImage == null)
+            return;
+
+        if (trainerMarkersContainer == null)
+            trainerMarkersContainer = mapImage;
+
+        trainers.AddRange(FindObjectsByType<TrainerBattleTrigger>(FindObjectsSortMode.None));
+
+        for (int i = 0; i < trainers.Count; i++)
+        {
+            TrainerBattleTrigger trainer = trainers[i];
+
+            if (trainer == null)
+                continue;
+
+            RectTransform marker = Instantiate(trainerMarkerPrefab, trainerMarkersContainer);
+            marker.gameObject.SetActive(true);
+
+            ApplyTrainerSpriteToMarker(trainer, marker);
+
+            trainerMarkers.Add(trainer, marker);
+        }
+    }
+
+    private void ApplyTrainerSpriteToMarker(TrainerBattleTrigger trainer, RectTransform marker)
+    {
+        if (trainer == null || marker == null)
+            return;
+
+        SpriteRenderer trainerSpriteRenderer = trainer.GetComponent<SpriteRenderer>();
+        if (trainerSpriteRenderer == null || trainerSpriteRenderer.sprite == null)
+            return;
+
+        Image markerImage = marker.GetComponent<Image>();
+        if (markerImage == null)
+            return;
+
+        markerImage.sprite = trainerSpriteRenderer.sprite;
+        markerImage.color = Color.white;
+        markerImage.preserveAspect = true;
+        markerImage.enabled = true;
     }
 
     private void UpdatePlayer()
     {
-        if (playerMarker == null || player == null || mapImage == null || playBounds == null) return;
+        if (playerMarker == null || player == null || mapImage == null || playBounds == null)
+            return;
 
         Vector2 normalized = WorldToNormalized(player.position);
         playerMarker.anchoredPosition = NormalizedToMapPosition(normalized);
     }
 
+    private void UpdateTrainerMarkers()
+    {
+        if (playBounds == null || mapImage == null)
+            return;
+
+        foreach (KeyValuePair<TrainerBattleTrigger, RectTransform> pair in trainerMarkers)
+        {
+            TrainerBattleTrigger trainer = pair.Key;
+            RectTransform marker = pair.Value;
+
+            if (marker == null)
+                continue;
+
+            bool shouldShow =
+                trainer != null &&
+                trainer.gameObject.activeInHierarchy &&
+                !trainer.IsDefeated;
+
+            marker.gameObject.SetActive(shouldShow);
+
+            if (!shouldShow)
+                continue;
+
+            Vector2 normalized = WorldToNormalized(trainer.transform.position);
+            marker.anchoredPosition = NormalizedToMapPosition(normalized);
+        }
+    }
+
     private void UpdateStorm()
     {
-        if (storm == null || mapMat == null || playBounds == null || mapImage == null) return;
+        if (storm == null || mapMat == null || playBounds == null || mapImage == null)
+            return;
 
         Bounds b = playBounds.bounds;
         Vector2 normalized = WorldToNormalized(storm.GetCenterWorld());
@@ -82,13 +174,13 @@ public class MapOverlayController : MonoBehaviour
     {
         float fullWidth = mapImage.rect.width;
         float fullHeight = mapImage.rect.height;
-        
+
         float usableWidth = fullWidth - mapLeftPadding - mapRightPadding;
         float usableHeight = fullHeight - mapTopPadding - mapBottomPadding;
-    
+
         float x = mapLeftPadding + normalized.x * usableWidth - (fullWidth * 0.5f);
         float y = mapBottomPadding + normalized.y * usableHeight - (fullHeight * 0.5f);
-        
+
         return new Vector2(x, y);
     }
 
@@ -96,13 +188,13 @@ public class MapOverlayController : MonoBehaviour
     {
         float fullWidth = mapImage.rect.width;
         float fullHeight = mapImage.rect.height;
-        
+
         float usableWidth = fullWidth - mapLeftPadding - mapRightPadding;
         float usableHeight = fullHeight - mapTopPadding - mapBottomPadding;
-        
+
         float x = (mapLeftPadding + normalized.x * usableWidth) / fullWidth;
         float y = (mapBottomPadding + normalized.y * usableHeight) / fullHeight;
-        
+
         return new Vector2(x, y);
     }
 }

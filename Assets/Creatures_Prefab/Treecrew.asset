@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Treecrew
   type: 3
-  baseHP: 150
-  baseAttack: 40
-  baseDefense: 35
-  baseSpeed: 40
+  baseHP: 200
+  baseAttack: 80
+  baseDefense: 75
+  baseSpeed: 35
   frontSprite: {fileID: 3238135739183088815, guid: dec72307c63bc8e4cacc77d66d6a2b1c, type: 3}
   backSprite: {fileID: 3238135739183088815, guid: dec72307c63bc8e4cacc77d66d6a2b1c, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Treecrew
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

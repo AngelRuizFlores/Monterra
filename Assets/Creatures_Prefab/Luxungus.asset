@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Luxungus
   type: 0
-  baseHP: 150
-  baseAttack: 45
-  baseDefense: 30
-  baseSpeed: 50
+  baseHP: 205
+  baseAttack: 60
+  baseDefense: 90
+  baseSpeed: 35
   frontSprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}
   backSprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
-  battleCrySoundName: monkey-3
+  battleCrySoundName: Luxungus
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Cramber
   type: 1
-  baseHP: 150
-  baseAttack: 55
-  baseDefense: 30
-  baseSpeed: 40
+  baseHP: 170
+  baseAttack: 70
+  baseDefense: 45
+  baseSpeed: 15
   frontSprite: {fileID: -3503969217007086128, guid: 61354a03fff199644ae6b8fb5dfa587f, type: 3}
   backSprite: {fileID: -3503969217007086128, guid: 61354a03fff199644ae6b8fb5dfa587f, type: 3}
   typeSprite: {fileID: -4716359955362382993, guid: b153303f6eed7a043ae8ec980d1aa3b1, type: 3}
-  battleCrySoundName: monkey-3
+  battleCrySoundName: Cramber
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

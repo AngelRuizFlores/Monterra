@@ -16,9 +16,9 @@ MonoBehaviour:
   trainerSprite: {fileID: -6243967883509639895, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
   - species: {fileID: 11400000, guid: d501717203a8ee146b02f5e03c52d247, type: 2}
-    level: 10
+    level: 8
   - species: {fileID: 11400000, guid: ddac0870bca5f174c9515540046083ef, type: 2}
-    level: 10
+    level: 8
   - species: {fileID: 11400000, guid: 976c5d35ae6e243499ecbd7c298d7e16, type: 2}
-    level: 10
+    level: 8
   barkPersonality: Cheerful and encouraging trainer.

@@ -16,11 +16,11 @@ MonoBehaviour:
   trainerSprite: {fileID: 8953629741208907362, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
   - species: {fileID: 11400000, guid: 3de745936995fc347822fed4a39ccdfa, type: 2}
-    level: 15
+    level: 10
   - species: {fileID: 11400000, guid: 875474171ea798343b2ddb3e248e7425, type: 2}
-    level: 15
+    level: 10
   - species: {fileID: 11400000, guid: 0461fbea6a9e6664cb7675e7953862b4, type: 2}
-    level: 15
+    level: 10
   - species: {fileID: 11400000, guid: bbc8dc934c39cf845b01ff19752d26b5, type: 2}
-    level: 15
+    level: 10
   barkPersonality: Cold and calculating tactician.

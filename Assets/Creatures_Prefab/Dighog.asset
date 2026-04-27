@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Dighog
   type: 5
-  baseHP: 150
-  baseAttack: 40
-  baseDefense: 45
-  baseSpeed: 25
+  baseHP: 170
+  baseAttack: 55
+  baseDefense: 65
+  baseSpeed: 10
   frontSprite: {fileID: -2720568715159121283, guid: b5e6a457b3e8a584b93d5721aac9c4ae, type: 3}
   backSprite: {fileID: -2720568715159121283, guid: b5e6a457b3e8a584b93d5721aac9c4ae, type: 3}
   typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
-  battleCrySoundName: monkey-1
+  battleCrySoundName: Dighog
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

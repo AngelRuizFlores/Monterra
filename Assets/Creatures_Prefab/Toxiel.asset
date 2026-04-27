@@ -15,13 +15,13 @@ MonoBehaviour:
   monName: Toxiel
   type: 3
   baseHP: 150
-  baseAttack: 40
-  baseDefense: 35
-  baseSpeed: 40
+  baseAttack: 70
+  baseDefense: 30
+  baseSpeed: 50
   frontSprite: {fileID: -6645366853351640818, guid: 740a28cc538e8924c8ff3ab28049432c, type: 3}
   backSprite: {fileID: -6645366853351640818, guid: 740a28cc538e8924c8ff3ab28049432c, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Toxiel
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

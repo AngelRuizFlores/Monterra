@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Wormadom
   type: 5
-  baseHP: 150
-  baseAttack: 40
-  baseDefense: 45
-  baseSpeed: 25
+  baseHP: 190
+  baseAttack: 85
+  baseDefense: 60
+  baseSpeed: 55
   frontSprite: {fileID: 8916401531093303721, guid: 760f1c111b1167b428818c26bf224736, type: 3}
   backSprite: {fileID: 8916401531093303721, guid: 760f1c111b1167b428818c26bf224736, type: 3}
   typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
-  battleCrySoundName: monkey-1
+  battleCrySoundName: Wormadom
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

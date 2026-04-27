@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Ratfade
   type: 4
-  baseHP: 150
-  baseAttack: 50
-  baseDefense: 30
-  baseSpeed: 45
+  baseHP: 165
+  baseAttack: 105
+  baseDefense: 35
+  baseSpeed: 55
   frontSprite: {fileID: -6942643660443959520, guid: 3d1ad0db9e7bac3468ef6043ae26d836, type: 3}
   backSprite: {fileID: -6942643660443959520, guid: 3d1ad0db9e7bac3468ef6043ae26d836, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Ratfade
   baseCatchRate: 50
   evolutionStage: 1
   learnableMoves:

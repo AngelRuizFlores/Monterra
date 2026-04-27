@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Aprion
   type: 4
-  baseHP: 150
-  baseAttack: 50
-  baseDefense: 30
-  baseSpeed: 45
+  baseHP: 210
+  baseAttack: 135
+  baseDefense: 75
+  baseSpeed: 30
   frontSprite: {fileID: 7086920602220189309, guid: f77f5c268660c894dbd92fd781dc4558, type: 3}
   backSprite: {fileID: 7086920602220189309, guid: f77f5c268660c894dbd92fd781dc4558, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Aprion
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

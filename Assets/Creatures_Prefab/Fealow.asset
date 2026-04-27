@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Fealow
   type: 0
-  baseHP: 150
-  baseAttack: 45
-  baseDefense: 30
-  baseSpeed: 50
+  baseHP: 160
+  baseAttack: 60
+  baseDefense: 40
+  baseSpeed: 40
   frontSprite: {fileID: 6327251476335093467, guid: 0fdb4178a0c363b44b147f3a6c0e8279, type: 3}
   backSprite: {fileID: 6327251476335093467, guid: 0fdb4178a0c363b44b147f3a6c0e8279, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
-  battleCrySoundName: monkey-3
+  battleCrySoundName: Fealow
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

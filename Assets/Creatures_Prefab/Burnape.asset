@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Burnape
   type: 1
-  baseHP: 150
-  baseAttack: 55
-  baseDefense: 30
-  baseSpeed: 40
+  baseHP: 195
+  baseAttack: 115
+  baseDefense: 55
+  baseSpeed: 25
   frontSprite: {fileID: -5799045559374871799, guid: 9387b20222881c74ba262d33981e48c8, type: 3}
   backSprite: {fileID: -5799045559374871799, guid: 9387b20222881c74ba262d33981e48c8, type: 3}
   typeSprite: {fileID: -4716359955362382993, guid: b153303f6eed7a043ae8ec980d1aa3b1, type: 3}
-  battleCrySoundName: monkey-3
+  battleCrySoundName: Burnape
   baseCatchRate: 50
   evolutionStage: 0
   learnableMoves:

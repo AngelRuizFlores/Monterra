@@ -24,6 +24,14 @@ public class RandomMovementBehavior : MonoBehaviour
     [SerializeField] private float separationPadding = 0.05f;
     [SerializeField] private float separationForce = 1.2f;
 
+    [Header("Directional Sprites")]
+    [SerializeField] private bool useDirectionalSprites = false;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite upSprite;
+    [SerializeField] private Sprite downSprite;
+    [SerializeField] private Sprite leftSprite;
+    [SerializeField] private Sprite rightSprite;
+
     private Rigidbody2D rb;
     private Collider2D myCollider;
 
@@ -38,6 +46,9 @@ public class RandomMovementBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
+
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
 
         rb.gravityScale = 0f;
         rb.freezeRotation = true;
@@ -99,7 +110,7 @@ public class RandomMovementBehavior : MonoBehaviour
             nextPosition = PushInsideHome(nextPosition);
 
         rb.MovePosition(nextPosition);
-        FaceByX(moveDirection.x);
+        UpdateFacing(moveDirection);
     }
 
     public void ResetState()
@@ -152,6 +163,41 @@ public class RandomMovementBehavior : MonoBehaviour
 
         if (direction.sqrMagnitude < 0.001f)
             direction = Vector2.right;
+    }
+
+    private void UpdateFacing(Vector2 moveDirection)
+    {
+        if (useDirectionalSprites)
+        {
+            UpdateDirectionalSprite(moveDirection);
+            transform.rotation = Quaternion.identity;
+            return;
+        }
+
+        FaceByX(moveDirection.x);
+    }
+
+    private void UpdateDirectionalSprite(Vector2 moveDirection)
+    {
+        if (spriteRenderer == null)
+            return;
+
+        if (moveDirection.sqrMagnitude < 0.0001f)
+            return;
+
+        Sprite selectedSprite;
+
+        if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
+        {
+            selectedSprite = moveDirection.x < 0f ? leftSprite : rightSprite;
+        }
+        else
+        {
+            selectedSprite = moveDirection.y < 0f ? downSprite : upSprite;
+        }
+
+        if (selectedSprite != null)
+            spriteRenderer.sprite = selectedSprite;
     }
 
     private void FaceByX(float x)

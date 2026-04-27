@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Toxatrice
   type: 3
-  baseHP: 150
-  baseAttack: 40
-  baseDefense: 35
-  baseSpeed: 40
+  baseHP: 180
+  baseAttack: 115
+  baseDefense: 50
+  baseSpeed: 85
   frontSprite: {fileID: -8615985718437956144, guid: 6d3ddea5eb7d55241b14a802c065f0f2, type: 3}
   backSprite: {fileID: -8615985718437956144, guid: 6d3ddea5eb7d55241b14a802c065f0f2, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
-  battleCrySoundName: monkey-2
+  battleCrySoundName: Toxatrice
   baseCatchRate: 50
   evolutionStage: 2
   learnableMoves:

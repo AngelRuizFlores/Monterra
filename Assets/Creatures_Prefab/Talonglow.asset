@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonSpecies
   monName: Talonglow
   type: 0
-  baseHP: 150
-  baseAttack: 45
-  baseDefense: 30
-  baseSpeed: 50
+  baseHP: 200
+  baseAttack: 100
+  baseDefense: 70
+  baseSpeed: 60
   frontSprite: {fileID: -8594715318747747068, guid: 7e018e5147ebee7448a337faaefad949, type: 3}
   backSprite: {fileID: -8594715318747747068, guid: 7e018e5147ebee7448a337faaefad949, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
-  battleCrySoundName: monkey-3
+  battleCrySoundName: Talonglow
   baseCatchRate: 50
   evolutionStage: 2
   learnableMoves:
