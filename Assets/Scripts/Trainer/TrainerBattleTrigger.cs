@@ -88,13 +88,40 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
 
         defeated = true;
         ApplyDefeatedState(true);
+        StopMovement();
+
+        gameObject.SetActive(false);
+
         onDefeated?.Invoke();
+    }
+
+   public void ApplyDefeatedFromSave()
+    {
+        defeated = true;
+        ApplyDefeatedState(true);
+        StopMovement();
+
+        gameObject.SetActive(false);
     }
 
     private void ApplyDefeatedState(bool isDefeated)
     {
         if (disableColliderWhenDefeated && cachedCollider != null)
             cachedCollider.enabled = !isDefeated;
+    }
+
+    private void StopMovement()
+    {
+        RandomMovementBehavior movement = GetComponent<RandomMovementBehavior>();
+        if (movement != null)
+            movement.enabled = false;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
     }
 
     public void SetTrainerDefinitionForPhase(int phase)

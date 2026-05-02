@@ -6,6 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject creditsPanel;
 
     [Header("Scene Names")]
     [SerializeField] private string gameplaySceneName = "SampleScene";
@@ -17,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
+        GameStartMode.LoadGame = false;
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
@@ -25,12 +27,13 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
-        if (!HasSaveData())
+        if (!SaveGameManager.HasSave())
         {
             Debug.LogWarning("No save data found.");
             return;
         }
 
+        GameStartMode.LoadGame = true;
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
@@ -64,6 +67,22 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(CloseOptionsWithFade());
     }
 
+    public void OnCreditsPressed()
+    {
+        if (isLoading)
+            return;
+
+        StartCoroutine(OpenCreditsWithFade());
+    }
+
+    public void OnBackFromCreditsPressed()
+    {
+        if (isLoading)
+            return;
+
+        StartCoroutine(CloseCreditsWithFade());
+    }
+
     private IEnumerator LoadSceneWithFade(string sceneName)
     {
         if (string.IsNullOrWhiteSpace(sceneName))
@@ -75,20 +94,11 @@ public class MainMenuManager : MonoBehaviour
         isLoading = true;
 
         if (FadeController.Instance != null)
-        {
             yield return FadeController.Instance.FadeOut();
-        }
         else
-        {
             Debug.LogWarning("FadeController was not found in the scene.");
-        }
 
         SceneManager.LoadScene(sceneName);
-    }
-
-    private bool HasSaveData()
-    {
-        return PlayerPrefs.HasKey("HasSave");
     }
 
     private IEnumerator OpenOptionsWithFade()
@@ -109,6 +119,30 @@ public class MainMenuManager : MonoBehaviour
             yield return FadeController.Instance.FadeOut();
 
         optionsPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeIn();
+    }
+
+    private IEnumerator OpenCreditsWithFade()
+    {
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
+
+        mainMenuPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeIn();
+    }
+
+    private IEnumerator CloseCreditsWithFade()
+    {
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
+
+        creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
 
         if (FadeController.Instance != null)

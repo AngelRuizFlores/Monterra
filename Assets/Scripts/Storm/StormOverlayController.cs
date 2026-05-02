@@ -23,6 +23,8 @@ public class StormOverlayController : MonoBehaviour
     private Material materialInstance;
     private Vector2 centerWorld;
     private float radiusWorld;
+    private Coroutine stormRoutine;
+    private bool loadedFromSave;
 
     private static readonly int CenterId = Shader.PropertyToID("_Center");
     private static readonly int RadiusId = Shader.PropertyToID("_Radius");
@@ -45,11 +47,14 @@ public class StormOverlayController : MonoBehaviour
         radiusWorld = GetInitialRadius();
     }
 
-    private void Start()
+   private void Start()
     {
-        PickInitialCenter();
-        ApplyToShader();
-        StartCoroutine(StormPhases());
+        if (!loadedFromSave)
+        {
+            PickInitialCenter();
+            ApplyToShader();
+            stormRoutine = StartCoroutine(StormPhases());
+        }
     }
 
     private void Update()
@@ -236,5 +241,23 @@ public class StormOverlayController : MonoBehaviour
     public bool IsInsideSafeZone(Vector3 worldPosition)
     {
         return Vector2.Distance(worldPosition, centerWorld) <= radiusWorld;
+    }
+    public void LoadStormState(int phase, Vector2 center, float radius)
+    {
+        if (stormRoutine != null)
+        {
+            StopCoroutine(stormRoutine);
+            stormRoutine = null;
+        }
+
+        loadedFromSave = true;
+
+        CurrentPhase = Mathf.Max(0, phase);
+        centerWorld = center;
+        radiusWorld = Mathf.Max(0.1f, radius);
+
+        ApplyToShader();
+
+        stormRoutine = StartCoroutine(StormPhases());
     }
 }

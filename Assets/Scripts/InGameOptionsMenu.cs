@@ -10,6 +10,10 @@ public sealed class InGameOptionsMenu : MonoBehaviour
     [Header("Navigation")]
     [SerializeField] private MainMenuLoader mainMenuLoader;
 
+    [Header("Save")]
+    [SerializeField] private PlayerTeam playerTeam;
+    [SerializeField] private Transform playerTransform;
+
     [Header("Behaviour")]
     [SerializeField] private bool pauseAudioListener = false;
 
@@ -88,6 +92,8 @@ public sealed class InGameOptionsMenu : MonoBehaviour
 
         isBusy = true;
 
+        TrySaveGame();
+
         if (optionsPanel != null)
             optionsPanel.SetActive(false);
 
@@ -95,7 +101,19 @@ public sealed class InGameOptionsMenu : MonoBehaviour
             hudToHide.SetActive(true);
 
         SetGamePaused(false);
+        SaveGameManager.Save(playerTeam, playerTransform);
         mainMenuLoader.LoadMainMenu();
+    }
+
+    private void TrySaveGame()
+    {
+        if (playerTeam == null || playerTransform == null)
+        {
+            Debug.LogWarning($"{nameof(InGameOptionsMenu)}: no se puede guardar porque falta PlayerTeam o PlayerTransform.", this);
+            return;
+        }
+
+        SaveGameManager.Save(playerTeam, playerTransform);
     }
 
     private void SetGamePaused(bool paused)

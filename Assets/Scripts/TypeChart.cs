@@ -38,10 +38,10 @@ public static class TypeChart
         return 1f;
     }
 
-    public static string GetEffectText(float mult)
+  public static string GetEffectText(float multiplier)
     {
-        if (mult >= 2f) return "¡Es súper efectivo!";
-        if (mult <= 0.5f) return "No es muy efectivo...";
+        if (multiplier >= 2f) return "It's super effective!";
+        if (multiplier <= 0.5f) return "It's not very effective...";
         return "";
     }
 }

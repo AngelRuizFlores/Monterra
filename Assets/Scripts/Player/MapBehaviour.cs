@@ -13,6 +13,11 @@ public class MapOverlayController : MonoBehaviour
     [SerializeField] private RectTransform trainerMarkerPrefab;
     [SerializeField] private RectTransform trainerMarkersContainer;
 
+    [Header("Bell Markers")]
+    [SerializeField] private Transform[] bells;
+    [SerializeField] private RectTransform bellMarkerPrefab;
+    [SerializeField] private RectTransform bellMarkersContainer;
+
     [Header("World References")]
     [SerializeField] private Transform player;
     [SerializeField] private StormOverlayController storm;
@@ -28,6 +33,7 @@ public class MapOverlayController : MonoBehaviour
 
     private readonly List<TrainerBattleTrigger> trainers = new();
     private readonly Dictionary<TrainerBattleTrigger, RectTransform> trainerMarkers = new();
+    private readonly List<RectTransform> bellMarkers = new();
 
     private static readonly int CenterId = Shader.PropertyToID("_Center");
     private static readonly int RadiusId = Shader.PropertyToID("_Radius");
@@ -41,12 +47,14 @@ public class MapOverlayController : MonoBehaviour
         }
 
         BuildTrainerMarkers();
+        BuildBellMarkers();
     }
 
     private void Update()
     {
         UpdatePlayer();
         UpdateTrainerMarkers();
+        UpdateBellMarkers();
         UpdateStorm();
     }
 
@@ -76,6 +84,27 @@ public class MapOverlayController : MonoBehaviour
             ApplyTrainerSpriteToMarker(trainer, marker);
 
             trainerMarkers.Add(trainer, marker);
+        }
+    }
+
+    private void BuildBellMarkers()
+    {
+        bellMarkers.Clear();
+
+        if (bells == null || bellMarkerPrefab == null || mapImage == null)
+            return;
+
+        if (bellMarkersContainer == null)
+            bellMarkersContainer = mapImage;
+
+        for (int i = 0; i < bells.Length; i++)
+        {
+            if (bells[i] == null)
+                continue;
+
+            RectTransform marker = Instantiate(bellMarkerPrefab, bellMarkersContainer);
+            marker.gameObject.SetActive(true);
+            bellMarkers.Add(marker);
         }
     }
 
@@ -132,6 +161,44 @@ public class MapOverlayController : MonoBehaviour
 
             Vector2 normalized = WorldToNormalized(trainer.transform.position);
             marker.anchoredPosition = NormalizedToMapPosition(normalized);
+        }
+    }
+
+    private void UpdateBellMarkers()
+    {
+        if (bells == null || bellMarkers.Count == 0 || playBounds == null || mapImage == null)
+            return;
+
+        int markerIndex = 0;
+
+        for (int i = 0; i < bells.Length; i++)
+        {
+            Transform bell = bells[i];
+
+            if (bell == null)
+                continue;
+
+            if (markerIndex >= bellMarkers.Count)
+                break;
+
+            RectTransform marker = bellMarkers[markerIndex];
+
+            if (marker == null)
+            {
+                markerIndex++;
+                continue;
+            }
+
+            bool shouldShow = bell.gameObject.activeInHierarchy;
+            marker.gameObject.SetActive(shouldShow);
+
+            if (shouldShow)
+            {
+                Vector2 normalized = WorldToNormalized(bell.position);
+                marker.anchoredPosition = NormalizedToMapPosition(normalized);
+            }
+
+            markerIndex++;
         }
     }
 

@@ -256,4 +256,15 @@ public class PlayerTeam : MonoBehaviour
             playerMon.lvl = 1;
         }
     }
+
+    public void SetUnlockedSlotsFromSave(int value)
+    {
+        unlockedSlots = Mathf.Clamp(value, 1, MAX_TEAM);
+        OnChanged?.Invoke();
+    }
+
+    public void NotifyChanged()
+    {
+        OnChanged?.Invoke();
+    }
 }

@@ -33,6 +33,4 @@ MonoBehaviour:
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 131c8754016d19844846b601840c0aef, type: 2}
     learnAtLevel: 9
-  evolutions:
-  - evolvesTo: {fileID: 11400000, guid: 5fa7fc427d94e794f84d5b03ea86f775, type: 2}
-    evolveAtLevel: 3
+  evolutions: []

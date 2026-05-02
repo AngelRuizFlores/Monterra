@@ -49,7 +49,7 @@ Material:
     - _Radius: 12.5
     - _ZWrite: 0
     m_Colors:
-    - _Center: {r: 0.6923843, g: -3.3669882, b: 0, a: 0}
+    - _Center: {r: -0.84324086, g: -1.7303176, b: 0, a: 0}
     - _Color: {r: 0.63640434, g: 0.17475075, b: 0.7264151, a: 0.5882353}
     - _PreviewCenter: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _PreviewColor: {r: 1, g: 0, b: 0, a: 0.5}

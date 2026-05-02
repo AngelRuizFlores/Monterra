@@ -96,10 +96,7 @@ public sealed class TrainerStormDirector : MonoBehaviour
 
         int amountToRemove = alive.Count - maxAlive;
 
-        Debug.Log(
-            $"[TrainerStormDirector] CULLING -> Alive={alive.Count}, MaxAllowed={maxAlive}, Removing={amountToRemove}",
-            this
-        );
+        Debug.Log($"[TrainerStormDirector] CULLING -> Alive={alive.Count}, MaxAllowed={maxAlive}, Removing={amountToRemove}", this);
 
         for (int i = 0; i < amountToRemove; i++)
         {
@@ -142,6 +139,25 @@ public sealed class TrainerStormDirector : MonoBehaviour
             Debug.Log($"[TrainerStormDirector] RELOCATED -> {trainer.name} to {point.name}", trainer);
 
             trainer.transform.position = point.Position;
+
+            DisableRandomMovementAfterRelocation(trainer);
+        }
+    }
+
+    private void DisableRandomMovementAfterRelocation(TrainerBattleTrigger trainer)
+    {
+        if (trainer == null)
+            return;
+
+        RandomMovementBehavior movement = trainer.GetComponent<RandomMovementBehavior>();
+        if (movement != null)
+            movement.enabled = false;
+
+        Rigidbody2D rb = trainer.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
         }
     }
 
@@ -175,7 +191,7 @@ public sealed class TrainerStormDirector : MonoBehaviour
         if (candidates.Count == 0)
             return null;
 
-        int index = UnityEngine.Random.Range(0, candidates.Count);
+        int index = Random.Range(0, candidates.Count);
         return candidates[index];
     }
 

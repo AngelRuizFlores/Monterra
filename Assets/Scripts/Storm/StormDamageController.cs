@@ -16,6 +16,7 @@ public class StormDamageController : MonoBehaviour
 
     private float timeSinceLastDamage;
     private float timeSinceGameStart;
+    private bool gameEnded;
 
     private void OnValidate()
     {
@@ -31,6 +32,8 @@ public class StormDamageController : MonoBehaviour
 
     private void Update()
     {
+        if (gameEnded)
+        return;
         if (!ValidateDependencies())
             return;
 
@@ -89,8 +92,13 @@ public class StormDamageController : MonoBehaviour
             TriggerGameEnd();
     }
 
-    private void TriggerGameEnd()
+   private void TriggerGameEnd()
     {
+        if (gameEnded)
+            return;
+
+        gameEnded = true;
+
         Debug.Log("Game Over: all player creatures were defeated by the storm.");
         onGameEnd?.Invoke();
     }

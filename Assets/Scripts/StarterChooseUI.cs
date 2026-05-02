@@ -27,6 +27,17 @@ public class StarterChooseUI : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameStartMode.LoadGame)
+        {
+            if (chooseCanvas != null)
+                chooseCanvas.SetActive(false);
+            else
+                gameObject.SetActive(false);
+
+            Time.timeScale = 1f;
+            return;
+        }
+
         if (team == null) return;
         if (allStarters == null || allStarters.Count < 3) return;
 
@@ -124,7 +135,7 @@ public class StarterChooseUI : MonoBehaviour
         var starter = new MonInstance
         {
             species = chosen,
-            level = 1,
+            level = 3,
             experience = 0
         };
 
