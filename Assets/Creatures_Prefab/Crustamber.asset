@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Crustamber
   type: 1
   baseHP: 190
+  hpPerLevel: 3
   baseAttack: 95
   baseDefense: 55
   baseSpeed: 20
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: 9735ac3a5bdab2d4b99dec177481e81a, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 27fb7e0a55da00f42a5488eaef08212b, type: 2}
+  - move: {fileID: 11400000, guid: 3208ab7700fd155448007e0d16981aea, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: d0732b7664bfeb14497c7e27a8cce3a0, type: 2}
     learnAtLevel: 9

@@ -13,12 +13,17 @@ public class MainMenuManager : MonoBehaviour
 
     private bool isLoading;
 
+    private const string Confirm = "Confirm";
+     private const string Exit = "Exit";
+
     public void OnNewGamePressed()
     {
         if (isLoading)
             return;
 
         GameStartMode.LoadGame = false;
+         if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
@@ -33,6 +38,9 @@ public class MainMenuManager : MonoBehaviour
             return;
         }
 
+        GameStartMode.LoadGame = false;
+         if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
         GameStartMode.LoadGame = true;
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
@@ -44,11 +52,13 @@ public class MainMenuManager : MonoBehaviour
 
         Debug.Log("Closing game.");
 
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
+     if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Exit, false);
     }
 
     public void OnOptionsPressed()
@@ -57,13 +67,17 @@ public class MainMenuManager : MonoBehaviour
             return;
 
         StartCoroutine(OpenOptionsWithFade());
+        if (SoundManager.Instance != null)
+                SoundManager.Instance.Play(Confirm, false);
     }
 
     public void OnBackFromOptionsPressed()
     {
         if (isLoading)
             return;
-
+        GameStartMode.LoadGame = false;
+         if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Exit, false);
         StartCoroutine(CloseOptionsWithFade());
     }
 
@@ -72,6 +86,11 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
+        if (SoundManager.Instance != null)
+                SoundManager.Instance.Play(Confirm, false);
+        GameStartMode.LoadGame = false;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
         StartCoroutine(OpenCreditsWithFade());
     }
 
@@ -80,6 +99,8 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
+        if (SoundManager.Instance != null)
+                SoundManager.Instance.Play(Exit, false);
         StartCoroutine(CloseCreditsWithFade());
     }
 

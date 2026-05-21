@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Aqualet
   type: 2
   baseHP: 240
+  hpPerLevel: 3
   baseAttack: 50
   baseDefense: 105
   baseSpeed: 35
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: e4d3c37e9e5b40940b7974c182f15c17, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 85c219e6d6ae2e141a2a12482b2916bf, type: 2}
+  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 131c8754016d19844846b601840c0aef, type: 2}
     learnAtLevel: 9

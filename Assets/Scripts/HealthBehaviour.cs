@@ -33,7 +33,14 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
         }
 
         instance = monInstance;
-        instance.currentHP = Mathf.Clamp(instance.currentHP, 0, CalculateMaxHP(instance));
+
+        int maxHP = CalculateMaxHP(instance);
+
+        if (instance.currentHP >= maxHP - 3)
+            instance.currentHP = maxHP;
+        else
+            instance.currentHP = Mathf.Clamp(instance.currentHP, 0, maxHP);
+
         OnHeal?.Invoke(instance.currentHP, MaxHealth);
     }
 
@@ -204,6 +211,6 @@ public sealed class HealthBehaviour : MonoBehaviour, IHealable
 
     private static int CalculateMaxHP(MonInstance monInstance)
     {
-        return monInstance.species.baseHP + (monInstance.level * 2);
+        return MonLevelSystem.GetMaxHP(monInstance);
     }
 }

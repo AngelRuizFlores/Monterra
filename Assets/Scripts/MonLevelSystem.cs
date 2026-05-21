@@ -1,4 +1,3 @@
-// MonLevelSystem.cs
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -16,7 +15,11 @@ public static class MonLevelSystem
 
     public static int ExpToNextLevel(int level) => BASE_EXP + (level - 1) * STEP_EXP;
 
-    public static int GetMaxHP(MonInstance mon) => mon.species.baseHP + (mon.level * 2);
+    public static int GetMaxHP(MonInstance mon)
+    {
+        return mon.species.baseHP + mon.level * mon.species.hpPerLevel;
+    }
+
     public static int GetAttack(MonInstance mon) => mon.species.baseAttack + mon.level;
     public static int GetDefense(MonInstance mon) => mon.species.baseDefense + mon.level;
     public static int GetSpeed(MonInstance mon) => mon.species.baseSpeed + mon.level;

@@ -15,12 +15,13 @@ MonoBehaviour:
   monName: Brill
   type: 0
   baseHP: 165
+  hpPerLevel: 3
   baseAttack: 90
   baseDefense: 45
   baseSpeed: 90
   frontSprite: {fileID: 8506889411627444892, guid: 90f0d8b3ebc714644a173ba67868337c, type: 3}
   backSprite: {fileID: 8506889411627444892, guid: 90f0d8b3ebc714644a173ba67868337c, type: 3}
-  typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
+  typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
   battleCrySoundName: Brill
   baseCatchRate: 50
   evolutionStage: 0
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: c95698b361e50a84cbf41ae4c5f3342d, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
+  - move: {fileID: 11400000, guid: 27fb7e0a55da00f42a5488eaef08212b, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 69e68e88250cbc14d9d2e55a453b5b18, type: 2}
     learnAtLevel: 9

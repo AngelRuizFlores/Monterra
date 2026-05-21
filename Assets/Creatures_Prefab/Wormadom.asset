@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Wormadom
   type: 5
   baseHP: 190
+  hpPerLevel: 3
   baseAttack: 85
   baseDefense: 60
   baseSpeed: 55
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: e5be9570f1c43b847972b2d44df3102d, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 3208ab7700fd155448007e0d16981aea, type: 2}
+  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 1468c8a9a316d314abb93c1ef3608a01, type: 2}
     learnAtLevel: 9

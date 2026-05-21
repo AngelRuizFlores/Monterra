@@ -12,8 +12,18 @@ public class StarterChooseUI : MonoBehaviour
     [SerializeField] private TMP_Text[] slotNames;
     [SerializeField] private Button[] slotButtons;
 
-    [SerializeField] private PlayerTeam team;
+   [SerializeField] private PlayerTeam team;
     [SerializeField] private GameObject chooseCanvas;
+    [SerializeField] private CompanionHintsUI companionHintsUI;
+
+    [Header("Player Start Position")]
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Transform waterStartPoint;
+    [SerializeField] private Transform fireStartPoint;
+    [SerializeField] private Transform grassStartPoint;
+    [SerializeField] private Transform lightStartPoint;
+    [SerializeField] private Transform shadowStartPoint;
+    [SerializeField] private Transform earthStartPoint;
 
     [SerializeField] private Color waterColor  = new Color32(70, 170, 255, 255);
     [SerializeField] private Color fireColor   = new Color32(255, 90, 60, 255);
@@ -22,8 +32,18 @@ public class StarterChooseUI : MonoBehaviour
     [SerializeField] private Color shadowColor = new Color32(140, 60, 200, 255);
     [SerializeField] private Color earthColor  = new Color32(170, 120, 60, 255);
 
-    private readonly MonSpecies[] shown = new MonSpecies[3];
+  private readonly MonSpecies[] shown = new MonSpecies[3];
     private bool isChoosing = false;
+    private const string Music = "ChooseMusic";
+    private const string Confirm = "Switch";
+    private const float ChooseStartDelay = 1.5f;
+
+
+    private void Start() {
+        if (chooseCanvas != null)
+            if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Music, true);
+    }
 
     private void OnEnable()
     {
@@ -127,10 +147,13 @@ public class StarterChooseUI : MonoBehaviour
         StartCoroutine(ChooseRoutine(chosen));
     }
 
-    private IEnumerator ChooseRoutine(MonSpecies chosen)
+   private IEnumerator ChooseRoutine(MonSpecies chosen)
     {
         isChoosing = true;
         SetButtonsInteractable(false);
+        PlayConfirmSound();
+
+        yield return new WaitForSecondsRealtime(ChooseStartDelay);
 
         var starter = new MonInstance
         {
@@ -144,23 +167,63 @@ public class StarterChooseUI : MonoBehaviour
 
         team.InitWithStarter(starter);
 
+        if (companionHintsUI != null)
+            companionHintsUI.StartStarterHints();
+
         if (FadeController.Instance != null)
             yield return FadeController.Instance.FadeOut();
 
-        Time.timeScale = 1f;
+        MovePlayerToStarterPoint(chosen);
 
-        if (FadeController.Instance != null)
-            FadeController.Instance.StartFadeIn();
+        Time.timeScale = 1f;
 
         if (chooseCanvas != null)
-        chooseCanvas.SetActive(false);
-
-        Time.timeScale = 1f;
+            chooseCanvas.SetActive(false);
 
         FindFirstObjectByType<MusicGame>()?.StartWorldMusic();
 
         if (FadeController.Instance != null)
             FadeController.Instance.StartFadeIn();
+    }
+
+    private void MovePlayerToStarterPoint(MonSpecies chosen)
+    {
+        if (chosen == null || playerTransform == null)
+            return;
+
+        Transform point = GetStartPoint(chosen.type);
+
+        if (point == null)
+            return;
+
+        playerTransform.position = point.position;
+    }
+
+    private Transform GetStartPoint(MonType type)
+    {
+        switch (type)
+        {
+            case MonType.Water:
+                return waterStartPoint;
+
+            case MonType.Fire:
+                return fireStartPoint;
+
+            case MonType.Grass:
+                return grassStartPoint;
+
+            case MonType.Light:
+                return lightStartPoint;
+
+            case MonType.Shadow:
+                return shadowStartPoint;
+
+            case MonType.Earth:
+                return earthStartPoint;
+
+            default:
+                return null;
+        }
     }
 
     private void SetButtonsInteractable(bool value)
@@ -178,13 +241,32 @@ public class StarterChooseUI : MonoBehaviour
     {
         switch (type)
         {
-            case MonType.Water:  return waterColor;
-            case MonType.Fire:   return fireColor;
-            case MonType.Grass:  return grassColor;
-            case MonType.Light:  return lightColor;
-            case MonType.Shadow: return shadowColor;
-            case MonType.Earth:  return earthColor;
-            default:             return shadowColor;
+            case MonType.Water:
+                return waterColor;
+
+            case MonType.Fire:
+                return fireColor;
+
+            case MonType.Grass:
+                return grassColor;
+
+            case MonType.Light:
+                return lightColor;
+
+            case MonType.Shadow:
+                return shadowColor;
+
+            case MonType.Earth:
+                return earthColor;
+
+            default:
+                return shadowColor;
         }
+    }
+
+    public void PlayConfirmSound()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
     }
 }

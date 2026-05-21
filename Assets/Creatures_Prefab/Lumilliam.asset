@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Lumilliam
   type: 0
   baseHP: 215
+  hpPerLevel: 3
   baseAttack: 115
   baseDefense: 80
   baseSpeed: 30
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: c95698b361e50a84cbf41ae4c5f3342d, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
+  - move: {fileID: 11400000, guid: 85c219e6d6ae2e141a2a12482b2916bf, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 69e68e88250cbc14d9d2e55a453b5b18, type: 2}
     learnAtLevel: 9

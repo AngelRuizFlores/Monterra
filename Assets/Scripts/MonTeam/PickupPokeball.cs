@@ -26,6 +26,12 @@ public class PickupPokeball : MonoBehaviour
         if (!ok)
             return;
 
+        int unlockedSlotIndex = team.UnlockedSlots - 1;
+
+        PokeballPickupFeedback feedback = FindFirstObjectByType<PokeballPickupFeedback>();
+        if (feedback != null)
+            feedback.ShowUnlockedSlot(unlockedSlotIndex);
+
         if (spawnPoint != null)
             SaveGameManager.RegisterCollectedPokeball(spawnPoint.PokeballId);
 

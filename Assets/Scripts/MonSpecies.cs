@@ -31,6 +31,7 @@ public class MonSpecies : ScriptableObject
 
     [Header("Base Stats")]
     public int baseHP;
+    public int hpPerLevel = 2;
     public int baseAttack;
     public int baseDefense;
     public int baseSpeed;

@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Droplet
   type: 2
   baseHP: 185
+  hpPerLevel: 3
   baseAttack: 30
   baseDefense: 65
   baseSpeed: 20
@@ -22,14 +23,14 @@ MonoBehaviour:
   backSprite: {fileID: 1408180825, guid: 399ea5742efa82e4aa6751490e9791c7, type: 3}
   typeSprite: {fileID: -6597409936211466667, guid: 3b1c7a7756bb92f46b6019ab2ab8f53a, type: 3}
   battleCrySoundName: Droplet
-  baseCatchRate: 50
+  baseCatchRate: 100
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 834b440a77bc8674b8f4a77e9c74be8d, type: 2}
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: e4d3c37e9e5b40940b7974c182f15c17, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 85c219e6d6ae2e141a2a12482b2916bf, type: 2}
+  - move: {fileID: 11400000, guid: 7a1a62ac33605324f8f304b1e499cf07, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 131c8754016d19844846b601840c0aef, type: 2}
     learnAtLevel: 9

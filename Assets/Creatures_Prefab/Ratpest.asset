@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Ratpest
   type: 4
   baseHP: 180
+  hpPerLevel: 3
   baseAttack: 130
   baseDefense: 45
   baseSpeed: 75
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: 96c8a0dada9952341bca07f45e40513b, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 674c88f3c84f2fa47bf53cabd5a956dd, type: 2}
+  - move: {fileID: 11400000, guid: a9cf6cfa087c630468609543370032ac, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: c7c22cdc945d0c84f9354604e383ef00, type: 2}
     learnAtLevel: 9

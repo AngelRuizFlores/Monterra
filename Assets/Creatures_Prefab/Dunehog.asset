@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Dunehog
   type: 5
   baseHP: 215
+  hpPerLevel: 3
   baseAttack: 90
   baseDefense: 105
   baseSpeed: 20
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: e5be9570f1c43b847972b2d44df3102d, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: 3208ab7700fd155448007e0d16981aea, type: 2}
+  - move: {fileID: 11400000, guid: 27fb7e0a55da00f42a5488eaef08212b, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 1468c8a9a316d314abb93c1ef3608a01, type: 2}
     learnAtLevel: 9

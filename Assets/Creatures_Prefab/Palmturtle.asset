@@ -15,6 +15,7 @@ MonoBehaviour:
   monName: Palmturtle
   type: 3
   baseHP: 220
+  hpPerLevel: 3
   baseAttack: 50
   baseDefense: 100
   baseSpeed: 20
@@ -29,7 +30,7 @@ MonoBehaviour:
     learnAtLevel: 1
   - move: {fileID: 11400000, guid: 395df273ad6b85b44ba8b7bc5a4656b2, type: 2}
     learnAtLevel: 4
-  - move: {fileID: 11400000, guid: a9cf6cfa087c630468609543370032ac, type: 2}
+  - move: {fileID: 11400000, guid: 85c219e6d6ae2e141a2a12482b2916bf, type: 2}
     learnAtLevel: 6
   - move: {fileID: 11400000, guid: 113368cd75d302742a298114d0514ecb, type: 2}
     learnAtLevel: 9

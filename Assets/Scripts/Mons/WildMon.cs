@@ -12,6 +12,8 @@ public class WildMon : MonoBehaviour
 
     [NonSerialized] public MonInstance instance;
 
+    private CreatureGenerator sourceGenerator;
+
     private void OnEnable()
     {
         Init();
@@ -36,5 +38,16 @@ public class WildMon : MonoBehaviour
 
         instance.currentHP = MonLevelSystem.GetMaxHP(instance);
         MonLevelSystem.InitMovesForCurrentLevel(instance);
+    }
+
+    public void SetSourceGenerator(CreatureGenerator generator)
+    {
+        sourceGenerator = generator;
+    }
+
+    public void NotifyBattleStarted()
+    {
+        if (sourceGenerator != null)
+            sourceGenerator.HandleWildBattleStarted(this);
     }
 }

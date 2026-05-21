@@ -16,6 +16,7 @@ public class StormOverlayController : MonoBehaviour
 
     [SerializeField] private float featherUV = 0.02f;
     [SerializeField] private float damageMarginViewport = 0.01f;
+    [SerializeField] private CompanionHintsUI companionHintsUI;
 
     public int CurrentPhase { get; private set; }
 
@@ -93,6 +94,11 @@ public class StormOverlayController : MonoBehaviour
             duration = 0.01f;
 
         CurrentPhase = i + 1;
+
+        if (companionHintsUI != null)
+        {
+            companionHintsUI.ShowStormClosingHint();
+        }
 
         float elapsed = 0f;
         while (elapsed < duration)

@@ -29,14 +29,20 @@ public class CreatureGenerator : MonoBehaviour
     private string creatureToSpawn;
     private Collider2D homeZone;
     private float timer;
+    private int initialMaxSpawnCount;
+
+    private readonly List<WildMon> spawnedMons = new();
 
     private void Awake()
     {
         homeZone = GetComponent<Collider2D>();
+        initialMaxSpawnCount = maxSpawnCount;
     }
 
     private void Update()
     {
+        CleanSpawnedList();
+
         if (maxSpawnCount <= 0)
             return;
 
@@ -74,8 +80,44 @@ public class CreatureGenerator : MonoBehaviour
         timer = 0f;
     }
 
+    public void HandleWildBattleStarted(WildMon selectedWild)
+    {
+        for (int i = spawnedMons.Count - 1; i >= 0; i--)
+        {
+            WildMon wild = spawnedMons[i];
+
+            if (wild == null)
+            {
+                spawnedMons.RemoveAt(i);
+                continue;
+            }
+
+            if (wild == selectedWild)
+                continue;
+
+            if (wild.gameObject.activeInHierarchy)
+                wild.gameObject.SetActive(false);
+
+            spawnedMons.RemoveAt(i);
+        }
+
+        maxSpawnCount = initialMaxSpawnCount;
+        timer = 0f;
+
+        Debug.Log($"[{nameof(CreatureGenerator)}] Wild battle started. Same grass cleaned and spawn counter reset.", this);
+    }
+
     private IEnumerator SpawnSafely(GameObject creature, Vector3 position, Quaternion rotation)
     {
+        WildMon wild = creature.GetComponent<WildMon>();
+        if (wild != null)
+        {
+            wild.SetSourceGenerator(this);
+
+            if (!spawnedMons.Contains(wild))
+                spawnedMons.Add(wild);
+        }
+
         SpriteRenderer[] spriteRenderers = creature.GetComponentsInChildren<SpriteRenderer>(true);
         for (int i = 0; i < spriteRenderers.Length; i++)
             spriteRenderers[i].enabled = false;
@@ -122,6 +164,15 @@ public class CreatureGenerator : MonoBehaviour
             movement.SetHomeZone(homeZone);
             movement.SetPlayer(player);
             movement.ResetState();
+        }
+    }
+
+    private void CleanSpawnedList()
+    {
+        for (int i = spawnedMons.Count - 1; i >= 0; i--)
+        {
+            if (spawnedMons[i] == null || !spawnedMons[i].gameObject.activeInHierarchy)
+                spawnedMons.RemoveAt(i);
         }
     }
 

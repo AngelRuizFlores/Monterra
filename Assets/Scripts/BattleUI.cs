@@ -30,6 +30,11 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private RectTransform playerHitPoint;
     [SerializeField] private RectTransform enemyHitPoint;
 
+     private const string Confirm = "Confirm";
+     private const string Exit = "Exit";
+      private const string Switch = "Switch";
+
+
     private System.Action onSwitchPressed;
 
     public void BindSwitchAction(System.Action action)
@@ -213,5 +218,23 @@ public class BattleUI : MonoBehaviour
     public Vector2 GetEnemyHitPoint()
     {
         return enemyHitPoint != null ? enemyHitPoint.anchoredPosition : Vector2.zero;
+    }
+
+    public void PlayConfirmSound()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
+    }
+
+    public void PlayExitSound()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Exit, false);
+    }
+
+    public void PlaySwitchSound()
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Switch, false);
     }
 }

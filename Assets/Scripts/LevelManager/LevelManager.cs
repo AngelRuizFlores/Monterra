@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     private const float TurnDelay = 1f;
+    private const float PlayerAttackStartDelay = 1.3f;
     private const string MonCatchSoundName = "MonCatch";
     private const string CatchAttemptSoundName = "CatchAttempt";
     private const string CatchFailSoundName = "CatchFail";
@@ -140,6 +141,8 @@ public class LevelManager : MonoBehaviour
         encounterType = EncounterType.Wild;
 
         EnsureInstances(currentWild);
+        currentWild.NotifyBattleStarted();
+
         ApplyBattleBackground();
         ShowBattleUI();
         SetupEnemyHealth();
@@ -414,7 +417,7 @@ public class LevelManager : MonoBehaviour
         battleUI?.SetText($"Trying to catch {currentWild.instance.species.monName}.");
         PlaySound(CatchAttemptSoundName, false);
 
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.3f);
 
         bool captured = CatchSystem.TryCatch(
             playerMon.instance,
@@ -642,69 +645,71 @@ public class LevelManager : MonoBehaviour
     }
 
     private IEnumerator BattleTurnCoroutine(MoveData playerMove)
+{
+    state = BattleState.Busy;
+    SetPlayerCombatInputEnabled(false);
+
+    yield return new WaitForSecondsRealtime(PlayerAttackStartDelay);
+
+    MonInstance player = playerMon != null ? playerMon.instance : null;
+    MonInstance enemy = GetCurrentEnemyMon();
+
+    if (player == null || enemy == null)
     {
-        state = BattleState.Busy;
-        SetPlayerCombatInputEnabled(false);
+        EndBattle();
+        yield break;
+    }
 
-        MonInstance player = playerMon != null ? playerMon.instance : null;
-        MonInstance enemy = GetCurrentEnemyMon();
+    bool playerFirst = MonLevelSystem.GetSpeed(player) >= MonLevelSystem.GetSpeed(enemy);
 
-        if (player == null || enemy == null)
+    if (playerFirst)
+    {
+        yield return PlayerAttack(playerMove);
+        if (battleEnding)
+            yield break;
+
+        if (IsEnemyDead())
         {
-            EndBattle();
+            yield return HandleEnemyDefeatAfterPlayerAttack();
             yield break;
         }
 
-        bool playerFirst = MonLevelSystem.GetSpeed(player) >= MonLevelSystem.GetSpeed(enemy);
+        yield return ResolveEnemyTurnCoroutine();
+        if (battleEnding)
+            yield break;
 
-        if (playerFirst)
+        if (IsPlayerDead())
         {
-            yield return PlayerAttack(playerMove);
-            if (battleEnding)
-                yield break;
-
-            if (IsEnemyDead())
-            {
-                yield return HandleEnemyDefeatAfterPlayerAttack();
-                yield break;
-            }
-
-            yield return ResolveEnemyTurnCoroutine();
-            if (battleEnding)
-                yield break;
-
-            if (IsPlayerDead())
-            {
-                yield return HandlePlayerDefeatAfterEnemyAction();
-                yield break;
-            }
+            yield return HandlePlayerDefeatAfterEnemyAction();
+            yield break;
         }
-        else
-        {
-            yield return ResolveEnemyTurnCoroutine();
-            if (battleEnding)
-                yield break;
-
-            if (IsPlayerDead())
-            {
-                yield return HandlePlayerDefeatAfterEnemyAction();
-                yield break;
-            }
-
-            yield return PlayerAttack(playerMove);
-            if (battleEnding)
-                yield break;
-
-            if (IsEnemyDead())
-            {
-                yield return HandleEnemyDefeatAfterPlayerAttack();
-                yield break;
-            }
-        }
-
-        runningBattleRoutine = null;
-        EnterPlayerTurn();
     }
+    else
+    {
+        yield return ResolveEnemyTurnCoroutine();
+        if (battleEnding)
+            yield break;
+
+        if (IsPlayerDead())
+        {
+            yield return HandlePlayerDefeatAfterEnemyAction();
+            yield break;
+        }
+
+        yield return PlayerAttack(playerMove);
+        if (battleEnding)
+            yield break;
+
+        if (IsEnemyDead())
+        {
+            yield return HandleEnemyDefeatAfterPlayerAttack();
+            yield break;
+        }
+    }
+
+    runningBattleRoutine = null;
+    EnterPlayerTurn();
+}
 
     private IEnumerator PlayerAttack(MoveData move)
     {
