@@ -3,13 +3,19 @@ using UnityEngine;
 
 public sealed class PokeballWorldManager : MonoBehaviour
 {
+    [Header("All Pokeballs")]
     [SerializeField] private PokeballSpawnPoint[] pokeballs;
-    [SerializeField] private int activePokeballCount = 12;
+
+    [Header("Guaranteed Spawn Pokeballs")]
+    [SerializeField] private PokeballSpawnPoint[] guaranteedPokeballs;
+
+    [Header("Random Pokeballs")]
+    [SerializeField] private int randomPokeballCount = 32;
 
     private void Start()
     {
         if (pokeballs == null || pokeballs.Length == 0)
-            pokeballs = FindObjectsByType<PokeballSpawnPoint>(FindObjectsSortMode.None);
+            pokeballs = FindObjectsByType<PokeballSpawnPoint>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         if (GameStartMode.LoadGame)
             ApplyLoadedPokeballs();
@@ -24,7 +30,15 @@ public sealed class PokeballWorldManager : MonoBehaviour
         data.activePokeballIds.Clear();
         data.collectedPokeballIds.Clear();
 
-        List<PokeballSpawnPoint> pool = new List<PokeballSpawnPoint>(pokeballs);
+        for (int i = 0; i < pokeballs.Length; i++)
+        {
+            if (pokeballs[i] != null)
+                pokeballs[i].gameObject.SetActive(false);
+        }
+
+        AddGuaranteedPokeballs(data);
+
+        List<PokeballSpawnPoint> pool = BuildRandomPool();
 
         for (int i = 0; i < pool.Count; i++)
         {
@@ -32,10 +46,7 @@ public sealed class PokeballWorldManager : MonoBehaviour
             (pool[i], pool[r]) = (pool[r], pool[i]);
         }
 
-        int count = Mathf.Min(activePokeballCount, pool.Count);
-
-        for (int i = 0; i < pokeballs.Length; i++)
-            pokeballs[i].gameObject.SetActive(false);
+        int count = Mathf.Min(randomPokeballCount, pool.Count);
 
         for (int i = 0; i < count; i++)
         {
@@ -45,12 +56,63 @@ public sealed class PokeballWorldManager : MonoBehaviour
                 continue;
 
             point.gameObject.SetActive(true);
-            data.activePokeballIds.Add(point.PokeballId);
+
+            if (!data.activePokeballIds.Contains(point.PokeballId))
+                data.activePokeballIds.Add(point.PokeballId);
         }
 
         SaveGameManager.SaveRaw(data);
 
-        Debug.Log($"[POKEBALLS] New game generated {data.activePokeballIds.Count} active pokeballs.");
+        Debug.Log($"[MONBALLS] New game generated {data.activePokeballIds.Count} active MONballs. Guaranteed={CountGuaranteed()}, Random={count}");
+    }
+
+    private void AddGuaranteedPokeballs(SaveData data)
+    {
+        if (guaranteedPokeballs == null)
+            return;
+
+        for (int i = 0; i < guaranteedPokeballs.Length; i++)
+        {
+            PokeballSpawnPoint point = guaranteedPokeballs[i];
+
+            if (point == null)
+                continue;
+
+            point.gameObject.SetActive(true);
+
+            if (!data.activePokeballIds.Contains(point.PokeballId))
+                data.activePokeballIds.Add(point.PokeballId);
+        }
+    }
+
+    private List<PokeballSpawnPoint> BuildRandomPool()
+    {
+        List<PokeballSpawnPoint> pool = new List<PokeballSpawnPoint>();
+        HashSet<string> guaranteedIds = new HashSet<string>();
+
+        if (guaranteedPokeballs != null)
+        {
+            for (int i = 0; i < guaranteedPokeballs.Length; i++)
+            {
+                if (guaranteedPokeballs[i] != null)
+                    guaranteedIds.Add(guaranteedPokeballs[i].PokeballId);
+            }
+        }
+
+        for (int i = 0; i < pokeballs.Length; i++)
+        {
+            PokeballSpawnPoint point = pokeballs[i];
+
+            if (point == null)
+                continue;
+
+            if (guaranteedIds.Contains(point.PokeballId))
+                continue;
+
+            pool.Add(point);
+        }
+
+        return pool;
     }
 
     private void ApplyLoadedPokeballs()
@@ -80,6 +142,22 @@ public sealed class PokeballWorldManager : MonoBehaviour
             point.gameObject.SetActive(shouldExist);
         }
 
-        Debug.Log("[POKEBALLS] Loaded pokeball state.");
+        Debug.Log("[MONBALLS] Loaded MONball state.");
+    }
+
+    private int CountGuaranteed()
+    {
+        int count = 0;
+
+        if (guaranteedPokeballs == null)
+            return count;
+
+        for (int i = 0; i < guaranteedPokeballs.Length; i++)
+        {
+            if (guaranteedPokeballs[i] != null)
+                count++;
+        }
+
+        return count;
     }
 }

@@ -381,10 +381,14 @@ public class LevelManager : MonoBehaviour
         switch (action)
         {
             case PostBattleAction.GameOver:
+                SaveGameManager.DeleteSave();
+                GameStartMode.LoadGame = false;
                 onPlayerPartyDefeated?.Invoke();
                 break;
 
             case PostBattleAction.Victory:
+                SaveGameManager.DeleteSave();
+                GameStartMode.LoadGame = false;
                 onWin?.Invoke();
                 break;
         }
@@ -454,6 +458,7 @@ public class LevelManager : MonoBehaviour
                 MonLevelSystem.ExpSource.Capture,
                 phase
             );
+            team.RefreshTeamUI();
 
             battleUI?.ShowPlayerMon(playerMon);
             battleUI?.SetPlayerExp(playerMon.instance);
@@ -1164,6 +1169,7 @@ public class LevelManager : MonoBehaviour
                 continue;
 
             MonLevelSystem.AddExperience(mon, MonLevelSystem.ExpSource.PlayerKill, phase);
+            team.RefreshTeamUI();
         }
 
         if (playerMon != null && playerMon.instance != null)

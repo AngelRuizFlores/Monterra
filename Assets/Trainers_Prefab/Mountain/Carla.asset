@@ -15,6 +15,6 @@ MonoBehaviour:
   trainerName: Carla
   trainerSprite: {fileID: 8953629741208907362, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: eeb0b07116d7afe40969ce6099ecbaaa, type: 2}
+  - species: {fileID: 11400000, guid: c025b7e3994f9154f8caed409c44c6dc, type: 2}
     level: 3
   barkPersonality: Cold and calculating tactician.

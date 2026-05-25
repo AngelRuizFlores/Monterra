@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 5942500506167569231, guid: 6fc1f5ffae94f58468c2f2f8fb940d6f, type: 3}
   moveName: Bubble Dart
   type: 2
-  power: 30
+  power: 40
   accuracy: 100
   attackSoundName: WaterAttack

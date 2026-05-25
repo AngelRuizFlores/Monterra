@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Sofia
   trainerSprite: {fileID: 1598726203847200779, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 541e4c35456747c449a26253bd07bca8, type: 2}
+  - species: {fileID: 11400000, guid: 5904819e71ce4674d824d1062e721749, type: 2}
     level: 6
   - species: {fileID: 11400000, guid: e6f62cf5f6ed7ac4e8a7194bd8b22054, type: 2}
     level: 6

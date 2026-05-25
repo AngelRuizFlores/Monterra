@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 836830787409592975, guid: 205bc36c8e799ba45937b66fdec1f497, type: 3}
   moveName: Shade Hit
   type: 4
-  power: 20
+  power: 30
   accuracy: 100
   attackSoundName: ShadowAttack

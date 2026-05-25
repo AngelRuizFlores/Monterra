@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 5402649123942226042, guid: c2ee5c398d3a744468ba4f5c71dcffad, type: 3}
   moveName: Pebble Toss
   type: 5
-  power: 20
+  power: 30
   accuracy: 100
   attackSoundName: EarthAttack

@@ -15,12 +15,12 @@ MonoBehaviour:
   trainerName: Elena
   trainerSprite: {fileID: 1598726203847200779, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: a51f2065592a5b140bc4894d8d1352e6, type: 2}
+  - species: {fileID: 11400000, guid: 3de745936995fc347822fed4a39ccdfa, type: 2}
     level: 10
   - species: {fileID: 11400000, guid: 0b67547d80a55274d9f457c4948ccdfa, type: 2}
     level: 10
-  - species: {fileID: 11400000, guid: e6f62cf5f6ed7ac4e8a7194bd8b22054, type: 2}
+  - species: {fileID: 11400000, guid: 725cc1793845ebf4a88eed316a48baf6, type: 2}
     level: 10
-  - species: {fileID: 11400000, guid: 0461fbea6a9e6664cb7675e7953862b4, type: 2}
+  - species: {fileID: 11400000, guid: 20a6bcb71cece744eb981c2a54eb2cba, type: 2}
     level: 10
   barkPersonality: Calm and strategic thinker.

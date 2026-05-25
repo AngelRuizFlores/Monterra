@@ -8,22 +8,47 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject creditsPanel;
 
+    [Header("Buttons")]
+    [SerializeField] private GameObject continueButton;
+
     [Header("Scene Names")]
     [SerializeField] private string gameplaySceneName = "SampleScene";
 
     private bool isLoading;
 
     private const string Confirm = "Confirm";
-     private const string Exit = "Exit";
+    private const string Exit = "Exit";
+
+    private void Start()
+    {
+        //PlayerPrefs.DeleteKey("OwnedSpeciesIds");
+        //PlayerPrefs.Save();
+        //Debug.Log("Owned mons reset.");
+        RefreshContinueButton();
+    }
+
+    private void OnEnable()
+    {
+        RefreshContinueButton();
+    }
+
+    private void RefreshContinueButton()
+    {
+        if (continueButton != null)
+            continueButton.SetActive(SaveGameManager.HasPlayableSave());
+    }
 
     public void OnNewGamePressed()
     {
         if (isLoading)
             return;
 
+        SaveGameManager.DeleteSave();
         GameStartMode.LoadGame = false;
-         if (SoundManager.Instance != null)
+
+        if (SoundManager.Instance != null)
             SoundManager.Instance.Play(Confirm, false);
+
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
@@ -32,16 +57,18 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
-        if (!SaveGameManager.HasSave())
+        if (!SaveGameManager.HasPlayableSave())
         {
-            Debug.LogWarning("No save data found.");
+            Debug.LogWarning("No playable save data found.");
+            RefreshContinueButton();
             return;
         }
 
-        GameStartMode.LoadGame = false;
-         if (SoundManager.Instance != null)
-            SoundManager.Instance.Play(Confirm, false);
         GameStartMode.LoadGame = true;
+
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Confirm, false);
+
         StartCoroutine(LoadSceneWithFade(gameplaySceneName));
     }
 
@@ -50,15 +77,16 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.Play(Exit, false);
+
         Debug.Log("Closing game.");
 
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
-            Application.Quit();
-    #endif
-     if (SoundManager.Instance != null)
-            SoundManager.Instance.Play(Exit, false);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
     public void OnOptionsPressed()
@@ -66,18 +94,22 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
-        StartCoroutine(OpenOptionsWithFade());
         if (SoundManager.Instance != null)
-                SoundManager.Instance.Play(Confirm, false);
+            SoundManager.Instance.Play(Confirm, false);
+
+        StartCoroutine(OpenOptionsWithFade());
     }
 
     public void OnBackFromOptionsPressed()
     {
         if (isLoading)
             return;
+
         GameStartMode.LoadGame = false;
-         if (SoundManager.Instance != null)
+
+        if (SoundManager.Instance != null)
             SoundManager.Instance.Play(Exit, false);
+
         StartCoroutine(CloseOptionsWithFade());
     }
 
@@ -86,11 +118,11 @@ public class MainMenuManager : MonoBehaviour
         if (isLoading)
             return;
 
-        if (SoundManager.Instance != null)
-                SoundManager.Instance.Play(Confirm, false);
         GameStartMode.LoadGame = false;
+
         if (SoundManager.Instance != null)
             SoundManager.Instance.Play(Confirm, false);
+
         StartCoroutine(OpenCreditsWithFade());
     }
 
@@ -100,7 +132,8 @@ public class MainMenuManager : MonoBehaviour
             return;
 
         if (SoundManager.Instance != null)
-                SoundManager.Instance.Play(Exit, false);
+            SoundManager.Instance.Play(Exit, false);
+
         StartCoroutine(CloseCreditsWithFade());
     }
 
@@ -141,6 +174,7 @@ public class MainMenuManager : MonoBehaviour
 
         optionsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        RefreshContinueButton();
 
         if (FadeController.Instance != null)
             yield return FadeController.Instance.FadeIn();
@@ -165,6 +199,7 @@ public class MainMenuManager : MonoBehaviour
 
         creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        RefreshContinueButton();
 
         if (FadeController.Instance != null)
             yield return FadeController.Instance.FadeIn();

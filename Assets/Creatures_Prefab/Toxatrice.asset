@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Toxatrice
   type: 3
   baseHP: 180
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 115
+  attackPerLevel: 5
   baseDefense: 50
   baseSpeed: 85
   frontSprite: {fileID: -8615985718437956144, guid: 6d3ddea5eb7d55241b14a802c065f0f2, type: 3}

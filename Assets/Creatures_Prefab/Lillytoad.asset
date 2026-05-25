@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Lillytoad
   type: 2
   baseHP: 210
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 45
+  attackPerLevel: 5
   baseDefense: 95
   baseSpeed: 40
   frontSprite: {fileID: -3441220242641935921, guid: fc2b67d0482b455489be16455f42ebd4, type: 3}

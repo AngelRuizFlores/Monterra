@@ -125,10 +125,15 @@ public sealed class TrainerStormDirector : MonoBehaviour
             if (stormController.IsInsideSafeZone(trainer.transform.position))
                 continue;
 
-            if (relocateOnlyWhenOffscreen && IsVisibleToCamera(trainer.transform.position))
+            bool isLastTrainer = alive.Count <= 1;
+
+            if (!isLastTrainer && relocateOnlyWhenOffscreen && IsVisibleToCamera(trainer.transform.position))
                 continue;
 
-            TrainerSafePoint point = FindValidSafePoint(alive);
+            TrainerSafePoint point = FindValidSafePoint(alive, trainer);
+
+            if (point == null)
+                point = FindFallbackSafePoint();
 
             if (point == null)
             {
@@ -161,7 +166,7 @@ public sealed class TrainerStormDirector : MonoBehaviour
         }
     }
 
-    private TrainerSafePoint FindValidSafePoint(List<TrainerBattleTrigger> activeTrainers)
+    private TrainerSafePoint FindValidSafePoint(List<TrainerBattleTrigger> activeTrainers, TrainerBattleTrigger trainerToMove)
     {
         if (safePoints == null || safePoints.Length == 0)
             return null;
@@ -182,7 +187,7 @@ public sealed class TrainerStormDirector : MonoBehaviour
                 Vector2.Distance(point.Position, playerTransform.position) < minDistanceFromPlayer)
                 continue;
 
-            if (IsTooCloseToOtherTrainer(point.Position, activeTrainers))
+            if (IsTooCloseToOtherTrainer(point.Position, activeTrainers, trainerToMove))
                 continue;
 
             candidates.Add(point);
@@ -195,13 +200,13 @@ public sealed class TrainerStormDirector : MonoBehaviour
         return candidates[index];
     }
 
-    private bool IsTooCloseToOtherTrainer(Vector3 position, List<TrainerBattleTrigger> activeTrainers)
+    private bool IsTooCloseToOtherTrainer(Vector3 position, List<TrainerBattleTrigger> activeTrainers, TrainerBattleTrigger trainerToIgnore)
     {
         for (int i = 0; i < activeTrainers.Count; i++)
         {
             TrainerBattleTrigger trainer = activeTrainers[i];
 
-            if (trainer == null || !trainer.gameObject.activeInHierarchy)
+            if (trainer == null || trainer == trainerToIgnore || !trainer.gameObject.activeInHierarchy)
                 continue;
 
             if (Vector2.Distance(position, trainer.transform.position) < minDistanceBetweenTrainers)
@@ -255,5 +260,32 @@ public sealed class TrainerStormDirector : MonoBehaviour
 
         int index = Mathf.Clamp(phase, 0, maxAliveTrainersByPhase.Length - 1);
         return Mathf.Max(1, maxAliveTrainersByPhase[index]);
+    }
+
+    private TrainerSafePoint FindFallbackSafePoint()
+    {
+        if (safePoints == null || safePoints.Length == 0)
+            return null;
+
+        List<TrainerSafePoint> candidates = new();
+
+        for (int i = 0; i < safePoints.Length; i++)
+        {
+            TrainerSafePoint point = safePoints[i];
+
+            if (point == null || !point.Available)
+                continue;
+
+            if (!stormController.IsInsideSafeZone(point.Position))
+                continue;
+
+            candidates.Add(point);
+        }
+
+        if (candidates.Count == 0)
+            return null;
+
+        int index = Random.Range(0, candidates.Count);
+        return candidates[index];
     }
 }

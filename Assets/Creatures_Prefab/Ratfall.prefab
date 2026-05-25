@@ -199,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 5209302184604945792}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a2301b1e2684fca40a5ef6f9b5fcddee, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7e35f99df98ae66458c281fad61102da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -237,6 +237,12 @@ MonoBehaviour:
   separationRadius: 0.4
   separationPadding: 0.05
   separationForce: 6
+  useDirectionalSprites: 0
+  spriteRenderer: {fileID: 0}
+  upSprite: {fileID: 0}
+  downSprite: {fileID: 0}
+  leftSprite: {fileID: 0}
+  rightSprite: {fileID: 0}
 --- !u!50 &1899566484169931006
 Rigidbody2D:
   serializedVersion: 5

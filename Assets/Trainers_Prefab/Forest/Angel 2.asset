@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Angel
   trainerSprite: {fileID: 623369004215072705, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 336fcea4538f96f49ae81ef898861de1, type: 2}
+  - species: {fileID: 11400000, guid: 693458035af2ddf45b45b269f653a9ef, type: 2}
     level: 8
   - species: {fileID: 11400000, guid: 976c5d35ae6e243499ecbd7c298d7e16, type: 2}
     level: 8

@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Treecrew
   type: 3
   baseHP: 200
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 80
+  attackPerLevel: 5
   baseDefense: 75
   baseSpeed: 35
   frontSprite: {fileID: 3238135739183088815, guid: dec72307c63bc8e4cacc77d66d6a2b1c, type: 3}

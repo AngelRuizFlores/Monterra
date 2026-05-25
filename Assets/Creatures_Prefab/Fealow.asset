@@ -15,12 +15,13 @@ MonoBehaviour:
   monName: Fealow
   type: 0
   baseHP: 160
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 60
+  attackPerLevel: 5
   baseDefense: 40
   baseSpeed: 40
-  frontSprite: {fileID: 6327251476335093467, guid: 0fdb4178a0c363b44b147f3a6c0e8279, type: 3}
-  backSprite: {fileID: 6327251476335093467, guid: 0fdb4178a0c363b44b147f3a6c0e8279, type: 3}
+  frontSprite: {fileID: 362664447012428226, guid: 12a144b2a9536be448a75974cffd8708, type: 3}
+  backSprite: {fileID: 362664447012428226, guid: 12a144b2a9536be448a75974cffd8708, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
   battleCrySoundName: Fealow
   baseCatchRate: 50

@@ -15,6 +15,6 @@ MonoBehaviour:
   trainerName: Javier
   trainerSprite: {fileID: 623369004215072705, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 9684e9550c006494fa80676c0d0d2ee5, type: 2}
+  - species: {fileID: 11400000, guid: eeb0b07116d7afe40969ce6099ecbaaa, type: 2}
     level: 3
   barkPersonality: Nervous but determined fighter.

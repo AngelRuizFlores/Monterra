@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 4311829641257913226, guid: 26bdf58232a7a764088c8352370edb3a, type: 3}
   moveName: Leaf Toss
   type: 3
-  power: 20
+  power: 30
   accuracy: 100
   attackSoundName: GrassAttack

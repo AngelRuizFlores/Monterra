@@ -11,7 +11,7 @@ public static class MonLevelSystem
     private static readonly int[] PhaseCaps = { 5, 10, 15 };
 
     public enum ExpSource { Wild, Capture, PlayerKill, Event }
-    private static readonly int[] BaseExpBySource = { 100, 40, 120, 80 };
+    private static readonly int[] BaseExpBySource = { 60, 60, 120, 80 };
 
     public static int ExpToNextLevel(int level) => BASE_EXP + (level - 1) * STEP_EXP;
 
@@ -20,7 +20,10 @@ public static class MonLevelSystem
         return mon.species.baseHP + mon.level * mon.species.hpPerLevel;
     }
 
-    public static int GetAttack(MonInstance mon) => mon.species.baseAttack + mon.level;
+    public static int GetAttack(MonInstance mon)
+    {
+        return mon.species.baseAttack + mon.level * mon.species.attackPerLevel;
+    }
     public static int GetDefense(MonInstance mon) => mon.species.baseDefense + mon.level;
     public static int GetSpeed(MonInstance mon) => mon.species.baseSpeed + mon.level;
 
@@ -130,7 +133,12 @@ public static class MonLevelSystem
 
         if (best == null) return;
 
+        SaveGameManager.RegisterOwnedSpecies(mon.species.name);
+
         mon.species = best.evolvesTo;
+
+        SaveGameManager.RegisterOwnedSpecies(mon.species.name);
+
         ClampHP(mon);
         LearnMovesUpToLevel(mon);
     }

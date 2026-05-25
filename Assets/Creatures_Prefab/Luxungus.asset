@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Luxungus
   type: 0
   baseHP: 205
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 60
+  attackPerLevel: 5
   baseDefense: 90
   baseSpeed: 35
   frontSprite: {fileID: -3910491191298465370, guid: 1b04d4db4f9dbd04b8faffcb067dade7, type: 3}

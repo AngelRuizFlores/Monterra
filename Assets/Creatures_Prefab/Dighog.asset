@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Dighog
   type: 5
   baseHP: 170
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 55
+  attackPerLevel: 5
   baseDefense: 65
   baseSpeed: 10
   frontSprite: {fileID: -2720568715159121283, guid: b5e6a457b3e8a584b93d5721aac9c4ae, type: 3}

@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Darkbeast
   type: 4
   baseHP: 210
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 95
+  attackPerLevel: 5
   baseDefense: 70
   baseSpeed: 15
   frontSprite: {fileID: 588521358694924871, guid: 51318b9a457014e47ac5dfb558bfd1e0, type: 3}

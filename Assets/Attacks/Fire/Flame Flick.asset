@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 6676728103777540160, guid: 68b0f8ed76713ce4db86dbc8c591780d, type: 3}
   moveName: Flame Flick
   type: 1
-  power: 30
+  power: 40
   accuracy: 100
   attackSoundName: FireAttack

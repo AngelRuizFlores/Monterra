@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Amelia
   trainerSprite: {fileID: -6243967883509639895, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 5904819e71ce4674d824d1062e721749, type: 2}
+  - species: {fileID: 11400000, guid: 702915ed26b21444b9c774bf2d5d26fb, type: 2}
     level: 6
   - species: {fileID: 11400000, guid: 875474171ea798343b2ddb3e248e7425, type: 2}
     level: 6

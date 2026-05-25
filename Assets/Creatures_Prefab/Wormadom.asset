@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Wormadom
   type: 5
   baseHP: 190
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 85
+  attackPerLevel: 5
   baseDefense: 60
   baseSpeed: 55
   frontSprite: {fileID: 8916401531093303721, guid: 760f1c111b1167b428818c26bf224736, type: 3}

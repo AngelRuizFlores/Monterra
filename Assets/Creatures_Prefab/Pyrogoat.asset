@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Pyrogoat
   type: 1
   baseHP: 170
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 85
+  attackPerLevel: 5
   baseDefense: 45
   baseSpeed: 90
   frontSprite: {fileID: -2231500425709060087, guid: 6409101ae970b6e48b87716de3df9366, type: 3}

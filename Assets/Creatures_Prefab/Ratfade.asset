@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Ratfade
   type: 4
   baseHP: 165
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 105
+  attackPerLevel: 5
   baseDefense: 35
   baseSpeed: 55
   frontSprite: {fileID: -6942643660443959520, guid: 3d1ad0db9e7bac3468ef6043ae26d836, type: 3}

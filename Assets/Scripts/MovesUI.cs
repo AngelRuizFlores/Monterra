@@ -17,6 +17,8 @@ public class MovesUI : MonoBehaviour
     [SerializeField] private Color earthColor  = new Color32(170, 120, 60, 255);
     [SerializeField] private Color emptyColor  = new Color32(120, 120, 120, 255);
 
+    private readonly bool[] slotHasMove = new bool[4];
+
     private PlayerMon playerMon;
     private LevelManager levelManager;
 
@@ -47,6 +49,7 @@ public class MovesUI : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             bool hasMove = moves != null && i < moves.Count && moves[i] != null;
+            slotHasMove[i] = hasMove;
 
             moveButtons[i].interactable = hasMove;
             moveButtons[i].onClick.RemoveAllListeners();
@@ -73,6 +76,8 @@ public class MovesUI : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
+            slotHasMove[i] = false;
+
             if (moveButtons[i] != null)
             {
                 moveButtons[i].interactable = false;
@@ -154,10 +159,10 @@ public class MovesUI : MonoBehaviour
         if (moveButtons == null)
             return;
 
-        foreach (var btn in moveButtons)
+        for (int i = 0; i < moveButtons.Length && i < slotHasMove.Length; i++)
         {
-            if (btn != null)
-                btn.interactable = value;
+            if (moveButtons[i] != null)
+                moveButtons[i].interactable = value && slotHasMove[i];
         }
     }
 }

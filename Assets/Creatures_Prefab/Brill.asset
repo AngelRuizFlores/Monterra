@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Brill
   type: 0
   baseHP: 165
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 90
+  attackPerLevel: 5
   baseDefense: 45
   baseSpeed: 90
   frontSprite: {fileID: 8506889411627444892, guid: 90f0d8b3ebc714644a173ba67868337c, type: 3}

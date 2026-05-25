@@ -41,6 +41,10 @@ public class PlayerTeam : MonoBehaviour
             team[i] = null;
 
         team[0] = starter;
+
+        if (starter != null && starter.species != null)
+            SaveGameManager.RegisterOwnedSpecies(starter.species.name);
+
         ActiveIndex = 0;
 
         ApplyActiveToPlayerMon();
@@ -88,6 +92,9 @@ public class PlayerTeam : MonoBehaviour
             return false;
 
         team[idx] = mon;
+
+        if (mon.species != null)
+            SaveGameManager.RegisterOwnedSpecies(mon.species.name);
 
         if (playerMon != null && playerMon.instance == null)
         {
@@ -198,6 +205,7 @@ public class PlayerTeam : MonoBehaviour
         for (int i = 0; i < limit; i++)
         {
             MonInstance mon = team[i];
+
             if (mon == null || mon.species == null)
                 continue;
 
@@ -219,6 +227,7 @@ public class PlayerTeam : MonoBehaviour
         }
 
         int firstAliveIndex = GetFirstAliveMonIndex();
+
         if (firstAliveIndex < 0)
         {
             if (playerMon != null)
@@ -236,6 +245,12 @@ public class PlayerTeam : MonoBehaviour
         ApplyActiveToPlayerMon();
         OnChanged?.Invoke();
         return true;
+    }
+
+    public void RefreshTeamUI()
+    {
+        ApplyActiveToPlayerMon();
+        OnChanged?.Invoke();
     }
 
     private void ApplyActiveToPlayerMon()

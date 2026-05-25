@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Ana
   trainerSprite: {fileID: 1598726203847200779, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 5904819e71ce4674d824d1062e721749, type: 2}
+  - species: {fileID: 11400000, guid: 87d682f61d3debd4bbf54f3c41775ff6, type: 2}
     level: 6
   - species: {fileID: 11400000, guid: 51aa9f032df68664aad518a12dfae7dd, type: 2}
     level: 6

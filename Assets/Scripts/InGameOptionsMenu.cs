@@ -6,6 +6,7 @@ public sealed class InGameOptionsMenu : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject hudToHide;
+    [SerializeField] private GameObject chooseMonCanvas;
 
     [Header("Navigation")]
     [SerializeField] private MainMenuLoader mainMenuLoader;
@@ -32,6 +33,9 @@ public sealed class InGameOptionsMenu : MonoBehaviour
         if (isBusy)
             return;
 
+        if (IsChooseMonActive())
+            return;
+
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (IsOpen)
@@ -44,6 +48,9 @@ public sealed class InGameOptionsMenu : MonoBehaviour
     public void OpenOptions()
     {
         if (isBusy)
+            return;
+
+        if (IsChooseMonActive())
             return;
 
         if (optionsPanel == null)
@@ -101,7 +108,7 @@ public sealed class InGameOptionsMenu : MonoBehaviour
             hudToHide.SetActive(true);
 
         SetGamePaused(false);
-        SaveGameManager.Save(playerTeam, playerTransform);
+
         mainMenuLoader.LoadMainMenu();
     }
 
@@ -114,6 +121,11 @@ public sealed class InGameOptionsMenu : MonoBehaviour
         }
 
         SaveGameManager.Save(playerTeam, playerTransform);
+    }
+
+    private bool IsChooseMonActive()
+    {
+        return chooseMonCanvas != null && chooseMonCanvas.activeInHierarchy;
     }
 
     private void SetGamePaused(bool paused)

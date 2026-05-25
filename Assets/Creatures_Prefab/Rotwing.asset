@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Rotwing
   type: 4
   baseHP: 175
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 105
+  attackPerLevel: 5
   baseDefense: 50
   baseSpeed: 60
   frontSprite: {fileID: -9214728311049290529, guid: 1b0eb75da7178ba4bb1f425d2151adcf, type: 3}

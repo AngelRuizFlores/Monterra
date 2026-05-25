@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Krug
   type: 5
   baseHP: 210
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 70
+  attackPerLevel: 5
   baseDefense: 100
   baseSpeed: 10
   frontSprite: {fileID: -5354800604615654418, guid: 107f60c0ab4ff78438d81ad4f5ced2d7, type: 3}

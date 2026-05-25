@@ -15,12 +15,12 @@ MonoBehaviour:
   trainerName: Amelia
   trainerSprite: {fileID: -6243967883509639895, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 693458035af2ddf45b45b269f653a9ef, type: 2}
+  - species: {fileID: 11400000, guid: 314673dca37b00844a5b36ffe34ba10f, type: 2}
     level: 10
   - species: {fileID: 11400000, guid: 875474171ea798343b2ddb3e248e7425, type: 2}
     level: 10
   - species: {fileID: 11400000, guid: 725cc1793845ebf4a88eed316a48baf6, type: 2}
     level: 10
-  - species: {fileID: 11400000, guid: 0a3dd82b6988ecb46a843d15f75c7cd6, type: 2}
+  - species: {fileID: 11400000, guid: 976c5d35ae6e243499ecbd7c298d7e16, type: 2}
     level: 10
   barkPersonality: Mysterious and silent observer.

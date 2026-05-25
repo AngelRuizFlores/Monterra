@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Axolet
   type: 2
   baseHP: 210
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 40
+  attackPerLevel: 5
   baseDefense: 85
   baseSpeed: 25
   frontSprite: {fileID: 1244940402, guid: e96235f8efcae4a448b4c703e6f804e1, type: 3}

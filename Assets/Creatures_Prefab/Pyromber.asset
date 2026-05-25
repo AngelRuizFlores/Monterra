@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Pyromber
   type: 1
   baseHP: 215
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 120
+  attackPerLevel: 5
   baseDefense: 70
   baseSpeed: 25
   frontSprite: {fileID: 5208319583948023495, guid: a5b2c72656d9c3b42a7c4d929317a8fe, type: 3}

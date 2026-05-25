@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Paco
   trainerSprite: {fileID: 623369004215072705, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 702915ed26b21444b9c774bf2d5d26fb, type: 2}
+  - species: {fileID: 11400000, guid: 87d682f61d3debd4bbf54f3c41775ff6, type: 2}
     level: 6
   - species: {fileID: 11400000, guid: 0b67547d80a55274d9f457c4948ccdfa, type: 2}
     level: 6

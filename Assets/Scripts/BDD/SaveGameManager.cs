@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class SaveGameManager
 {
@@ -126,5 +127,74 @@ public static class SaveGameManager
         SaveRaw(data);
 
         Debug.Log($"[SAVE] Collected pokeball registered: {pokeballId}");
+    }
+
+    public static bool HasPlayableSave()
+    {
+        SaveData data = Load();
+
+        if (data == null)
+            return false;
+
+        if (data.team == null || data.team.Count == 0)
+            return false;
+
+        for (int i = 0; i < data.team.Count; i++)
+        {
+            if (data.team[i] != null && !string.IsNullOrWhiteSpace(data.team[i].speciesId))
+                return true;
+        }
+
+        return false;
+    }
+
+    private const string OwnedSpeciesKey = "OwnedSpeciesIds";
+
+    public static void RegisterOwnedSpecies(PlayerTeam playerTeam)
+    {
+        if (playerTeam == null)
+            return;
+
+        List<MonInstance> mons = playerTeam.GetOwnedMons();
+
+        for (int i = 0; i < mons.Count; i++)
+        {
+            if (mons[i] == null || mons[i].species == null)
+                continue;
+
+            RegisterOwnedSpecies(mons[i].species.name);
+        }
+    }
+
+    public static void RegisterOwnedSpecies(string speciesId)
+    {
+        if (string.IsNullOrWhiteSpace(speciesId))
+            return;
+
+        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
+
+        List<string> ids = new List<string>(current.Split('|'));
+
+        if (!ids.Contains(speciesId))
+            ids.Add(speciesId);
+
+        PlayerPrefs.SetString(OwnedSpeciesKey, string.Join("|", ids));
+        PlayerPrefs.Save();
+    }
+
+    public static HashSet<string> GetOwnedSpeciesIds()
+    {
+        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
+        HashSet<string> result = new HashSet<string>();
+
+        string[] ids = current.Split('|');
+
+        for (int i = 0; i < ids.Length; i++)
+        {
+            if (!string.IsNullOrWhiteSpace(ids[i]))
+                result.Add(ids[i]);
+        }
+
+        return result;
     }
 }

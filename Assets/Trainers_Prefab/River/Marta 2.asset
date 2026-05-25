@@ -15,7 +15,7 @@ MonoBehaviour:
   trainerName: Marta
   trainerSprite: {fileID: 8953629741208907362, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 5e228d8e953de9946acd6f2e0f233d0a, type: 2}
+  - species: {fileID: 11400000, guid: a51f2065592a5b140bc4894d8d1352e6, type: 2}
     level: 8
   - species: {fileID: 11400000, guid: bbc8dc934c39cf845b01ff19752d26b5, type: 2}
     level: 8

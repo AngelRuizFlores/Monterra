@@ -34,11 +34,27 @@ public sealed class EndGameSequenceController : MonoBehaviour
 
     public void PlayVictorySequence()
     {
+        CompanionHintsUI companion = FindFirstObjectByType<CompanionHintsUI>();
+
+        if (companion != null)
+            companion.DisableCompanion();
+
+        SaveGameManager.RegisterOwnedSpecies(FindFirstObjectByType<PlayerTeam>());
+        SaveGameManager.DeleteSave();
+
         StartSequence(true);
     }
 
     public void PlayDefeatSequence()
     {
+        CompanionHintsUI companion = FindFirstObjectByType<CompanionHintsUI>();
+
+        if (companion != null)
+            companion.DisableCompanion();
+
+        SaveGameManager.RegisterOwnedSpecies(FindFirstObjectByType<PlayerTeam>());
+        SaveGameManager.DeleteSave();
+
         StartSequence(false);
     }
 

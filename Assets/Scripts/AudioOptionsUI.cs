@@ -10,25 +10,76 @@ public class AudioOptionsUI : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
+    private const string MasterKey = "MasterVolumeValue";
+    private const string MusicKey = "MusicVolumeValue";
+    private const string SfxKey = "SfxVolumeValue";
+
+    private bool isInitializing;
+
     private void Start()
     {
+        isInitializing = true;
+
+        LoadSavedValues();
+
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSfxVolume);
+
+        isInitializing = false;
     }
 
-    void SetMasterVolume(float value)
+    private void LoadSavedValues()
     {
-        mixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);
+        float master = PlayerPrefs.GetFloat(MasterKey, 1f);
+        float music = PlayerPrefs.GetFloat(MusicKey, 1f);
+        float sfx = PlayerPrefs.GetFloat(SfxKey, 1f);
+
+        masterSlider.value = master;
+        musicSlider.value = music;
+        sfxSlider.value = sfx;
+
+        ApplyVolume("MasterVolume", master);
+        ApplyVolume("MusicVolume", music);
+        ApplyVolume("SfxVolume", sfx);
     }
 
-    void SetMusicVolume(float value)
+    private void SetMasterVolume(float value)
     {
-        mixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
+        ApplyVolume("MasterVolume", value);
+
+        if (!isInitializing)
+        {
+            PlayerPrefs.SetFloat(MasterKey, value);
+            PlayerPrefs.Save();
+        }
     }
 
-    void SetSfxVolume(float value)
+    private void SetMusicVolume(float value)
     {
-        mixer.SetFloat("SfxVolume", Mathf.Log10(value) * 20);
+        ApplyVolume("MusicVolume", value);
+
+        if (!isInitializing)
+        {
+            PlayerPrefs.SetFloat(MusicKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void SetSfxVolume(float value)
+    {
+        ApplyVolume("SfxVolume", value);
+
+        if (!isInitializing)
+        {
+            PlayerPrefs.SetFloat(SfxKey, value);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void ApplyVolume(string parameterName, float value)
+    {
+        value = Mathf.Clamp(value, 0.0001f, 1f);
+        mixer.SetFloat(parameterName, Mathf.Log10(value) * 20f);
     }
 }

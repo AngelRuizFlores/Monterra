@@ -15,9 +15,9 @@ MonoBehaviour:
   trainerName: Carla
   trainerSprite: {fileID: 8953629741208907362, guid: 529999cf847c2b7429eced20a5f7de4a, type: 3}
   team:
-  - species: {fileID: 11400000, guid: 3de745936995fc347822fed4a39ccdfa, type: 2}
+  - species: {fileID: 11400000, guid: 336fcea4538f96f49ae81ef898861de1, type: 2}
     level: 8
-  - species: {fileID: 11400000, guid: 9beef67bccdd13c4687b439aa3d292b1, type: 2}
+  - species: {fileID: 11400000, guid: bbc8dc934c39cf845b01ff19752d26b5, type: 2}
     level: 8
   - species: {fileID: 11400000, guid: 0461fbea6a9e6664cb7675e7953862b4, type: 2}
     level: 8

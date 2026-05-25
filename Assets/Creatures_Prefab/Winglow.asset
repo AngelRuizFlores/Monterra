@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Winglow
   type: 0
   baseHP: 180
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 80
+  attackPerLevel: 5
   baseDefense: 55
   baseSpeed: 45
   frontSprite: {fileID: 4003248976669662559, guid: 75b121f7848249949aeb62f552a8eacd, type: 3}

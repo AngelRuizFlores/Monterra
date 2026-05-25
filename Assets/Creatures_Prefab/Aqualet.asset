@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Aqualet
   type: 2
   baseHP: 240
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 50
+  attackPerLevel: 5
   baseDefense: 105
   baseSpeed: 35
   frontSprite: {fileID: 14402304, guid: a5bac4fe2f45dd440aa5939aae46393c, type: 3}

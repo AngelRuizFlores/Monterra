@@ -13,5 +13,12 @@ public sealed class PokeballSpawnPoint : MonoBehaviour
         if (string.IsNullOrWhiteSpace(pokeballId))
             pokeballId = Guid.NewGuid().ToString("N");
     }
+
+    [ContextMenu("Regenerate Pokeball ID")]
+    private void RegeneratePokeballId()
+    {
+        pokeballId = Guid.NewGuid().ToString("N");
+        UnityEditor.EditorUtility.SetDirty(this);
+    }
 #endif
 }

@@ -18,14 +18,22 @@ public class StormOverlayController : MonoBehaviour
     [SerializeField] private float damageMarginViewport = 0.01f;
     [SerializeField] private CompanionHintsUI companionHintsUI;
 
+    [SerializeField] private GameObject battleCanvas;
+    [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject typeChartOverlay;
+    [SerializeField] private GameObject MapOverlay;
+    [SerializeField] private GameObject EndGameOverlay;
+
     public int CurrentPhase { get; private set; }
 
     public event Action<int> OnPhaseChanged;
+
     private Material materialInstance;
     private Vector2 centerWorld;
     private float radiusWorld;
     private Coroutine stormRoutine;
     private bool loadedFromSave;
+    private int stormWarningCount;
 
     private static readonly int CenterId = Shader.PropertyToID("_Center");
     private static readonly int RadiusId = Shader.PropertyToID("_Radius");
@@ -46,9 +54,10 @@ public class StormOverlayController : MonoBehaviour
 
         CurrentPhase = 0;
         radiusWorld = GetInitialRadius();
+        stormWarningCount = 0;
     }
 
-   private void Start()
+    private void Start()
     {
         if (!loadedFromSave)
         {
@@ -60,64 +69,74 @@ public class StormOverlayController : MonoBehaviour
 
     private void Update()
     {
-        ApplyToShader();
+        bool shouldHideOverlay =
+            IsActive(battleCanvas) ||
+            IsActive(optionsPanel) ||
+            IsActive(typeChartOverlay) ||
+            IsActive(MapOverlay) ||
+            IsActive(EndGameOverlay);
+
+        if (overlayImage != null)
+            overlayImage.enabled = !shouldHideOverlay;
+
+        if (!shouldHideOverlay)
+            ApplyToShader();
     }
 
     private IEnumerator StormPhases()
-{
-    if (phaseEndRadius == null || phaseEndRadius.Length == 0)
-        yield break;
-
-    CurrentPhase = 0;
-    ApplyToShader();
-
-    for (int i = 0; i < phaseEndRadius.Length; i++)
     {
-        float wait = phaseWaitTime != null && i < phaseWaitTime.Length
-            ? phaseWaitTime[i]
-            : 0f;
+        if (phaseEndRadius == null || phaseEndRadius.Length == 0)
+            yield break;
 
-        if (wait > 0f)
-            yield return new WaitForSeconds(wait);
+        CurrentPhase = 0;
+        ApplyToShader();
 
-        float startRadius = radiusWorld;
-        float targetRadius = Mathf.Min(phaseEndRadius[i], startRadius);
-
-        Vector2 startCenter = centerWorld;
-        Vector2 targetCenter = PickNextCenter(startCenter, startRadius, targetRadius);
-
-        float duration = phaseShrinkTime != null && i < phaseShrinkTime.Length
-            ? phaseShrinkTime[i]
-            : 1f;
-
-        if (duration <= 0f)
-            duration = 0.01f;
-
-        CurrentPhase = i + 1;
-
-        if (companionHintsUI != null)
+        for (int i = 0; i < phaseEndRadius.Length; i++)
         {
-            companionHintsUI.ShowStormClosingHint();
+            float wait = phaseWaitTime != null && i < phaseWaitTime.Length
+                ? phaseWaitTime[i]
+                : 0f;
+
+            if (wait > 0f)
+                yield return new WaitForSeconds(wait);
+
+            float startRadius = radiusWorld;
+            float targetRadius = Mathf.Min(phaseEndRadius[i], startRadius);
+
+            Vector2 startCenter = centerWorld;
+            Vector2 targetCenter = PickNextCenter(startCenter, startRadius, targetRadius);
+
+            float duration = phaseShrinkTime != null && i < phaseShrinkTime.Length
+                ? phaseShrinkTime[i]
+                : 1f;
+
+            if (duration <= 0f)
+                duration = 0.01f;
+
+            CurrentPhase = i + 1;
+
+            stormWarningCount++;
+            if (stormWarningCount > 1 && companionHintsUI != null)
+                companionHintsUI.ShowStormClosingHint();
+
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsed / duration);
+
+                radiusWorld = Mathf.Lerp(startRadius, targetRadius, t);
+                centerWorld = Vector2.Lerp(startCenter, targetCenter, t);
+
+                yield return null;
+            }
+
+            radiusWorld = targetRadius;
+            centerWorld = targetCenter;
+
+            OnPhaseChanged?.Invoke(CurrentPhase);
         }
-
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / duration);
-
-            radiusWorld = Mathf.Lerp(startRadius, targetRadius, t);
-            centerWorld = Vector2.Lerp(startCenter, targetCenter, t);
-
-            yield return null;
-        }
-
-        radiusWorld = targetRadius;
-        centerWorld = targetCenter;
-
-        OnPhaseChanged?.Invoke(CurrentPhase);
     }
-}
 
     private float GetInitialRadius()
     {
@@ -190,7 +209,7 @@ public class StormOverlayController : MonoBehaviour
 
         centerWorld = new Vector2(
             UnityEngine.Random.Range(minX, maxX),
-           UnityEngine.Random.Range(minY, maxY)
+            UnityEngine.Random.Range(minY, maxY)
         );
     }
 
@@ -248,6 +267,7 @@ public class StormOverlayController : MonoBehaviour
     {
         return Vector2.Distance(worldPosition, centerWorld) <= radiusWorld;
     }
+
     public void LoadStormState(int phase, Vector2 center, float radius)
     {
         if (stormRoutine != null)
@@ -262,8 +282,15 @@ public class StormOverlayController : MonoBehaviour
         centerWorld = center;
         radiusWorld = Mathf.Max(0.1f, radius);
 
+        stormWarningCount = Mathf.Max(0, CurrentPhase);
+
         ApplyToShader();
 
         stormRoutine = StartCoroutine(StormPhases());
+    }
+
+    private bool IsActive(GameObject target)
+    {
+        return target != null && target.activeInHierarchy;
     }
 }

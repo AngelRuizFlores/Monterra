@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 4311829641257913226, guid: 26bdf58232a7a764088c8352370edb3a, type: 3}
   moveName: Thorn Strike
   type: 3
-  power: 50
+  power: 60
   accuracy: 100
   attackSoundName: GrassAttack

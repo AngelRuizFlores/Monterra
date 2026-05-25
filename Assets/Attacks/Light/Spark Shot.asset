@@ -16,6 +16,6 @@ MonoBehaviour:
   impactPrefab: {fileID: 8704707533654772982, guid: 94cc6e12a48a7f54592f2a3b9ef1d93a, type: 3}
   moveName: Spark Shot
   type: 0
-  power: 20
+  power: 30
   accuracy: 100
   attackSoundName: LightAttack

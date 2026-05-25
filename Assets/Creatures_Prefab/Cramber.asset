@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Cramber
   type: 1
   baseHP: 170
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 70
+  attackPerLevel: 5
   baseDefense: 45
   baseSpeed: 15
   frontSprite: {fileID: -3503969217007086128, guid: 61354a03fff199644ae6b8fb5dfa587f, type: 3}

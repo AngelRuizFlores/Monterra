@@ -15,8 +15,9 @@ MonoBehaviour:
   monName: Ratpest
   type: 4
   baseHP: 180
-  hpPerLevel: 3
+  hpPerLevel: 5
   baseAttack: 130
+  attackPerLevel: 5
   baseDefense: 45
   baseSpeed: 75
   frontSprite: {fileID: 5757100728106849424, guid: cea8c258a15f5ec49a0b2ba3d2f2e7bf, type: 3}
