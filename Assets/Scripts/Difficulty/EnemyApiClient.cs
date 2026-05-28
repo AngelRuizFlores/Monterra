@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class EnemyApiClient : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private string decisionEndpoint = "http://localhost:3000/api/enemy/decide";
     [SerializeField] private float timeoutSeconds = 10f;
 
@@ -46,6 +47,7 @@ public class EnemyApiClient : MonoBehaviour
         }
 
         EnemyApiDecisionResponse response;
+
         try
         {
             response = JsonUtility.FromJson<EnemyApiDecisionResponse>(responseText);

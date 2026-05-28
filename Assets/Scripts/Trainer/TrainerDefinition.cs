@@ -5,13 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TrainerDefinition", menuName = "Game/Trainer Definition")]
 public sealed class TrainerDefinition : ScriptableObject
 {
+    [Header("Trainer")]
     [SerializeField] private string trainerName;
     [SerializeField] private Sprite trainerSprite;
     [SerializeField] private TrainerMonDefinition[] team = Array.Empty<TrainerMonDefinition>();
 
     [Header("AI Bark Personality")]
-    [SerializeField, TextArea(2, 4)] private string barkPersonality =
-        "Confident and competitive trainer.";
+    [SerializeField, TextArea(2, 4)] private string barkPersonality = "Confident and competitive trainer.";
 
     public string TrainerName => trainerName;
     public Sprite TrainerSprite => trainerSprite;
@@ -56,7 +56,7 @@ public sealed class TrainerDefinition : ScriptableObject
 public struct TrainerMonDefinition
 {
     [SerializeField] private MonSpecies species;
-    [SerializeField] [Range(1, 100)] private int level;
+    [SerializeField, Range(1, 100)] private int level;
 
     public MonSpecies Species => species;
     public int Level => Mathf.Max(1, level);

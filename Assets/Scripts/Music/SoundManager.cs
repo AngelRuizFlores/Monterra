@@ -16,23 +16,27 @@ public class AudioInfo
 
 public sealed class SoundManager : MonoBehaviour
 {
-    private static SoundManager _instance;
-    public static SoundManager Instance => _instance;
+    private static SoundManager instance;
 
+    public static SoundManager Instance => instance;
+
+    [Header("Audio")]
     public List<AudioInfo> Audios = new List<AudioInfo>();
 
     private readonly List<AudioSource> audioManager = new List<AudioSource>();
+
     private Dictionary<string, AudioInfo> clipList;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        _instance = this;
+        instance = this;
+
         DontDestroyOnLoad(gameObject);
 
         BuildClipLookup();
@@ -59,6 +63,7 @@ public sealed class SoundManager : MonoBehaviour
         }
 
         AudioSource source = GetAvailableAudioSource();
+
         if (source == null)
         {
             Debug.LogError("No hay AudioSource disponible para reproducir el sonido.", this);
@@ -70,6 +75,7 @@ public sealed class SoundManager : MonoBehaviour
         source.volume = Mathf.Clamp01(audioInfo.Volume);
         source.outputAudioMixerGroup = audioInfo.Mixer;
         source.Play();
+
         return true;
     }
 
@@ -83,8 +89,11 @@ public sealed class SoundManager : MonoBehaviour
         for (int i = 0; i < audioManager.Count; i++)
         {
             AudioSource source = audioManager[i];
+
             if (source == null)
+            {
                 continue;
+            }
 
             source.Stop();
             source.clip = null;
@@ -104,8 +113,11 @@ public sealed class SoundManager : MonoBehaviour
         for (int i = 0; i < Audios.Count; i++)
         {
             AudioInfo audioInfo = Audios[i];
+
             if (audioInfo == null)
+            {
                 continue;
+            }
 
             if (string.IsNullOrWhiteSpace(audioInfo.AudioName))
             {
@@ -136,6 +148,7 @@ public sealed class SoundManager : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             AudioSource source = transform.GetChild(i).GetComponent<AudioSource>();
+
             if (source != null)
             {
                 audioManager.Add(source);
@@ -153,6 +166,7 @@ public sealed class SoundManager : MonoBehaviour
         for (int i = 0; i < audioManager.Count; i++)
         {
             AudioSource source = audioManager[i];
+
             if (source != null && !source.isPlaying)
             {
                 return source;
@@ -161,6 +175,7 @@ public sealed class SoundManager : MonoBehaviour
 
         AudioSource extraSource = gameObject.AddComponent<AudioSource>();
         audioManager.Add(extraSource);
+
         return extraSource;
     }
 }

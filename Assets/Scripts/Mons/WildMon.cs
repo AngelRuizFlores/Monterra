@@ -1,12 +1,12 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class WildMon : MonoBehaviour
 {
-    [Header("Base data (ScriptableObject)")]
+    [Header("Base Data")]
     public MonSpecies species;
 
-    [Header("Spawn rules")]
+    [Header("Spawn Rules")]
     public int minLevel = 1;
     public int maxLevel = 3;
 
@@ -27,16 +27,17 @@ public class WildMon : MonoBehaviour
             return;
         }
 
-        int lvl = UnityEngine.Random.Range(minLevel, maxLevel + 1);
+        int level = UnityEngine.Random.Range(minLevel, maxLevel + 1);
 
         instance = new MonInstance
         {
             species = species,
-            level = lvl,
+            level = level,
             experience = 0
         };
 
         instance.currentHP = MonLevelSystem.GetMaxHP(instance);
+
         MonLevelSystem.InitMovesForCurrentLevel(instance);
     }
 
@@ -48,6 +49,8 @@ public class WildMon : MonoBehaviour
     public void NotifyBattleStarted()
     {
         if (sourceGenerator != null)
+        {
             sourceGenerator.HandleWildBattleStarted(this);
+        }
     }
 }

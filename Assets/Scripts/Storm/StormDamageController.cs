@@ -1,17 +1,19 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class StormDamageController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private StormOverlayController stormController;
     [SerializeField] private PlayerTeam playerTeam;
     [SerializeField] private Transform playerTransform;
 
+    [Header("Damage")]
     [SerializeField] private float damageIntervalSeconds = 2f;
     [SerializeField] private int damagePerTick = 10;
     [SerializeField] private float gracePeriodSeconds = 0f;
 
+    [Header("Events")]
     [SerializeField] private UnityEvent onGameEnd = new UnityEvent();
 
     private float timeSinceLastDamage;
@@ -21,21 +23,32 @@ public class StormDamageController : MonoBehaviour
     private void OnValidate()
     {
         if (damageIntervalSeconds <= 0f)
+        {
             damageIntervalSeconds = 2f;
+        }
 
         if (damagePerTick < 1)
+        {
             damagePerTick = 1;
+        }
 
         if (gracePeriodSeconds < 0f)
+        {
             gracePeriodSeconds = 0f;
+        }
     }
 
     private void Update()
     {
         if (gameEnded)
-        return;
-        if (!ValidateDependencies())
+        {
             return;
+        }
+
+        if (!ValidateDependencies())
+        {
+            return;
+        }
 
         timeSinceGameStart += Time.deltaTime;
 
@@ -48,7 +61,9 @@ public class StormDamageController : MonoBehaviour
         }
 
         if (timeSinceGameStart < gracePeriodSeconds)
+        {
             return;
+        }
 
         timeSinceLastDamage += Time.deltaTime;
 
@@ -59,43 +74,70 @@ public class StormDamageController : MonoBehaviour
         }
     }
 
+    public void AddGameOverListener(UnityAction callback)
+    {
+        if (callback != null)
+        {
+            onGameEnd.AddListener(callback);
+        }
+    }
+
+    public void RemoveGameOverListener(UnityAction callback)
+    {
+        if (callback != null)
+        {
+            onGameEnd.RemoveListener(callback);
+        }
+    }
+
     private void ApplyStormDamage()
     {
         if (!ValidateDependencies())
+        {
             return;
+        }
 
         int aliveCount = 0;
-        int affectedCount = 0;
 
         for (int i = 0; i < playerTeam.team.Length; i++)
         {
             MonInstance creature = playerTeam.team[i];
 
             if (creature == null || creature.species == null)
+            {
                 continue;
+            }
 
             if (creature.currentHP <= 0)
+            {
                 continue;
+            }
 
             creature.currentHP -= damagePerTick;
 
             if (creature.currentHP < 0)
+            {
                 creature.currentHP = 0;
-
-            affectedCount++;
+            }
 
             if (creature.currentHP > 0)
+            {
                 aliveCount++;
+            }
         }
 
         if (aliveCount == 0)
+        {
             TriggerGameEnd();
+        }
     }
 
-   private void TriggerGameEnd()
+    private void TriggerGameEnd()
     {
         if (gameEnded)
+        {
             return;
+        }
 
         gameEnded = true;
 
@@ -124,17 +166,5 @@ public class StormDamageController : MonoBehaviour
         }
 
         return true;
-    }
-
-    public void AddGameOverListener(UnityAction callback)
-    {
-        if (callback != null)
-            onGameEnd.AddListener(callback);
-    }
-
-    public void RemoveGameOverListener(UnityAction callback)
-    {
-        if (callback != null)
-            onGameEnd.RemoveListener(callback);
     }
 }

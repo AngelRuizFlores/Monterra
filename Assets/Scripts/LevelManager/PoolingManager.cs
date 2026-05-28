@@ -1,71 +1,74 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [Serializable]
-public class PooledItems //clase para identificar cada lista de objetos
+public class PooledItems
 {
-    public string Name; //Nombre de la lista
-    public GameObject objectToPool; //El objeto de la lista
-    public int amount; //Cantidad de objetos en la lista
+    public string Name;
+    public GameObject objectToPool;
+    public int amount;
 }
 
 public class PoolingManager : MonoBehaviour
 {
-    private static PoolingManager _instance;
+    private static PoolingManager instance;
+
     public static PoolingManager Instance
     {
-        get //crea la instancia
+        get
         {
-            if(_instance == null)
+            if (instance == null)
             {
-                _instance = FindFirstObjectByType<PoolingManager>();
+                instance = FindFirstObjectByType<PoolingManager>();
             }
-            return _instance;
+
+            return instance;
         }
     }
 
-    [SerializeField]
-    private List<PooledItems> pooledLists = new List<PooledItems>();//lista de objectos
+    [Header("Pools")]
+    [SerializeField] private List<PooledItems> pooledLists = new List<PooledItems>();
 
-    [SerializeField]
-    private Dictionary<string, List<GameObject>> _items;//diccionario que guarda cada objeto
+    private Dictionary<string, List<GameObject>> items;
 
-    void Awake()
+    private void Awake()
     {
-        _items = new Dictionary<string, List<GameObject>>();
+        items = new Dictionary<string, List<GameObject>>();
 
-        for (int i = 0; i < pooledLists.Count; i++) //para cada lista de objetos
+        for (int i = 0; i < pooledLists.Count; i++)
         {
+            PooledItems pooledItem = pooledLists[i];
 
-            PooledItems l = pooledLists[i];
-            _items.Add(l.Name, new List<GameObject>()); //creamos una entrada en
-                                                       //en el dictionary
-            for (int j = 0; j < l.amount; j++)        //y anyadimos las copias
+            items.Add(pooledItem.Name, new List<GameObject>());
+
+            for (int j = 0; j < pooledItem.amount; j++)
             {
-                GameObject tmp;
-                tmp = Instantiate(l.objectToPool); //crea copias
-                tmp.SetActive(false); //la desactivamos
-                _items[l.Name].Add(tmp); //la anyadimos a la lista
+                GameObject pooledObject = Instantiate(pooledItem.objectToPool);
+                pooledObject.SetActive(false);
+
+                items[pooledItem.Name].Add(pooledObject);
             }
         }
     }
 
-    public GameObject GetPooledObject(string Name)
-    {//Busca un objeto por su nombre y lo retorna
-        if (_items.ContainsKey(Name))
+    public GameObject GetPooledObject(string name)
+    {
+        if (!items.ContainsKey(name))
         {
-            List<GameObject> tmp = _items[Name];
-            for (int i = 0; i < tmp.Count; i++)
-            {
-                if (!tmp[i].activeInHierarchy)
-                {
-                    return tmp[i];
-                }
-            }
             return null;
         }
-       return null;
+
+        List<GameObject> pooledObjects = items[name];
+
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (!pooledObjects[i].activeInHierarchy)
+            {
+                return pooledObjects[i];
+            }
+        }
+
+        return null;
     }
 }

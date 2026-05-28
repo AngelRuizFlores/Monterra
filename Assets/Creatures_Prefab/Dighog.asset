@@ -24,7 +24,7 @@ MonoBehaviour:
   backSprite: {fileID: -2720568715159121283, guid: b5e6a457b3e8a584b93d5721aac9c4ae, type: 3}
   typeSprite: {fileID: 7016507972403904795, guid: 7de2008595142da4bb00e3299ab01fd1, type: 3}
   battleCrySoundName: Dighog
-  baseCatchRate: 50
+  baseCatchRate: 60
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: dc3771ff52af3504bb189e0af0ca4e43, type: 2}

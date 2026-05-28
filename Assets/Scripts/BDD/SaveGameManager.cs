@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using System.Collections.Generic;
 
 public static class SaveGameManager
 {
+    private const string OwnedSpeciesKey = "OwnedSpeciesIds";
+
     private static string SavePath => Application.persistentDataPath + "/savegame.json";
 
     public static void Save(PlayerTeam playerTeam, Transform playerTransform)
@@ -15,10 +17,12 @@ public static class SaveGameManager
 
         data.team.Clear();
 
-        foreach (var mon in playerTeam.GetOwnedMons())
+        foreach (MonInstance mon in playerTeam.GetOwnedMons())
         {
             if (mon == null || mon.species == null)
+            {
                 continue;
+            }
 
             data.team.Add(new MonSaveData
             {
@@ -31,11 +35,158 @@ public static class SaveGameManager
 
         SaveTrainerState(data);
         SaveStormState(data);
-
         SaveRaw(data);
 
         Debug.Log("[SAVE] Game saved at: " + SavePath);
         Debug.Log($"[SAVE] Unlocked slots: {data.unlockedSlots}, Mons saved: {data.team.Count}");
+    }
+
+    public static SaveData Load()
+    {
+        if (!File.Exists(SavePath))
+        {
+            return null;
+        }
+
+        string json = File.ReadAllText(SavePath);
+        return JsonUtility.FromJson<SaveData>(json);
+    }
+
+    public static bool HasSave()
+    {
+        return File.Exists(SavePath);
+    }
+
+    public static void DeleteSave()
+    {
+        if (File.Exists(SavePath))
+        {
+            File.Delete(SavePath);
+        }
+    }
+
+    public static void SaveRaw(SaveData data)
+    {
+        if (data == null)
+        {
+            return;
+        }
+
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(SavePath, json);
+    }
+
+    public static void RegisterCollectedPokeball(string pokeballId)
+    {
+        if (string.IsNullOrWhiteSpace(pokeballId))
+        {
+            return;
+        }
+
+        SaveData data = Load() ?? new SaveData();
+
+        if (data.activePokeballIds == null)
+        {
+            data.activePokeballIds = new List<string>();
+        }
+
+        if (data.collectedPokeballIds == null)
+        {
+            data.collectedPokeballIds = new List<string>();
+        }
+
+        data.activePokeballIds.RemoveAll(id => id == pokeballId);
+
+        if (!data.collectedPokeballIds.Contains(pokeballId))
+        {
+            data.collectedPokeballIds.Add(pokeballId);
+        }
+
+        SaveRaw(data);
+
+        Debug.Log($"[SAVE] Collected pokeball registered: {pokeballId}");
+    }
+
+    public static bool HasPlayableSave()
+    {
+        SaveData data = Load();
+
+        if (data == null)
+        {
+            return false;
+        }
+
+        if (data.team == null || data.team.Count == 0)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < data.team.Count; i++)
+        {
+            if (data.team[i] != null && !string.IsNullOrWhiteSpace(data.team[i].speciesId))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void RegisterOwnedSpecies(PlayerTeam playerTeam)
+    {
+        if (playerTeam == null)
+        {
+            return;
+        }
+
+        List<MonInstance> mons = playerTeam.GetOwnedMons();
+
+        for (int i = 0; i < mons.Count; i++)
+        {
+            if (mons[i] == null || mons[i].species == null)
+            {
+                continue;
+            }
+
+            RegisterOwnedSpecies(mons[i].species.name);
+        }
+    }
+
+    public static void RegisterOwnedSpecies(string speciesId)
+    {
+        if (string.IsNullOrWhiteSpace(speciesId))
+        {
+            return;
+        }
+
+        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
+        List<string> ids = new List<string>(current.Split('|'));
+
+        if (!ids.Contains(speciesId))
+        {
+            ids.Add(speciesId);
+        }
+
+        PlayerPrefs.SetString(OwnedSpeciesKey, string.Join("|", ids));
+        PlayerPrefs.Save();
+    }
+
+    public static HashSet<string> GetOwnedSpeciesIds()
+    {
+        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
+        HashSet<string> result = new HashSet<string>();
+
+        string[] ids = current.Split('|');
+
+        for (int i = 0; i < ids.Length; i++)
+        {
+            if (!string.IsNullOrWhiteSpace(ids[i]))
+            {
+                result.Add(ids[i]);
+            }
+        }
+
+        return result;
     }
 
     private static void SaveTrainerState(SaveData data)
@@ -53,7 +204,9 @@ public static class SaveGameManager
             TrainerBattleTrigger trainer = trainers[i];
 
             if (trainer == null || string.IsNullOrWhiteSpace(trainer.TrainerId))
+            {
                 continue;
+            }
 
             if (trainer.IsDefeated)
             {
@@ -75,7 +228,9 @@ public static class SaveGameManager
         StormOverlayController storm = Object.FindFirstObjectByType<StormOverlayController>();
 
         if (storm == null)
+        {
             return;
+        }
 
         data.hasStormState = true;
         data.stormPhase = storm.CurrentPhase;
@@ -85,116 +240,28 @@ public static class SaveGameManager
         Debug.Log($"[SAVE] Storm phase={data.stormPhase}, radius={data.stormRadius}");
     }
 
-    public static SaveData Load()
-    {
-        if (!File.Exists(SavePath))
-            return null;
-
-        string json = File.ReadAllText(SavePath);
-        return JsonUtility.FromJson<SaveData>(json);
-    }
-
-    public static bool HasSave()
-    {
-        return File.Exists(SavePath);
-    }
-
-    public static void DeleteSave()
-    {
-        if (File.Exists(SavePath))
-            File.Delete(SavePath);
-    }
-
-    public static void SaveRaw(SaveData data)
-    {
-        if (data == null)
-            return;
-
-        string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(SavePath, json);
-    }
-
-    public static void RegisterCollectedPokeball(string pokeballId)
+    public static bool IsPokeballCollected(string pokeballId)
     {
         if (string.IsNullOrWhiteSpace(pokeballId))
-            return;
+        {
+            return false;
+        }
 
-        SaveData data = Load() ?? new SaveData();
-
-        if (!data.collectedPokeballIds.Contains(pokeballId))
-            data.collectedPokeballIds.Add(pokeballId);
-
-        SaveRaw(data);
-
-        Debug.Log($"[SAVE] Collected pokeball registered: {pokeballId}");
-    }
-
-    public static bool HasPlayableSave()
-    {
         SaveData data = Load();
 
-        if (data == null)
-            return false;
-
-        if (data.team == null || data.team.Count == 0)
-            return false;
-
-        for (int i = 0; i < data.team.Count; i++)
+        if (data == null || data.collectedPokeballIds == null)
         {
-            if (data.team[i] != null && !string.IsNullOrWhiteSpace(data.team[i].speciesId))
-                return true;
+            return false;
         }
 
-        return false;
+        return data.collectedPokeballIds.Contains(pokeballId);
     }
 
-    private const string OwnedSpeciesKey = "OwnedSpeciesIds";
-
-    public static void RegisterOwnedSpecies(PlayerTeam playerTeam)
+    public static void ResetOwnedSpecies()
     {
-        if (playerTeam == null)
-            return;
-
-        List<MonInstance> mons = playerTeam.GetOwnedMons();
-
-        for (int i = 0; i < mons.Count; i++)
-        {
-            if (mons[i] == null || mons[i].species == null)
-                continue;
-
-            RegisterOwnedSpecies(mons[i].species.name);
-        }
-    }
-
-    public static void RegisterOwnedSpecies(string speciesId)
-    {
-        if (string.IsNullOrWhiteSpace(speciesId))
-            return;
-
-        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
-
-        List<string> ids = new List<string>(current.Split('|'));
-
-        if (!ids.Contains(speciesId))
-            ids.Add(speciesId);
-
-        PlayerPrefs.SetString(OwnedSpeciesKey, string.Join("|", ids));
+        PlayerPrefs.DeleteKey("OwnedSpeciesIds");
         PlayerPrefs.Save();
-    }
 
-    public static HashSet<string> GetOwnedSpeciesIds()
-    {
-        string current = PlayerPrefs.GetString(OwnedSpeciesKey, "");
-        HashSet<string> result = new HashSet<string>();
-
-        string[] ids = current.Split('|');
-
-        for (int i = 0; i < ids.Length; i++)
-        {
-            if (!string.IsNullOrWhiteSpace(ids[i]))
-                result.Add(ids[i]);
-        }
-
-        return result;
+        Debug.Log("[SAVE] Owned species reset.");
     }
 }

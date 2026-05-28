@@ -41,25 +41,25 @@ Shader "UI/StormHoleUI"
 
             v2f vert(appdata v)
             {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
-                return o;
+                v2f output;
+                output.vertex = UnityObjectToClipPos(v.vertex);
+                output.uv = v.uv;
+
+                return output;
             }
 
-            fixed4 frag(v2f i) : SV_Target
+            fixed4 frag(v2f input) : SV_Target
             {
-                float2 p = i.uv;
-                float2 c = _Center.xy;
+                float2 position = input.uv;
+                float2 center = _Center.xy;
 
-                float d = distance(p, c);
+                float distanceToCenter = distance(position, center);
+                float mask = smoothstep(_Radius, _Radius + _Feather, distanceToCenter);
 
-                // 0 dentro, 1 fuera (con borde suave)
-                float mask = smoothstep(_Radius, _Radius + _Feather, d);
+                fixed4 color = _Color;
+                color.a *= mask;
 
-                fixed4 col = _Color;
-                col.a *= mask; // dentro alpha ~0, fuera alpha ~1
-                return col;
+                return color;
             }
             ENDCG
         }

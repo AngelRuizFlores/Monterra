@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class HardApiEnemyDecisionProvider : IEnemyDecisionProvider
 {
     private readonly MonInstance enemyMon;
@@ -27,6 +25,7 @@ public class HardApiEnemyDecisionProvider : IEnemyDecisionProvider
 
         fallbackResult.reason = "hardapi_placeholder_classic_fallback";
         fallbackResult.isFallback = true;
+
         return fallbackResult;
     }
 }

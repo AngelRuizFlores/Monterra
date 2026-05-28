@@ -24,7 +24,7 @@ MonoBehaviour:
   backSprite: {fileID: 362664447012428226, guid: 12a144b2a9536be448a75974cffd8708, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
   battleCrySoundName: Fealow
-  baseCatchRate: 50
+  baseCatchRate: 60
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 2d815c561e1587143aa6ab29f135c0e8, type: 2}

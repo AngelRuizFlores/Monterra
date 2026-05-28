@@ -3,37 +3,77 @@ using UnityEngine.InputSystem;
 
 public class TeamKeyboardInput : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private PlayerTeam team;
 
-    void Awake()
+    private void Awake()
     {
-        if (team == null) team = GetComponent<PlayerTeam>() ?? GetComponentInParent<PlayerTeam>();
+        if (team == null)
+        {
+            team = GetComponent<PlayerTeam>() ?? GetComponentInParent<PlayerTeam>();
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (team == null) return;
+        if (team == null)
+        {
+            return;
+        }
 
-        if (Time.timeScale == 0f) return;
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
 
-        var kb = Keyboard.current;
-        if (kb == null) return;
+        Keyboard keyboard = Keyboard.current;
 
-        if (kb.digit1Key.wasPressedThisFrame) TrySwap(1);
-        else if (kb.digit2Key.wasPressedThisFrame) TrySwap(2);
-        else if (kb.digit3Key.wasPressedThisFrame) TrySwap(3);
-        else if (kb.digit4Key.wasPressedThisFrame) TrySwap(4);
-        else if (kb.digit5Key.wasPressedThisFrame) TrySwap(5);
+        if (keyboard == null)
+        {
+            return;
+        }
+
+        if (keyboard.digit1Key.wasPressedThisFrame)
+        {
+            TrySwap(1);
+        }
+        else if (keyboard.digit2Key.wasPressedThisFrame)
+        {
+            TrySwap(2);
+        }
+        else if (keyboard.digit3Key.wasPressedThisFrame)
+        {
+            TrySwap(3);
+        }
+        else if (keyboard.digit4Key.wasPressedThisFrame)
+        {
+            TrySwap(4);
+        }
+        else if (keyboard.digit5Key.wasPressedThisFrame)
+        {
+            TrySwap(5);
+        }
     }
 
-    void TrySwap(int idx)
+    private void TrySwap(int index)
     {
-        if (idx <= 0 || idx >= PlayerTeam.MAX_TEAM) return;
-        if (idx >= team.UnlockedSlots) return;
+        if (index <= 0 || index >= PlayerTeam.MAX_TEAM)
+        {
+            return;
+        }
 
-        var inst = team.team[idx];
-        if (inst == null || inst.species == null) return;
+        if (index >= team.UnlockedSlots)
+        {
+            return;
+        }
 
-        team.SwapToFront(idx);
+        MonInstance instance = team.team[index];
+
+        if (instance == null || instance.species == null)
+        {
+            return;
+        }
+
+        team.SwapToFront(index);
     }
 }

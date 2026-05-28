@@ -24,7 +24,7 @@ MonoBehaviour:
   backSprite: {fileID: 7086920602220189309, guid: f77f5c268660c894dbd92fd781dc4558, type: 3}
   typeSprite: {fileID: -4192906312058352719, guid: 915a6a85607df0344b91045838524586, type: 3}
   battleCrySoundName: Aprion
-  baseCatchRate: 50
+  baseCatchRate: 30
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 9a0ff99b931c0044f853e8e4a6657648, type: 2}

@@ -24,7 +24,7 @@ MonoBehaviour:
   backSprite: {fileID: -5179532302156605006, guid: d02003a9df258bc48b770eb7852420a1, type: 3}
   typeSprite: {fileID: 130437045571778482, guid: 1e8b8836b1ca2df4fb90e69d2b954857, type: 3}
   battleCrySoundName: Lumilliam
-  baseCatchRate: 50
+  baseCatchRate: 30
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: 2d815c561e1587143aa6ab29f135c0e8, type: 2}

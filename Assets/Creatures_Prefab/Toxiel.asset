@@ -24,7 +24,7 @@ MonoBehaviour:
   backSprite: {fileID: -6645366853351640818, guid: 740a28cc538e8924c8ff3ab28049432c, type: 3}
   typeSprite: {fileID: -3852151308869782597, guid: 5afca4231dc989a43aee469ca53dc81e, type: 3}
   battleCrySoundName: Toxiel
-  baseCatchRate: 50
+  baseCatchRate: 60
   evolutionStage: 0
   learnableMoves:
   - move: {fileID: 11400000, guid: bca1a79c8b6534e4abfe28254f3730fc, type: 2}

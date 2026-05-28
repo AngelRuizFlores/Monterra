@@ -32,27 +32,29 @@ public class RandomMovementBehavior : MonoBehaviour
     [SerializeField] private Sprite leftSprite;
     [SerializeField] private Sprite rightSprite;
 
-    private Rigidbody2D rb;
-    private Collider2D myCollider;
+    private readonly Collider2D[] hits = new Collider2D[16];
+
+    private Rigidbody2D ownRigidbody;
+    private Collider2D ownCollider;
+    private ContactFilter2D monFilter;
 
     private Vector2 direction;
     private float timer;
     private bool stopped;
 
-    private readonly Collider2D[] hits = new Collider2D[16];
-    private ContactFilter2D monFilter;
-
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<Collider2D>();
+        ownRigidbody = GetComponent<Rigidbody2D>();
+        ownCollider = GetComponent<Collider2D>();
 
         if (spriteRenderer == null)
+        {
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
-        rb.gravityScale = 0f;
-        rb.freezeRotation = true;
-        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        ownRigidbody.gravityScale = 0f;
+        ownRigidbody.freezeRotation = true;
+        ownRigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
 
         monFilter = new ContactFilter2D
         {
@@ -70,9 +72,12 @@ public class RandomMovementBehavior : MonoBehaviour
     private void Update()
     {
         if (IsPlayerClose())
+        {
             return;
+        }
 
         timer -= Time.deltaTime;
+
         if (timer <= 0f)
         {
             PickRandomDirection();
@@ -84,12 +89,12 @@ public class RandomMovementBehavior : MonoBehaviour
     {
         if (IsPlayerClose())
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            ownRigidbody.linearVelocity = Vector2.zero;
+            ownRigidbody.angularVelocity = 0f;
             return;
         }
 
-        Vector2 currentPosition = rb.position;
+        Vector2 currentPosition = ownRigidbody.position;
 
         Vector2 moveDirection = direction.sqrMagnitude > 0.0001f
             ? direction.normalized
@@ -107,9 +112,12 @@ public class RandomMovementBehavior : MonoBehaviour
         nextPosition += GetSeparationOffset(nextPosition);
 
         if (homeZone != null && !homeZone.OverlapPoint(nextPosition))
+        {
             nextPosition = PushInsideHome(nextPosition);
+        }
 
-        rb.MovePosition(nextPosition);
+        ownRigidbody.MovePosition(nextPosition);
+
         UpdateFacing(moveDirection);
     }
 
@@ -117,12 +125,13 @@ public class RandomMovementBehavior : MonoBehaviour
     {
         stopped = false;
         timer = changeDirectionInterval;
+
         PickRandomDirection();
 
-        if (rb != null)
+        if (ownRigidbody != null)
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            ownRigidbody.linearVelocity = Vector2.zero;
+            ownRigidbody.angularVelocity = 0f;
         }
     }
 
@@ -138,20 +147,26 @@ public class RandomMovementBehavior : MonoBehaviour
 
     private bool IsPlayerClose()
     {
-        if (player == null || rb == null)
+        if (player == null || ownRigidbody == null)
+        {
             return false;
+        }
 
-        float distance = Vector2.Distance(rb.position, player.position);
+        float distance = Vector2.Distance(ownRigidbody.position, player.position);
 
         if (!stopped)
         {
             if (distance <= stopRadius)
+            {
                 stopped = true;
+            }
         }
         else
         {
             if (distance >= resumeRadius)
+            {
                 stopped = false;
+            }
         }
 
         return stopped;
@@ -159,10 +174,12 @@ public class RandomMovementBehavior : MonoBehaviour
 
     private void PickRandomDirection()
     {
-        direction = Random.insideUnitCircle * randomDirectionRange;
+        direction = UnityEngine.Random.insideUnitCircle * randomDirectionRange;
 
         if (direction.sqrMagnitude < 0.001f)
+        {
             direction = Vector2.right;
+        }
     }
 
     private void UpdateFacing(Vector2 moveDirection)
@@ -180,10 +197,14 @@ public class RandomMovementBehavior : MonoBehaviour
     private void UpdateDirectionalSprite(Vector2 moveDirection)
     {
         if (spriteRenderer == null)
+        {
             return;
+        }
 
         if (moveDirection.sqrMagnitude < 0.0001f)
+        {
             return;
+        }
 
         Sprite selectedSprite;
 
@@ -197,7 +218,9 @@ public class RandomMovementBehavior : MonoBehaviour
         }
 
         if (selectedSprite != null)
+        {
             spriteRenderer.sprite = selectedSprite;
+        }
     }
 
     private void FaceByX(float x)
@@ -213,7 +236,9 @@ public class RandomMovementBehavior : MonoBehaviour
         Vector2 toCenter = (Vector2)homeZone.bounds.center - closestPoint;
 
         if (toCenter.sqrMagnitude > 0.0001f)
+        {
             closestPoint += toCenter.normalized * insideEpsilon;
+        }
 
         return closestPoint;
     }
@@ -228,29 +253,39 @@ public class RandomMovementBehavior : MonoBehaviour
         );
 
         if (count == 0)
+        {
             return Vector2.zero;
+        }
 
         Vector2 push = Vector2.zero;
 
         for (int i = 0; i < count; i++)
         {
             Collider2D hit = hits[i];
-            if (hit == null || hit == myCollider)
+
+            if (hit == null || hit == ownCollider)
+            {
                 continue;
+            }
 
             Vector2 closestPoint = hit.ClosestPoint(position);
             Vector2 offsetDirection = position - closestPoint;
 
             float distance = offsetDirection.magnitude;
+
             if (distance < 0.0001f || distance >= separationRadius)
+            {
                 continue;
+            }
 
             float strength = (separationRadius - distance) / separationRadius;
             push += offsetDirection.normalized * strength;
         }
 
         if (push.sqrMagnitude < 0.0001f)
+        {
             return Vector2.zero;
+        }
 
         Vector2 offset = push * separationForce * Time.fixedDeltaTime;
         float maxStep = separationForce * Time.fixedDeltaTime;

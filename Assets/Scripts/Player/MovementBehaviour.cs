@@ -3,51 +3,71 @@ using UnityEngine.InputSystem;
 
 public class MovementBehaviour : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D ownRigidbody;
+    private Animator animatorComponent;
     private Vector2 movement;
 
-    private Animator anim;
-
-    void Awake()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        ownRigidbody = GetComponent<Rigidbody2D>();
+        animatorComponent = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         movement = Vector2.zero;
 
-        // PRIORIDAD VERTICAL (sin diagonales)
-        if (Keyboard.current.wKey.isPressed) movement = Vector2.up;
-        else if (Keyboard.current.sKey.isPressed) movement = Vector2.down;
-        else if (Keyboard.current.aKey.isPressed) movement = Vector2.left;
-        else if (Keyboard.current.dKey.isPressed) movement = Vector2.right;
+        if (Keyboard.current.wKey.isPressed)
+        {
+            movement = Vector2.up;
+        }
+        else if (Keyboard.current.sKey.isPressed)
+        {
+            movement = Vector2.down;
+        }
+        else if (Keyboard.current.aKey.isPressed)
+        {
+            movement = Vector2.left;
+        }
+        else if (Keyboard.current.dKey.isPressed)
+        {
+            movement = Vector2.right;
+        }
 
-        // --- ANIMATOR ---
         bool isMoving = movement != Vector2.zero;
-        anim.SetBool("IsMoving", isMoving);
 
-        // Reseteo siempre
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveLeft", false);
-        anim.SetBool("MoveRight", false);
+        animatorComponent.SetBool("IsMoving", isMoving);
+        animatorComponent.SetBool("MoveUp", false);
+        animatorComponent.SetBool("MoveDown", false);
+        animatorComponent.SetBool("MoveLeft", false);
+        animatorComponent.SetBool("MoveRight", false);
 
-        // Solo marco dirección si me estoy moviendo
         if (isMoving)
         {
-            if (movement == Vector2.up) anim.SetBool("MoveUp", true);
-            else if (movement == Vector2.down) anim.SetBool("MoveDown", true);
-            else if (movement == Vector2.left) anim.SetBool("MoveLeft", true);
-            else if (movement == Vector2.right) anim.SetBool("MoveRight", true);
+            if (movement == Vector2.up)
+            {
+                animatorComponent.SetBool("MoveUp", true);
+            }
+            else if (movement == Vector2.down)
+            {
+                animatorComponent.SetBool("MoveDown", true);
+            }
+            else if (movement == Vector2.left)
+            {
+                animatorComponent.SetBool("MoveLeft", true);
+            }
+            else if (movement == Vector2.right)
+            {
+                animatorComponent.SetBool("MoveRight", true);
+            }
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        ownRigidbody.MovePosition(ownRigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

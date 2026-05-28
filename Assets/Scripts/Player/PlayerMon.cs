@@ -1,10 +1,11 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class PlayerMon : MonoBehaviour
 {
     public MonSpecies species;
     public int lvl = 1;
+
     [NonSerialized] public MonInstance instance;
 
     public void SetStarter(MonSpecies newSpecies)
@@ -15,18 +16,24 @@ public class PlayerMon : MonoBehaviour
             return;
         }
 
-        if (species == newSpecies && instance != null) return;
+        if (species == newSpecies && instance != null)
+        {
+            return;
+        }
 
         species = newSpecies;
         lvl = 1;
-
         instance = null;
+
         InitIfNeeded();
     }
 
     public void InitIfNeeded()
     {
-        if (instance != null) return;
+        if (instance != null)
+        {
+            return;
+        }
 
         if (species == null)
         {
@@ -34,12 +41,15 @@ public class PlayerMon : MonoBehaviour
             return;
         }
 
-        instance = new MonInstance();
-        instance.species = species;
-        instance.level = lvl;
-        instance.experience = 0;
+        instance = new MonInstance
+        {
+            species = species,
+            level = lvl,
+            experience = 0
+        };
 
         instance.currentHP = MonLevelSystem.GetMaxHP(instance);
+
         MonLevelSystem.InitMovesForCurrentLevel(instance);
     }
 }

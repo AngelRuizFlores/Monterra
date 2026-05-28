@@ -5,12 +5,15 @@ using UnityEngine.Events;
 [DisallowMultipleComponent]
 public sealed class TrainerBattleTrigger : MonoBehaviour
 {
+    [Header("Definition")]
     [SerializeField] private TrainerDefinition trainerDefinition;
+    [SerializeField] private TrainerDefinition[] phaseDefinitions;
+
+    [Header("Defeat")]
     [SerializeField] private bool disableColliderWhenDefeated = true;
     [SerializeField] private UnityEvent onDefeated;
 
     [SerializeField, HideInInspector] private string trainerId;
-    [SerializeField] private TrainerDefinition[] phaseDefinitions;
 
     private Collider2D cachedCollider;
     private bool defeated;
@@ -34,6 +37,7 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         if (string.IsNullOrWhiteSpace(trainerId))
         {
             trainerId = Guid.NewGuid().ToString("N");
+
             Debug.LogWarning(
                 $"{nameof(TrainerBattleTrigger)} on '{name}' had no trainerId. A new one was generated at runtime: {trainerId}",
                 this
@@ -46,6 +50,7 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
                 $"{nameof(TrainerBattleTrigger)} on '{name}' has no {nameof(TrainerDefinition)} assigned.",
                 this
             );
+
             return;
         }
 
@@ -75,7 +80,9 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         }
 
         if (!trainerDefinition.IsValid(out error))
+        {
             return false;
+        }
 
         error = null;
         return true;
@@ -84,9 +91,12 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
     public void MarkAsDefeated()
     {
         if (defeated)
+        {
             return;
+        }
 
         defeated = true;
+
         ApplyDefeatedState(true);
         StopMovement();
 
@@ -95,45 +105,30 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         onDefeated?.Invoke();
     }
 
-   public void ApplyDefeatedFromSave()
+    public void ApplyDefeatedFromSave()
     {
         defeated = true;
+
         ApplyDefeatedState(true);
         StopMovement();
 
         gameObject.SetActive(false);
     }
 
-    private void ApplyDefeatedState(bool isDefeated)
-    {
-        if (disableColliderWhenDefeated && cachedCollider != null)
-            cachedCollider.enabled = !isDefeated;
-    }
-
-    private void StopMovement()
-    {
-        RandomMovementBehavior movement = GetComponent<RandomMovementBehavior>();
-        if (movement != null)
-            movement.enabled = false;
-
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
-        }
-    }
-
     public void SetTrainerDefinitionForPhase(int phase)
     {
         if (phaseDefinitions == null || phaseDefinitions.Length == 0)
+        {
             return;
+        }
 
         int index = Mathf.Clamp(phase, 0, phaseDefinitions.Length - 1);
         TrainerDefinition newDefinition = phaseDefinitions[index];
 
         if (newDefinition == null)
+        {
             return;
+        }
 
         if (!newDefinition.IsValid(out string error))
         {
@@ -144,17 +139,46 @@ public sealed class TrainerBattleTrigger : MonoBehaviour
         trainerDefinition = newDefinition;
     }
 
+    private void ApplyDefeatedState(bool isDefeated)
+    {
+        if (disableColliderWhenDefeated && cachedCollider != null)
+        {
+            cachedCollider.enabled = !isDefeated;
+        }
+    }
+
+    private void StopMovement()
+    {
+        RandomMovementBehavior movement = GetComponent<RandomMovementBehavior>();
+
+        if (movement != null)
+        {
+            movement.enabled = false;
+        }
+
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.linearVelocity = Vector2.zero;
+            rigidbody2D.angularVelocity = 0f;
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
         if (string.IsNullOrWhiteSpace(trainerId))
+        {
             trainerId = Guid.NewGuid().ToString("N");
+        }
     }
 
     [ContextMenu("Regenerate Trainer ID")]
     private void RegenerateTrainerId()
     {
         trainerId = Guid.NewGuid().ToString("N");
+
         Debug.Log(
             $"{nameof(TrainerBattleTrigger)} on '{name}' regenerated trainerId: {trainerId}",
             this

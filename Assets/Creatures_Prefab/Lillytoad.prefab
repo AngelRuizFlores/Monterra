@@ -343,6 +343,12 @@ MonoBehaviour:
   separationRadius: 0.45
   separationPadding: 0.05
   separationForce: 1.2
+  useDirectionalSprites: 0
+  spriteRenderer: {fileID: 0}
+  upSprite: {fileID: 0}
+  downSprite: {fileID: 0}
+  leftSprite: {fileID: 0}
+  rightSprite: {fileID: 0}
 --- !u!50 &3397424907339157223
 Rigidbody2D:
   serializedVersion: 5

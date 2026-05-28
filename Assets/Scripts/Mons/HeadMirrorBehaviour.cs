@@ -2,20 +2,26 @@ using UnityEngine;
 
 public class HeadMirrorBehaviour : MonoBehaviour
 {
-    public SpriteRenderer body; 
+    [Header("References")]
+    [SerializeField] private SpriteRenderer body;
+
     private SpriteRenderer head;
 
-    void Awake()
+    private void Awake()
     {
         head = GetComponent<SpriteRenderer>();
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        if (!body) return;
+        if (!body)
+        {
+            return;
+        }
+
         head.sprite = body.sprite;
-        head.flipX  = body.flipX;
-        head.flipY  = body.flipY;
-        head.color  = body.color;
+        head.flipX = body.flipX;
+        head.flipY = body.flipY;
+        head.color = body.color;
     }
 }

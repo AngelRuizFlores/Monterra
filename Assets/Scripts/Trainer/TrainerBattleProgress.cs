@@ -66,6 +66,7 @@ public sealed class TrainerBattleProgress : MonoBehaviour
     {
         defeatedTrainerIds.Clear();
         RefreshTrainerList();
+
         Debug.Log($"{nameof(TrainerBattleProgress)}: progreso reiniciado.");
     }
 
@@ -78,13 +79,19 @@ public sealed class TrainerBattleProgress : MonoBehaviour
             TrainerBattleTrigger trainer = allTrainers[i];
 
             if (trainer == null)
+            {
                 continue;
+            }
 
             if (trainer.IsDefeated)
+            {
                 continue;
+            }
 
             if (!trainer.gameObject.activeInHierarchy)
+            {
                 continue;
+            }
 
             alive++;
         }

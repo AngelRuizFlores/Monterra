@@ -25,28 +25,38 @@ public sealed class TrainerStormDirector : MonoBehaviour
     private void Awake()
     {
         if (stormController == null)
+        {
             stormController = FindFirstObjectByType<StormOverlayController>();
+        }
 
         if (worldCamera == null)
+        {
             worldCamera = Camera.main;
+        }
 
         trainers.Clear();
         trainers.AddRange(FindObjectsByType<TrainerBattleTrigger>(FindObjectsSortMode.None));
 
         if (safePoints == null || safePoints.Length == 0)
+        {
             safePoints = FindObjectsByType<TrainerSafePoint>(FindObjectsSortMode.None);
+        }
     }
 
     private void OnEnable()
     {
         if (stormController != null)
+        {
             stormController.OnPhaseChanged += HandleStormPhaseChanged;
+        }
     }
 
     private void OnDisable()
     {
         if (stormController != null)
+        {
             stormController.OnPhaseChanged -= HandleStormPhaseChanged;
+        }
     }
 
     private void HandleStormPhaseChanged(int phase)
@@ -71,7 +81,9 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerBattleTrigger trainer = trainers[i];
 
             if (trainer == null || trainer.IsDefeated || !trainer.gameObject.activeInHierarchy)
+            {
                 continue;
+            }
 
             trainer.SetTrainerDefinitionForPhase(phase);
         }
@@ -83,15 +95,18 @@ public sealed class TrainerStormDirector : MonoBehaviour
         List<TrainerBattleTrigger> alive = GetAliveTrainers();
 
         if (alive.Count <= maxAlive)
+        {
             return;
+        }
 
         Vector2 safeCenter = stormController.GetCenterWorld();
 
         alive.Sort((a, b) =>
         {
-            float distA = Vector2.Distance(a.transform.position, safeCenter);
-            float distB = Vector2.Distance(b.transform.position, safeCenter);
-            return distB.CompareTo(distA);
+            float distanceA = Vector2.Distance(a.transform.position, safeCenter);
+            float distanceB = Vector2.Distance(b.transform.position, safeCenter);
+
+            return distanceB.CompareTo(distanceA);
         });
 
         int amountToRemove = alive.Count - maxAlive;
@@ -103,7 +118,9 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerBattleTrigger trainer = alive[i];
 
             if (trainer == null)
+            {
                 continue;
+            }
 
             Debug.Log($"[TrainerStormDirector] REMOVED -> {trainer.name}", trainer);
 
@@ -120,20 +137,28 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerBattleTrigger trainer = alive[i];
 
             if (trainer == null)
+            {
                 continue;
+            }
 
             if (stormController.IsInsideSafeZone(trainer.transform.position))
+            {
                 continue;
+            }
 
             bool isLastTrainer = alive.Count <= 1;
 
             if (!isLastTrainer && relocateOnlyWhenOffscreen && IsVisibleToCamera(trainer.transform.position))
+            {
                 continue;
+            }
 
             TrainerSafePoint point = FindValidSafePoint(alive, trainer);
 
             if (point == null)
+            {
                 point = FindFallbackSafePoint();
+            }
 
             if (point == null)
             {
@@ -152,24 +177,32 @@ public sealed class TrainerStormDirector : MonoBehaviour
     private void DisableRandomMovementAfterRelocation(TrainerBattleTrigger trainer)
     {
         if (trainer == null)
+        {
             return;
+        }
 
         RandomMovementBehavior movement = trainer.GetComponent<RandomMovementBehavior>();
-        if (movement != null)
-            movement.enabled = false;
 
-        Rigidbody2D rb = trainer.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (movement != null)
         {
-            rb.linearVelocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            movement.enabled = false;
+        }
+
+        Rigidbody2D rigidbody2D = trainer.GetComponent<Rigidbody2D>();
+
+        if (rigidbody2D != null)
+        {
+            rigidbody2D.linearVelocity = Vector2.zero;
+            rigidbody2D.angularVelocity = 0f;
         }
     }
 
     private TrainerSafePoint FindValidSafePoint(List<TrainerBattleTrigger> activeTrainers, TrainerBattleTrigger trainerToMove)
     {
         if (safePoints == null || safePoints.Length == 0)
+        {
             return null;
+        }
 
         List<TrainerSafePoint> candidates = new();
 
@@ -178,25 +211,35 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerSafePoint point = safePoints[i];
 
             if (point == null || !point.Available)
+            {
                 continue;
+            }
 
             if (!stormController.IsInsideSafeZone(point.Position))
+            {
                 continue;
+            }
 
-            if (playerTransform != null &&
-                Vector2.Distance(point.Position, playerTransform.position) < minDistanceFromPlayer)
+            if (playerTransform != null && Vector2.Distance(point.Position, playerTransform.position) < minDistanceFromPlayer)
+            {
                 continue;
+            }
 
             if (IsTooCloseToOtherTrainer(point.Position, activeTrainers, trainerToMove))
+            {
                 continue;
+            }
 
             candidates.Add(point);
         }
 
         if (candidates.Count == 0)
+        {
             return null;
+        }
 
-        int index = Random.Range(0, candidates.Count);
+        int index = UnityEngine.Random.Range(0, candidates.Count);
+
         return candidates[index];
     }
 
@@ -207,10 +250,14 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerBattleTrigger trainer = activeTrainers[i];
 
             if (trainer == null || trainer == trainerToIgnore || !trainer.gameObject.activeInHierarchy)
+            {
                 continue;
+            }
 
             if (Vector2.Distance(position, trainer.transform.position) < minDistanceBetweenTrainers)
+            {
                 return true;
+            }
         }
 
         return false;
@@ -219,7 +266,9 @@ public sealed class TrainerStormDirector : MonoBehaviour
     private bool IsVisibleToCamera(Vector3 worldPosition)
     {
         if (worldCamera == null)
+        {
             return false;
+        }
 
         Vector3 viewport = worldCamera.WorldToViewportPoint(worldPosition);
 
@@ -239,13 +288,19 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerBattleTrigger trainer = trainers[i];
 
             if (trainer == null)
+            {
                 continue;
+            }
 
             if (trainer.IsDefeated)
+            {
                 continue;
+            }
 
             if (!trainer.gameObject.activeInHierarchy)
+            {
                 continue;
+            }
 
             alive.Add(trainer);
         }
@@ -256,16 +311,21 @@ public sealed class TrainerStormDirector : MonoBehaviour
     private int GetMaxAliveForPhase(int phase)
     {
         if (maxAliveTrainersByPhase == null || maxAliveTrainersByPhase.Length == 0)
+        {
             return 12;
+        }
 
         int index = Mathf.Clamp(phase, 0, maxAliveTrainersByPhase.Length - 1);
+
         return Mathf.Max(1, maxAliveTrainersByPhase[index]);
     }
 
     private TrainerSafePoint FindFallbackSafePoint()
     {
         if (safePoints == null || safePoints.Length == 0)
+        {
             return null;
+        }
 
         List<TrainerSafePoint> candidates = new();
 
@@ -274,18 +334,25 @@ public sealed class TrainerStormDirector : MonoBehaviour
             TrainerSafePoint point = safePoints[i];
 
             if (point == null || !point.Available)
+            {
                 continue;
+            }
 
             if (!stormController.IsInsideSafeZone(point.Position))
+            {
                 continue;
+            }
 
             candidates.Add(point);
         }
 
         if (candidates.Count == 0)
+        {
             return null;
+        }
 
-        int index = Random.Range(0, candidates.Count);
+        int index = UnityEngine.Random.Range(0, candidates.Count);
+
         return candidates[index];
     }
 }

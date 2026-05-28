@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class TouchingBehaviour : MonoBehaviour
 {
+    [Header("Events")]
     public UnityEvent OnTouchMon;
     public UnityEvent OnTouchTrainer;
 
@@ -14,8 +15,15 @@ public class TouchingBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (isTransitioning)
+        if (GameSessionState.IsEndGameActive)
+        {
             return;
+        }
+
+        if (isTransitioning)
+        {
+            return;
+        }
 
         if (col.TryGetComponent(out TrainerBattleTrigger trainer))
         {
@@ -39,13 +47,29 @@ public class TouchingBehaviour : MonoBehaviour
     {
         isTransitioning = true;
 
+        if (GameSessionState.IsEndGameActive)
+        {
+            isTransitioning = false;
+            yield break;
+        }
+
         if (FadeController.Instance != null)
+        {
             yield return FadeController.Instance.FadeOut();
+        }
+
+        if (GameSessionState.IsEndGameActive)
+        {
+            isTransitioning = false;
+            yield break;
+        }
 
         OnTouchMon?.Invoke();
 
         if (FadeController.Instance != null)
+        {
             FadeController.Instance.StartFadeIn();
+        }
 
         isTransitioning = false;
     }
@@ -54,13 +78,29 @@ public class TouchingBehaviour : MonoBehaviour
     {
         isTransitioning = true;
 
+        if (GameSessionState.IsEndGameActive)
+        {
+            isTransitioning = false;
+            yield break;
+        }
+
         if (FadeController.Instance != null)
+        {
             yield return FadeController.Instance.FadeOut();
+        }
+
+        if (GameSessionState.IsEndGameActive)
+        {
+            isTransitioning = false;
+            yield break;
+        }
 
         OnTouchTrainer?.Invoke();
 
         if (FadeController.Instance != null)
+        {
             FadeController.Instance.StartFadeIn();
+        }
 
         isTransitioning = false;
     }

@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public sealed class EnemyBarkApiClient : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private string barkEndpoint = "http://localhost:3000/api/enemy/bark";
     [SerializeField] private float timeoutSeconds = 8f;
 
