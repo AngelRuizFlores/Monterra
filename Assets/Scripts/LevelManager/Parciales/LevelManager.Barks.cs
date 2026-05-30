@@ -67,14 +67,14 @@ public partial class LevelManager
         if (!string.IsNullOrWhiteSpace(bark))
         {
             battleUI?.SetText(bark);
-            yield return new WaitForSecondsRealtime(1.5f);
+            yield return new WaitForSecondsRealtime(3f);
             yield break;
         }
 
         if (!string.IsNullOrWhiteSpace(fallbackText))
         {
             battleUI?.SetText(fallbackText);
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSecondsRealtime(3f);
         }
     }
 }

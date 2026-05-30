@@ -3,34 +3,52 @@ using UnityEngine.InputSystem;
 
 public class MapController : MonoBehaviour
 {
-    [Header("UI")]
     [SerializeField] private GameObject mapUI;
+    [SerializeField] private GameObject battleCanvas;
 
     private void Awake()
     {
-        mapUI.SetActive(false);
+        if (mapUI != null)
+        {
+            mapUI.SetActive(false);
+        }
     }
 
     private void Update()
     {
-        if (BattleInteractionLock.IsBlocked)
+        if (Keyboard.current == null)
         {
             return;
         }
 
-        if (Keyboard.current == null || mapUI == null)
+        if (IsBattleActive())
         {
+            if (mapUI != null && mapUI.activeSelf)
+            {
+                mapUI.SetActive(false);
+            }
+
             return;
         }
 
         if (Keyboard.current.mKey.wasPressedThisFrame)
         {
-            mapUI.SetActive(!mapUI.activeSelf);
+            ToggleMap();
         }
     }
 
-    public void CloseMap()
+    private void ToggleMap()
     {
-        mapUI.SetActive(false);
+        if (mapUI == null)
+        {
+            return;
+        }
+
+        mapUI.SetActive(!mapUI.activeSelf);
+    }
+
+    private bool IsBattleActive()
+    {
+        return battleCanvas != null && battleCanvas.activeInHierarchy;
     }
 }

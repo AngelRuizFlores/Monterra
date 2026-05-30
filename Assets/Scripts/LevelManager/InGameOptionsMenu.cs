@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public sealed class InGameOptionsMenu : MonoBehaviour
 {
@@ -7,9 +8,11 @@ public sealed class InGameOptionsMenu : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject hudToHide;
     [SerializeField] private GameObject chooseMonCanvas;
+    [SerializeField] private GameObject battleCanvas;
 
     [Header("Navigation")]
     [SerializeField] private MainMenuLoader mainMenuLoader;
+    [SerializeField] private Button goToMenuButton;
 
     [Header("Save")]
     [SerializeField] private PlayerTeam playerTeam;
@@ -18,9 +21,9 @@ public sealed class InGameOptionsMenu : MonoBehaviour
     [Header("Behaviour")]
     [SerializeField] private bool pauseAudioListener = false;
 
-    private bool isBusy;
-
     public bool IsOpen => optionsPanel != null && optionsPanel.activeSelf;
+
+    private bool isBusy;
 
     private void Awake()
     {
@@ -42,11 +45,6 @@ public sealed class InGameOptionsMenu : MonoBehaviour
             return;
         }
 
-        if (BattleInteractionLock.IsBlocked)
-        {
-            return;
-        }
-
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (IsOpen)
@@ -60,32 +58,9 @@ public sealed class InGameOptionsMenu : MonoBehaviour
         }
     }
 
-    private void OnDisable()
-    {
-        if (!isBusy)
-        {
-            Time.timeScale = 1f;
-            SetAudioPaused(false);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (!isBusy)
-        {
-            Time.timeScale = 1f;
-            SetAudioPaused(false);
-        }
-    }
-
     public void OpenOptions()
     {
         if (isBusy)
-        {
-            return;
-        }
-
-        if (BattleInteractionLock.IsBlocked)
         {
             return;
         }
@@ -103,9 +78,14 @@ public sealed class InGameOptionsMenu : MonoBehaviour
 
         optionsPanel.SetActive(true);
 
-        if (hudToHide != null)
+        if (hudToHide != null && !IsBattleActive())
         {
             hudToHide.SetActive(false);
+        }
+
+        if (goToMenuButton != null)
+        {
+            goToMenuButton.interactable = true;
         }
 
         SetGamePaused(true);
@@ -151,7 +131,14 @@ public sealed class InGameOptionsMenu : MonoBehaviour
 
         isBusy = true;
 
-        TrySaveGame();
+        if (!IsBattleActive())
+        {
+            TrySaveGame();
+        }
+        else
+        {
+            Debug.Log("Volviendo al menú durante combate. No se guarda la partida.", this);
+        }
 
         if (optionsPanel != null)
         {
@@ -184,6 +171,11 @@ public sealed class InGameOptionsMenu : MonoBehaviour
         return chooseMonCanvas != null && chooseMonCanvas.activeInHierarchy;
     }
 
+    private bool IsBattleActive()
+    {
+        return battleCanvas != null && battleCanvas.activeInHierarchy;
+    }
+
     private void SetGamePaused(bool paused)
     {
         Time.timeScale = paused ? 0f : 1f;
@@ -198,5 +190,23 @@ public sealed class InGameOptionsMenu : MonoBehaviour
         }
 
         AudioListener.pause = paused;
+    }
+
+    private void OnDisable()
+    {
+        if (!isBusy)
+        {
+            Time.timeScale = 1f;
+            SetAudioPaused(false);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (!isBusy)
+        {
+            Time.timeScale = 1f;
+            SetAudioPaused(false);
+        }
     }
 }
